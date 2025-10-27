@@ -1,0 +1,35 @@
+export const colors = {
+  neutral: {
+    0: "#FFFFFF",
+    10: "#F5F5F5",
+    20: "#EDEDED",
+    30: "#DADADA",
+    40: "#BFBFBF",
+    50: "#8C8C8C",
+    60: "#2A2A2A",
+    100: "#000000",
+  },
+  accent: {
+    primary: "#D8292F",
+    secondary: "#2E7DBA",
+    tertiary: "#A0C4E4",
+  },
+  red: {
+    10: "#FFEBEE",
+    20: "#FFCDD2",
+    30: "#EF9A9A",
+    40: "#E57373",
+    50: "#D8292F",
+    60: "#C62828",
+    70: "#B71C1C",
+  },
+  blue: {
+    10: "#E3F2FD",
+    20: "#BBDEFB",
+    30: "#90CAF9",
+    40: "#64B5F6",
+    50: "#2E7DBA",
+    60: "#1976D2",
+    70: "#1565C0",
+  },
+};
