@@ -1,24 +1,25 @@
 export const typography = {
   fontFamily: {
-    sans: "Roboto, sans-serif",
+    sans: 'Roboto, system-ui, sans-serif',
   },
-  headline: {
-    h1: { size: "56px", weight: 500 },
-    h1_sm: { size: "48px", weight: 500 },
-    h2: { size: "36px", weight: 500 },
-    h2_sm: { size: "30px", weight: 500 },
-    h3: { size: "24px", weight: 500 },
+  fontSize: {
+    h1: '56px',
+    h1Sm: '48px',
+    h2: '36px',
+    h2Sm: '30px',
+    h3: '24px',
+    body1: '16px',
+    body2: '14px',
+    caption: '12px',
   },
-  display: {
-    d1_med: { size: "20px", weight: 500 },
-    d1_reg: { size: "20px", weight: 400 },
+  fontWeight: {
+    regular: '400',
+    medium: '500',
+    bold: '700',
   },
-  text: {
-    t1_med: { size: "16px", weight: 500 },
-    t1_reg: { size: "16px", weight: 400 },
-    t2_med: { size: "14px", weight: 500 },
-    t2_reg: { size: "14px", weight: 400 },
-    t3_med: { size: "12px", weight: 500 },
-    t3_reg: { size: "12px", weight: 400 },
+  lineHeight: {
+    tight: '1.2',
+    normal: '1.5',
+    loose: '1.7',
   },
-};
+} as const;

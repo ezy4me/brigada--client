@@ -1,35 +1,52 @@
-export const colors = {
-  neutral: {
-    0: "#FFFFFF",
-    10: "#F5F5F5",
-    20: "#EDEDED",
-    30: "#DADADA",
-    40: "#BFBFBF",
-    50: "#8C8C8C",
-    60: "#2A2A2A",
-    100: "#000000",
+export const colorPalette = {
+  white: "#FFFFFF",
+  black: "#000000",
+  gray50: "#F5F5F5",
+  gray100: "#EDEDED",
+  gray200: "#DADADA",
+  gray300: "#BFBFBF",
+  gray400: "#8C8C8C",
+  gray800: "#2A2A2A",
+
+  red50: "#FFEBEE",
+  red100: "#FFCDD2",
+  red200: "#EF9A9A",
+  red300: "#E57373",
+  red500: "#D8292F",
+  red600: "#C62828",
+  red700: "#B71C1C",
+
+  blue50: "#E3F2FD",
+  blue100: "#BBDEFB",
+  blue200: "#90CAF9",
+  blue300: "#64B5F6",
+  blue500: "#2E7DBA",
+  blue600: "#1976D2",
+  blue700: "#1565C0",
+} as const;
+
+export const semanticColors = {
+  background: {
+    primary: colorPalette.white,
+    secondary: colorPalette.gray50,
+    tertiary: colorPalette.gray100,
   },
-  accent: {
-    primary: "#D8292F",
-    secondary: "#2E7DBA",
-    tertiary: "#A0C4E4",
+  text: {
+    primary: colorPalette.black,
+    secondary: colorPalette.gray400,
+    inverted: colorPalette.white,
   },
-  red: {
-    10: "#FFEBEE",
-    20: "#FFCDD2",
-    30: "#EF9A9A",
-    40: "#E57373",
-    50: "#D8292F",
-    60: "#C62828",
-    70: "#B71C1C",
+  border: {
+    default: colorPalette.gray200,
+    strong: colorPalette.gray300,
   },
-  blue: {
-    10: "#E3F2FD",
-    20: "#BBDEFB",
-    30: "#90CAF9",
-    40: "#64B5F6",
-    50: "#2E7DBA",
-    60: "#1976D2",
-    70: "#1565C0",
+  brand: {
+    primary: colorPalette.red500,  
+    secondary: colorPalette.blue500,
   },
-};
+  status: {
+    success: colorPalette.blue500,
+    warning: "#FFA726",
+    error: colorPalette.red500,
+  },
+} as const;
