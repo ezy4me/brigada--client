@@ -71,7 +71,11 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
               <div className={cn(icon, leftIconStyle)}>{leftIcon}</div>
             )}
 
-            <input ref={ref} className={input({ size })} {...props} />
+            <input
+              ref={ref}
+              className={cn(input({ size }), className)}
+              {...props}
+            />
 
             {rightIcon && (
               <div className={cn(icon, rightIconStyle)}>{rightIcon}</div>
