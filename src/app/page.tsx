@@ -1,3 +1,7 @@
+import { Header } from "@/widgets/header/ui/Header";
+import { Hero } from "@/widgets/hero/ui/Hero";
+import { Footer } from "@/widgets/footer/ui/Footer"; 
+
 import { Button } from "@/shared/ui/button/button";
 import { Input } from "@/shared/ui/input/input";
 import { Textarea } from "@/shared/ui/textarea/textarea";
@@ -15,10 +19,14 @@ import {
 } from "lucide-react";
 
 import * as styles from "./page.css";
+import { FAQSection } from "@/widgets/faq/ui/FaqSection";
 
 export default function Home() {
   return (
     <div className={styles.page}>
+      <Header />
+      <Hero />
+      <FAQSection/>
       <main className={styles.main}>
         <section className={styles.section}>
           <h2 className={styles.heading}>Варианты кнопок</h2>
@@ -147,6 +155,8 @@ export default function Home() {
           />
         </section>
       </main>
+
+      <Footer />
     </div>
   );
 }
