@@ -1,18 +1,14 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Roboto } from "next/font/google";
 import { Providers } from "@/app/providers/StoreProvider";
 
 import { themeClass } from "@/shared/styles/theme.css";
 import "@/shared/styles/global.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const robotoSans = Roboto({
+  variable: "--font-roboto-sans",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: ["400", "500", "700"], 
 });
 
 export const metadata: Metadata = {
@@ -26,9 +22,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="ru">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${themeClass}`}
+        className={`${robotoSans.variable} ${themeClass}`}
       >
         <Providers>{children}</Providers>
       </body>

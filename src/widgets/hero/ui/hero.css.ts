@@ -5,7 +5,7 @@ export const hero = style({
   position: 'relative',
   padding: `${vars.spacing['32']} 0`,
   overflow: 'hidden',
-  backgroundColor: vars.color.gray['900'],
+  // backgroundColor: vars.color.gray['900'],
   '@media': {
     'screen and (min-width: 768px)': {
       padding: `${vars.spacing['48']} 0`,
@@ -35,7 +35,6 @@ export const container = style({
   margin: '0 auto',
   padding: `0 ${vars.spacing['16']}`,
   position: 'relative',
-  zIndex: 10,
 });
 
 export const content = style({
@@ -47,12 +46,13 @@ export const content = style({
   alignItems: 'center',
   gap: vars.spacing['40'],
   textAlign: 'center',
+  
 });
 
 export const heading = style({
   fontSize: vars.font.size.h1,
   fontWeight: vars.font.weight.bold,
-  color: vars.color.text.inverted,
+  color: vars.color.text.primary,
   lineHeight: vars.font.lineHeight.tight,
   marginTop: vars.spacing['40'],
   marginBottom: vars.spacing['40'],
@@ -72,7 +72,7 @@ export const headingAccent = style({
 
 export const description = style({
   fontSize: vars.font.size.body1,
-  color: vars.color.text.inverted,
+  color: vars.color.text.primary,
   lineHeight: vars.font.lineHeight.loose,
   marginTop: vars.spacing['40'],
   marginBottom: vars.spacing['40'],
@@ -98,7 +98,7 @@ export const descriptionBreak = style({
 
 export const subDescription = style({
   fontSize: vars.font.size.body2,
-  color: vars.color.text.inverted,
+  color: vars.color.text.primary,
   marginBottom: vars.spacing['24'],
   maxWidth: '800px',
   marginInline: 'auto',

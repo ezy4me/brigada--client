@@ -1,6 +1,6 @@
 import { Header } from "@/widgets/header/ui/Header";
 import { Hero } from "@/widgets/hero/ui/Hero";
-import { Footer } from "@/widgets/footer/ui/Footer"; 
+import { Footer } from "@/widgets/footer/ui/Footer";
 
 import { Button } from "@/shared/ui/button/button";
 import { Input } from "@/shared/ui/input/input";
@@ -20,13 +20,16 @@ import {
 
 import * as styles from "./page.css";
 import { FAQSection } from "@/widgets/faq/ui/FaqSection";
+import BackgroundLines from "@/shared/ui/background-lines/BackgroundLines";
 
 export default function Home() {
   return (
     <div className={styles.page}>
+      <BackgroundLines />
+
       <Header />
       <Hero />
-      <FAQSection/>
+      <FAQSection />
       <main className={styles.main}>
         <section className={styles.section}>
           <h2 className={styles.heading}>Варианты кнопок</h2>

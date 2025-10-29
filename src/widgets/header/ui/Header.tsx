@@ -7,6 +7,7 @@ import { ArrowRight, ChevronDown, DoorOpenIcon } from "lucide-react";
 import { cn } from "@/shared/lib/utils";
 import * as styles from "./header.css";
 import { Dropdown } from "@/shared/ui/dropdown/dropdown";
+import { RoleSelector } from "@/shared/ui/role-selector/RoleSelector";
 
 export interface HeaderProps {
   className?: string;
@@ -19,7 +20,7 @@ export const Header: FC<HeaderProps> = ({ className }) => {
 
   return (
     <header className={cn(styles.header, className)}>
-      <div className={styles.backgroundPattern} />
+      {/* <div className={styles.backgroundPattern} /> */}
       <div className={styles.container}>
         <div className={styles.content}>
           <div className={styles.logoWrapper}>
@@ -35,7 +36,7 @@ export const Header: FC<HeaderProps> = ({ className }) => {
           </div>
 
           <div className={styles.actions}>
-            <Dropdown
+            {/* <Dropdown
               triggerVariant="white"
               triggerSize="sm"
               triggerRightIcon={<ChevronDown/>}
@@ -57,11 +58,14 @@ export const Header: FC<HeaderProps> = ({ className }) => {
                   onSelect: () => console.log("For Companies"),
                 },
               ]}
+            /> */}
+            <RoleSelector
+              onRoleChange={(role) => console.log("Selected role:", role)}
             />
             <Button
               onClick={handleLogin}
               variant="white"
-              size="sm"
+              size="md"
               rightIcon={<DoorOpenIcon size={24} />}
             >
               Войти

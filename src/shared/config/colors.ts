@@ -1,5 +1,6 @@
 export const colorPalette = {
   white: "#FFFFFF",
+  light: "#fafafa",
   black: "#000000",
   gray50: "#F5F5F5",
   gray100: "#EDEDED",
@@ -28,7 +29,7 @@ export const colorPalette = {
 
 export const semanticColors = {
   background: {
-    primary: colorPalette.white,
+    primary: colorPalette.light,
     secondary: colorPalette.gray50,
     tertiary: colorPalette.gray100,
   },

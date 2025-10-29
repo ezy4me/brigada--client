@@ -25,8 +25,9 @@ export const textareaContainer = style({
   display: "flex",
   width: "100%",
   alignItems: "start",
-  borderRadius: vars.radius.lg, 
-  overflow: 'hidden',
+  borderRadius: vars.radius.lg,
+  background: vars.color.background.primary,
+  overflow: "hidden",
   boxShadow: `0 0 0 1px ${vars.color.text.secondary}`,
   transition: "box-shadow 0.2s ease",
   ":focus-within": {
@@ -59,7 +60,7 @@ export const rightIcon = style({
 export const textarea = recipe({
   base: {
     border: "none",
-    backgroundColor: "transparent",
+    background: vars.color.background.primary,
     color: vars.color.text.primary,
     fontFamily: vars.font.family,
     outline: "none",

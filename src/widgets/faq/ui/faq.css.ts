@@ -3,7 +3,6 @@ import { vars } from "@/shared/styles/theme.css";
 
 export const section = style({
   padding: `${vars.spacing["48"]} 0`,
-  backgroundColor: vars.color.background.primary,
 });
 
 export const container = style({
@@ -28,17 +27,17 @@ export const accordionList = style({
 });
 
 export const accordionItem = style({
-  borderRadius: vars.radius.lg, 
-  boxShadow: `0 1px 3px ${vars.color.text.secondary}10`, 
+  borderRadius: vars.radius.lg,
+  boxShadow: `0 1px 3px ${vars.color.text.secondary}10`,
   overflow: "hidden",
-  border: `1px solid ${vars.color.border.default}`, 
+  border: `1px solid ${vars.color.border.default}`,
   selectors: {
     '&[data-state="open"]': {
       borderColor: vars.color.brand.secondary,
-      boxShadow: `0 4px 12px ${vars.color.brand.secondary}15`, 
+      boxShadow: `0 4px 12px ${vars.color.brand.secondary}15`,
     },
   },
-  transition: "box-shadow 0.2s ease, border-color 0.2s ease", 
+  transition: "box-shadow 0.2s ease, border-color 0.2s ease",
 });
 
 export const accordionTrigger = style({
@@ -46,17 +45,17 @@ export const accordionTrigger = style({
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
-  padding: `${vars.spacing["16"]} ${vars.spacing["20"]}`, 
+  padding: `${vars.spacing["16"]} ${vars.spacing["20"]}`,
   textAlign: "left",
   fontSize: vars.font.size.body1,
   fontWeight: vars.font.weight.medium,
   color: vars.color.text.primary,
-  background: "transparent", 
+  background: vars.color.background.primary,
   border: "none",
   cursor: "pointer",
   transition: "background-color 0.2s ease",
   ":hover": {
-    backgroundColor: vars.color.background.secondary, 
+    backgroundColor: vars.color.background.secondary,
   },
   ":focus-visible": {
     outline: "2px solid transparent",
@@ -87,8 +86,9 @@ export const triggerIconWrapper = style({
 });
 
 export const accordionContentInner = style({
-  padding: `${vars.spacing["16"]} ${vars.spacing["20"]}`, 
+  padding: `${vars.spacing["16"]} ${vars.spacing["20"]}`,
   fontSize: vars.font.size.body2,
   lineHeight: vars.font.lineHeight.normal,
   color: vars.color.text.secondary,
+  backgroundColor: vars.color.white,
 });
