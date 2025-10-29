@@ -8,8 +8,8 @@ export const typography = {
     h2: '36px',
     h2Sm: '30px',
     h3: '24px',
-    body1: '16px',
-    body2: '14px',
+    body1: '18px',
+    body2: '16px',
     caption: '12px',
   },
   fontWeight: {

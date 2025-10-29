@@ -28,7 +28,7 @@ export const accordionList = style({
 });
 
 export const accordionItem = style({
-  borderRadius: vars.radius.full, 
+  borderRadius: vars.radius.lg, 
   boxShadow: `0 1px 3px ${vars.color.text.secondary}10`, 
   overflow: "hidden",
   border: `1px solid ${vars.color.border.default}`, 

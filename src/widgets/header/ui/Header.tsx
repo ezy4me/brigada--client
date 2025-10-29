@@ -3,9 +3,10 @@
 import { FC } from "react";
 import Image from "next/image";
 import { Button } from "@/shared/ui/button/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ChevronDown, DoorOpenIcon } from "lucide-react";
 import { cn } from "@/shared/lib/utils";
 import * as styles from "./header.css";
+import { Dropdown } from "@/shared/ui/dropdown/dropdown";
 
 export interface HeaderProps {
   className?: string;
@@ -34,11 +35,34 @@ export const Header: FC<HeaderProps> = ({ className }) => {
           </div>
 
           <div className={styles.actions}>
+            <Dropdown
+              triggerVariant="white"
+              triggerSize="sm"
+              triggerRightIcon={<ChevronDown/>}
+              triggerText="Роль"
+              items={[
+                {
+                  label: "Для исполнителей",
+                  value: "executors",
+                  onSelect: () => console.log("For Executors"),
+                },
+                {
+                  label: "Для заказчиков",
+                  value: "customers",
+                  onSelect: () => console.log("For Customers"),
+                },
+                {
+                  label: "Для компаний",
+                  value: "companies",
+                  onSelect: () => console.log("For Companies"),
+                },
+              ]}
+            />
             <Button
               onClick={handleLogin}
-              variant="outline"
+              variant="white"
               size="sm"
-              rightIcon={<ArrowRight size={24} />}
+              rightIcon={<DoorOpenIcon size={24} />}
             >
               Войти
             </Button>

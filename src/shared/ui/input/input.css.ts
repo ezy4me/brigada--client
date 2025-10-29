@@ -25,7 +25,7 @@ export const inputContainer = style({
   display: 'flex',
   width: '100%',
   alignItems: 'center',
-  borderRadius: vars.radius.full,
+  borderRadius: vars.radius.lg,
   boxShadow: `0 0 0 1px ${vars.color.text.secondary}`,
   transition: 'box-shadow 0.2s ease',
   ':focus-within': {
@@ -57,7 +57,7 @@ export const input = recipe({
   base: {
     flex: 1,
     width: '100%',
-    borderRadius: vars.radius.full,
+    borderRadius: vars.radius.lg,
     border: 'none',
     backgroundColor: 'transparent',
     color: vars.color.text.primary,

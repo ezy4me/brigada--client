@@ -17,7 +17,6 @@ export const Hero: FC<HeroProps> = ({ className }) => {
   return (
     <section className={cn(styles.hero, className)}>
       <div className={styles.backgroundPattern} />
-      <div className={styles.gradientOverlay} />
 
       <div className={styles.container}>
         <div className={styles.content}>

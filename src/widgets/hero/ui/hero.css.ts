@@ -5,6 +5,7 @@ export const hero = style({
   position: 'relative',
   padding: `${vars.spacing['32']} 0`,
   overflow: 'hidden',
+  backgroundColor: vars.color.gray['900'],
   '@media': {
     'screen and (min-width: 768px)': {
       padding: `${vars.spacing['48']} 0`,
@@ -19,20 +20,14 @@ export const backgroundPattern = style({
   backgroundImage: `
     repeating-linear-gradient(
       to right,
-      rgba(0, 122, 255, 0.05) 0px,
-      rgba(0, 122, 255, 0.05) 1px,
+      ${vars.color.gray['300']} 0px,
+      ${vars.color.gray['300']} 1px,
       transparent 1px,
       transparent calc(100% / 24)
     )
   `,
   backgroundSize: '100% 100%',
-});
-
-export const gradientOverlay = style({
-  position: 'absolute',
-  inset: 0,
-  background: `linear-gradient(to bottom, ${vars.color.background.primary}/60, transparent, ${vars.color.background.secondary}/80)`,
-  zIndex: 1,
+  opacity: 0.15,
 });
 
 export const container = style({
@@ -57,7 +52,7 @@ export const content = style({
 export const heading = style({
   fontSize: vars.font.size.h1,
   fontWeight: vars.font.weight.bold,
-  color: vars.color.text.primary,
+  color: vars.color.text.inverted,
   lineHeight: vars.font.lineHeight.tight,
   marginTop: vars.spacing['40'],
   marginBottom: vars.spacing['40'],
@@ -77,7 +72,7 @@ export const headingAccent = style({
 
 export const description = style({
   fontSize: vars.font.size.body1,
-  color: vars.color.text.secondary,
+  color: vars.color.text.inverted,
   lineHeight: vars.font.lineHeight.loose,
   marginTop: vars.spacing['40'],
   marginBottom: vars.spacing['40'],
@@ -103,7 +98,7 @@ export const descriptionBreak = style({
 
 export const subDescription = style({
   fontSize: vars.font.size.body2,
-  color: vars.color.text.secondary,
+  color: vars.color.text.inverted,
   marginBottom: vars.spacing['24'],
   maxWidth: '800px',
   marginInline: 'auto',

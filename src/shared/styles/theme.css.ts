@@ -1,11 +1,13 @@
-import { createTheme } from '@vanilla-extract/css';
-import { semanticColors } from '@/shared/config/colors';
-import { radius } from '@/shared/config/radius';
-import { spacing } from '@/shared/config/spacing';
-import { typography } from '@/shared/config/typography';
+import { createTheme } from "@vanilla-extract/css";
+import { colorPalette, semanticColors } from "@/shared/config/colors";
+import { radius } from "@/shared/config/radius";
+import { spacing } from "@/shared/config/spacing";
+import { typography } from "@/shared/config/typography";
 
 export const [themeClass, vars] = createTheme({
   color: {
+    white: colorPalette.white,
+    black: colorPalette.black,
     background: {
       primary: semanticColors.background.primary,
       secondary: semanticColors.background.secondary,
@@ -28,6 +30,33 @@ export const [themeClass, vars] = createTheme({
       success: semanticColors.status.success,
       warning: semanticColors.status.warning,
       error: semanticColors.status.error,
+    },
+    gray: {
+      "50": colorPalette.gray50,
+      "100": colorPalette.gray100,
+      "200": colorPalette.gray200,
+      "300": colorPalette.gray300,
+      "400": colorPalette.gray400,
+      "800": colorPalette.gray800,
+      "900": colorPalette.gray900,
+    },
+    red: {
+      "50": colorPalette.red50,
+      "100": colorPalette.red100,
+      "200": colorPalette.red200,
+      "300": colorPalette.red300,
+      "500": colorPalette.red500,
+      "600": colorPalette.red600,
+      "700": colorPalette.red700,
+    },
+    blue: {
+      "50": colorPalette.blue50,
+      "100": colorPalette.blue100,
+      "200": colorPalette.blue200,
+      "300": colorPalette.blue300,
+      "500": colorPalette.blue500,
+      "600": colorPalette.blue600,
+      "700": colorPalette.blue700,
     },
   },
   radius,

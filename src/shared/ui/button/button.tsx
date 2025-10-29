@@ -6,7 +6,7 @@ import { button, iconStyles } from './button.css';
 import { cn } from '@/shared/lib/utils';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'default' | 'outline' | 'ghost' | 'destructive';
+  variant?: 'default' | 'outline' | 'ghost' | 'destructive' | 'white';
   size?: 'sm' | 'md' | 'lg';
   leftIcon?: ReactNode;
   rightIcon?: ReactNode;

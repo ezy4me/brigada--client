@@ -37,7 +37,7 @@ const baseButton = style({
   alignItems: "center",
   justifyContent: "center",
   gap: vars.spacing["8"],
-  borderRadius: vars.radius.full,
+  borderRadius: vars.radius.lg,
   padding: 0,
   border: "none",
   fontFamily: vars.font.family,
@@ -118,6 +118,18 @@ export const button = recipe({
         ":active": {
           transform: "scale(0.98)",
           boxShadow: "0 1px 3px rgba(216, 41, 47, 0.2)",
+        },
+      },
+      white: {
+        backgroundColor: vars.color.gray[50],
+        color: vars.color.text.primary,
+        border: `1px solid ${vars.color.border.default}`, 
+        ":hover": {
+          backgroundColor: vars.color.background.secondary,
+          borderColor: vars.color.border.strong, 
+        },
+        ":active": {
+          transform: "scale(0.99)",
         },
       },
     },
