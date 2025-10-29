@@ -1,38 +1,35 @@
+
 # Brigada Client
 
-Фронтенд часть проекта Brigada на Next.js с использованием FSD-структуры.
+Фронтенд часть проекта Brigada на Next.js с использованием архитектуры FSD.
 
 ## Стек
 
-- **Frontend:** Next.js 16, React 19
-- **Стили:** TailwindCSS 3.3, shadcn/ui, tailwind-merge
+- **Frontend:** Next.js 16 (с Webpack), React 19
+- **Стили:** Vanilla Extract (CSS-in-JS на этапе сборки), `@vanilla-extract/recipes`
+- **UI:** Radix UI (unstyled, доступные компоненты), кастомные UI-компоненты
+- **Анимации:** Framer Motion
 - **Состояние:** Zustand
-- **Запросы:** React Query
-- **UI:** shadcn компоненты (Button, Card, Dialog, Input)
+- **Запросы:** TanStack Query (React Query)
 - **Типизация:** TypeScript 5
-- **Инструменты:** ESLint, Prettier, PostCSS, Tailwind Animate
+- **Инструменты:** ESLint, Prettier
 
-## Структура проекта
+## Архитектура
 
-```
+Проект следует архитектуре **Feature-Sliced Design (FSD)**:
 
-src/
-├─ app/
-├─ entities/
-├─ features/
-├─ processes/
-├─ shared/
-└─ widgets/
-
-````
-
-> Полная структура FSD с разделением на app, entities, features, shared и widgets.
+- `app` — точка входа, layout, провайдеры.
+- `entities` — бизнес-сущности (User, Order, и т.д.).
+- `features` — фичи приложения (Auth, CreateOrder, и т.д.).
+- `shared` — переиспользуемые слои (ui, lib, config, types).
+- `widgets` — виджеты страницы (Header, Footer, Hero).
+- `processes` — сквозные сценарии (Auth Flow).
 
 ## Установка
 
 ```bash
 npm install
-````
+```
 
 ## Запуск
 
@@ -40,12 +37,13 @@ npm install
 npm run dev
 ```
 
-## TailwindCSS
+## Стилизация
 
-Tailwind подключен через `globals.css` и готов к использованию в `shared/ui` и страницах приложения.
+- Используется **Vanilla Extract** для стилизации компонентов.
+- Дизайн-система построена на основе **дизайн-токенов** (`vars`), интегрированных с темой.
+- Для анимаций используется **Framer Motion**.
 
-## Компоненты shadcn
+## UI-компоненты
 
-* Кнопки, карточки, диалоги и инпуты вынесены в `src/shared/ui`.
-
-
+- Кастомные компоненты (`Button`, `Input`, `Textarea`, `Dropdown`, `RoleSelector`, `BackgroundLines`) реализованы с использованием **Radix UI** и **Vanilla Extract**.
+- Компоненты находятся в `src/shared/ui`.
