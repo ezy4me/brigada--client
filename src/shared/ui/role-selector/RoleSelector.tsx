@@ -8,17 +8,28 @@ import { roleGroup, roleButton, indicator } from "./roleSelector.css";
 export type Role = "executors" | "customers" | "companies";
 
 export interface RoleSelectorProps {
-  initialRole?: Role;
+  initialRole?: Role | undefined;
+  activeRole?: Role;
   onRoleChange?: (role: Role) => void;
   className?: string;
 }
 
 export const RoleSelector: React.FC<RoleSelectorProps> = ({
-  initialRole = "executors",
+  initialRole,
+  activeRole,
   onRoleChange,
   className,
 }) => {
-  const [activeRole, setActiveRole] = useState<Role>(initialRole);
+  const [localActiveRole, setLocalActiveRole] = useState<Role | undefined>(
+    initialRole
+  );
+
+  useEffect(() => {
+    if (activeRole) {
+      setLocalActiveRole(activeRole);
+    }
+  }, [activeRole]);
+
   const [indicatorDimensions, setIndicatorDimensions] = useState({
     left: 0,
     width: 0,
@@ -28,17 +39,17 @@ export const RoleSelector: React.FC<RoleSelectorProps> = ({
   );
 
   useEffect(() => {
-    const activeButton = buttonsRef.current[activeRole];
+    const activeButton = buttonsRef.current[localActiveRole!];
     if (activeButton) {
       setIndicatorDimensions({
         left: activeButton.offsetLeft,
         width: activeButton.offsetWidth,
       });
     }
-  }, [activeRole]);
+  }, [localActiveRole]);
 
   const handleSelect = (role: Role) => {
-    setActiveRole(role);
+    setLocalActiveRole(role);
     onRoleChange?.(role);
   };
 
@@ -59,7 +70,7 @@ export const RoleSelector: React.FC<RoleSelectorProps> = ({
           ref={(el) => {
             buttonsRef.current[role] = el;
           }}
-          className={roleButton({ active: activeRole === role })}
+          className={roleButton({ active: localActiveRole === role })}
           onClick={() => handleSelect(role)}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.98 }}

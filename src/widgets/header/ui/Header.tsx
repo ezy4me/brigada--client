@@ -2,28 +2,56 @@
 
 import { FC } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Button } from "@/shared/ui/button/button";
-import { ArrowRight, ChevronDown, DoorOpenIcon } from "lucide-react";
+import { DoorOpenIcon } from "lucide-react";
 import { cn } from "@/shared/lib/utils";
 import * as styles from "./header.css";
-import { Dropdown } from "@/shared/ui/dropdown/dropdown";
-import { RoleSelector } from "@/shared/ui/role-selector/RoleSelector";
+import {
+  RoleSelector,
+  type Role,
+} from "@/shared/ui/role-selector/RoleSelector";
 
 export interface HeaderProps {
   className?: string;
 }
 
 export const Header: FC<HeaderProps> = ({ className }) => {
-  const handleLogin = () => {
-    console.log("Login clicked");
+  const pathname = usePathname();
+
+  const getActiveRole = (): Role | undefined => {
+    if (pathname?.startsWith("/executor")) return "executors";
+    if (pathname?.startsWith("/customer")) return "customers";
+    if (pathname?.startsWith("/company")) return "companies";
+    return undefined;
+  };
+
+  const activeRole = getActiveRole();
+
+  const handleRoleChange = (
+    role: "executors" | "customers" | "companies"
+  ) => {
+    let path = "/";
+    switch (role) {
+      case "executors":
+        path = "/executor";
+        break;
+      case "customers":
+        path = "/customer";
+        break;
+      case "companies":
+        path = "/company";
+        break;
+    }
+    window.location.href = path;
   };
 
   return (
     <header className={cn(styles.header, className)}>
-      {/* <div className={styles.backgroundPattern} /> */}
       <div className={styles.container}>
         <div className={styles.content}>
-          <div className={styles.logoWrapper}>
+          <Link href="/" className={styles.logoWrapper}>
             <Image
               src="/logo.svg"
               alt="Бригада.ру"
@@ -33,43 +61,22 @@ export const Header: FC<HeaderProps> = ({ className }) => {
               priority
             />
             <span className={styles.logoText}>Бригада.ру</span>
-          </div>
+          </Link>
 
           <div className={styles.actions}>
-            {/* <Dropdown
-              triggerVariant="white"
-              triggerSize="sm"
-              triggerRightIcon={<ChevronDown/>}
-              triggerText="Роль"
-              items={[
-                {
-                  label: "Для исполнителей",
-                  value: "executors",
-                  onSelect: () => console.log("For Executors"),
-                },
-                {
-                  label: "Для заказчиков",
-                  value: "customers",
-                  onSelect: () => console.log("For Customers"),
-                },
-                {
-                  label: "Для компаний",
-                  value: "companies",
-                  onSelect: () => console.log("For Companies"),
-                },
-              ]}
-            /> */}
             <RoleSelector
-              onRoleChange={(role) => console.log("Selected role:", role)}
+              activeRole={activeRole}
+              onRoleChange={handleRoleChange}
             />
-            <Button
-              onClick={handleLogin}
-              variant="white"
-              size="md"
-              rightIcon={<DoorOpenIcon size={24} />}
-            >
-              Войти
-            </Button>
+            <Link href="/login">
+              <Button
+                variant="white"
+                size="md"
+                rightIcon={<DoorOpenIcon size={24} />}
+              >
+                Войти
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
