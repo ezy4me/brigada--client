@@ -1,4 +1,6 @@
+import { Footer } from '@/widgets/footer/ui/Footer';
 import * as styles from './layout.css';
+import { Header } from '@/widgets/header/ui/Header';
 
 export default function RolesLayout({
   children,
@@ -7,7 +9,9 @@ export default function RolesLayout({
 }) {
   return (
     <div className={styles.rolesLayout}>
+      <Header/>
       <main className={styles.main}>{children}</main>
+      <Footer/>
     </div>
   );
 }

@@ -3,8 +3,6 @@ import { Roboto } from "next/font/google";
 import { Providers } from "@/app/providers/StoreProvider";
 import { themeClass } from "@/shared/styles/theme.css";
 import "@/shared/styles/global.css";
-import { Header } from "@/widgets/header/ui/Header";
-import { Footer } from "@/widgets/footer/ui/Footer";
 
 const robotoSans = Roboto({
   variable: "--font-roboto-sans",
@@ -25,9 +23,7 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <body className={`${robotoSans.variable} ${themeClass}`}>
-        <Header />
         <Providers>{children}</Providers>
-        <Footer />
       </body>
     </html>
   );

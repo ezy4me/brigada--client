@@ -27,16 +27,18 @@ import {
   CardHeader,
   CardTitle,
 } from "@/shared/ui/card/card";
+import { Header } from "@/widgets/header/ui/Header";
+import { Footer } from "@/widgets/footer/ui/Footer";
 
 export default function Home() {
   return (
     <div className={styles.page}>
+      <Header />
       <BackgroundLines />
 
       <Hero />
       <FAQSection />
       <main className={styles.main}>
-
         <section className={styles.section}>
           <Card>
             <CardHeader>
@@ -178,8 +180,9 @@ export default function Home() {
             size="md"
           />
         </section>
-        
       </main>
+
+      <Footer />
     </div>
   );
 }
