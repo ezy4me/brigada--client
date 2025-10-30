@@ -16,7 +16,7 @@ export const main = style({
 });
 
 export const section = style({
-  maxWidth: "1024px",
+  maxWidth: "1200px",
   margin: "0 auto",
   display: "flex",
   flexDirection: "column",

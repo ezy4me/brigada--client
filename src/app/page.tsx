@@ -1,6 +1,4 @@
-import { Header } from "@/widgets/header/ui/Header";
 import { Hero } from "@/widgets/hero/ui/Hero";
-import { Footer } from "@/widgets/footer/ui/Footer";
 
 import { Button } from "@/shared/ui/button/button";
 import { Input } from "@/shared/ui/input/input";
@@ -21,16 +19,39 @@ import {
 import * as styles from "./page.css";
 import { FAQSection } from "@/widgets/faq/ui/FaqSection";
 import BackgroundLines from "@/shared/ui/background-lines/BackgroundLines";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/shared/ui/card/card";
 
 export default function Home() {
   return (
     <div className={styles.page}>
       <BackgroundLines />
 
-      <Header />
       <Hero />
       <FAQSection />
       <main className={styles.main}>
+
+        <section className={styles.section}>
+          <Card>
+            <CardHeader>
+              <CardTitle>Добро пожаловать!</CardTitle>
+              <CardDescription>Это описание карточки</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p>Основной контент карточки.</p>
+            </CardContent>
+            <CardFooter>
+              <Button>Действие</Button>
+            </CardFooter>
+          </Card>
+        </section>
+
         <section className={styles.section}>
           <h2 className={styles.heading}>Варианты кнопок</h2>
           <div className={styles.buttonGroup}>
@@ -157,9 +178,8 @@ export default function Home() {
             size="md"
           />
         </section>
+        
       </main>
-
-      <Footer />
     </div>
   );
 }
