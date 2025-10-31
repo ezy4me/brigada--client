@@ -13,6 +13,7 @@ export const label = style({
   fontSize: vars.font.size.body2,
   fontWeight: vars.font.weight.medium,
   color: vars.color.text.primary,
+  textAlign: "left",
 });
 
 export const inputWrapper = style({

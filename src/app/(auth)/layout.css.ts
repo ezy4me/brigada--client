@@ -11,6 +11,6 @@ export const authLayout = style({
 
 export const authContainer = style({
   width: '100%',
-  maxWidth: '400px',
-  padding: vars.spacing['24'],
+  maxWidth: '600px',
+//   padding: vars.spacing['24'],
 });
