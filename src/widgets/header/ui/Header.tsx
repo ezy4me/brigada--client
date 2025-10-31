@@ -1,7 +1,6 @@
 "use client";
 
 import { FC } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@/shared/ui/button/button";
@@ -12,6 +11,7 @@ import {
   RoleSelector,
   type Role,
 } from "@/shared/ui/role-selector/RoleSelector";
+import { Logo } from "@/shared/ui/logo/logo";
 
 export interface HeaderProps {
   className?: string;
@@ -51,17 +51,7 @@ export const Header: FC<HeaderProps> = ({ className }) => {
     <header className={cn(styles.header, className)}>
       <div className={styles.container}>
         <div className={styles.content}>
-          <Link href="/" className={styles.logoWrapper}>
-            <Image
-              src="/logo.svg"
-              alt="Бригада.ру"
-              width={40}
-              height={40}
-              className={styles.logoImage}
-              priority
-            />
-            <span className={styles.logoText}>Бригада.ру</span>
-          </Link>
+          <Logo href="/" />
 
           <div className={styles.actions}>
             <RoleSelector

@@ -64,7 +64,7 @@ export const LoginForm = () => {
     try {
       await new Promise(resolve => setTimeout(resolve, 1500));
       console.log("Login attempt:", formData);
-      router.push('/dashboard');
+      router.push('/');
     } catch (err) {
       setErrors({ general: "Ошибка подключения" });
     } finally {

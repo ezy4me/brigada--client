@@ -9,7 +9,7 @@ export const header = style({
   // backdropFilter: "saturate(180%) blur(20px)",
   padding: `${vars.spacing["16"]} 0`,
   borderBottom: `1px solid ${vars.color.gray["200"]}`,
-  margin:  `0 ${vars.spacing["16"]}`,
+  margin: `0 ${vars.spacing["16"]}`,
 });
 
 export const backgroundPattern = style({
@@ -40,29 +40,6 @@ export const content = style({
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
-});
-
-export const logoWrapper = style({
-  display: "flex",
-  alignItems: "center",
-  gap: vars.spacing["12"],
-});
-
-export const logoImage = style({
-  width: vars.spacing["64"],
-  height: vars.spacing["64"],
-  objectFit: "contain",
-  border: `1px solid ${vars.color.gray["200"]}`,
-  borderRadius: vars.radius.full,
-  padding: vars.spacing["8"],
-  backgroundColor: vars.color.white,
-});
-
-export const logoText = style({
-  fontSize: vars.font.size.h3,
-  fontWeight: vars.font.weight.bold,
-  color: vars.color.text.primary,
-  letterSpacing: "0.02em",
 });
 
 export const actions = style({
