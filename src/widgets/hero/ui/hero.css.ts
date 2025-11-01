@@ -44,7 +44,7 @@ export const content = style({
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',
-  gap: vars.spacing['40'],
+  gap: vars.spacing['20'],
   textAlign: 'center',
   
 });
@@ -55,7 +55,7 @@ export const heading = style({
   color: vars.color.text.primary,
   lineHeight: vars.font.lineHeight.tight,
   marginTop: vars.spacing['40'],
-  marginBottom: vars.spacing['40'],
+  // marginBottom: vars.spacing['40'],
   '@media': {
     'screen and (min-width: 768px)': {
       fontSize: '48px',
@@ -74,8 +74,8 @@ export const description = style({
   fontSize: vars.font.size.body1,
   color: vars.color.text.primary,
   lineHeight: vars.font.lineHeight.loose,
-  marginTop: vars.spacing['40'],
-  marginBottom: vars.spacing['40'],
+  // marginTop: vars.spacing['40'],
+  // marginBottom: vars.spacing['40'],
   maxWidth: '800px',
   marginInline: 'auto',
   '@media': {

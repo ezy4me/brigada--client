@@ -42,7 +42,7 @@ export const Hero: FC<HeroProps> = ({ className }) => {
 
           <div className={styles.buttonWrapper}>
             <Button onClick={handleBecomeExecutor} size="lg">
-              Стать исполнителем
+              Зарегистрироваться
             </Button>
           </div>
         </div>

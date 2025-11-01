@@ -79,7 +79,7 @@ export const LoginForm = () => {
   return (
     <Card>
       <CardContent>
-        <form onSubmit={handleSubmit} className={styles.form}>
+        <form onSubmit={handleSubmit} className={styles.form} noValidate>
           <div className={styles.inputWrapper}>
             <Input
               label="Email"

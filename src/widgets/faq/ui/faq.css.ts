@@ -6,7 +6,7 @@ export const section = style({
 });
 
 export const container = style({
-  maxWidth: "1024px",
+  maxWidth: "1200px",
   margin: "0 auto",
   padding: `0 ${vars.spacing["16"]}`,
 });

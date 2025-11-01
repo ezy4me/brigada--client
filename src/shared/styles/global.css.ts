@@ -23,3 +23,33 @@ globalStyle("h1", {
 globalStyle("a", {
   textDecoration: "none",
 });
+
+globalStyle("html, body", {
+  height: "100%",
+});
+
+globalStyle("button, input, textarea, select", {
+  font: "inherit",
+  border: "none",
+  outline: "none",
+  background: "transparent",
+});
+
+globalStyle("ul, ol", {
+  listStyle: "none",
+});
+
+globalStyle("img", {
+  maxWidth: "100%",
+  height: "auto",
+  display: "block",
+});
+
+globalStyle("p", {
+  margin: 0,
+});
+
+globalStyle("h2, h3, h4, h5, h6", {
+  margin: 0,
+  fontWeight: vars.font.weight.medium,
+});

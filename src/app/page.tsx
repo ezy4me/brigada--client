@@ -29,6 +29,9 @@ import {
 } from "@/shared/ui/card/card";
 import { Header } from "@/widgets/header/ui/Header";
 import { Footer } from "@/widgets/footer/ui/Footer";
+import { TargetAudience } from "@/widgets/target-audience/ui/TargetAudience";
+import { Partners } from "@/widgets/partners/ui/Partners";
+import { WhyChooseUs } from "@/widgets/why-choose-us/ui/WhyChooseUs";
 
 export default function Home() {
   return (
@@ -37,6 +40,13 @@ export default function Home() {
       <BackgroundLines />
 
       <Hero />
+
+      <TargetAudience/>
+
+      <Partners/>
+
+      <WhyChooseUs/>
+
       <FAQSection />
       <main className={styles.main}>
         <section className={styles.section}>
