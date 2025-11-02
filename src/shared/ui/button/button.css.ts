@@ -123,10 +123,10 @@ export const button = recipe({
       white: {
         backgroundColor: vars.color.gray[50],
         color: vars.color.text.primary,
-        border: `1px solid ${vars.color.border.default}`, 
+        border: `1px solid ${vars.color.border.default}`,
         ":hover": {
           backgroundColor: vars.color.background.secondary,
-          borderColor: vars.color.border.strong, 
+          borderColor: vars.color.border.strong,
         },
         ":active": {
           transform: "scale(0.99)",
