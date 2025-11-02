@@ -1,4 +1,4 @@
-import { style, keyframes } from "@vanilla-extract/css";
+import { keyframes, style } from "@vanilla-extract/css";
 import { vars } from "@/shared/styles/theme.css";
 
 const shine = keyframes({
@@ -7,13 +7,17 @@ const shine = keyframes({
 });
 
 export const section = style({
-  padding: `${vars.spacing["48"]} 0`,
-  // backgroundColor: vars.color.background.primary,
+  //   backgroundColor: vars.color.background.primary,
+  width: "100%",
 });
 
-export const intro = style({
-  // textAlign: 'center',
-  marginBottom: vars.spacing["24"],
+export const container = style({
+  padding: `0 ${vars.spacing["16"]}`,
+});
+
+export const header = style({
+  textAlign: "center",
+  marginBottom: vars.spacing["32"],
 });
 
 export const title = style({
@@ -23,33 +27,40 @@ export const title = style({
   marginBottom: vars.spacing["8"],
 });
 
-export const description = style({
+export const subtitle = style({
   fontSize: vars.font.size.body1,
-  color: vars.color.text.primary,
-  maxWidth: "700px",
-  // margin: '0 auto',
+  color: vars.color.text.secondary,
+  maxWidth: "600px",
+  margin: "0 auto",
 });
 
-export const benefitsList = style({
+export const stepsGrid = style({
   display: "grid",
-  gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+  gridTemplateColumns: "repeat(4, 1fr)",
   gap: vars.spacing["24"],
-  marginTop: vars.spacing["32"],
+
+  "@media": {
+    "screen and (max-width: 1023px)": {
+      gridTemplateColumns: "repeat(2, 1fr)",
+    },
+    "screen and (max-width: 767px)": {
+      gridTemplateColumns: "1fr",
+    },
+  },
 });
 
-export const benefitItem = style({
+export const stepCard = style({
   display: "flex",
-  width: "100%",
-  alignItems: "center",
-  textAlign: "center",
   flexDirection: "column",
-  gap: vars.spacing["12"],
+  alignItems: "flex-start",
+  gap: vars.spacing["8"],
   padding: vars.spacing["24"],
-  borderRadius: vars.radius.md,
+  borderRadius: vars.radius.lg,
   border: `1px solid ${vars.color.border.default}`,
   backgroundImage: `linear-gradient(135deg, ${vars.color.background.secondary} 0%, ${vars.color.gray["100"]} 100%)`,
   position: "relative",
   overflow: "hidden",
+  height: "100%",
   transition: "transform 0.2s ease",
   selectors: {
     "&:hover": {
@@ -76,28 +87,42 @@ export const shineElement = style({
   transition: "opacity 0.2s ease",
 
   selectors: {
-    [`${benefitItem}:hover &`]: {
+    [`${stepCard}:hover &`]: {
       opacity: 1,
       animation: `${shine} 0.6s ease-out forwards`,
     },
   },
 });
 
-export const benefitIcon = style({
-  flexShrink: 0,
-  padding: vars.spacing["24"],
-  backgroundColor: vars.color.brand.secondary,
+export const stepNumber = style({
+  width: vars.spacing["32"],
+  height: vars.spacing["32"],
   borderRadius: "50%",
+  backgroundColor: vars.color.black,
+  color: vars.color.text.inverted,
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  color: vars.color.text.inverted,
-  fontSize: vars.font.size.caption,
   fontWeight: vars.font.weight.bold,
+  fontSize: vars.font.size.body1,
 });
 
-export const benefitText = style({
-  fontSize: vars.font.size.body1,
+export const stepIcon = style({
+  width: vars.spacing["40"],
+  height: vars.spacing["40"],
+  color: vars.color.brand.primary,
+  flexShrink: 0,
+});
+
+export const stepTitle = style({
+  fontSize: vars.font.size.body2,
+  fontWeight: vars.font.weight.bold,
   color: vars.color.text.primary,
-  lineHeight: vars.font.lineHeight.tight,
+  marginBottom: vars.spacing["8"],
+});
+
+export const stepDescription = style({
+  fontSize: vars.font.size.body2,
+  color: vars.color.text.secondary,
+  lineHeight: vars.font.lineHeight.normal,
 });

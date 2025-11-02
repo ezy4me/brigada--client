@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Input } from "@/shared/ui/input/input";
-import { Button } from "@/shared/ui/button/button";
-import { Card, CardContent } from "@/shared/ui/card/card";
+import { Input } from "@/shared/ui/input/Input";
+import { Button } from "@/shared/ui/button/Button";
+import { Card, CardContent } from "@/shared/ui/card/Card";
 import { Mail, Lock, Eye, EyeOff } from "lucide-react";
 import * as styles from "./LoginForm.css";
 

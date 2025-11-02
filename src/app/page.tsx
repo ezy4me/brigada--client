@@ -1,7 +1,7 @@
 import { Hero } from "@/widgets/hero/ui/Hero";
 
-import { Button } from "@/shared/ui/button/button";
-import { Input } from "@/shared/ui/input/input";
+import { Button } from "@/shared/ui/button/Button";
+import { Input } from "@/shared/ui/input/Input";
 import { Textarea } from "@/shared/ui/textarea/textarea";
 
 import {
@@ -26,7 +26,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/shared/ui/card/card";
+} from "@/shared/ui/card/Card";
 import { Header } from "@/widgets/header/ui/Header";
 import { Footer } from "@/widgets/footer/ui/Footer";
 import { TargetAudience } from "@/widgets/target-audience/ui/TargetAudience";

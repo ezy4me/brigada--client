@@ -99,13 +99,8 @@ export const icon = style({
 });
 
 export const cardTitle = style({
-  fontSize: vars.font.size.h3,
-  fontWeight: vars.font.weight.bold,
-  color: vars.color.text.primary,
   marginBottom: vars.spacing["8"],
 });
 
 export const cardDescription = style({
-  fontSize: vars.font.size.body2,
-  color: vars.color.text.secondary,
 });

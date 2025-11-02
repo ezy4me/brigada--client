@@ -13,31 +13,32 @@ export const logoWrapper = recipe({
   variants: {
     orientation: {
       vertical: {
-        flexDirection: 'column',
+        flexDirection: "column",
       },
       horizontal: {
-        flexDirection: 'row',
+        flexDirection: "row",
       },
     },
   },
   defaultVariants: {
-    orientation: 'horizontal',
+    orientation: "horizontal",
   },
 });
 
 export const logoImage = style({
-  width: vars.spacing["64"],
-  height: vars.spacing["64"],
+  width: vars.spacing["40"],
+  height: vars.spacing["40"],
   objectFit: "contain",
-  border: `1px solid ${vars.color.border.default}`,
-  borderRadius: vars.radius.full,
-  padding: vars.spacing["8"],
-  backgroundColor: vars.color.background.primary,
 });
 
 export const logoText = style({
   fontSize: vars.font.size.h3,
   fontWeight: vars.font.weight.bold,
-  color: vars.color.text.primary,
+  color: vars.color.brand.secondary, 
   letterSpacing: "0.02em",
+  fontFamily: "'Montserrat', sans-serif", 
+});
+
+export const logoTextSecondary = style({
+  color: vars.color.brand.primary, 
 });

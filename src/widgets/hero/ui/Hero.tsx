@@ -1,52 +1,49 @@
-"use client";
+"use client"
 
-import { FC } from "react";
-import { Button } from "@/shared/ui/button/button";
+import { Section } from "@/shared/ui/section/Section";
+import { Heading } from "@/shared/ui/heading/Heading";
+import { Text } from "@/shared/ui/text/Text";
 import { cn } from "@/shared/lib/utils";
 import * as styles from "./hero.css";
+import BackgroundLines from "@/shared/ui/background-lines/BackgroundLines";
+import { Button } from "@/shared/ui/button/Button";
 
-export interface HeroProps {
+interface HeroProps {
   className?: string;
 }
 
-export const Hero: FC<HeroProps> = ({ className }) => {
+export const Hero = ({ className }: HeroProps) => {
   const handleBecomeExecutor = () => {
     console.log("Become executor clicked");
   };
 
   return (
-    <section className={cn(styles.hero, className)}>
-      {/* <div className={styles.backgroundPattern} /> */}
+    <Section className={cn(styles.hero, className)}>
+      <BackgroundLines />
+      <div className={styles.content}>
+        <Heading as="h1" className={styles.heading}>
+          Получайте строительные заказы{" "}
+          <span className={styles.headingAccent}>
+            без рекламы и звонков
+          </span>
+        </Heading>
 
-      <div className={styles.container}>
-        <div className={styles.content}>
-          <h1 className={styles.heading}>
-            Получайте строительные заказы{" "}
-            <span className={styles.headingAccent}>
-              без рекламы и звонков
-            </span>
-          </h1>
+        <Text className={styles.description}>
+          Подключитесь к платформе и начните получать заявки
+          <span className={styles.descriptionBreak}> </span>
+          от реальных клиентов уже сегодня.
+        </Text>
 
-          <p className={styles.description}>
-            Подключитесь к платформе и начните получать заявки
-            <span className={styles.descriptionBreak}>
-              {" "}
-              <br />{" "}
-            </span>
-            от реальных клиентов уже сегодня.
-          </p>
+        <Text className={styles.subDescription}>
+          Всё официально: чат, договор, документы
+        </Text>
 
-          <p className={styles.subDescription}>
-            Всё официально: чат, договор, документы
-          </p>
-
-          <div className={styles.buttonWrapper}>
-            <Button onClick={handleBecomeExecutor} size="lg">
-              Зарегистрироваться
-            </Button>
-          </div>
+        <div className={styles.buttonWrapper}>
+          <Button onClick={handleBecomeExecutor} size="lg">
+            Зарегистрироваться
+          </Button>
         </div>
       </div>
-    </section>
+    </Section>
   );
 };

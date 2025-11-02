@@ -1,17 +1,9 @@
-import { spacing } from "./../../../shared/config/spacing";
 import { style } from "@vanilla-extract/css";
 import { vars } from "@/shared/styles/theme.css";
 
 export const section = style({
-  padding: `${vars.spacing["48"]} 0`,
-  backgroundColor: vars.color.background.secondary,
+  // backgroundColor: vars.color.background.secondary,
   width: "100%",
-});
-
-export const container = style({
-  maxWidth: "1200px",
-  margin: "0 auto",
-  padding: `0 ${vars.spacing["16"]}`,
 });
 
 export const intro = style({
@@ -40,7 +32,6 @@ export const partnerSection = style({
 export const imageContainer = style({
   position: "relative",
   width: "100%",
-  //   maxWidth: "1000px",
   height: "500px",
   borderRadius: vars.radius.lg,
   overflow: "hidden",

@@ -3,7 +3,7 @@
 import { FC } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Button } from "@/shared/ui/button/button";
+import { Button } from "@/shared/ui/button/Button";
 import { DoorOpenIcon } from "lucide-react";
 import { cn } from "@/shared/lib/utils";
 import * as styles from "./header.css";

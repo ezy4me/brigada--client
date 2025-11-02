@@ -8,6 +8,7 @@ export const typography = {
     h2: "36px",
     h2Sm: "30px",
     h3: "24px",
+    h4: "20px",
     body1: "18px",
     body2: "16px",
     caption: "12px",

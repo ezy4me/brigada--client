@@ -1,5 +1,5 @@
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
-import { Button, ButtonProps } from '../button/button'; 
+import { Button, ButtonProps } from '../button/Button'; 
 import { cn } from '@/shared/lib/utils';
 import { content, item as itemStyle } from './dropdown.css';
 

@@ -12,6 +12,7 @@ export const heading = recipe({
       h1: { fontSize: vars.font.size.h1 },
       h2: { fontSize: vars.font.size.h2 },
       h3: { fontSize: vars.font.size.h3 },
+      h4: { fontSize: vars.font.size.h4 },
       h1Sm: { fontSize: vars.font.size.h1Sm },
       h2Sm: { fontSize: vars.font.size.h2Sm },
     },

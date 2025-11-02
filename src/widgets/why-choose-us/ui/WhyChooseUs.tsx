@@ -1,41 +1,47 @@
-import { Card } from "@/shared/ui/card/card";
+import { Card } from "@/shared/ui/card/Card";
+import { Section } from "@/shared/ui/section/Section";
+import { Heading } from "@/shared/ui/heading/Heading";
+import { Text } from "@/shared/ui/text/Text";
 import * as styles from "./whyChooseUs.css";
 import { UserCheck, Mail, Reply } from "lucide-react";
 
 const benefits = [
-  "У нас нет случайных пользователей. Только реальные задачи от частных клиентов.",
-  "Вы не тратите деньги на рекламу – только получаете готовые обращения.",
-  "Система сама подбирает подходящие заявки, вы просто откликаетесь.",
-];
-
-const icons = [
-  <UserCheck size={32} />,
-  <Mail size={32} />,
-  <Reply size={32} />,
+  {
+    icon: <UserCheck size={32} />,
+    text: "У нас нет случайных пользователей. Только реальные задачи от частных клиентов.",
+  },
+  {
+    icon: <Mail size={32} />,
+    text: "Вы не тратите деньги на рекламу – только получаете готовые обращения.",
+  },
+  {
+    icon: <Reply size={32} />,
+    text: "Система сама подбирает подходящие заявки, вы просто откликаетесь.",
+  },
 ];
 
 export const WhyChooseUs = () => {
   return (
-    <section className={styles.section}>
-      <div className={styles.container}>
-        <div className={styles.intro}>
-          <h2 className={styles.title}>Почему нас выбирают?</h2>
-          <p className={styles.description}>
-            Платформа Бригада.ру устроена так, чтобы заявки приходили
-            именно вам: с учётом специализации, локации и загруженности
-          </p>
-        </div>
-
-        <div className={styles.benefitsList}>
-          {benefits.map((benefit, index) => (
-            <Card key={index} className={styles.benefitItem}>
-              <div className={styles.shineElement} />
-              <div className={styles.benefitIcon}>{icons[index]}</div>
-              <p className={styles.benefitText}>{benefit}</p>
-            </Card>
-          ))}
-        </div>
+    <Section className={styles.section}>
+      <div className={styles.intro}>
+        <Heading as="h2" className={styles.title}>
+          Почему нас выбирают?
+        </Heading>
+        <Text className={styles.description}>
+          Платформа Бригада.ру устроена так, чтобы заявки приходили именно вам: с
+          учётом специализации, локации и загруженности
+        </Text>
       </div>
-    </section>
+
+      <div className={styles.benefitsList}>
+        {benefits.map((item, index) => (
+          <Card key={index} className={styles.benefitItem}>
+            <div className={styles.shineElement} />
+            <div className={styles.benefitIcon}>{item.icon}</div>
+            <Text className={styles.benefitText}>{item.text}</Text>
+          </Card>
+        ))}
+      </div>
+    </Section>
   );
 };

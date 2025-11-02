@@ -1,7 +1,8 @@
+// shared/ui/logo/Logo.tsx
 import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/shared/lib/utils";
-import { logoWrapper, logoImage, logoText } from "./logo.css";
+import * as styles from "./logo.css";
 
 export type LogoOrientation = "vertical" | "horizontal";
 
@@ -19,16 +20,19 @@ export const Logo = ({
   return (
     <Link
       href={href}
-      className={cn(logoWrapper({ orientation }), className)}
+      className={cn(styles.logoWrapper({ orientation }), className)}
     >
       <Image
-        src="/logo.svg"
+        src="/logo.png"
         alt="Бригада.ру"
         width={40}
         height={40}
-        className={logoImage}
+        className={styles.logoImage}
       />
-      <span className={logoText}>Бригада.ру</span>
+      <span className={styles.logoText}>
+        Бригада
+        <span className={styles.logoTextSecondary}>.ру</span>
+      </span>
     </Link>
   );
 };

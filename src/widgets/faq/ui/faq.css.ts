@@ -5,12 +5,6 @@ export const section = style({
   padding: `${vars.spacing["48"]} 0`,
 });
 
-export const container = style({
-  maxWidth: "1200px",
-  margin: "0 auto",
-  padding: `0 ${vars.spacing["16"]}`,
-});
-
 export const heading = style({
   fontSize: vars.font.size.h2,
   fontWeight: vars.font.weight.medium,

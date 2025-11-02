@@ -1,7 +1,10 @@
 "use client";
 
-import { Button } from "@/shared/ui/button/button";
+import { Button } from "@/shared/ui/button/Button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Section } from "@/shared/ui/section/Section";
+import { Heading } from "@/shared/ui/heading/Heading";
+import { Text } from "@/shared/ui/text/Text";
 import * as styles from "./partners.css";
 import { useState } from "react";
 import Image from "next/image";
@@ -9,7 +12,7 @@ import Image from "next/image";
 const partnersData = [
   {
     name: "Российские Студенческие Отряды (РСО)",
-    image: "/partners/noimage.webp",
+    image: "/partners/rso.jpg",
     badges: ["Молодёжь", "Образование", "Патриотизм"],
     benefits: [
       "мотивация молодежи",
@@ -51,53 +54,55 @@ export const Partners = () => {
   const current = partnersData[currentPartnerIndex];
 
   return (
-    <section className={styles.section}>
-      <div className={styles.container}>
-        <div className={styles.intro}>
-          <h2 className={styles.title}>Наши кадровые партнёры</h2>
-          <p className={styles.description}>
-            С нами работают строительные компании, поставщики и сервисные
-            организации по всей России. Мы ценим партнёрство и развиваем
-            рынок вместе.
-          </p>
-        </div>
+    <Section className={styles.section}>
+      <div className={styles.intro}>
+        <Heading as="h2" className={styles.title}>
+          Наши кадровые партнёры
+        </Heading>
+        <Text className={styles.description}>
+          С нами работают строительные компании, поставщики и сервисные
+          организации по всей России. Мы ценим партнёрство и развиваем
+          рынок вместе.
+        </Text>
+      </div>
 
-        <div className={styles.partnerSection}>
-          <div className={styles.imageContainer}>
-            <Image
-              src={current.image}
-              alt={current.name}
-              fill
-              className={styles.partnerImage}
-              priority
-            />
-            <div className={styles.overlay} />
+      <div className={styles.partnerSection}>
+        <div className={styles.imageContainer}>
+          <Image
+            src={current.image}
+            alt={current.name}
+            fill
+            className={styles.partnerImage}
+            priority
+          />
+          <div className={styles.overlay} />
 
-            <div className={styles.content}>
-              <div className={styles.textBlock}>
-                <h3 className={styles.partnerName}>{current.name}</h3>
+          <div className={styles.content}>
+            <div className={styles.textBlock}>
+              <Heading as="h3" className={styles.partnerName}>
+                {current.name}
+              </Heading>
 
-                <div className={styles.badges}>
-                  {current.badges.map((badge, index) => (
-                    <span key={index} className={styles.badge}>
-                      {badge}
-                    </span>
-                  ))}
-                </div>
+              <div className={styles.badges}>
+                {current.badges.map((badge, index) => (
+                  <span key={index} className={styles.badge}>
+                    {badge}
+                  </span>
+                ))}
               </div>
+            </div>
 
-              <div className={styles.navButtons}>
-                <Button variant="white" size="sm" onClick={goToPrevious}>
-                  <ChevronLeft size={16} />
-                </Button>
-                <Button variant="white" size="sm" onClick={goToNext}>
-                  <ChevronRight size={16} />
-                </Button>
-              </div>
+            <div className={styles.navButtons}>
+              <Button variant="white" size="sm" onClick={goToPrevious}>
+                <ChevronLeft size={16} />
+              </Button>
+              <Button variant="white" size="sm" onClick={goToNext}>
+                <ChevronRight size={16} />
+              </Button>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </Section>
   );
 };

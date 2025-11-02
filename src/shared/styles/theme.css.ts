@@ -79,6 +79,7 @@ export const [themeClass, vars] = createTheme({
       h2: typography.fontSize.h2,
       h2Sm: typography.fontSize.h2Sm,
       h3: typography.fontSize.h3,
+      h4: typography.fontSize.h4,
       body1: typography.fontSize.body1,
       body2: typography.fontSize.body2,
       caption: typography.fontSize.caption,
