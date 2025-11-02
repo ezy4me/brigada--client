@@ -39,17 +39,18 @@ export default function Home() {
       <Header />
       <BackgroundLines />
 
-      <Hero />
-
-      <TargetAudience/>
-
-      <Partners/>
-
-      <WhyChooseUs/>
-
-      <FAQSection />
       <main className={styles.main}>
-        <section className={styles.section}>
+        <Hero />
+
+        <TargetAudience />
+
+        <Partners />
+
+        <WhyChooseUs />
+
+        <FAQSection />
+
+        {/* <section className={styles.section}>
           <Card>
             <CardHeader>
               <CardTitle>Добро пожаловать!</CardTitle>
@@ -189,7 +190,7 @@ export default function Home() {
             helperText="Message is too short"
             size="md"
           />
-        </section>
+        </section> */}
       </main>
 
       <Footer />

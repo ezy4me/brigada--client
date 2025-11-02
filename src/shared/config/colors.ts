@@ -39,7 +39,7 @@ export const semanticColors = {
     inverted: colorPalette.white,
   },
   border: {
-    default: colorPalette.gray200,
+    default: colorPalette.gray100,
     strong: colorPalette.gray300,
   },
   brand: {

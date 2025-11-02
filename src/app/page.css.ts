@@ -12,7 +12,7 @@ export const page = style({
 
 export const main = style({
   flex: 1,
-  padding: vars.spacing["24"],
+  // padding: vars.spacing["24"],
 });
 
 export const section = style({
