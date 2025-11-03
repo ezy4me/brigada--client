@@ -7,7 +7,7 @@ import { cn } from "@/shared/lib/utils";
 
 export interface ButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "default" | "outline" | "ghost" | "destructive" | "white";
+  variant?: "primary" | "secondary" | "outline" | "ghost" | "destructive" | "white";
   size?: "sm" | "md" | "lg";
   leftIcon?: ReactNode;
   rightIcon?: ReactNode;
@@ -29,7 +29,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     ref
   ) => {
     const baseClassName = button({
-      variant: variant ?? "default",
+      variant: variant ?? "primary",
       size: size ?? "md",
     });
 

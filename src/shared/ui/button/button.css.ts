@@ -72,7 +72,7 @@ export const button = recipe({
   base: baseButton,
   variants: {
     variant: {
-      default: {
+      primary: {
         backgroundColor: vars.color.brand.primary,
         color: vars.color.text.inverted,
         ":hover": {
@@ -83,6 +83,19 @@ export const button = recipe({
         ":active": {
           transform: "scale(0.98)",
           boxShadow: "0 1px 3px rgba(216, 41, 47, 0.2)",
+        },
+      },
+      secondary: {
+        backgroundColor: vars.color.brand.secondary,
+        color: vars.color.text.inverted,
+        ":hover": {
+          backgroundColor: vars.color.brand.secondary,
+          opacity: 0.9,
+        },
+        boxShadow: "0 2px 6px rgba(46, 125, 186, 0.2)",
+        ":active": {
+          transform: "scale(0.98)",
+          boxShadow: "0 1px 3px rgba(46, 125, 186, 0.2)",
         },
       },
       outline: {
@@ -152,7 +165,7 @@ export const button = recipe({
     },
   },
   defaultVariants: {
-    variant: "default",
+    variant: "primary",
     size: "md",
   },
 });

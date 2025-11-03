@@ -24,7 +24,6 @@ export const TargetAudience = () => {
   return (
     <section className={styles.section}>
       <div className={styles.container}>
-        {/* ✅ Заголовок секции */}
         <div className={styles.header}>
           <h2 className={styles.title}>
             Для кого предназначена наша система?
@@ -35,25 +34,19 @@ export const TargetAudience = () => {
           </p>
         </div>
 
-        {/* ✅ Сетка карточек */}
         <div className={styles.cardsGrid}>
           {audienceData.map((item, index) => {
             const IconComponent = item.icon;
             return (
-              // ✅ Используем Card из shared/ui
               <Card key={index} className={styles.card}>
-                {/* ✅ Элемент блика */}
                 <div className={styles.shineElement} />
 
-                {/* ✅ Иконка */}
                 <IconComponent className={styles.icon} size={64} />
 
-                {/* ✅ Заголовок карточки */}
                 <CardTitle className={styles.cardTitle}>
                   {item.title}
                 </CardTitle>
 
-                {/* ✅ Описание карточки */}
                 <CardDescription className={styles.cardDescription}>
                   {item.description}
                 </CardDescription>

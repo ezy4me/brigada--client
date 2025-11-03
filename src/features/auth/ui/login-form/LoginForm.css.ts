@@ -2,12 +2,10 @@ import { style } from "@vanilla-extract/css";
 import { vars } from "@/shared/styles/theme.css";
 
 export const form = style({
-  width: "100%",
-  maxWidth: "600px",
   display: "flex",
   flexDirection: "column",
   gap: vars.spacing["16"],
-  //   padding: vars.spacing["16"],
+  width: "100%",
 });
 
 export const inputWrapper = style({
@@ -17,7 +15,7 @@ export const inputWrapper = style({
 });
 
 export const button = style({
-  //   marginTop: vars.spacing["16"],
+  marginTop: vars.spacing["16"],
 });
 
 export const errorText = style({
@@ -37,7 +35,9 @@ export const forgotPasswordLink = style({
   fontSize: vars.font.size.body2,
   color: vars.color.brand.primary,
   textDecoration: "none",
+  transition: "opacity 0.2s ease",
   ":hover": {
+    opacity: 0.8,
     textDecoration: "underline",
   },
 });
@@ -51,4 +51,8 @@ export const passwordToggle = style({
   alignItems: "center",
   justifyContent: "center",
   padding: 0,
+  transition: "color 0.2s ease",
+  ":hover": {
+    color: vars.color.brand.primary,
+  },
 });

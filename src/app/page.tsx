@@ -1,37 +1,15 @@
 import { Hero } from "@/widgets/hero/ui/Hero";
 
-import { Button } from "@/shared/ui/button/Button";
-import { Input } from "@/shared/ui/input/Input";
-import { Textarea } from "@/shared/ui/textarea/textarea";
-
-import {
-  ArrowRight,
-  Mail,
-  Lock,
-  User,
-  CheckCircle,
-  AlertCircle,
-  Search,
-  Eye,
-  MessageCircle,
-} from "lucide-react";
-
 import * as styles from "./page.css";
 import { FAQSection } from "@/widgets/faq/ui/FaqSection";
 import BackgroundLines from "@/shared/ui/background-lines/BackgroundLines";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/shared/ui/card/Card";
+
 import { Header } from "@/widgets/header/ui/Header";
 import { Footer } from "@/widgets/footer/ui/Footer";
 import { TargetAudience } from "@/widgets/target-audience/ui/TargetAudience";
-import { Partners } from "@/widgets/partners/ui/Partners";
 import { WhyChooseUs } from "@/widgets/why-choose-us/ui/WhyChooseUs";
+import { PartnerCarousel } from "@/widgets/partner-carousel/ui/PartnerCarousel";
+import { generalPartners } from "@/widgets/partner-carousel/model";
 
 export default function Home() {
   return (
@@ -44,7 +22,11 @@ export default function Home() {
 
         <TargetAudience />
 
-        <Partners />
+        <PartnerCarousel
+          title="Наши кадровые партнёры"
+          description="С нами работают строительные компании, поставщики и сервисные организации по всей России. Мы ценим партнёрство и развиваем рынок вместе."
+          partners={generalPartners}
+        />
 
         <WhyChooseUs />
 

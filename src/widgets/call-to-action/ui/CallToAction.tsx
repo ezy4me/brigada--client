@@ -19,7 +19,7 @@ export const CallToAction = forwardRef<HTMLDivElement, CallToActionProps>(
         <div className={styles.container}>
           <Heading size="h4" className={styles.text}>{text}</Heading>
           <Link href={signupHref} className={styles.buttonLink}>
-            <Button size="lg" variant="default">
+            <Button size="lg" variant="primary">
               Регистрация
             </Button>
           </Link>

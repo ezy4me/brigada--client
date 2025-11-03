@@ -79,6 +79,7 @@ export const HeroExecutor = () => {
               aria-label="Введите запрос для поиска клиентов"
             />
             <Button
+              variant="secondary"
               size="lg"
               onClick={handleSearch}
               className={styles.button}
@@ -91,11 +92,19 @@ export const HeroExecutor = () => {
 
         <div className={styles.stats}>
           <div className={styles.statItem}>
-            <CheckCircle className={styles.statIcon} size={20} aria-hidden="true" />
+            <CheckCircle
+              className={styles.statIcon}
+              size={20}
+              aria-hidden="true"
+            />
             <Text>Более 1000 заказов в {city}</Text>
           </div>
           <div className={styles.statItem}>
-            <Users className={styles.statIcon} size={20} aria-hidden="true" />
+            <Users
+              className={styles.statIcon}
+              size={20}
+              aria-hidden="true"
+            />
             <Text>Без комиссии</Text>
           </div>
         </div>

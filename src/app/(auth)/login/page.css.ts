@@ -1,32 +1,69 @@
-import { style } from "@vanilla-extract/css";
+import { style, keyframes } from "@vanilla-extract/css";
 import { vars } from "@/shared/styles/theme.css";
+
+const backgroundShift = keyframes({
+  "0%": { backgroundPosition: "0% 50%" },
+  "50%": { backgroundPosition: "100% 50%" },
+  "100%": { backgroundPosition: "0% 50%" },
+});
 
 export const page = style({
   display: "flex",
-  flexDirection: "column",
   alignItems: "center",
   justifyContent: "center",
-  gap: vars.spacing["16"],
-  padding: vars.spacing["16"],
-  textAlign: "center",
   minHeight: "100vh",
+  padding: vars.spacing["16"],
+  background: `linear-gradient(135deg, ${vars.color.gray["800"]} 0%, ${vars.color.gray["700"]} 100%)`,
+  backgroundSize: "200% 200%",
+  animation: `${backgroundShift} 10s ease infinite`,
+  position: "relative",
+  overflow: "hidden",
+});
+
+export const formContainer = style({
+  position: "relative",
+  zIndex: 1,
+  width: "100%",
+  maxWidth: "600px",
+});
+
+export const card = style({
+  background: `linear-gradient(135deg, ${vars.color.background.secondary} 0%, ${vars.color.gray["100"]} 100%)`,
+  borderRadius: vars.radius.lg,
+  border: `1px solid ${vars.color.border.default}`,
+  boxShadow: `0 4px 12px rgba(0, 0, 0, 0.1)`,
+  padding: vars.spacing["32"],
+  "@media": {
+    "screen and (max-width: 767px)": {
+      padding: vars.spacing["24"],
+    },
+  },
+});
+
+export const logoWrapper = style({
+  display: "flex",
+  justifyContent: "center",
+  marginBottom: vars.spacing["24"],
 });
 
 export const title = style({
   fontSize: vars.font.size.h2,
   fontWeight: vars.font.weight.bold,
   color: vars.color.text.primary,
-  margin: 0,
+  textAlign: "center",
+  marginBottom: vars.spacing["8"],
 });
 
 export const description = style({
   fontSize: vars.font.size.body1,
   color: vars.color.text.secondary,
-  margin: 0,
+  textAlign: "center",
+  marginBottom: vars.spacing["24"],
 });
 
 export const footer = style({
-//   marginTop: vars.spacing["16"],
+  marginTop: vars.spacing["24"],
+  textAlign: "center",
 });
 
 export const footerText = style({

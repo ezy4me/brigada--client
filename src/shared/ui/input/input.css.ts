@@ -28,7 +28,7 @@ export const inputContainer = style({
   alignItems: "center",
   borderRadius: vars.radius.lg,
   background: vars.color.background.primary,
-  boxShadow: `0 0 0 1px ${vars.color.text.secondary}`,
+  boxShadow: `0 0 0 1px ${vars.color.gray[200]}`,
   transition: "box-shadow 0.2s ease",
   ":focus-within": {
     boxShadow: `0 0 0 2px ${vars.color.brand.secondary}`,

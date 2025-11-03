@@ -1,12 +1,9 @@
-"use client";
-
+// features/auth/ui/login-form/LoginForm.tsx
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { Input } from "@/shared/ui/input/Input";
 import { Button } from "@/shared/ui/button/Button";
-import { Card, CardContent } from "@/shared/ui/card/Card";
 import { Mail, Lock, Eye, EyeOff } from "lucide-react";
-import * as styles from "./LoginForm.css";
+import * as styles from "./loginForm.css";
 
 interface FormData {
   email: string;
@@ -19,11 +16,21 @@ interface FormErrors {
   general?: string;
 }
 
-export const LoginForm = () => {
-  const router = useRouter();
+export interface LoginFormProps {
+  onSubmit: (data: FormData) => Promise<void>;
+  loading?: boolean;
+  error?: string;
+  onForgotPassword?: () => void;
+}
+
+export const LoginForm = ({
+  onSubmit,
+  loading = false,
+  error,
+  onForgotPassword,
+}: LoginFormProps) => {
   const [formData, setFormData] = useState<FormData>({ email: "", password: "" });
   const [errors, setErrors] = useState<FormErrors>({});
-  const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
   const validate = (data: FormData): FormErrors => {
@@ -58,17 +65,11 @@ export const LoginForm = () => {
       return;
     }
 
-    setLoading(true);
     setErrors({});
-
     try {
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      console.log("Login attempt:", formData);
-      router.push('/');
+      await onSubmit(formData);
     } catch (err) {
-      setErrors({ general: "Ошибка подключения" });
-    } finally {
-      setLoading(false);
+      console.error("Login failed", err);
     }
   };
 
@@ -77,67 +78,64 @@ export const LoginForm = () => {
   };
 
   return (
-    <Card>
-      <CardContent>
-        <form onSubmit={handleSubmit} className={styles.form} noValidate>
-          <div className={styles.inputWrapper}>
-            <Input
-              label="Email"
-              name="email"
-              type="email"
-              value={formData.email}
-              onChange={handleChange}
-              error={!!errors.email}
-              helperText={errors.email}
-              disabled={loading}
-              leftIcon={<Mail size={16} />}
-            />
-          </div>
+    <form onSubmit={handleSubmit} className={styles.form} noValidate>
+      <div className={styles.inputWrapper}>
+        <Input
+          label="Email"
+          name="email"
+          type="email"
+          value={formData.email}
+          onChange={handleChange}
+          error={!!errors.email || !!error}
+          helperText={errors.email || error}
+          disabled={loading}
+          leftIcon={<Mail size={16} />}
+        />
+      </div>
 
-          <div className={styles.inputWrapper}>
-            <Input
-              label="Пароль"
-              name="password"
-              type={showPassword ? "text" : "password"}
-              value={formData.password}
-              onChange={handleChange}
-              error={!!errors.password}
-              helperText={errors.password}
-              disabled={loading}
-              leftIcon={<Lock size={16} />}
-              rightIcon={
-                <button
-                  type="button"
-                  onClick={togglePasswordVisibility}
-                  className={styles.passwordToggle}
-                >
-                  {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
-                </button>
-              }
-            />
-          </div>
+      <div className={styles.inputWrapper}>
+        <Input
+          label="Пароль"
+          name="password"
+          type={showPassword ? "text" : "password"}
+          value={formData.password}
+          onChange={handleChange}
+          error={!!errors.password}
+          helperText={errors.password}
+          disabled={loading}
+          leftIcon={<Lock size={16} />}
+          rightIcon={
+            <button
+              type="button"
+              onClick={togglePasswordVisibility}
+              className={styles.passwordToggle}
+              aria-label={showPassword ? "Скрыть пароль" : "Показать пароль"}
+            >
+              {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
+            </button>
+          }
+        />
+      </div>
 
-          <div className={styles.forgotPassword}>
-            <a href="/forgot-password" className={styles.forgotPasswordLink}>
-              Забыли пароль?
-            </a>
-          </div>
+      <div className={styles.forgotPassword}>
+        <button
+          type="button"
+          onClick={onForgotPassword}
+          className={styles.forgotPasswordLink}
+        >
+          Забыли пароль?
+        </button>
+      </div>
 
-          {errors.general && (
-            <div className={styles.errorText}>{errors.general}</div>
-          )}
-
-          <Button
-            type="submit"
-            className={styles.button}
-            variant="default"
-            size="md"
-            disabled={loading}
-          >
-            {loading ? "Вход..." : "Войти"}
-          </Button>
-        </form>
-      </CardContent>
-    </Card>
+      <Button
+        type="submit"
+        className={styles.button}
+        variant="primary"
+        size="md"
+        disabled={loading}
+      >
+        {loading ? "Вход..." : "Войти"}
+      </Button>
+    </form>
   );
 };

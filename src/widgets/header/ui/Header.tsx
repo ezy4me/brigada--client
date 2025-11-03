@@ -10,8 +10,8 @@ import * as styles from "./header.css";
 import {
   RoleSelector,
   type Role,
-} from "@/shared/ui/role-selector/RoleSelector";
-import { Logo } from "@/shared/ui/logo/logo";
+} from "@/features/role-selector/RoleSelector";
+import { Logo } from "@/shared/ui/logo/Logo";
 
 export interface HeaderProps {
   className?: string;

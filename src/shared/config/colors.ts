@@ -7,6 +7,9 @@ export const colorPalette = {
   gray200: "#DADADA",
   gray300: "#BFBFBF",
   gray400: "#8C8C8C",
+  gray500: "#717171ff",
+  gray600: "#515151ff",
+  gray700: "#2f2f2fff",
   gray800: "#2A2A2A",
   gray900: "#252525",
 
