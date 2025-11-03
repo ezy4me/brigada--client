@@ -16,7 +16,7 @@ export const container = style({
 });
 
 export const header = style({
-  textAlign: "center",
+  textAlign: "left",
   marginBottom: vars.spacing["32"],
 });
 
@@ -31,7 +31,6 @@ export const subtitle = style({
   fontSize: vars.font.size.body1,
   color: vars.color.text.secondary,
   maxWidth: "600px",
-  margin: "0 auto",
 });
 
 export const stepsGrid = style({

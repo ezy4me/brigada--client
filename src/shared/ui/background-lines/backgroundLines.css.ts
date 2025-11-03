@@ -21,6 +21,6 @@ export const wrapper = style({
 export const line = style({
   width: "1px",
   height: "100%",
-  backgroundColor: vars.color.black,
-  opacity: 0.1,
+  backgroundColor: vars.color.gray[600],
+  opacity: 0.01,
 });

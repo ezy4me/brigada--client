@@ -5,11 +5,11 @@ export const header = style({
   position: "sticky",
   top: 0,
   zIndex: 50,
-  backgroundColor: vars.color.background.primary,
+  backgroundColor: vars.color.background.secondary,
   // backdropFilter: "saturate(180%) blur(20px)",
   padding: `${vars.spacing["16"]} 0`,
-  borderBottom: `1px solid ${vars.color.gray["200"]}`,
-  margin: `0 ${vars.spacing["16"]}`,
+  borderBottom: `1px solid ${vars.color.background.tertiary}`,
+  // margin: `0 ${vars.spacing["16"]}`,
 });
 
 export const backgroundPattern = style({

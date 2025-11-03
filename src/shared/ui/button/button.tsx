@@ -7,7 +7,7 @@ import { cn } from "@/shared/lib/utils";
 
 export interface ButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "primary" | "secondary" | "outline" | "ghost" | "destructive" | "white";
+  variant?: "primary" | "secondary" | "outline" | "ghost" | "destructive" | "white" | "black";
   size?: "sm" | "md" | "lg";
   leftIcon?: ReactNode;
   rightIcon?: ReactNode;

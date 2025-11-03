@@ -45,7 +45,7 @@ const baseButton = style({
   textDecoration: "none",
   cursor: "pointer",
   transition:
-    "background-color 0.2s, color 0.2s, box-shadow 0.2s, transform 0.15s",
+    "background-color 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s",
   outline: "none",
   position: "relative",
   overflow: "hidden",
@@ -107,7 +107,7 @@ export const button = recipe({
           borderColor: vars.color.text.primary,
         },
         ":active": {
-          transform: "scale(0.99)",
+          transform: "scale(0.98)",
         },
       },
       ghost: {
@@ -117,7 +117,7 @@ export const button = recipe({
           backgroundColor: vars.color.background.secondary,
         },
         ":active": {
-          transform: "scale(0.99)",
+          transform: "scale(0.98)",
         },
       },
       destructive: {
@@ -142,7 +142,19 @@ export const button = recipe({
           borderColor: vars.color.border.strong,
         },
         ":active": {
-          transform: "scale(0.99)",
+          transform: "scale(0.98)",
+        },
+      },
+       black: {
+        backgroundColor: vars.color.gray[900],
+        color: vars.color.text.inverted,
+        border: `1px solid ${vars.color.border.default}`,
+        ":hover": {
+          backgroundColor: vars.color.gray[800],
+          borderColor: vars.color.border.strong,
+        },
+        ":active": {
+          transform: "scale(0.98)",
         },
       },
     },

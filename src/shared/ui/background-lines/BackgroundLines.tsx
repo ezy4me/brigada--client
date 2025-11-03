@@ -36,7 +36,7 @@ const BackgroundLines = () => {
           initial={{ opacity: 0.05 }}
           animate={{ opacity: [0.05, 0.2, 0.05] }}
           transition={{
-            duration: 8,
+            duration: 6,
             repeat: Infinity,
             ease: "easeInOut",
             delay: index * 0.2,

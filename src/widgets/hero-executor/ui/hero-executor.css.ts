@@ -2,8 +2,12 @@ import { style } from "@vanilla-extract/css";
 import { vars } from "@/shared/styles/theme.css";
 
 export const section = style({
-  backgroundColor: vars.color.background.primary,
+  backgroundColor: vars.color.background.tertiary,
   width: "100%",
+  backgroundImage: 'url("/bg.png")',
+  backgroundRepeat: "no-repeat",
+  backgroundPosition: "center center",
+  backgroundSize: "50%",
 });
 
 export const content = style({
