@@ -11,7 +11,7 @@ export const hero = style({
   backgroundImage: 'url("/bg.png")',
   backgroundRepeat: "no-repeat",
   backgroundPosition: "center center",
-  backgroundSize: "50%",
+  // backgroundSize: "cover",
 });
 
 export const content = style({
