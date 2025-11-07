@@ -23,7 +23,7 @@ export default function LoginPage() {
               <Logo href="/" />
             </div>
 
-            <h1 className={styles.title}>Вход в аккаунт</h1>
+            <h2 className={styles.title}>Вход в аккаунт</h2>
             <p className={styles.description}>
               Пожалуйста, введите свои данные
             </p>

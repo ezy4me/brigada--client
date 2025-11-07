@@ -1,4 +1,7 @@
+"use client";
+
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Input } from "@/shared/ui/input/Input";
 import { Button } from "@/shared/ui/button/Button";
 import { Mail, Lock, Eye, EyeOff } from "lucide-react";
@@ -28,6 +31,7 @@ export const LoginForm = ({
   error,
   onForgotPassword,
 }: LoginFormProps) => {
+  const router = useRouter();
   const [formData, setFormData] = useState<FormData>({ email: "", password: "" });
   const [errors, setErrors] = useState<FormErrors>({});
   const [showPassword, setShowPassword] = useState(false);
@@ -76,6 +80,14 @@ export const LoginForm = ({
     setShowPassword(!showPassword);
   };
 
+  const handleForgotPassword = () => {
+    if (onForgotPassword) {
+      onForgotPassword(); 
+    } else {
+      router.push("/forgot-password"); 
+    }
+  };
+
   return (
     <form onSubmit={handleSubmit} className={styles.form} noValidate>
       <div className={styles.inputWrapper}>
@@ -119,7 +131,7 @@ export const LoginForm = ({
       <div className={styles.forgotPassword}>
         <button
           type="button"
-          onClick={onForgotPassword}
+          onClick={handleForgotPassword}
           className={styles.forgotPasswordLink}
         >
           Забыли пароль?

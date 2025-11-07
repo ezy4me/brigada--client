@@ -29,7 +29,7 @@ export default function RegisterPage() {
               <Logo href="/" />
             </div>
 
-            <h1 className={styles.title}>Создать аккаунт</h1>
+            <h2 className={styles.title}>Создать аккаунт</h2>
             <p className={styles.description}>
               Выберите роль и заполните данные
             </p>
