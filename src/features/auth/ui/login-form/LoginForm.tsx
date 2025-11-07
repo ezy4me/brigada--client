@@ -1,4 +1,3 @@
-// features/auth/ui/login-form/LoginForm.tsx
 import { useState } from "react";
 import { Input } from "@/shared/ui/input/Input";
 import { Button } from "@/shared/ui/button/Button";
