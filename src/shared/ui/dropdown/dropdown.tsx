@@ -20,7 +20,7 @@ export interface DropdownProps {
 }
 
 export const Dropdown = ({ 
-  triggerVariant = 'default', 
+  triggerVariant = 'primary', 
   triggerSize = 'md', 
   triggerLeftIcon, 
   triggerRightIcon, 
