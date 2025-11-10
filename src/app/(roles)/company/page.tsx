@@ -10,6 +10,7 @@ import {
   generalPartners,
 } from "@/widgets/partner-carousel/model";
 import { Tariffs } from "@/widgets/tariffs/ui/Tariffs";
+import { GetStarted } from "@/widgets/get-started/ui/GetStarted";
 
 export default function ExecutorPage() {
   return (
@@ -20,7 +21,7 @@ export default function ExecutorPage() {
 
       <CallToAction text="Работайте с клиентами — мы берём остальное на себя" />
 
-      <Tariffs/>
+      <Tariffs />
 
       <WhyChooseUs />
 
@@ -29,8 +30,10 @@ export default function ExecutorPage() {
         description="С нами работают строительные компании, поставщики и сервисные организации по всей России. Мы ценим партнёрство и развиваем рынок вместе."
         partners={generalPartners}
       />
-      
+
       <FAQSection />
+
+      <GetStarted />
     </div>
   );
 }
