@@ -5,13 +5,16 @@ import { Logo } from "@/shared/ui/logo/Logo";
 import { LoginForm } from "@/features/auth/ui/login-form/LoginForm";
 import Link from "next/link";
 import * as styles from "./page.css";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
+  const router = useRouter();
   const handleLogin = async (data: {
     email: string;
     password: string;
   }) => {
     console.log("Login attempt:", data);
+    router.push("/profile");
   };
 
   return (

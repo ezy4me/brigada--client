@@ -1,16 +1,16 @@
-import { style } from "@vanilla-extract/css";
+import { style, keyframes } from "@vanilla-extract/css";
 import { vars } from "@/shared/styles/theme.css";
 
-export const section = style({
-  backgroundColor: vars.color.background.primary,
-  padding: `${vars.spacing["48"]} 0`,
-  width: "100%",
+const shine = keyframes({
+  "0%": { transform: "translateX(-100%)" },
+  "100%": { transform: "translateX(100%)" },
 });
 
 export const container = style({
-  maxWidth: "1200px",
-  margin: "0 auto",
-  padding: `0 ${vars.spacing["16"]}`,
+  display: "flex",
+  flexDirection: "column",
+  gap: vars.spacing["24"],
+  width: "100%",
 });
 
 export const header = style({
@@ -19,7 +19,7 @@ export const header = style({
 });
 
 export const title = style({
-  fontSize: vars.font.size.h1,
+  fontSize: vars.font.size.h2,
   fontWeight: vars.font.weight.bold,
   color: vars.color.text.primary,
   marginBottom: vars.spacing["8"],
@@ -45,9 +45,35 @@ export const statCard = style({
   borderRadius: vars.radius.lg,
   border: `1px solid ${vars.color.border.default}`,
   backgroundColor: vars.color.background.secondary,
-  transition: "transform 0.2s ease",
+  position: "relative",
+  overflow: "hidden",
   ":hover": {
     transform: "scale(1.02)",
+  },
+});
+
+export const shineElement = style({
+  position: "absolute",
+  top: 0,
+  left: 0,
+  width: "100%",
+  height: "100%",
+  background: `linear-gradient(120deg, 
+    rgba(255, 255, 255, 0) 30%, 
+    rgba(255, 255, 255, 0.8) 50%, 
+    rgba(255, 255, 255, 0) 70%
+  )`,
+  transform: "translateX(-100%)",
+  zIndex: 1,
+  pointerEvents: "none",
+  opacity: 0,
+  transition: "opacity 0.2s ease",
+
+  selectors: {
+    [`${statCard}:hover &`]: {
+      opacity: 1,
+      animation: `${shine} 0.6s ease-out forwards`,
+    },
   },
 });
 

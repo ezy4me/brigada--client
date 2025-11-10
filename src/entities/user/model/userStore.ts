@@ -1,15 +1,21 @@
-import { create } from "zustand";
+import { create } from 'zustand';
 
-interface UserState {
-  name: string;
-  role: "customer" | "company" | "worker" | null;
-  setUser: (name: string, role: UserState["role"]) => void;
+export type UserRole = 'executor' | 'customer' | 'company';
+
+interface AuthState {
+  user: { id: string; name: string; role: UserRole } | null;
+  isAuthenticated: boolean;
+  login: (role: UserRole) => void;
   logout: () => void;
 }
 
-export const useUserStore = create<UserState>((set) => ({
-  name: "",
-  role: null,
-  setUser: (name, role) => set({ name, role }),
-  logout: () => set({ name: "", role: null }),
+export const useAuthStore = create<AuthState>((set) => ({
+  user: null,
+  isAuthenticated: false,
+  login: (role) =>
+    set({
+      user: { id: 'mock-user-id', name: 'Иван Петров', role },
+      isAuthenticated: true,
+    }),
+  logout: () => set({ user: null, isAuthenticated: false }),
 }));
