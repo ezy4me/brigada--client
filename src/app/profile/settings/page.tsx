@@ -1,120 +1,95 @@
+"use client"
+
 import { Card } from "@/shared/ui/card/Card";
 import { Heading } from "@/shared/ui/heading/Heading";
 import { Text } from "@/shared/ui/text/Text";
-import { Input } from "@/shared/ui/input/Input";
 import { Button } from "@/shared/ui/button/Button";
-import { Label } from "@radix-ui/react-label";
+import { Section } from "@/shared/ui/section/Section";
 import * as styles from "./settings.css";
+import { RoleSelector } from "@/features/role-selector/ui/RoleSelector";
 
 export default function SettingsPage() {
+  const handleDeleteAccount = () => {
+    if (confirm("Вы уверены, что хотите удалить аккаунт? Это действие необратимо.")) {
+      console.log("Deleting account...");
+    }
+  };
+
+  const handleDeleteData = () => {
+    if (confirm("Вы уверены, что хотите удалить все свои данные?")) {
+      console.log("Deleting data...");
+    }
+  };
+
   return (
-    <div className={styles.container}>
-      <Heading as="h1" className={styles.title}>
-        Настройки профиля
-      </Heading>
-      <Text className={styles.description}>
-        Управляйте своими данными, уведомлениями и предпочтениями
-      </Text>
-
-      <div className={styles.settingsGrid}>
-        <Card className={styles.settingCard}>
-          <Heading as="h2" className={styles.cardTitle}>
-            Профиль
+    <div className={styles.section}>
+      <div className={styles.container}>
+        {/* <div className={styles.header}> */}
+          <Heading as="h1" className={styles.title}>
+            Настройки профиля
           </Heading>
-          <div className={styles.fieldGroup}>
-            <Label htmlFor="name" className={styles.label}>
-              Имя
-            </Label>
-            <Input id="name" placeholder="Иван Петров" />
+          <Text className={styles.description}>
+            Управляйте своими данными, ролями и безопасностью
+          </Text>
+        {/* </div> */}
+
+        <Card className={styles.settingCard}>
+          <div className={styles.cardHeader}>
+            <Heading as="h2" className={styles.cardTitle}>
+              Сменить роль
+            </Heading>
+            <Text className={styles.cardDescription}>
+              Выберите, под какой ролью вы хотите работать
+            </Text>
           </div>
-          <div className={styles.fieldGroup}>
-            <Label htmlFor="email" className={styles.label}>
-              Email
-            </Label>
-            <Input id="email" type="email" placeholder="ivan@example.com" />
+          <div className={styles.cardContent}>
+            <RoleSelector
+              initialRole="executors" 
+              onRoleChange={(role) => console.log("New role:", role)}
+            />
           </div>
-          <div className={styles.fieldGroup}>
-            <Label htmlFor="phone" className={styles.label}>
-              Телефон
-            </Label>
-            <Input id="phone" type="tel" placeholder="+7 (XXX) XXX-XX-XX" />
-          </div>
-          <Button variant="primary" size="md" className={styles.button}>
-            Сохранить
-          </Button>
         </Card>
 
         <Card className={styles.settingCard}>
-          <Heading as="h2" className={styles.cardTitle}>
-            Уведомления
-          </Heading>
-          <div className={styles.checkboxGroup}>
-            <label className={styles.checkboxLabel}>
-              <input type="checkbox" className={styles.checkbox} defaultChecked />
-              <Text>Новые заказы</Text>
-            </label>
-            <label className={styles.checkboxLabel}>
-              <input type="checkbox" className={styles.checkbox} defaultChecked />
-              <Text>Новые сообщения</Text>
-            </label>
-            <label className={styles.checkboxLabel}>
-              <input type="checkbox" className={styles.checkbox} />
-              <Text>Скидки и акции</Text>
-            </label>
+          <div className={styles.cardHeader}>
+            <Heading as="h2" className={styles.cardTitle}>
+              Удалить данные
+            </Heading>
+            <Text className={styles.cardDescription}>
+              Удалить все личные данные, связанные с вашим аккаунтом
+            </Text>
           </div>
-          <Button variant="primary" size="md" className={styles.button}>
-            Сохранить
-          </Button>
+          <div className={styles.cardContent}>
+            <Button
+              variant="destructive"
+              size="md"
+              onClick={handleDeleteData}
+              className={styles.deleteButton}
+            >
+              Удалить данные
+            </Button>
+          </div>
         </Card>
 
         <Card className={styles.settingCard}>
-          <Heading as="h2" className={styles.cardTitle}>
-            Приватность
-          </Heading>
-          <div className={styles.radioGroup}>
-            <label className={styles.radioLabel}>
-              <input type="radio" name="privacy" className={styles.radio} defaultChecked />
-              <Text>Виден всем</Text>
-            </label>
-            <label className={styles.radioLabel}>
-              <input type="radio" name="privacy" className={styles.radio} />
-              <Text>Только по приглашениям</Text>
-            </label>
-            <label className={styles.radioLabel}>
-              <input type="radio" name="privacy" className={styles.radio} />
-              <Text>Скрыт</Text>
-            </label>
+          <div className={styles.cardHeader}>
+            <Heading as="h2" className={styles.cardTitle}>
+              Удалить аккаунт
+            </Heading>
+            <Text className={styles.cardDescription}>
+              Удалить ваш аккаунт и все связанные данные навсегда
+            </Text>
           </div>
-          <Button variant="primary" size="md" className={styles.button}>
-            Сохранить
-          </Button>
-        </Card>
-
-        <Card className={styles.settingCard}>
-          <Heading as="h2" className={styles.cardTitle}>
-            Безопасность
-          </Heading>
-          <div className={styles.fieldGroup}>
-            <Label htmlFor="password" className={styles.label}>
-              Текущий пароль
-            </Label>
-            <Input id="password" type="password" placeholder="••••••••" />
+          <div className={styles.cardContent}>
+            <Button
+              variant="destructive"
+              size="md"
+              onClick={handleDeleteAccount}
+              className={styles.deleteButton}
+            >
+              Удалить аккаунт
+            </Button>
           </div>
-          <div className={styles.fieldGroup}>
-            <Label htmlFor="new-password" className={styles.label}>
-              Новый пароль
-            </Label>
-            <Input id="new-password" type="password" placeholder="••••••••" />
-          </div>
-          <div className={styles.fieldGroup}>
-            <Label htmlFor="confirm-password" className={styles.label}>
-              Подтвердите пароль
-            </Label>
-            <Input id="confirm-password" type="password" placeholder="••••••••" />
-          </div>
-          <Button variant="primary" size="md" className={styles.button}>
-            Изменить пароль
-          </Button>
         </Card>
       </div>
     </div>
