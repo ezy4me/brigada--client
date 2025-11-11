@@ -9,7 +9,7 @@ export const sidebar = style({
 
 export const card = style({
   height: "100%",
-  borderRadius: vars.radius.md,
+  borderRadius: vars.radius.lg,
   border: `1px solid ${vars.color.border.default}`,
   backgroundColor: vars.color.background.secondary,
 });
@@ -22,7 +22,7 @@ export const navList = style({
   margin: 0,
   display: "flex",
   flexDirection: "column",
-  gap: vars.spacing["8"],
+  gap: vars.spacing["2"],
 });
 
 export const navItem = style({});
@@ -37,21 +37,37 @@ export const navLink = style({
   color: vars.color.text.primary,
   transition: "all 0.2s ease",
   ":hover": {
-    backgroundColor: vars.color.background.tertiary,
-    color: vars.color.brand.primary,
+    // backgroundColor: vars.color.background.tertiary,
   },
 });
 
 export const activeNavLink = style({
   backgroundColor: vars.color.background.tertiary,
-  color: vars.color.brand.primary,
+  color: vars.color.brand.primary, 
   fontWeight: vars.font.weight.bold,
 });
 
 export const navIcon = style({
   color: vars.color.text.secondary,
+  selectors: {
+    [`${navLink}:hover &`]: {
+      color: vars.color.brand.primary, 
+    },
+    [`${activeNavLink} &`]: {
+      color: vars.color.brand.primary, 
+    },
+  },
 });
 
 export const navText = style({
   fontSize: vars.font.size.body2,
+  color: vars.color.text.primary, 
+  selectors: {
+    [`${navLink}:hover &`]: {
+      color: vars.color.brand.primary, 
+    },
+    [`${activeNavLink} &`]: {
+      color: vars.color.brand.primary, 
+    },
+  },
 });

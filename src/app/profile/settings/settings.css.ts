@@ -93,3 +93,7 @@ export const radio = style({
   height: vars.spacing["16"],
   accentColor: vars.color.brand.primary,
 });
+
+export const button = style({
+  marginTop: "auto",
+});

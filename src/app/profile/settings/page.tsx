@@ -39,7 +39,7 @@ export default function SettingsPage() {
             </Label>
             <Input id="phone" type="tel" placeholder="+7 (XXX) XXX-XX-XX" />
           </div>
-          <Button variant="primary" size="md">
+          <Button variant="primary" size="md" className={styles.button}>
             Сохранить
           </Button>
         </Card>
@@ -62,7 +62,7 @@ export default function SettingsPage() {
               <Text>Скидки и акции</Text>
             </label>
           </div>
-          <Button variant="primary" size="md">
+          <Button variant="primary" size="md" className={styles.button}>
             Сохранить
           </Button>
         </Card>
@@ -85,7 +85,7 @@ export default function SettingsPage() {
               <Text>Скрыт</Text>
             </label>
           </div>
-          <Button variant="primary" size="md">
+          <Button variant="primary" size="md" className={styles.button}>
             Сохранить
           </Button>
         </Card>
@@ -112,7 +112,7 @@ export default function SettingsPage() {
             </Label>
             <Input id="confirm-password" type="password" placeholder="••••••••" />
           </div>
-          <Button variant="primary" size="md">
+          <Button variant="primary" size="md" className={styles.button}>
             Изменить пароль
           </Button>
         </Card>

@@ -1,26 +1,28 @@
-"use client";
+"use client"
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import {
-  Home,
-  Briefcase,
-  User,
-  Settings,
-  Users,
-  FileText,
+import { 
+  Home, 
+  User, 
+  MapPin, 
+  Bell, 
+  Link as LinkIcon, 
+  Headphones, 
+  Settings
 } from "lucide-react";
 import { Card } from "@/shared/ui/card/Card";
 import { Text } from "@/shared/ui/text/Text";
+import { cn } from "@/shared/lib/utils";
 import * as styles from "./profileSidebar.css";
-import { clsx } from "clsx";
 
 const navItems = [
   { href: "/profile", icon: Home, label: "Главная" },
-  { href: "/profile/orders", icon: Briefcase, label: "Мои заказы" },
-  { href: "/profile/profile", icon: User, label: "Профиль" },
-  { href: "/profile/team", icon: Users, label: "Команда" },
-  { href: "/profile/documents", icon: FileText, label: "Документы" },
+  { href: "/profile/account", icon: User, label: "Учетная запись" },
+  { href: "/profile/coverage", icon: MapPin, label: "Зоны охвата" },
+  { href: "/profile/notifications", icon: Bell, label: "Уведомления" },
+  { href: "/profile/linked-accounts", icon: LinkIcon, label: "Связанные аккаунты" },
+  { href: "/profile/support", icon: Headphones, label: "Техническая поддержка" },
   { href: "/profile/settings", icon: Settings, label: "Настройки" },
 ];
 
@@ -29,7 +31,7 @@ export const ProfileSidebar = () => {
 
   return (
     <aside className={styles.sidebar}>
-      <div className={styles.card}>
+      <Card className={styles.card}>
         <nav className={styles.nav}>
           <ul className={styles.navList}>
             {navItems.map((item) => {
@@ -38,9 +40,10 @@ export const ProfileSidebar = () => {
                 <li key={item.href} className={styles.navItem}>
                   <Link
                     href={item.href}
-                    className={clsx(styles.navLink, {
-                      [styles.activeNavLink]: isActive,
-                    })}
+                    className={cn(
+                      styles.navLink,
+                      isActive && styles.activeNavLink
+                    )}
                   >
                     <item.icon className={styles.navIcon} size={20} />
                     <Text className={styles.navText}>{item.label}</Text>
@@ -50,7 +53,7 @@ export const ProfileSidebar = () => {
             })}
           </ul>
         </nav>
-      </div>
+      </Card>
     </aside>
   );
 };

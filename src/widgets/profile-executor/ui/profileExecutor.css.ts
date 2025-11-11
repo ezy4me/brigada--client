@@ -87,7 +87,7 @@ export const statLabel = style({
 });
 
 export const statValue = style({
-  fontSize: vars.font.size.h3,
+  fontSize: vars.font.size.h4,
   fontWeight: vars.font.weight.bold,
   color: vars.color.text.primary,
 });

@@ -1,16 +1,13 @@
-"use client";
-
 import { ProfileExecutor } from "@/widgets/profile-executor/ui/ProfileExecutor";
 import { ProfileCustomer } from "@/widgets/profile-customer/ui/ProfileCustomer";
 import { ProfileCompany } from "@/widgets/profile-company/ui/ProfileCompany";
-import { Section } from "@/shared/ui/section/Section";
-import { Heading } from "@/shared/ui/heading/Heading";
 import { Text } from "@/shared/ui/text/Text";
+import { Section } from "@/shared/ui/section/Section";
 import * as styles from "./profile.css";
 
 const useMockUserRole = () => {
   return {
-    data: "executor",
+    userRole: "executor",
     isLoading: false,
     isError: false,
     isSuccess: true,
@@ -18,7 +15,7 @@ const useMockUserRole = () => {
 };
 
 export default function ProfilePage() {
-  const { data: userRole, isLoading, isError } = useMockUserRole();
+  const { userRole, isLoading, isError } = useMockUserRole();
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -44,5 +41,9 @@ export default function ProfilePage() {
       profileContent = <div>Доступ запрещён</div>;
   }
 
-  return <Section className={styles.section}>{profileContent}</Section>;
+  return (
+    <Section className={styles.section}>
+      <div className={styles.container}>{profileContent}</div>
+    </Section>
+  );
 }

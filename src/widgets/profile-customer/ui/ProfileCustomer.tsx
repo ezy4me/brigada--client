@@ -33,7 +33,7 @@ export const ProfileCustomer = () => {
               <stat.icon className={styles.statIcon} size={32} />
               <div>
                 <Text className={styles.statLabel}>{stat.label}</Text>
-                <Heading as="h3" className={styles.statValue}>
+                <Heading as="h4" className={styles.statValue}>
                   {stat.value}
                 </Heading>
               </div>
