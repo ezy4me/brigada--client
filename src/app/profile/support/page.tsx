@@ -10,26 +10,32 @@ import * as styles from "./support.css";
 export default function SupportPage() {
   return (
     <div className={styles.container}>
-      <div className={styles.header}>
-        <Heading as="h1" className={styles.title}>
-          Техническая поддержка
-        </Heading>
-        <Text className={styles.description}>
-          Опишите вашу проблему, и мы поможем в течение 24 часов
-        </Text>
-      </div>
+      <Heading as="h1" className={styles.title}>
+        Техническая поддержка
+      </Heading>
+      <Text className={styles.description}>
+        Опишите вашу проблему, и мы поможем в течение 24 часов
+      </Text>
 
       <Card className={styles.supportCard}>
         <div className={styles.formGroup}>
-          <Input label="Тема обращения" placeholder="Кратко опишите проблему" />
+          <Input
+            label="Тема обращения"
+            placeholder="Кратко опишите проблему"
+          />
         </div>
 
         <div className={styles.formGroup}>
-          <Textarea label="Сообщение" placeholder="Подробно опишите вашу проблему..." />
+          <Textarea
+            label="Сообщение"
+            placeholder="Подробно опишите вашу проблему..."
+          />
         </div>
 
         <div className={styles.formGroup}>
-          <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+          <div
+            style={{ display: "flex", alignItems: "center", gap: "12px" }}
+          >
             <Switch id="urgent" />
             <label htmlFor="urgent">
               <Text>Срочное обращение</Text>

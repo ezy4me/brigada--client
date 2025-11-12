@@ -10,17 +10,13 @@ export const container = style({
   display: "flex",
   flexDirection: "column",
   gap: vars.spacing["24"],
-});
-
-export const header = style({
-//   textAlign: "center",
+  width: "100%",
 });
 
 export const title = style({
   fontSize: vars.font.size.h2,
   fontWeight: vars.font.weight.bold,
   color: vars.color.text.primary,
-  marginBottom: vars.spacing["8"],
 });
 
 export const description = style({

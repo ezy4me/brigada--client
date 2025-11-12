@@ -20,6 +20,8 @@ export interface DropdownProps {
   trigger?: ReactNode;
   items: DropdownItem[];
   className?: string;
+  align?: 'start' | 'center' | 'end';
+  sideOffset?: number;
 }
 
 export const Dropdown = ({
@@ -31,12 +33,14 @@ export const Dropdown = ({
   trigger,
   items,
   className,
+  align = 'end',
+  sideOffset = 8,
 }: DropdownProps) => {
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger asChild>
         {trigger ? (
-          <>{trigger}</>
+          <div>{trigger}</div>
         ) : (
           <Button
             variant={triggerVariant}
@@ -52,7 +56,11 @@ export const Dropdown = ({
       </DropdownMenu.Trigger>
 
       <DropdownMenu.Portal>
-        <DropdownMenu.Content className={cn(content, className)}>
+        <DropdownMenu.Content 
+          className={cn(content, className)}
+          align={align}
+          sideOffset={sideOffset}
+        >
           {items.map((item, index) => (
             <DropdownMenu.Item
               key={index}

@@ -31,7 +31,7 @@ export const ProfileSidebar = () => {
 
   return (
     <aside className={styles.sidebar}>
-      <Card className={styles.card}>
+      <div className={styles.sidebarWrapper}>
         <nav className={styles.nav}>
           <ul className={styles.navList}>
             {navItems.map((item) => {
@@ -53,7 +53,7 @@ export const ProfileSidebar = () => {
             })}
           </ul>
         </nav>
-      </Card>
+      </div>
     </aside>
   );
 };

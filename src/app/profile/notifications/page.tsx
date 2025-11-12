@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import { useState } from 'react';
+import { useState } from "react";
 import { Card } from "@/shared/ui/card/Card";
 import { Heading } from "@/shared/ui/heading/Heading";
 import { Text } from "@/shared/ui/text/Text";
@@ -19,8 +19,8 @@ export default function NotificationsPage() {
   const [notifications, setNotifications] = useState(initialNotifications);
 
   const handleToggle = (id: string) => {
-    setNotifications(prev =>
-      prev.map(notification =>
+    setNotifications((prev) =>
+      prev.map((notification) =>
         notification.id === id
           ? { ...notification, enabled: !notification.enabled }
           : notification
@@ -30,14 +30,12 @@ export default function NotificationsPage() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.header}>
-        <Heading as="h1" className={styles.title}>
-          Уведомления
-        </Heading>
-        <Text className={styles.description}>
-          Выберите, какие уведомления вы хотите получать
-        </Text>
-      </div>
+      <Heading as="h1" className={styles.title}>
+        Уведомления
+      </Heading>
+      <Text className={styles.description}>
+        Выберите, какие уведомления вы хотите получать
+      </Text>
 
       <Card className={styles.notificationsCard}>
         {notifications.map((item) => (

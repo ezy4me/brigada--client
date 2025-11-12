@@ -19,9 +19,8 @@ export const Avatar = forwardRef<HTMLImageElement, AvatarProps>(
       <Image
         ref={ref}
         src={src || fallbackSrc}
-        // alt="Аватар пользователя"
-        width={40}
-        height={40}
+        width={60}
+        height={60}
         className={cn(styles.avatar, className)}
         onError={(e) => {
           if (

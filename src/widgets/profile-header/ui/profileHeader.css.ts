@@ -3,7 +3,7 @@ import { vars } from "@/shared/styles/theme.css";
 
 export const header = style({
   backgroundColor: vars.color.background.primary,
-  padding: `${vars.spacing["16"]} 0`,
+  padding: `${vars.spacing["8"]} 0`,
   borderBottom: `1px solid ${vars.color.border.default}`,
 });
 
@@ -19,9 +19,16 @@ export const content = style({
   justifyContent: "space-between",
 });
 
+export const logoSection = style({
+  display: "flex",
+  alignItems: "center",
+  gap: vars.spacing["12"],
+});
+
 export const userSection = style({
   display: "flex",
   alignItems: "center",
+  justifyContent: "center",
   gap: vars.spacing["12"],
 });
 
@@ -37,9 +44,10 @@ export const avatarTrigger = style({
 });
 
 export const avatar = style({
-  width: vars.spacing["40"],
-  height: vars.spacing["40"],
+  width: vars.spacing["60"],
+  height: vars.spacing["60"],
 });
 
 export const dropdown = style({
+  position: "relative",
 });

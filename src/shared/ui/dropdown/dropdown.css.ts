@@ -3,6 +3,9 @@ import { vars } from "@/shared/styles/theme.css";
 
 export const dropdown = style({
   zIndex: 50,
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
 });
 
 export const trigger = style({
@@ -21,11 +24,12 @@ export const content = style({
   borderRadius: vars.radius.md,
   boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
   padding: vars.spacing["8"],
-  marginTop: vars.spacing["8"],
+  marginTop: vars.spacing["0"],
   display: "flex",
   flexDirection: "column",
   gap: vars.spacing["4"],
   zIndex: 999,
+  minWidth: "200px",
 });
 
 export const item = style({

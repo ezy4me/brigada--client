@@ -8,23 +8,15 @@ export const container = style({
   width: "100%",
 });
 
-export const header = style({
-  textAlign: "center",
-  marginBottom: vars.spacing["32"],
-});
-
 export const title = style({
   fontSize: vars.font.size.h2,
   fontWeight: vars.font.weight.bold,
   color: vars.color.text.primary,
-  marginBottom: vars.spacing["8"],
 });
 
 export const description = style({
   fontSize: vars.font.size.body1,
   color: vars.color.text.secondary,
-  maxWidth: "600px",
-  margin: "0 auto",
 });
 
 export const notificationsCard = style({

@@ -1,4 +1,3 @@
-// widgets/profile-header/ui/ProfileHeader.tsx
 "use client";
 
 import { useState } from "react";
@@ -6,6 +5,7 @@ import { User, LogOut, Settings, Briefcase, Users } from "lucide-react";
 import { Avatar } from "@/shared/ui/avatar/Avatar";
 import { Dropdown } from "@/shared/ui/dropdown/Dropdown";
 import * as styles from "./profileHeader.css";
+import { Logo } from "@/shared/ui/logo/Logo";
 
 const userMenuItems = [
   { label: "Профиль", value: "profile", icon: User },
@@ -30,6 +30,10 @@ export const ProfileHeader = () => {
     <header className={styles.header}>
       <div className={styles.container}>
         <div className={styles.content}>
+          <div className={styles.logoSection}>
+            <Logo href="/" />
+          </div>
+
           <div className={styles.userSection}>
             <Dropdown
               trigger={
@@ -47,6 +51,8 @@ export const ProfileHeader = () => {
                 onSelect: () => handleMenuItemSelect(item.value),
               }))}
               className={styles.dropdown}
+              align="end"
+              sideOffset={8}
             />
           </div>
         </div>

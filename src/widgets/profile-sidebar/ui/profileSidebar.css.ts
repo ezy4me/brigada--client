@@ -7,11 +7,11 @@ export const sidebar = style({
   backgroundColor: vars.color.background.primary,
 });
 
-export const card = style({
+export const sidebarWrapper = style({
   height: "100%",
-  borderRadius: vars.radius.lg,
-  border: `1px solid ${vars.color.border.default}`,
-  backgroundColor: vars.color.background.secondary,
+  // borderRadius: vars.radius.lg,
+  // border: `1px solid ${vars.color.border.default}`,
+  // backgroundColor: vars.color.background.secondary,
 });
 
 export const nav = style({});
@@ -42,8 +42,8 @@ export const navLink = style({
 });
 
 export const activeNavLink = style({
-  backgroundColor: vars.color.background.tertiary,
-  color: vars.color.brand.primary, 
+  backgroundColor: vars.color.white,
+  color: vars.color.brand.primary,
   fontWeight: vars.font.weight.bold,
 });
 
@@ -51,23 +51,23 @@ export const navIcon = style({
   color: vars.color.text.secondary,
   selectors: {
     [`${navLink}:hover &`]: {
-      color: vars.color.brand.primary, 
+      color: vars.color.brand.primary,
     },
     [`${activeNavLink} &`]: {
-      color: vars.color.brand.primary, 
+      color: vars.color.brand.primary,
     },
   },
 });
 
 export const navText = style({
   fontSize: vars.font.size.body2,
-  color: vars.color.text.primary, 
+  color: vars.color.text.primary,
   selectors: {
     [`${navLink}:hover &`]: {
-      color: vars.color.brand.primary, 
+      color: vars.color.brand.primary,
     },
     [`${activeNavLink} &`]: {
-      color: vars.color.brand.primary, 
+      color: vars.color.brand.primary,
     },
   },
 });
