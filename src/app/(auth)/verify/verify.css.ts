@@ -2,7 +2,7 @@ import { keyframes, style } from "@vanilla-extract/css";
 import { vars } from "@/shared/styles/theme.css";
 
 export const section = style({
-  padding: `${vars.spacing["48"]} 0`,
+  // padding: `${vars.spacing["48"]} 0`,
   backgroundColor: vars.color.background.primary,
   width: "100%",
   minHeight: "100vh",
@@ -11,16 +11,28 @@ export const section = style({
   justifyContent: "center",
 });
 
+export const page = style({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  minHeight: "100vh",
+  padding: vars.spacing["16"],
+  background: `linear-gradient(135deg, ${vars.color.gray["800"]} 0%, ${vars.color.gray["700"]} 100%)`,
+  backgroundSize: "200% 200%",
+  position: "relative",
+  overflow: "hidden",
+});
+
 export const container = style({
   maxWidth: "1200px",
   margin: "0 auto",
-  padding: `0 ${vars.spacing["16"]}`,
+  padding: `0 ${vars.spacing["0"]}`,
 });
 
 export const card = style({
   maxWidth: "500px",
   margin: "0 auto",
-  padding: vars.spacing["32"],
+  // padding: vars.spacing["32"],
   borderRadius: vars.radius.lg,
   border: `1px solid ${vars.color.border.default}`,
   backgroundColor: vars.color.background.secondary,
@@ -34,6 +46,11 @@ export const cardContent = style({
   flexDirection: "column",
   alignItems: "center",
   gap: vars.spacing["24"],
+  "@media": {
+    "screen and (max-width: 767px)": {
+      padding: vars.spacing["16"],
+    },
+  },
 });
 
 export const title = style({
@@ -62,12 +79,23 @@ export const codeInputs = style({
   gap: vars.spacing["12"],
   width: "100%",
   justifyContent: "center",
+  "@media": {
+    "screen and (max-width: 767px)": {
+      gap: vars.spacing["4"],
+    },
+  },
 });
 
 export const inputWrapper = style({
   position: "relative",
   width: "56px",
   height: "56px",
+  "@media": {
+    "screen and (max-width: 767px)": {
+      width: "40px",
+      height: "40px",
+    },
+  },
 });
 
 export const codeInput = style({
@@ -90,4 +118,3 @@ export const codeInput = style({
     borderColor: vars.color.text.secondary,
   },
 });
-

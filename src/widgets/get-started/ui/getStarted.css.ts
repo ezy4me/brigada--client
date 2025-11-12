@@ -76,6 +76,11 @@ export const backgroundImage = style({
   backgroundPosition: "center",
   backgroundRepeat: "no-repeat",
   flex: 1,
+  "@media": {
+    "screen and (max-width: 1023px)": {
+      // hei,
+    },
+  },
 });
 
 export const buttonLink = style({

@@ -3,7 +3,16 @@
 import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/shared/lib/utils";
-import { roleGroup, roleButton, indicator } from "./roleSelector.css";
+import {
+  roleGroup,
+  roleButton,
+  indicator,
+  mobileDropdownWrapper,
+  mobileTrigger,
+  dropdownList,
+  dropdownItem,
+} from "./roleSelector.css";
+import { ChevronDown } from "lucide-react";
 
 export type Role = "executors" | "customers" | "companies";
 
@@ -14,12 +23,12 @@ export interface RoleSelectorProps {
   className?: string;
 }
 
-export const RoleSelector: React.FC<RoleSelectorProps> = ({
+export const RoleSelector = ({
   initialRole,
   activeRole,
   onRoleChange,
   className,
-}) => {
+}: RoleSelectorProps) => {
   const [localActiveRole, setLocalActiveRole] = useState<Role | undefined>(
     initialRole
   );
@@ -34,9 +43,7 @@ export const RoleSelector: React.FC<RoleSelectorProps> = ({
     left: 0,
     width: 0,
   });
-  const buttonsRef = useRef<{ [key in Role]?: HTMLButtonElement | null }>(
-    {}
-  );
+  const buttonsRef = useRef<{ [key in Role]?: HTMLButtonElement | null }>({});
 
   useEffect(() => {
     const activeButton = buttonsRef.current[localActiveRole!];
@@ -53,33 +60,72 @@ export const RoleSelector: React.FC<RoleSelectorProps> = ({
     onRoleChange?.(role);
   };
 
+  const [isOpen, setIsOpen] = useState(false);
+
+  const roleLabels = {
+    executors: "Исполнители",
+    customers: "Заказчики",
+    companies: "Компании",
+  };
+
   return (
-    <div className={cn(roleGroup, className)}>
-      <motion.div
-        className={indicator}
-        initial={false}
-        animate={{
-          left: indicatorDimensions.left,
-          width: indicatorDimensions.width,
-        }}
-        transition={{ type: "spring", damping: 25, stiffness: 300 }}
-      />
-      {(["executors", "customers", "companies"] as Role[]).map((role) => (
-        <motion.button
-          key={role}
-          ref={(el) => {
-            buttonsRef.current[role] = el;
+    <>
+      <div className={cn(roleGroup, className)}>
+        <motion.div
+          className={indicator}
+          initial={false}
+          animate={{
+            left: indicatorDimensions.left,
+            width: indicatorDimensions.width,
           }}
-          className={roleButton({ active: localActiveRole === role })}
-          onClick={() => handleSelect(role)}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.98 }}
+          transition={{ type: "spring", damping: 25, stiffness: 300 }}
+        />
+        {(["executors", "customers", "companies"] as Role[]).map((role) => (
+          <motion.button
+            key={role}
+            ref={(el) => {
+              buttonsRef.current[role] = el;
+            }}
+            className={roleButton({ active: localActiveRole === role })}
+            onClick={() => handleSelect(role)}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            {roleLabels[role]}
+          </motion.button>
+        ))}
+      </div>
+
+      <div className={mobileDropdownWrapper}>
+        <button
+          className={mobileTrigger()}
+          onClick={() => setIsOpen(!isOpen)}
         >
-          {role === "executors" && "Исполнители"}
-          {role === "customers" && "Заказчики"}
-          {role === "companies" && "Компании"}
-        </motion.button>
-      ))}
-    </div>
+          <span>
+            {localActiveRole ? roleLabels[localActiveRole] : "Выберите роль"}
+          </span>
+          <ChevronDown size={16} />
+        </button>
+
+        {isOpen && (
+          <div className={dropdownList}>
+            {(["executors", "customers", "companies"] as Role[]).map((role) => (
+              <button
+                key={role}
+                className={dropdownItem({ active: localActiveRole === role })}
+                onClick={() => {
+                  handleSelect(role);
+                  setIsOpen(false);
+                }}
+              >
+                {roleLabels[role]}
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+    </>
   );
 };
+
+RoleSelector.displayName = "RoleSelector";

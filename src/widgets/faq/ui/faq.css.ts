@@ -9,7 +9,6 @@ export const heading = style({
   fontSize: vars.font.size.h2,
   fontWeight: vars.font.weight.medium,
   marginBottom: vars.spacing["40"],
-  // textAlign: "center",
   color: vars.color.text.primary,
   letterSpacing: "0.02em",
 });
@@ -59,16 +58,17 @@ export const accordionTrigger = style({
 });
 
 export const triggerIconWrapper = style({
-  display: "flex",
+  display: "flex", 
   alignItems: "center",
   justifyContent: "center",
-  width: vars.spacing["40"],
-  height: vars.spacing["40"],
+  width: vars.spacing["40"], 
+  height: vars.spacing["40"], 
   borderRadius: vars.radius.full,
   border: `1px solid ${vars.color.text.secondary}`,
   transition: "all 0.2s ease",
   backgroundColor: vars.color.black,
   color: vars.color.text.inverted,
+  flexShrink: 0, 
   selectors: {
     [`${accordionItem}[data-state="open"] &`]: {
       backgroundColor: vars.color.brand.secondary,

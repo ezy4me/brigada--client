@@ -52,49 +52,51 @@ export default function VerifyPage() {
   }, []);
 
   return (
-    <Section className={styles.section}>
-      <div className={styles.container}>
-        <Card className={styles.card}>
-          <CardContent className={styles.cardContent}>
-            <Heading as="h1" className={styles.title}>
-              Подтверждение аккаунта
-            </Heading>
-            <Text className={styles.description}>
-              Мы отправили 6-значный код на вашу почту.
-            </Text>
+    <div className={styles.page}>
+      <Section className={styles.section}>
+        <div className={styles.container}>
+          <Card className={styles.card}>
+            <CardContent className={styles.cardContent}>
+              <Heading as="h1" className={styles.title}>
+                Подтверждение аккаунта
+              </Heading>
+              <Text className={styles.description}>
+                Мы отправили 6-значный код на вашу почту.
+              </Text>
 
-            <form onSubmit={handleSubmit} className={styles.form}>
-              <div className={styles.codeInputs}>
-                {code.map((digit, index) => (
-                  <div key={index} className={styles.inputWrapper}>
-                    <input
-                      ref={(el) => {
-                        inputsRef.current[index] = el;
-                      }}
-                      type="text"
-                      inputMode="numeric"
-                      pattern="[0-9]{1}"
-                      maxLength={1}
-                      value={digit}
-                      onChange={(e) => handleChange(e, index)}
-                      onKeyDown={(e) => handleKeyDown(e, index)}
-                      className={styles.codeInput}
-                    />
-                  </div>
-                ))}
-              </div>
+              <form onSubmit={handleSubmit} className={styles.form}>
+                <div className={styles.codeInputs}>
+                  {code.map((digit, index) => (
+                    <div key={index} className={styles.inputWrapper}>
+                      <input
+                        ref={(el) => {
+                          inputsRef.current[index] = el;
+                        }}
+                        type="text"
+                        inputMode="numeric"
+                        pattern="[0-9]{1}"
+                        maxLength={1}
+                        value={digit}
+                        onChange={(e) => handleChange(e, index)}
+                        onKeyDown={(e) => handleKeyDown(e, index)}
+                        className={styles.codeInput}
+                      />
+                    </div>
+                  ))}
+                </div>
 
-              <Button
-                type="submit"
-                size="lg"
-                rightIcon={<ArrowRight size={20} />}
-              >
-                Подтвердить
-              </Button>
-            </form>
-          </CardContent>
-        </Card>
-      </div>
-    </Section>
+                <Button
+                  type="submit"
+                  size="lg"
+                  rightIcon={<ArrowRight size={20} />}
+                >
+                  Подтвердить
+                </Button>
+              </form>
+            </CardContent>
+          </Card>
+        </div>
+      </Section>
+    </div>
   );
 }

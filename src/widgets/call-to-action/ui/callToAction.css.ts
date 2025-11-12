@@ -12,6 +12,7 @@ export const container = style({
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
+  gap: `${vars.spacing["16"]}`,
   textAlign: "center",
 });
 

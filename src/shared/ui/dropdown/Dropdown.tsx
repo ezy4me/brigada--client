@@ -1,46 +1,54 @@
-import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
-import { Button, ButtonProps } from '../button/Button'; 
-import { cn } from '@/shared/lib/utils';
-import { content, item as itemStyle } from './dropdown.css';
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
+import { Button, ButtonProps } from "../button/Button";
+import { cn } from "@/shared/lib/utils";
+import { content, item as itemStyle } from "./dropdown.css";
+import { ReactNode } from "react";
 
 export interface DropdownItem {
   label: string;
   value: string;
+  icon?: ReactNode;
   onSelect?: () => void;
 }
 
 export interface DropdownProps {
-  triggerVariant?: ButtonProps['variant'];
-  triggerSize?: ButtonProps['size'];
-  triggerLeftIcon?: ButtonProps['leftIcon'];
-  triggerRightIcon?: ButtonProps['rightIcon'];
-  triggerText?: string; 
+  triggerVariant?: ButtonProps["variant"];
+  triggerSize?: ButtonProps["size"];
+  triggerLeftIcon?: ButtonProps["leftIcon"];
+  triggerRightIcon?: ButtonProps["rightIcon"];
+  triggerText?: string;
+  trigger?: ReactNode;
   items: DropdownItem[];
   className?: string;
 }
 
-export const Dropdown = ({ 
-  triggerVariant = 'primary', 
-  triggerSize = 'md', 
-  triggerLeftIcon, 
-  triggerRightIcon, 
-  triggerText, 
-  items, 
-  className 
+export const Dropdown = ({
+  triggerVariant = "primary",
+  triggerSize = "md",
+  triggerLeftIcon,
+  triggerRightIcon,
+  triggerText,
+  trigger,
+  items,
+  className,
 }: DropdownProps) => {
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger asChild>
-        <Button
-          variant={triggerVariant}
-          size={triggerSize}
-          leftIcon={triggerLeftIcon}
-          rightIcon={triggerRightIcon}
-          className={className} 
-          type="button" 
-        >
-          {triggerText}
-        </Button>
+        {trigger ? (
+          <>{trigger}</>
+        ) : (
+          <Button
+            variant={triggerVariant}
+            size={triggerSize}
+            leftIcon={triggerLeftIcon}
+            rightIcon={triggerRightIcon}
+            className={className}
+            type="button"
+          >
+            {triggerText}
+          </Button>
+        )}
       </DropdownMenu.Trigger>
 
       <DropdownMenu.Portal>
@@ -48,9 +56,12 @@ export const Dropdown = ({
           {items.map((item, index) => (
             <DropdownMenu.Item
               key={index}
-              className={itemStyle}
+              className={cn(itemStyle, className)}
               onSelect={item.onSelect}
             >
+              {item.icon && (
+                <span style={{ marginRight: "8px" }}>{item.icon}</span>
+              )}
               {item.label}
             </DropdownMenu.Item>
           ))}

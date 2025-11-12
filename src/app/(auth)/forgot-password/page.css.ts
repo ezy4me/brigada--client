@@ -27,7 +27,7 @@ export const card = style({
   padding: vars.spacing["32"],
   "@media": {
     "screen and (max-width: 767px)": {
-      padding: vars.spacing["24"],
+      padding: vars.spacing["0"],
     },
   },
 });

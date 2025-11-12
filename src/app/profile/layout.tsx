@@ -11,7 +11,7 @@ export default function ProfileLayout({
 }) {
   return (
     <div className={styles.page}>
-      <Header />
+      <ProfileHeader />
       <div className={styles.main}>
         <ProfileSidebar />
         <main className={styles.content}>{children}</main>

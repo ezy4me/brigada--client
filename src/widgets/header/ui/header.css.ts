@@ -10,6 +10,11 @@ export const header = style({
   padding: `${vars.spacing["16"]} 0`,
   borderBottom: `1px solid ${vars.color.background.tertiary}`,
   // margin: `0 ${vars.spacing["16"]}`,
+   "@media": {
+    "screen and (max-width: 767px)": {
+      background: vars.color.background.tertiary
+    },
+  },
 });
 
 export const backgroundPattern = style({
@@ -40,6 +45,12 @@ export const content = style({
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
+  "@media": {
+    "screen and (max-width: 767px)": {
+      gap: vars.spacing["16"],
+      flexDirection: "column",
+    },
+  },
 });
 
 export const actions = style({
