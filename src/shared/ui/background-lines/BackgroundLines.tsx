@@ -6,15 +6,14 @@ import { cn } from "@/shared/lib/utils";
 import * as styles from "./backgroundLines.css";
 
 const BackgroundLines = () => {
-  const [lineCount, setLineCount] = useState(23);
+  const [lineCount, setLineCount] = useState(24);
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < 768) {
-        setLineCount(12);
-      } else {
-        setLineCount(23);
-      }
+      if (window.innerWidth <= 480) setLineCount(6);
+      else if (window.innerWidth <= 768) setLineCount(12);
+      else if (window.innerWidth <= 1024) setLineCount(18);
+      else setLineCount(24);
     };
 
     handleResize();

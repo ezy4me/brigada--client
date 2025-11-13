@@ -7,7 +7,7 @@ export const page = style({
   justifyContent: "center",
   minHeight: "100vh",
   padding: vars.spacing["16"],
-  background: `linear-gradient(135deg, ${vars.color.gray["800"]} 0%, ${vars.color.gray["700"]} 100%)`,
+  // background: `linear-gradient(135deg, ${vars.color.gray["800"]} 0%, ${vars.color.gray["700"]} 100%)`,
   position: "relative",
   overflow: "hidden",
 });

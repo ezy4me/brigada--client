@@ -9,11 +9,17 @@ export const wrapper = style({
   right: 0,
   zIndex: -1,
   display: "grid",
-  gridTemplateColumns: `repeat(23, 1fr)`,
+  gridTemplateColumns: "repeat(24, 1fr)",
   gap: vars.spacing["8"],
   "@media": {
-    "screen and (max-width: 767px)": {
-      gridTemplateColumns: `repeat(12, 1fr)`,
+    "screen and (max-width: 1024px)": {
+      gridTemplateColumns: "repeat(18, 1fr)",
+    },
+    "screen and (max-width: 768px)": {
+      gridTemplateColumns: "repeat(12, 1fr)",
+    },
+    "screen and (max-width: 480px)": {
+      gridTemplateColumns: "repeat(6, 1fr)",
     },
   },
 });
