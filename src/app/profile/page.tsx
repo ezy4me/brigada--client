@@ -42,8 +42,8 @@ export default function ProfilePage() {
   }
 
   return (
-    <Section className={styles.section}>
+    <div className={styles.section}>
       <div className={styles.container}>{profileContent}</div>
-    </Section>
+    </div>
   );
 }

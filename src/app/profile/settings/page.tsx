@@ -1,16 +1,36 @@
-"use client"
+"use client";
 
 import { Card } from "@/shared/ui/card/Card";
 import { Heading } from "@/shared/ui/heading/Heading";
 import { Text } from "@/shared/ui/text/Text";
 import { Button } from "@/shared/ui/button/Button";
-import { Section } from "@/shared/ui/section/Section";
+import { Avatar } from "@/shared/ui/avatar/Avatar";
+import { User, Building, Briefcase } from "lucide-react";
 import * as styles from "./settings.css";
 import { RoleSelector } from "@/features/role-selector/ui/RoleSelector";
 
+const accounts = [
+  {
+    id: 1,
+    name: "Иван Петров",
+    role: "Исполнитель",
+    avatar: "/user-avatar.jpg",
+  },
+  {
+    id: 2,
+    name: "Иван Петров",
+    role: "Заказчик",
+    avatar: "/user-avatar.jpg",
+  },
+];
+
 export default function SettingsPage() {
   const handleDeleteAccount = () => {
-    if (confirm("Вы уверены, что хотите удалить аккаунт? Это действие необратимо.")) {
+    if (
+      confirm(
+        "Вы уверены, что хотите удалить аккаунт? Это действие необратимо."
+      )
+    ) {
       console.log("Deleting account...");
     }
   };
@@ -21,32 +41,68 @@ export default function SettingsPage() {
     }
   };
 
+  const handleSwitchAccount = (accountId: number) => {
+    console.log(`Switching to account ID: ${accountId}`);
+  };
+
   return (
     <div className={styles.section}>
       <div className={styles.container}>
-        {/* <div className={styles.header}> */}
-          <Heading as="h1" className={styles.title}>
-            Настройки профиля
-          </Heading>
-          <Text className={styles.description}>
-            Управляйте своими данными, ролями и безопасностью
-          </Text>
-        {/* </div> */}
+        <Heading as="h1" className={styles.title}>
+          Настройки профиля
+        </Heading>
+        <Text className={styles.description}>
+          Управляйте своими данными, ролями и безопасностью
+        </Text>
 
         <Card className={styles.settingCard}>
           <div className={styles.cardHeader}>
             <Heading as="h2" className={styles.cardTitle}>
-              Сменить роль
+              Ваши аккаунты
             </Heading>
             <Text className={styles.cardDescription}>
-              Выберите, под какой ролью вы хотите работать
+              Переключайтесь между аккаунтами разных ролей
             </Text>
           </div>
           <div className={styles.cardContent}>
-            <RoleSelector
-              initialRole="executors" 
-              onRoleChange={(role) => console.log("New role:", role)}
-            />
+            <div className={styles.accountsList}>
+              {accounts.map((account) => {
+                let IconComponent;
+                if (account.role === "executor") IconComponent = User;
+                else if (account.role === "company")
+                  IconComponent = Building;
+                else if (account.role === "customer")
+                  IconComponent = Briefcase;
+                else IconComponent = User;
+
+                return (
+                  <div key={account.id} className={styles.accountItem}>
+                    <div className={styles.accountInfo}>
+                      <Avatar
+                        src={account.avatar}
+                        alt={account.name}
+                        className={styles.accountAvatar}
+                      />
+                      <div>
+                        <Text className={styles.accountName}>
+                          {account.name}
+                        </Text>
+                        <Text className={styles.accountRole}>
+                          {account.role}
+                        </Text>
+                      </div>
+                    </div>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => handleSwitchAccount(account.id)}
+                    >
+                      Сменить
+                    </Button>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </Card>
 

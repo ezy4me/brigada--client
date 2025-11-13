@@ -28,11 +28,31 @@ export const logoSection = style({
 export const userSection = style({
   display: "flex",
   alignItems: "center",
-  justifyContent: "center",
   gap: vars.spacing["12"],
 });
 
+export const userInfo = style({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "flex-end",
+  gap: vars.spacing["4"],
+});
+
+export const userName = style({
+  fontSize: vars.font.size.body2,
+  fontWeight: vars.font.weight.medium,
+  color: vars.color.text.secondary,
+});
+
+export const userEmail = style({
+  fontSize: vars.font.size.body2,
+  color: vars.color.text.secondary,
+});
+
 export const avatarTrigger = style({
+  display: "flex",
+  alignItems: "center",
+  gap: vars.spacing["8"],
   border: "none",
   background: "none",
   cursor: "pointer",

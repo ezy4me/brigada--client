@@ -15,14 +15,14 @@ const stats = [
 export const ProfileExecutor = () => {
   return (
     <div className={styles.container}>
-      <div className={styles.header}>
-        <Heading as="h1" className={styles.title}>
-          Личный кабинет исполнителя
-        </Heading>
-        <Text className={styles.description}>
-          Управляйте своими заказами, профилем и статистикой
-        </Text>
-      </div>
+      {/* <div className={styles.header}> */}
+      <Heading as="h1" className={styles.title}>
+        Личный кабинет исполнителя
+      </Heading>
+      <Text className={styles.description}>
+        Управляйте своими заказами, профилем и статистикой
+      </Text>
+      {/* </div> */}
 
       <div className={styles.statsGrid}>
         {stats.map((stat, index) => (

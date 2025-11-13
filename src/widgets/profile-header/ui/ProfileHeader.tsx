@@ -4,6 +4,7 @@ import { useState } from "react";
 import { User, LogOut, Settings, Briefcase, Users } from "lucide-react";
 import { Avatar } from "@/shared/ui/avatar/Avatar";
 import { Dropdown } from "@/shared/ui/dropdown/Dropdown";
+import { Text } from "@/shared/ui/text/Text";
 import * as styles from "./profileHeader.css";
 import { Logo } from "@/shared/ui/logo/Logo";
 
@@ -15,8 +16,15 @@ const userMenuItems = [
   { label: "Выйти", value: "logout", icon: LogOut },
 ];
 
+const userData = {
+  name: "Иван Петров",
+  email: "ivan@example.com",
+};
+
 export const ProfileHeader = () => {
-  const [userRole, setUserRole] = useState<"executor" | "customer" | "company">("executor");
+  const [userRole, setUserRole] = useState<
+    "executor" | "customer" | "company"
+  >("executor");
 
   const handleMenuItemSelect = (value: string) => {
     if (value === "logout") {
@@ -35,6 +43,10 @@ export const ProfileHeader = () => {
           </div>
 
           <div className={styles.userSection}>
+            <div className={styles.userInfo}>
+              {/* <Text className={styles.userName}>{userData.name}</Text> */}
+              <Text className={styles.userEmail}>{userData.email}</Text>
+            </div>
             <Dropdown
               trigger={
                 <button className={styles.avatarTrigger}>

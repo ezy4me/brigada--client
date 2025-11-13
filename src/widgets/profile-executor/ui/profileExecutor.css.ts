@@ -13,10 +13,10 @@ export const container = style({
   width: "100%",
 });
 
-export const header = style({
-  textAlign: "center",
-  marginBottom: vars.spacing["32"],
-});
+// export const header = style({
+//   // textAlign: "center",
+//   marginBottom: vars.spacing["32"],
+// });
 
 export const title = style({
   fontSize: vars.font.size.h2,

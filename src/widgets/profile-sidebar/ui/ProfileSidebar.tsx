@@ -9,6 +9,7 @@ import {
   Bell, 
   Link as LinkIcon, 
   Headphones, 
+  HelpCircle,
   Settings
 } from "lucide-react";
 import { Card } from "@/shared/ui/card/Card";
@@ -21,8 +22,7 @@ const navItems = [
   { href: "/profile/account", icon: User, label: "Учетная запись" },
   { href: "/profile/coverage", icon: MapPin, label: "Зоны охвата" },
   { href: "/profile/notifications", icon: Bell, label: "Уведомления" },
-  { href: "/profile/linked-accounts", icon: LinkIcon, label: "Связанные аккаунты" },
-  { href: "/profile/support", icon: Headphones, label: "Техническая поддержка" },
+  { href: "/profile/support", icon: HelpCircle, label: " Поддержка" },
   { href: "/profile/settings", icon: Settings, label: "Настройки" },
 ];
 
