@@ -6,6 +6,7 @@ export const container = style({
   flexDirection: "column",
   gap: vars.spacing["24"],
   width: "100%",
+  padding: `0 ${vars.spacing["16"]}`,
 });
 
 export const title = style({
@@ -26,22 +27,60 @@ export const coverageCard = style({
   backgroundColor: vars.color.background.secondary,
 });
 
+export const searchInput = style({});
+
+export const selectedRegions = style({
+  display: "flex",
+  flexWrap: "wrap",
+  gap: vars.spacing["8"],
+  marginBottom: vars.spacing["16"],
+});
+
+export const regionBadge = style({
+  display: "flex",
+  alignItems: "center",
+  gap: vars.spacing["8"],
+  padding: `${vars.spacing["8"]} ${vars.spacing["12"]}`,
+  borderRadius: vars.radius.lg,
+  backgroundColor: vars.color.black,
+});
+
+export const regionBadgeText = style({
+  fontSize: vars.font.size.caption,
+  fontWeight: vars.font.weight.medium,
+  color: vars.color.text.inverted,
+});
+
+export const removeButton = style({
+  width: vars.spacing["24"],
+  height: vars.spacing["24"],
+  padding: 0,
+});
+
 export const regionList = style({
   display: "flex",
   flexDirection: "column",
-  gap: vars.spacing["12"],
-  marginBottom: vars.spacing["16"],
+  gap: vars.spacing["8"],
+  maxHeight: "200px",
+  overflowY: "auto",
+  marginTop: vars.spacing["8"],
+  padding: vars.spacing["8"],
+  borderRadius: vars.radius.md,
+  border: `1px solid ${vars.color.border.default}`,
+  backgroundColor: vars.color.background.primary,
 });
 
 export const regionItem = style({
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
-  padding: vars.spacing["8"],
+  padding: `${vars.spacing["8"]} ${vars.spacing["12"]}`,
   borderRadius: vars.radius.md,
-  backgroundColor: vars.color.background.tertiary,
+  ":hover": {
+    backgroundColor: vars.color.background.tertiary,
+  },
 });
 
 export const addButton = style({
-  marginTop: vars.spacing["16"],
+  minWidth: "80px",
 });
