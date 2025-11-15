@@ -86,11 +86,11 @@ export const Footer: FC<FooterProps> = ({ className }) => {
             </div>
 
             <div className={styles.contactInfo}>
-              <a href="mailto:info@brigada.ru" className={styles.link}>
-                <Mail size={16} /> info@brigada.ru
+              <a href="mailto:brigada.ru_official@mail.ru" className={styles.link}>
+                <Mail size={16} /> brigada.ru_official@mail.ru
               </a>
               <a href="tel:+71234567890" className={styles.link}>
-                <Phone size={16} /> +7 (123) 456-78-90
+                <Phone size={16} /> +7 987 416 61 32
               </a>
             </div>
           </div>
