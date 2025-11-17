@@ -17,14 +17,14 @@ export const container = style({
 
 export const header = style({
   textAlign: "left",
-  marginBottom: vars.spacing["32"],
+  marginBottom: vars.spacing["48"],
 });
 
 export const title = style({
   fontSize: vars.font.size.h2,
   fontWeight: vars.font.weight.bold,
   color: vars.color.text.primary,
-  marginBottom: vars.spacing["8"],
+  marginBottom: vars.spacing["12"],
 });
 
 export const subtitle = style({
@@ -52,7 +52,7 @@ export const stepCard = style({
   display: "flex",
   flexDirection: "column",
   alignItems: "flex-start",
-  gap: vars.spacing["8"],
+  gap: 0,
   padding: vars.spacing["24"],
   borderRadius: vars.radius.lg,
   border: `1px solid ${vars.color.border.default}`,
@@ -104,6 +104,8 @@ export const stepNumber = style({
   justifyContent: "center",
   fontWeight: vars.font.weight.bold,
   fontSize: vars.font.size.body1,
+  marginBottom: vars.spacing["20"],
+
 });
 
 export const stepIcon = style({

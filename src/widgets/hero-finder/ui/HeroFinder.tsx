@@ -7,9 +7,9 @@ import { Input } from "@/shared/ui/input/Input";
 import { Text } from "@/shared/ui/text/Text";
 import { Heading } from "@/shared/ui/heading/Heading";
 import { Section } from "@/shared/ui/section/Section";
-import * as styles from "./hero-executor.css";
+import * as styles from "./heroFinder.css";
 
-const popularRequests = [
+const executorRequests = [
   "ремонт кухни",
   "замена электрики",
   "натяжные потолки",
@@ -17,7 +17,21 @@ const popularRequests = [
   "монтаж водопровода",
 ];
 
-export const HeroExecutor = () => {
+const customerRequests = [
+  "найти плотника",
+  "найти электрика",
+  "найти сантехника",
+  "найти отделочника",
+  "найти строителя",
+];
+
+export type Role = 'executor' | 'customer';
+
+export interface HeroFinderProps {
+  role: Role;
+}
+
+export const HeroFinder = ({ role }: HeroFinderProps) => {
   const [city, setCity] = useState<string>("Определение...");
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -29,12 +43,16 @@ export const HeroExecutor = () => {
   }, []);
 
   const handleSearch = () => {
-    console.log("Поиск:", { city, searchQuery });
+    console.log("Поиск:", { role, city, searchQuery });
   };
 
   const handleChangeCity = () => {
     console.log("Сменить город");
   };
+
+  const title = role === 'executor' ? 'Найти клиента' : 'Найти исполнителя';
+  const ctaText = role === 'executor' ? 'Начать поиск' : 'Начать поиск';
+  const popularRequests = role === 'executor' ? executorRequests : customerRequests;
 
   return (
     <Section className={styles.section}>
@@ -45,7 +63,7 @@ export const HeroExecutor = () => {
         </div>
 
         <Heading as="h1" className={styles.title}>
-          Найти клиента
+          {title}
         </Heading>
 
         <div className={styles.popularRequests}>
@@ -71,21 +89,33 @@ export const HeroExecutor = () => {
         <div className={styles.searchContainer}>
           <div className={styles.inputRow}>
             <Input
-              placeholder="Что нужно сделать?"
+              placeholder={
+                role === 'executor'
+                  ? "Что нужно сделать?"
+                  : "Кого ищете?"
+              }
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               size="lg"
               rightIcon={<Search />}
-              aria-label="Введите запрос для поиска клиентов"
+              aria-label={
+                role === 'executor'
+                  ? "Введите запрос для поиска клиентов"
+                  : "Введите запрос для поиска исполнителей"
+              }
             />
             <Button
               variant="secondary"
               size="lg"
               onClick={handleSearch}
               className={styles.button}
-              aria-label="Найти клиентов"
+              aria-label={
+                role === 'executor'
+                  ? "Найти клиентов"
+                  : "Найти исполнителей"
+              }
             >
-              Начать поиск
+              {ctaText}
             </Button>
           </div>
         </div>

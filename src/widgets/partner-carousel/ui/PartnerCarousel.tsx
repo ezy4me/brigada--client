@@ -47,11 +47,11 @@ export const PartnerCarousel = ({
 
   return (
     <Section className={className}>
-      <div className={styles.intro}>
+      <div className={styles.header}>
         <Heading as="h2" className={styles.title}>
           {title}
         </Heading>
-        <Text className={styles.description}>{description}</Text>
+        <Text className={styles.subtitle}>{description}</Text>
       </div>
 
       <div className={styles.partnerSection}>

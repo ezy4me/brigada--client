@@ -75,17 +75,17 @@ export const input = recipe({
       sm: {
         height: "32px",
         fontSize: vars.font.size.body2,
-        padding: `0 ${vars.spacing["12"]}`,
+        padding: `0 ${vars.spacing["16"]}`,
       },
       md: {
         height: "44px",
         fontSize: vars.font.size.body1,
-        padding: `0 ${vars.spacing["12"]}`,
+        padding: `0 ${vars.spacing["16"]}`,
       },
       lg: {
         height: "52px",
         fontSize: vars.font.size.body1,
-        padding: `0 ${vars.spacing["12"]}`,
+        padding: `0 ${vars.spacing["16"]}`,
       },
     },
   },

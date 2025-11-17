@@ -23,11 +23,11 @@ const benefits = [
 export const WhyChooseUs = () => {
   return (
     <Section className={styles.section}>
-      <div className={styles.intro}>
+      <div className={styles.header}>
         <Heading as="h2" className={styles.title}>
-          Почему нас выбирают?
+          Гарантия заказов
         </Heading>
-        <Text className={styles.description}>
+        <Text className={styles.subtitle}>
           Платформа Бригада.ру устроена так, чтобы заявки приходили именно вам: с
           учётом специализации, локации и загруженности
         </Text>

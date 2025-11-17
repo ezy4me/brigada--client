@@ -5,14 +5,14 @@ export const header = style({
   position: "sticky",
   top: 0,
   zIndex: 50,
-  backgroundColor: vars.color.background.secondary,
+  backgroundColor: vars.color.background.tertiary,
   // backdropFilter: "saturate(180%) blur(20px)",
-  padding: `${vars.spacing["16"]} 0`,
-  borderBottom: `1px solid ${vars.color.background.tertiary}`,
   // margin: `0 ${vars.spacing["16"]}`,
-   "@media": {
+  borderBottom: `1px solid ${vars.color.gray[200]}`,
+
+  "@media": {
     "screen and (max-width: 767px)": {
-      background: vars.color.background.tertiary
+      background: vars.color.background.tertiary,
     },
   },
 });
@@ -37,7 +37,7 @@ export const backgroundPattern = style({
 export const container = style({
   maxWidth: "1200px",
   margin: "0 auto",
-  padding: `0 ${vars.spacing["16"]}`,
+  padding: `${vars.spacing["16"]}`,
   position: "relative",
 });
 

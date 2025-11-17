@@ -2,25 +2,28 @@ import { style } from "@vanilla-extract/css";
 import { vars } from "@/shared/styles/theme.css";
 
 export const section = style({
-  // backgroundColor: vars.color.background.secondary,
   width: "100%",
 });
 
-export const intro = style({
+export const container = style({
+  padding: `0 ${vars.spacing["16"]}`,
+});
+
+export const header = style({
   textAlign: "left",
-  marginBottom: vars.spacing["32"],
+  marginBottom: vars.spacing["48"],
 });
 
 export const title = style({
   fontSize: vars.font.size.h2,
   fontWeight: vars.font.weight.bold,
   color: vars.color.text.primary,
-  marginBottom: vars.spacing["8"],
+  marginBottom: vars.spacing["12"],
 });
 
-export const description = style({
+export const subtitle = style({
   fontSize: vars.font.size.body1,
-  color: vars.color.text.primary,
+  color: vars.color.text.secondary,
   maxWidth: "600px",
 });
 
@@ -49,7 +52,7 @@ export const overlay = style({
   width: "100%",
   height: "100%",
   background:
-    "linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0))",
+    "linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2))",
   zIndex: 1,
 });
 
@@ -102,6 +105,6 @@ export const partnerName = style({
 
 export const navButtons = style({
   display: "flex",
-  gap: vars.spacing["8"],
-  alignSelf: "flex-start",
+  width: '100%',
+  justifyContent: 'space-between'
 });

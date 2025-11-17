@@ -11,7 +11,7 @@ export const section = style({
 });
 
 export const container = style({
-  padding: `0 ${vars.spacing["16"]}`,
+//   padding: `0 ${vars.spacing["16"]}`,
 });
 
 export const header = style({
@@ -32,30 +32,26 @@ export const subtitle = style({
   maxWidth: "600px",
 });
 
-export const benefitsList = style({
+export const servicesGrid = style({
   display: "grid",
   gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
   gap: vars.spacing["24"],
-  marginTop: vars.spacing["32"],
 });
 
-export const benefitItem = style({
+export const serviceCard = style({
   display: "flex",
-  width: "100%",
-  alignItems: "center",
-  textAlign: "center",
   flexDirection: "column",
+  alignItems: "center",
+  textAlign: "start",
   padding: vars.spacing["24"],
-  borderRadius: vars.radius.md,
+  borderRadius: vars.radius.lg,
   border: `1px solid ${vars.color.border.default}`,
-  backgroundImage: `linear-gradient(135deg, ${vars.color.background.secondary} 0%, ${vars.color.gray["100"]} 100%)`,
+  backgroundColor: vars.color.background.secondary,
   position: "relative",
   overflow: "hidden",
   transition: "transform 0.2s ease",
-  selectors: {
-    "&:hover": {
-      transform: "scale(1.02)",
-    },
+  ":hover": {
+    transform: "scale(1.02)",
   },
 });
 
@@ -77,29 +73,29 @@ export const shineElement = style({
   transition: "opacity 0.2s ease",
 
   selectors: {
-    [`${benefitItem}:hover &`]: {
+    [`${serviceCard}:hover &`]: {
       opacity: 1,
       animation: `${shine} 0.6s ease-out forwards`,
     },
   },
 });
 
-export const benefitIcon = style({
-  flexShrink: 0,
-  padding: vars.spacing["24"],
-  backgroundColor: vars.color.brand.secondary,
-  borderRadius: "50%",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  color: vars.color.text.inverted,
-  fontSize: vars.font.size.caption,
-  fontWeight: vars.font.weight.bold,
-  marginBottom: vars.spacing["24"],
+export const serviceImage = style({
+  borderRadius: vars.radius.full,
+  objectFit: "cover",
+  marginBottom: vars.spacing["16"],
+  border: `2px solid ${vars.color.border.default}`,
 });
 
-export const benefitText = style({
-  fontSize: vars.font.size.body1,
+export const serviceTitle = style({
+  fontSize: vars.font.size.h4,
+  fontWeight: vars.font.weight.bold,
   color: vars.color.text.primary,
-  lineHeight: vars.font.lineHeight.tight,
+  marginBottom: vars.spacing["8"],
+});
+
+export const serviceDescription = style({
+  fontSize: vars.font.size.body2,
+  color: vars.color.text.secondary,
+  lineHeight: vars.font.lineHeight.normal,
 });

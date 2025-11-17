@@ -9,12 +9,21 @@ export const roleGroup = style({
   padding: vars.spacing["4"],
   position: "relative",
   overflow: "hidden",
+  alignItems: "center",
+  gap: vars.spacing["6"], 
 
   "@media": {
     "screen and (max-width: 767px)": {
       display: "none",
     },
   },
+});
+
+export const separator = style({
+  width: "1px",
+  height: "20px",
+  backgroundColor: vars.color.gray["100"],
+  alignSelf: "center", 
 });
 
 export const roleButton = recipe({
@@ -52,7 +61,7 @@ export const indicator = style({
 
 export const mobileDropdownWrapper = style({
   display: "none",
-  position: 'relative',
+  position: "relative",
   "@media": {
     "screen and (max-width: 767px)": {
       display: "block",
@@ -102,7 +111,6 @@ export const dropdownItem = recipe({
     color: vars.color.text.inverted,
     border: "none",
     cursor: "pointer",
-    // width: "100%",
     textAlign: "left",
     fontFamily: vars.font.family,
     fontSize: vars.font.size.body2,

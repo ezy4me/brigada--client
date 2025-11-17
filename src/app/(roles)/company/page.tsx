@@ -19,11 +19,21 @@ export default function ExecutorPage() {
 
       <HowItWorks />
 
-      <CallToAction text="Работайте с клиентами — мы берём остальное на себя" />
+      <CallToAction
+        text="Работайте с клиентами — мы берём остальное на себя"
+        buttonText="Создать компанию"
+        signupHref="/register"
+      />
 
-      <Tariffs />
+      <PartnerCarousel
+        title="С какими бизнесами мы работаем"
+        description="Мы работаем только с исполнителями, которые реально выполняют задачи, а не размещают “пустые” анкеты."
+        partners={businessPartners}
+      />
 
       <WhyChooseUs />
+
+      <Tariffs />
 
       <PartnerCarousel
         title="Наши кадровые партнёры"
