@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <Header />
-      <BackgroundLines />
+      {/* <BackgroundLines /> */}
 
       <main className={styles.main}>
         <Hero />

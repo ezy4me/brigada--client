@@ -6,6 +6,7 @@ import { LoginForm } from "@/features/auth/ui/login-form/LoginForm";
 import Link from "next/link";
 import * as styles from "./page.css";
 import { useRouter } from "next/navigation";
+import { AnimatedBackground } from "@/shared/ui/animated-background/AnimatedBackground";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -19,6 +20,7 @@ export default function LoginPage() {
 
   return (
     <div className={styles.page}>
+      <AnimatedBackground intensity="high" />
       <div className={styles.formContainer}>
         <Card className={styles.card}>
           <CardContent>

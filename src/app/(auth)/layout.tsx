@@ -1,4 +1,5 @@
-import * as styles from './layout.css';
+import { AnimatedBackground } from "@/shared/ui/animated-background/AnimatedBackground";
+import * as styles from "./layout.css";
 
 export default function AuthLayout({
   children,
@@ -7,9 +8,9 @@ export default function AuthLayout({
 }) {
   return (
     <div className={styles.authLayout}>
-      <div className={styles.authContainer}>
-        {children}
-      </div>
+      <AnimatedBackground intensity="high" />
+
+      <div className={styles.authContainer}>{children}</div>
     </div>
   );
 }

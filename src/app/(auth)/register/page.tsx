@@ -7,6 +7,7 @@ import { RegisterForm } from "@/features/auth/ui/register-form/RegisterForm";
 import Link from "next/link";
 import * as styles from "./page.css";
 import { Role } from "@/features/role-selector/ui/RoleSelector";
+import { AnimatedBackground } from "@/shared/ui/animated-background/AnimatedBackground";
 
 export default function RegisterPage() {
   const [selectedRole, setSelectedRole] = useState<Role | null>(null);
@@ -22,6 +23,8 @@ export default function RegisterPage() {
 
   return (
     <div className={styles.page}>
+      <AnimatedBackground intensity="high" />
+
       <div className={styles.formContainer}>
         <Card className={styles.card}>
           <CardContent>

@@ -19,7 +19,7 @@ export const Hero = ({ className }: HeroProps) => {
 
   return (
     <Section className={cn(styles.hero, className)}>
-      <BackgroundLines />
+      {/* <BackgroundLines /> */}
       <div className={styles.content}>
         <Heading as="h1" className={styles.heading}>
           Получайте строительные заказы{" "}

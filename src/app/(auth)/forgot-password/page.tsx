@@ -6,17 +6,20 @@ import { Logo } from "@/shared/ui/logo/Logo";
 import { ForgotPasswordForm } from "@/features/auth/ui/forgot-password-form/ForgotPasswordForm";
 import Link from "next/link";
 import * as styles from "./page.css";
+import { AnimatedBackground } from "@/shared/ui/animated-background/AnimatedBackground";
 
 export default function ForgotPasswordPage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleResetRequest = async (data: { email: string }) => {
     console.log("Password reset request:", data);
-    setIsSubmitted(true); 
+    setIsSubmitted(true);
   };
 
   return (
     <div className={styles.page}>
+      <AnimatedBackground intensity="high" />
+
       <div className={styles.formContainer}>
         <Card className={styles.card}>
           <CardContent>
