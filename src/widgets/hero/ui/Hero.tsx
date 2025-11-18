@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { Section } from "@/shared/ui/section/Section";
 import { Heading } from "@/shared/ui/heading/Heading";
@@ -7,6 +7,7 @@ import { cn } from "@/shared/lib/utils";
 import * as styles from "./hero.css";
 import BackgroundLines from "@/shared/ui/background-lines/BackgroundLines";
 import { Button } from "@/shared/ui/button/Button";
+import Link from "next/link";
 
 interface HeroProps {
   className?: string;
@@ -39,9 +40,11 @@ export const Hero = ({ className }: HeroProps) => {
         </Text>
 
         <div className={styles.buttonWrapper}>
-          <Button onClick={handleBecomeExecutor} size="lg">
-            Зарегистрироваться
-          </Button>
+          <Link href="/register">
+            <Button onClick={handleBecomeExecutor} size="lg">
+              Зарегистрироваться
+            </Button>
+          </Link>
         </div>
       </div>
     </Section>

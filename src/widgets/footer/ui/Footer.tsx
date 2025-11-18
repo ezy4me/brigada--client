@@ -7,9 +7,8 @@ import {
   Mail,
   Phone,
   Globe,
-  LucidePlane,
-  Users,
   Send,
+  Users,
 } from "lucide-react";
 import * as styles from "./footer.css";
 
@@ -27,14 +26,15 @@ export const Footer: FC<FooterProps> = ({ className }) => {
       <div className={styles.container}>
         <div className={styles.topSection}>
           <div className={styles.section}>
-            <h3 className={styles.sectionTitle}>Клиентам</h3>
-            <a href="/clients" className={styles.link}>
-              Сайт для клиентов
+            <h3 className={styles.sectionTitle}>Заказчикам</h3>
+            <div className={styles.sectionDivider} />
+            <a href="/customer" className={styles.link}>
+              Сайт для заказчика
             </a>
-            <a href="/login/client" className={styles.link}>
-              Вход для клиента
+            <a href="/login" className={styles.link}>
+              Вход для заказчика
             </a>
-            <a href="/executors" className={styles.link}>
+            <a href="/" className={styles.link}>
               Все исполнители
             </a>
             <a href="/support" className={styles.link}>
@@ -43,7 +43,25 @@ export const Footer: FC<FooterProps> = ({ className }) => {
           </div>
 
           <div className={styles.section}>
+            <h3 className={styles.sectionTitle}>Компаниям</h3>
+            <div className={styles.sectionDivider} />
+            <a href="/company" className={styles.link}>
+              Сайт для компании
+            </a>
+            <a href="/login" className={styles.link}>
+              Вход для компании
+            </a>
+            <a href="/" className={styles.link}>
+              Заказы
+            </a>
+            <a href="/support" className={styles.link}>
+              Поддержка
+            </a>
+          </div>
+
+          <div className={styles.section}>
             <h3 className={styles.sectionTitle}>Исполнителям</h3>
+            <div className={styles.sectionDivider} />
             <a href="/executors" className={styles.link}>
               Сайт для исполнителей
             </a>
@@ -59,20 +77,22 @@ export const Footer: FC<FooterProps> = ({ className }) => {
           </div>
 
           <div className={styles.section}>
-            <h3 className={styles.sectionTitle}>Компания</h3>
-            <a href="/about" className={styles.link}>
-              О компании
+            <h3 className={styles.sectionTitle}>Бригада.ру</h3>
+            <div className={styles.sectionDivider} />
+            <a href="/" className={styles.link}>
+              О нас
             </a>
-            <a href="/advertising" className={styles.link}>
-              Реклама на Бригада.ру
+            <a href="/" className={styles.link}>
+              Реклама на платформе
             </a>
-            <a href="/legal" className={styles.link}>
+            <a href="/" className={styles.link}>
               Правовые документы
             </a>
           </div>
 
           <div className={styles.socialSection}>
             <h3 className={styles.sectionTitle}>Социальные сети</h3>
+            <div className={styles.sectionDivider} />
             <div className={styles.socialLinks}>
               <a href="#" className={styles.socialLink}>
                 <Globe size={20} />
@@ -86,7 +106,10 @@ export const Footer: FC<FooterProps> = ({ className }) => {
             </div>
 
             <div className={styles.contactInfo}>
-              <a href="mailto:brigada.ru_official@mail.ru" className={styles.link}>
+              <a
+                href="mailto:brigada.ru_official@mail.ru"
+                className={styles.link}
+              >
                 <Mail size={16} /> brigada.ru_official@mail.ru
               </a>
               <a href="tel:+71234567890" className={styles.link}>

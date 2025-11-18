@@ -17,12 +17,12 @@ export const container = style({
 
 export const topSection = style({
   display: "grid",
-  gridTemplateColumns: "repeat(4, 1fr)",
+  gridTemplateColumns: "repeat(5, 1fr)",
   gap: vars.spacing["24"],
   marginBottom: vars.spacing["32"],
   "@media": {
     "screen and (max-width: 1023px)": {
-      gridTemplateColumns: "repeat(2, 1fr)",
+      gridTemplateColumns: "repeat(3, 1fr)",
     },
     "screen and (max-width: 767px)": {
       gridTemplateColumns: "1fr",
@@ -40,8 +40,15 @@ export const section = style({
 export const sectionTitle = style({
   fontSize: vars.font.size.body1,
   fontWeight: vars.font.weight.medium,
-  marginBottom: vars.spacing["8"],
   color: vars.color.text.inverted,
+  // marginBottom: vars.spacing["8"],
+});
+
+export const sectionDivider = style({
+  width: "100%", 
+  height: "1px",
+  backgroundColor: vars.color.gray["600"],
+  borderRadius: "2px",
 });
 
 export const link = style({
@@ -79,50 +86,8 @@ export const contactInfo = style({
   marginTop: vars.spacing["8"],
 });
 
-export const trustBadges = style({
-  display: "flex",
-  gap: vars.spacing["8"],
-  marginTop: vars.spacing["8"],
-});
-
-export const appButtons = style({
-  display: "flex",
-  gap: vars.spacing["8"],
-  marginTop: vars.spacing["8"],
-});
-
-export const newsletterForm = style({
-  display: "flex",
-  gap: vars.spacing["8"],
-  marginTop: vars.spacing["8"],
-});
-
-export const newsletterInput = style({
-  flex: 1,
-  padding: `${vars.spacing["8"]} ${vars.spacing["12"]}`,
-  borderRadius: vars.radius.md,
-  border: "none",
-  backgroundColor: vars.color.gray["800"],
-  color: vars.color.text.inverted,
-  "::placeholder": {
-    color: vars.color.text.secondary,
-  },
-});
-
-export const newsletterButton = style({
-  padding: `${vars.spacing["8"]} ${vars.spacing["12"]}`,
-  borderRadius: vars.radius.md,
-  backgroundColor: vars.color.brand.primary,
-  color: vars.color.text.inverted,
-  border: "none",
-  cursor: "pointer",
-  ":hover": {
-    opacity: 0.9,
-  },
-});
-
 export const bottomSection = style({
-  borderTop: `1px solid ${vars.color.gray["400"]}`,
+  borderTop: `1px solid ${vars.color.gray["700"]}`,
   paddingTop: vars.spacing["16"],
   display: "flex",
   justifyContent: "space-between",
@@ -131,6 +96,7 @@ export const bottomSection = style({
     "screen and (max-width: 767px)": {
       flexDirection: "column",
       gap: vars.spacing["12"],
+      alignItems: "flex-start",
     },
   },
 });
@@ -146,7 +112,7 @@ export const bottomLinks = style({
   "@media": {
     "screen and (max-width: 767px)": {
       flexDirection: "column",
-      alignItems: "center",
+      alignItems: "flex-start",
       gap: vars.spacing["8"],
     },
   },

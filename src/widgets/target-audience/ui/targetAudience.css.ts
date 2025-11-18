@@ -7,32 +7,29 @@ const shine = keyframes({
 });
 
 export const section = style({
-  padding: `${vars.spacing["48"]} 0`,
+  width: "100%",
 });
 
 export const container = style({
-  maxWidth: "1200px",
-  margin: "0 auto",
   padding: `0 ${vars.spacing["16"]}`,
 });
 
 export const header = style({
   textAlign: "left",
-  marginBottom: vars.spacing["24"],
+  marginBottom: vars.spacing["48"],
 });
 
 export const title = style({
   fontSize: vars.font.size.h2,
   fontWeight: vars.font.weight.bold,
   color: vars.color.text.primary,
-  marginBottom: vars.spacing["8"],
+  marginBottom: vars.spacing["12"],
 });
 
-export const description = style({
+export const subtitle = style({
   fontSize: vars.font.size.body1,
-  color: vars.color.text.primary,
+  color: vars.color.text.secondary,
   maxWidth: "600px",
-  textAlign: "left",
 });
 
 export const cardsGrid = style({
@@ -45,6 +42,13 @@ export const cardsGrid = style({
     "screen and (max-width: 1023px)": {
       gridTemplateColumns: "1fr",
     },
+  },
+});
+
+export const cardLink = style({
+  textDecoration: "none",
+  ":hover": {
+    textDecoration: "none",
   },
 });
 
@@ -64,6 +68,7 @@ export const card = style({
   ":hover": {
     transform: "scale(1.02)",
   },
+  cursor: "pointer",
 });
 
 export const shineElement = style({
@@ -102,5 +107,4 @@ export const cardTitle = style({
   marginBottom: vars.spacing["8"],
 });
 
-export const cardDescription = style({
-});
+export const cardDescription = style({});

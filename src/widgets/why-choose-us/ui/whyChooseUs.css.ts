@@ -99,7 +99,7 @@ export const benefitIcon = style({
 });
 
 export const benefitText = style({
-  fontSize: vars.font.size.body1,
+  fontSize: vars.font.size.body2,
   color: vars.color.text.primary,
   lineHeight: vars.font.lineHeight.tight,
 });
