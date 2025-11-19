@@ -34,6 +34,10 @@ export const cardContent = style({
   gap: vars.spacing["16"],
 });
 
+export const cardButton = style({
+  alignSelf: "flex-end",
+});
+
 export const notificationItem = style({
   display: "flex",
   alignItems: "center",

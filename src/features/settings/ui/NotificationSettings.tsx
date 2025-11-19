@@ -47,13 +47,13 @@ export const NotificationSettings = () => {
                 checked={item.enabled}
                 onCheckedChange={() => handleToggle(item.id)}
               />
-              <Button variant="ghost" size="sm">
-                Изменить
-              </Button>
             </div>
           </div>
         ))}
       </div>
+      <Button className={styles.cardButton} variant="primary" size="md">
+        Изменить
+      </Button>
     </Card>
   );
 };

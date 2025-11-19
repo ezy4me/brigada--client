@@ -4,7 +4,7 @@ import { vars } from "@/shared/styles/theme.css";
 export const section = style({
   backgroundColor: vars.color.background.primary,
   width: "100%",
-  padding: `${vars.spacing["48"]} 0`,
+  // padding: `${vars.spacing["48"]} 0`,
 });
 
 export const container = style({
