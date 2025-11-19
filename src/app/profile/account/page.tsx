@@ -1,32 +1,41 @@
-import { Card } from "@/shared/ui/card/Card";
+import { ProfileForm } from "@/features/profile/ui/ProfileForm";
 import { Heading } from "@/shared/ui/heading/Heading";
 import { Text } from "@/shared/ui/text/Text";
-import { Input } from "@/shared/ui/input/Input";
-import { Button } from "@/shared/ui/button/Button";
 import * as styles from "./account.css";
+import { AccountSwitcherCard } from "@/features/account-switcher/ui/AccountSwitcherCard";
 
-export default function AccountPage() {
+const accounts = [
+  {
+    id: 1,
+    name: "Иван Петров",
+    role: "Исполнитель",
+    avatar: "/user-avatar.jpg",
+  },
+  {
+    id: 2,
+    name: "Иван Петров",
+    role: "Заказчик",
+    avatar: "/user-avatar.jpg",
+  },
+];
+
+export default async function AccountPage() {
+  const role = "executor";
+
   return (
     <div className={styles.container}>
       <Heading as="h1" className={styles.title}>
-        Учетная запись
+        Личный кабинет
       </Heading>
       <Text className={styles.description}>
-        Управляйте своими данными и настройками безопасности
+        Управляйте своими данными и настройками
       </Text>
 
-      <Card className={styles.formCard}>
-        <div className={styles.fieldGroup}>
-          <Input label="Имя" placeholder="Иван" />
-          <Input label="Фамилия" placeholder="Петров" />
-        </div>
-        <Input label="Email" type="email" placeholder="ivan@example.com" />
-        <Input label="Телефон" type="tel" placeholder="+7 (999) 123-45-67" />
+      <ProfileForm
+        initialData={{ firstName: "Иван", lastName: "Петров" }}
+      />
 
-        <Button variant="primary" size="md" className={styles.saveButton}>
-          Сохранить
-        </Button>
-      </Card>
+      <AccountSwitcherCard accounts={accounts} />
     </div>
   );
 }

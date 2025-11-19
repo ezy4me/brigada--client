@@ -21,8 +21,8 @@ const navItems = [
   { href: "/profile", icon: Home, label: "Главная" },
   { href: "/profile/account", icon: User, label: "Учетная запись" },
   { href: "/profile/coverage", icon: MapPin, label: "Зоны охвата" },
-  { href: "/profile/notifications", icon: Bell, label: "Уведомления" },
-  { href: "/profile/support", icon: HelpCircle, label: " Поддержка" },
+  // { href: "/profile/notifications", icon: Bell, label: "Уведомления" },
+  // { href: "/profile/support", icon: HelpCircle, label: " Поддержка" },
   { href: "/profile/settings", icon: Settings, label: "Настройки" },
 ];
 
