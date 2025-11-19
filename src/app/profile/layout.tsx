@@ -1,7 +1,7 @@
 import { ProfileHeader } from "@/widgets/profile-header/ui/ProfileHeader";
 import { ProfileSidebar } from "@/widgets/profile-sidebar/ui/ProfileSidebar";
 import { Footer } from "@/widgets/footer/ui/Footer";
-import { Header } from "@/widgets/header/ui/Header";
+import { MobileProfileNav } from "@/widgets/mobile-profile-nav/ui/MobileProfileNav";
 import * as styles from "./layout.css";
 
 export default function ProfileLayout({
@@ -14,9 +14,12 @@ export default function ProfileLayout({
       <ProfileHeader />
       <div className={styles.main}>
         <ProfileSidebar />
-        <main className={styles.content}>{children}</main>
+        <main className={styles.content}>
+          {children}
+          <MobileProfileNav />
+        </main>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

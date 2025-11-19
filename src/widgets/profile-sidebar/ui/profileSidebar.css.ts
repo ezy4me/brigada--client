@@ -5,13 +5,16 @@ export const sidebar = style({
   width: "250px",
   padding: vars.spacing["24"],
   backgroundColor: vars.color.background.primary,
+
+  "@media": {
+    "screen and (max-width: 767px)": {
+      display: "none",
+    },
+  },
 });
 
 export const sidebarWrapper = style({
   height: "100%",
-  // borderRadius: vars.radius.lg,
-  // border: `1px solid ${vars.color.border.default}`,
-  // backgroundColor: vars.color.background.secondary,
 });
 
 export const nav = style({});
@@ -36,8 +39,9 @@ export const navLink = style({
   textDecoration: "none",
   color: vars.color.text.primary,
   transition: "all 0.2s ease",
+
   ":hover": {
-    // backgroundColor: vars.color.background.tertiary,
+    backgroundColor: vars.color.background.secondary,
   },
 });
 

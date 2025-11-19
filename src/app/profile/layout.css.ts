@@ -9,15 +9,29 @@ export const page = style({
 });
 
 export const main = style({
-  display: "flex",
   flex: 1,
+  display: "flex",
+  position: "relative",
   maxWidth: "1200px",
   margin: "0 auto",
   width: "100%",
+
+  "@media": {
+    "screen and (max-width: 767px)": {
+      flexDirection: "column",
+    },
+  },
 });
 
 export const content = style({
   flex: 1,
+  display: "flex",
+  flexDirection: "column",
   padding: vars.spacing["24"],
-  backgroundColor: vars.color.background.primary,
+
+  "@media": {
+    "screen and (max-width: 768px)": {
+      paddingBottom: vars.spacing["96"],
+    },
+  },
 });

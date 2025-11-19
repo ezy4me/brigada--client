@@ -47,6 +47,11 @@ export const userName = style({
 export const userEmail = style({
   fontSize: vars.font.size.body2,
   color: vars.color.text.secondary,
+  "@media": {
+    "screen and (max-width: 768px)": {
+      display: "none",
+    },
+  },
 });
 
 export const avatarTrigger = style({
