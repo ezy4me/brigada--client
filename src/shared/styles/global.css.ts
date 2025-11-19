@@ -12,6 +12,7 @@ globalStyle("body", {
   backgroundColor: vars.color.background.primary,
   color: vars.color.text.primary,
   lineHeight: vars.font.lineHeight.normal,
+  position: "relative",
 });
 
 globalStyle("h1", {

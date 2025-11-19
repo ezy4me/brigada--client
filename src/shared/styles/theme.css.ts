@@ -3,6 +3,7 @@ import { colorPalette, semanticColors } from "@/shared/config/colors";
 import { radius } from "@/shared/config/radius";
 import { spacing } from "@/shared/config/spacing";
 import { typography } from "@/shared/config/typography";
+import { shadow } from "@shared/config/shadow";
 
 export const [themeClass, vars] = createTheme({
   color: {
@@ -64,6 +65,7 @@ export const [themeClass, vars] = createTheme({
   },
   radius,
   spacing,
+  shadow,
   font: {
     family: typography.fontFamily.sans,
     lineHeight: {
