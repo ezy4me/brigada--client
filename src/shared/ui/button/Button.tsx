@@ -7,10 +7,18 @@ import { cn } from "@/shared/lib/utils";
 
 export interface ButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "primary" | "secondary" | "outline" | "ghost" | "destructive" | "white" | "black";
+  variant?:
+    | "primary"
+    | "secondary"
+    | "outline"
+    | "ghost"
+    | "destructive"
+    | "white"
+    | "black";
   size?: "sm" | "md" | "lg";
   leftIcon?: ReactNode;
   rightIcon?: ReactNode;
+  icon?: ReactNode;
   asChild?: boolean;
 }
 
@@ -21,6 +29,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       variant,
       size,
       leftIcon,
+      icon,
       rightIcon,
       children,
       asChild,
@@ -28,9 +37,14 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     },
     ref
   ) => {
+    const isIconOnly = Boolean(
+      icon && !children && !leftIcon && !rightIcon
+    );
+
     const baseClassName = button({
       variant: variant ?? "primary",
       size: size ?? "md",
+      iconOnly: isIconOnly,
     });
 
     const content = (
@@ -40,7 +54,14 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             {leftIcon}
           </span>
         )}
-        {children}
+        {icon && isIconOnly ? (
+          <span className={iconStyles.base}>{icon}</span>
+        ) : (
+          <>
+            {icon && <span className={iconStyles.base}>{icon}</span>}
+            {children}
+          </>
+        )}
         {rightIcon && (
           <span className={cn(iconStyles.base, iconStyles.right)}>
             {rightIcon}

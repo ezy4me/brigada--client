@@ -26,10 +26,15 @@ const iconRight = style({
   marginLeft: vars.spacing["8"],
 });
 
+const iconOnly = style({
+  padding: vars.spacing["8"],
+});
+
 export const iconStyles = {
   base: iconBase,
   left: iconLeft,
   right: iconRight,
+  only: iconOnly,
 };
 
 const baseButton = style({
@@ -145,7 +150,7 @@ export const button = recipe({
           transform: "scale(0.98)",
         },
       },
-       black: {
+      black: {
         backgroundColor: vars.color.gray[900],
         color: vars.color.text.inverted,
         border: `1px solid ${vars.color.border.default}`,
@@ -175,9 +180,49 @@ export const button = recipe({
         fontSize: vars.font.size.body1,
       },
     },
+    iconOnly: {
+      true: {
+        width: "auto",
+        aspectRatio: "1/1",
+      },
+      false: {},
+    },
   },
+  compoundVariants: [
+    {
+      variants: {
+        size: "sm",
+        iconOnly: true,
+      },
+      style: {
+        width: "32px",
+        padding: "0",
+      },
+    },
+    {
+      variants: {
+        size: "md",
+        iconOnly: true,
+      },
+      style: {
+        width: "44px",
+        padding: "0",
+      },
+    },
+    {
+      variants: {
+        size: "lg",
+        iconOnly: true,
+      },
+      style: {
+        width: "52px",
+        padding: "0",
+      },
+    },
+  ],
   defaultVariants: {
     variant: "primary",
     size: "md",
+    iconOnly: false,
   },
 });

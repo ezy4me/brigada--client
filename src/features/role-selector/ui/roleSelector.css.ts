@@ -28,7 +28,7 @@ export const separator = style({
 
 export const roleButton = recipe({
   base: {
-    padding: `${vars.spacing["8"]} ${vars.spacing["16"]}`,
+    padding: `${vars.spacing["6"]} ${vars.spacing["16"]}`,
     borderRadius: vars.radius.lg,
     border: "none",
     backgroundColor: "transparent",

@@ -5,7 +5,7 @@ import { Button } from "@/shared/ui/button/Button";
 import { Text } from "@/shared/ui/text/Text";
 import { Input } from "@/shared/ui/input/Input";
 import { Card } from "@/shared/ui/card/Card";
-import { Send, X, MessageCircle } from "lucide-react";
+import { Send, X, MessageCircle, SendHorizonal } from "lucide-react";
 import * as styles from "./supportChat.css";
 
 interface Message {
@@ -78,7 +78,7 @@ export const SupportChat = () => {
               onClick={() => setIsOpen(false)}
               className={styles.closeButton}
             >
-              <X size={16} className={styles.closeButtonIcon}/>
+              <X size={16} className={styles.closeButtonIcon} />
             </button>
           </div>
 
@@ -122,15 +122,13 @@ export const SupportChat = () => {
               placeholder="Введите ваше сообщение..."
               className={styles.messageInput}
             />
-            <Button
+            <button
               type="submit"
-              variant="primary"
-              size="sm"
               disabled={!inputValue.trim()}
               className={styles.sendButton}
             >
-              <Send size={16} />
-            </Button>
+              <SendHorizonal size={16} />
+            </button>
           </form>
         </div>
       )}
@@ -139,7 +137,7 @@ export const SupportChat = () => {
         onClick={() => setIsOpen(true)}
         className={styles.chatButton}
       >
-        <MessageCircle size={20} className={styles.chatButtonIcon}/>
+        <MessageCircle size={20} className={styles.chatButtonIcon} />
       </button>
     </>
   );

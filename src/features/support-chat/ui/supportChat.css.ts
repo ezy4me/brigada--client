@@ -154,7 +154,13 @@ export const messageInput = style({
 });
 
 export const sendButton = style({
-  width: vars.spacing["40"],
-  height: vars.spacing["40"],
-  borderRadius: vars.radius.md,
+  width: "48px",
+  height: "44px",
+  background: vars.color.brand.primary,
+  borderRadius: vars.radius.full,
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  color: vars.color.white,
+  padding: vars.spacing["8"],
 });
