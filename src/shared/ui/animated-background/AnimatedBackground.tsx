@@ -14,6 +14,7 @@ import {
   Cog,
 } from "lucide-react";
 import * as styles from "./animatedBackground.css";
+import { vars } from "@/shared/styles/theme.css";
 
 const icons = [
   { Icon: Wrench, size: 24 },
@@ -53,6 +54,16 @@ export const AnimatedBackground = ({
       default:
         return 16;
     }
+  };
+
+  const themeColors = [
+    vars.color.brand.primary,
+    vars.color.brand.secondary,
+  ];
+
+  const getRandomThemeColor = () => {
+    const randomIndex = Math.floor(Math.random() * themeColors.length);
+    return themeColors[randomIndex];
   };
 
   if (!isClient) {
@@ -107,7 +118,7 @@ export const AnimatedBackground = ({
             style={{
               width: `${icon.size}px`,
               height: `${icon.size}px`,
-              color: `hsl(${Math.random() * 360}, 50%, 70%)`,
+              color: getRandomThemeColor(),
             }}
           >
             <IconComponent size={icon.size} />

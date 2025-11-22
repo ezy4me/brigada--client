@@ -41,12 +41,12 @@ export const navLink = style({
   transition: "all 0.2s ease",
 
   ":hover": {
-    backgroundColor: vars.color.background.secondary,
+    // backgroundColor: vars.color.background.secondary,
   },
 });
 
 export const activeNavLink = style({
-  backgroundColor: vars.color.white,
+  // backgroundColor: vars.color.white,
   color: vars.color.brand.primary,
   fontWeight: vars.font.weight.bold,
 });

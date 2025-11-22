@@ -42,12 +42,12 @@ export const MobileProfileNav = () => {
               )} 
               size={20} 
             />
-            <Text className={cn(
+            <p className={cn(
               styles.navText,
               isActive && styles.activeNavText
             )}>
               {item.label}
-            </Text>
+            </p>
           </Link>
         );
       })}

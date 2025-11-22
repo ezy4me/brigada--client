@@ -36,7 +36,7 @@ export const navItem = style({
 });
 
 export const activeNavItem = style({
-  backgroundColor: vars.color.background.secondary,
+  // backgroundColor: vars.color.background.secondary,
 });
 
 export const navIcon = style({
