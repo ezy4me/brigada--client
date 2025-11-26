@@ -25,7 +25,7 @@ const customerRequests = [
   "найти строителя",
 ];
 
-export type Role = 'executor' | 'customer';
+export type Role = "executor" | "customer" | "company" | "guest";
 
 export interface HeroFinderProps {
   role: Role;
@@ -50,21 +50,25 @@ export const HeroFinder = ({ role }: HeroFinderProps) => {
     console.log("Сменить город");
   };
 
-  const title = role === 'executor' ? 'Найти клиента' : 'Найти исполнителя';
-  const ctaText = role === 'executor' ? 'Начать поиск' : 'Начать поиск';
-  const popularRequests = role === 'executor' ? executorRequests : customerRequests;
+  const title =
+    role === "executor" ? "Найти клиента" : "Найти исполнителя";
+  const ctaText = role === "executor" ? "Начать поиск" : "Начать поиск";
+  const popularRequests =
+    role === "executor" ? executorRequests : customerRequests;
 
   return (
     <Section className={styles.section}>
       <div className={styles.content}>
-        <div className={styles.locationBlock} onClick={handleChangeCity}>
-          <MapPin className={styles.cityIcon} aria-hidden="true" />
-          <Text className={styles.city}>{city}</Text>
+        <div className={styles.top}>
+          <Heading as="h1" className={styles.title}>
+            {title}
+          </Heading>
+          
+          <div className={styles.locationBlock} onClick={handleChangeCity}>
+            <MapPin className={styles.cityIcon} aria-hidden="true" />
+            <Text className={styles.city}>{city}</Text>
+          </div>
         </div>
-
-        <Heading as="h1" className={styles.title}>
-          {title}
-        </Heading>
 
         <div className={styles.popularRequests}>
           {popularRequests.map((request, index) => (
@@ -90,16 +94,14 @@ export const HeroFinder = ({ role }: HeroFinderProps) => {
           <div className={styles.inputRow}>
             <Input
               placeholder={
-                role === 'executor'
-                  ? "Что нужно сделать?"
-                  : "Кого ищете?"
+                role === "executor" ? "Что нужно сделать?" : "Кого ищете?"
               }
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               size="lg"
               rightIcon={<Search />}
               aria-label={
-                role === 'executor'
+                role === "executor"
                   ? "Введите запрос для поиска клиентов"
                   : "Введите запрос для поиска исполнителей"
               }
@@ -110,7 +112,7 @@ export const HeroFinder = ({ role }: HeroFinderProps) => {
               onClick={handleSearch}
               className={styles.button}
               aria-label={
-                role === 'executor'
+                role === "executor"
                   ? "Найти клиентов"
                   : "Найти исполнителей"
               }

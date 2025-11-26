@@ -20,6 +20,13 @@ export const content = style({
   margin: "0 auto",
 });
 
+export const top = style({
+  display: "flex",
+  alignItems: "flex-start",
+  gap: vars.spacing["24"],
+  width: "100%",
+});
+
 export const locationBlock = style({
   display: "flex",
   gap: vars.spacing["8"],
