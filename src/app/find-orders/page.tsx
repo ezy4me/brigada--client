@@ -1,13 +1,12 @@
 import { HeroFinder } from "@/widgets/hero-finder/ui/HeroFinder";
-import { CallToAction } from "@/widgets/call-to-action/ui/CallToAction";
-import { Section } from "@/shared/ui/section/Section";
-import * as styles from "./findOrders.css";
 import { OrderSearch } from "@/widgets/order-search/ui/OrderSearch";
+import { Section } from "@/shared/ui/section/Section";
 import { Header } from "@/widgets/header/ui/Header";
 import { Footer } from "@/widgets/footer/ui/Footer";
+import * as styles from "./findOrders.css";
 
 export default function FindOrdersPage() {
-  const userRole = "executor";
+  const userRole: "customer" | "executor" | "company" = "company";
 
   return (
     <div className={styles.page}>
@@ -16,7 +15,6 @@ export default function FindOrdersPage() {
       <Section>
         <OrderSearch role={userRole} />
       </Section>
-
       <Footer />
     </div>
   );

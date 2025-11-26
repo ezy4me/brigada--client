@@ -22,7 +22,7 @@ export const content = style({
 
 export const top = style({
   display: "flex",
-  alignItems: "flex-start",
+  alignItems: "center",
   gap: vars.spacing["24"],
   width: "100%",
 });
