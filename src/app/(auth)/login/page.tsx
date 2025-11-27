@@ -7,15 +7,19 @@ import Link from "next/link";
 import * as styles from "./page.css";
 import { useRouter } from "next/navigation";
 import { AnimatedBackground } from "@/shared/ui/animated-background/AnimatedBackground";
+import { LoginData } from "@/features/auth/lib/validation-schemas";
 
 export default function LoginPage() {
   const router = useRouter();
-  const handleLogin = async (data: {
-    email: string;
-    password: string;
-  }) => {
+
+  const handleLogin = async (data: LoginData) => {
     console.log("Login attempt:", data);
+    // await loginApi(data);
     router.push("/profile");
+  };
+
+  const handleForgotPassword = () => {
+    router.push("/forgot-password");
   };
 
   return (
@@ -33,7 +37,10 @@ export default function LoginPage() {
               Пожалуйста, введите свои данные
             </p>
 
-            <LoginForm onSubmit={handleLogin} />
+            <LoginForm 
+              onSubmit={handleLogin} 
+              onForgotPassword={handleForgotPassword}
+            />
 
             <div className={styles.footer}>
               <p className={styles.footerText}>

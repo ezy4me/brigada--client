@@ -15,9 +15,16 @@ export const companySchema = baseUserSchema.safeExtend({
   tariff: z.string().min(1, 'Выберите тариф'),
 });
 
+export const loginSchema = z.object({
+  email: z.string().email('Email некорректен'),
+  password: z.string().min(1, 'Пароль обязателен'),
+});
+
+
 export const customerSchema = baseUserSchema;
 export const executorSchema = baseUserSchema;
 
+export type LoginData = z.infer<typeof loginSchema>;
 export type BaseUserData = z.infer<typeof baseUserSchema>;
 export type CompanyData = z.infer<typeof companySchema>;
 export type CustomerData = z.infer<typeof customerSchema>;

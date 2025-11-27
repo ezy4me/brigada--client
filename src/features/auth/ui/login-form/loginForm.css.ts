@@ -1,3 +1,4 @@
+// src/features/auth/ui/login-form/loginForm.css.ts
 import { style } from "@vanilla-extract/css";
 import { vars } from "@/shared/styles/theme.css";
 
@@ -15,14 +16,14 @@ export const inputWrapper = style({
 });
 
 export const button = style({
-  marginTop: vars.spacing["16"],
+  marginTop: vars.spacing["8"],
 });
 
 export const errorText = style({
   fontSize: vars.font.size.caption,
   color: vars.color.status.error,
-  textAlign: "left",
-  marginTop: vars.spacing["4"],
+  textAlign: "center",
+  marginTop: vars.spacing["8"],
 });
 
 export const forgotPassword = style({
@@ -32,12 +33,13 @@ export const forgotPassword = style({
 });
 
 export const forgotPasswordLink = style({
-  fontSize: vars.font.size.body2,
+  background: "none",
+  border: "none",
   color: vars.color.brand.primary,
+  fontSize: vars.font.size.caption,
+  cursor: "pointer",
   textDecoration: "none",
-  transition: "opacity 0.2s ease",
   ":hover": {
-    opacity: 0.8,
     textDecoration: "underline",
   },
 });
