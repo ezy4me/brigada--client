@@ -8,12 +8,12 @@ import {
   businessPartners,
   generalPartners,
 } from "@/widgets/partner-carousel/model";
-import { HeroFinder } from "@/widgets/hero-finder/ui/HeroFinder";
+import { HeroFinder } from "@/features/hero-finder/ui/HeroFinder";
 
 export default function ExecutorPage() {
   return (
     <div className={styles.page}>
-      <HeroFinder role="executor" />;
+      <HeroFinder role="executor" />
       <HowItWorks />
       <CallToAction
         text="Работайте с клиентами — мы берём остальное на себя"
@@ -22,7 +22,7 @@ export default function ExecutorPage() {
       />
       <PartnerCarousel
         title="С какими бизнесами мы работаем"
-        description="Мы работаем только с исполнителями, которые реально выполняют задачи, а не размещают “пустые” анкеты."
+        description="Мы работаем только с исполнителями, которые реально выполняют задачи, а не размещают 'пустые' анкеты."
         partners={businessPartners}
       />
       <WhyChooseUs />

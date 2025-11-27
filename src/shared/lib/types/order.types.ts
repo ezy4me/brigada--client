@@ -1,4 +1,6 @@
-export type UserRole = "customer" | "executor" | "company";
+import { UserRole } from "./user.types";
+
+export type { UserRole };
 
 export type OrderAuthorType = "customer" | "executor" | "company";
 

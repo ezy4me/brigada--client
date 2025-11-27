@@ -12,37 +12,29 @@ import {
 import { Tariffs } from "@/widgets/tariffs/ui/Tariffs";
 import { GetStarted } from "@/widgets/get-started/ui/GetStarted";
 
-export default function ExecutorPage() {
+export default function CompanyPage() {
   return (
     <div className={styles.page}>
       <HeroExecutor />
-
       <HowItWorks />
-
       <CallToAction
         text="Работайте с клиентами — мы берём остальное на себя"
         buttonText="Создать компанию"
         signupHref="/register"
       />
-
       <PartnerCarousel
         title="С какими бизнесами мы работаем"
-        description="Мы работаем только с исполнителями, которые реально выполняют задачи, а не размещают “пустые” анкеты."
+        description="Мы работаем только с исполнителями, которые реально выполняют задачи, а не размещают 'пустые' анкеты."
         partners={businessPartners}
       />
-
       <WhyChooseUs />
-
       <Tariffs />
-
       <PartnerCarousel
         title="Наши кадровые партнёры"
         description="С нами работают строительные компании, поставщики и сервисные организации по всей России. Мы ценим партнёрство и развиваем рынок вместе."
         partners={generalPartners}
       />
-
       <FAQSection />
-
       <GetStarted />
     </div>
   );

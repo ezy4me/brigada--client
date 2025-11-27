@@ -7,14 +7,14 @@ import {
   businessPartners,
   generalPartners,
 } from "@/widgets/partner-carousel/model";
-import { HeroFinder } from "@/widgets/hero-finder/ui/HeroFinder";
+import { HeroFinder } from "@/features/hero-finder/ui/HeroFinder";
 import { PopularServices } from "@/widgets/popular-services/ui/PopularServices";
 import { HowToUse } from "@/widgets/how-to-use/ui/HowToUse";
 
-export default function ExecutorPage() {
+export default function CustomerPage() {
   return (
     <div className={styles.page}>
-      <HeroFinder role="customer" />;
+      <HeroFinder role="customer" />
       <PopularServices />
       <HowItWorks />
       <CallToAction
@@ -23,11 +23,6 @@ export default function ExecutorPage() {
         signupHref="/register"
       />
       <HowToUse />
-      {/* <PartnerCarousel
-        title="С какими бизнесами мы работаем"
-        description="Мы работаем только с исполнителями, которые реально выполняют задачи, а не размещают “пустые” анкеты."
-        partners={businessPartners}
-      /> */}
       <PartnerCarousel
         title="Наши кадровые партнёры"
         description="С нами работают строительные компании, поставщики и сервисные организации по всей России. Мы ценим партнёрство и развиваем рынок вместе."

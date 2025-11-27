@@ -1,9 +1,10 @@
 "use client";
 
 import { OrderCard } from "@/features/search/ui/order-card/OrderCard";
-import type { Order, UserRole } from "@/shared/lib/types/order.types";
+import type { Order } from "@/shared/lib/types/order.types";
 import { Text } from "@/shared/ui/text/Text";
 import * as styles from "./orderList.css";
+import { UserRole } from "@/shared/lib/types/user.types";
 
 interface OrderListProps {
   orders: Order[];
@@ -30,7 +31,7 @@ export const OrderList = ({ orders, role }: OrderListProps) => {
           Найдено {orders.length} {getResultsText(orders.length)}
         </Text>
       </div>
-      
+
       <div className={styles.list}>
         {orders.map((order) => (
           <OrderCard key={order.id} order={order} role={role} />
@@ -42,6 +43,11 @@ export const OrderList = ({ orders, role }: OrderListProps) => {
 
 const getResultsText = (count: number) => {
   if (count % 10 === 1 && count % 100 !== 11) return "объявление";
-  if (count % 10 >= 2 && count % 10 <= 4 && (count % 100 < 10 || count % 100 >= 20)) return "объявления";
+  if (
+    count % 10 >= 2 &&
+    count % 10 <= 4 &&
+    (count % 100 < 10 || count % 100 >= 20)
+  )
+    return "объявления";
   return "объявлений";
 };
