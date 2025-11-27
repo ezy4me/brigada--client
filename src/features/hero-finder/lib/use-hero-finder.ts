@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect, useCallback } from "react";
 import {
   useRouter,
@@ -17,7 +19,9 @@ export const useHeroFinder = ({
   const router = useRouter();
   const searchParams = useNextSearchParams();
 
-  const [city, setCity] = useState(defaultCity);
+  const [city, setCity] = useState(
+    searchParams.get("city") || defaultCity
+  );
   const [searchQuery, setSearchQuery] = useState(
     searchParams.get("q") || ""
   );
@@ -43,11 +47,18 @@ export const useHeroFinder = ({
   }, [defaultCity]);
 
   const handleSearch = useCallback(() => {
-    if (!searchQuery.trim()) return;
-
     const params = new URLSearchParams();
-    params.set("q", searchQuery.trim());
-    params.set("city", city);
+
+    if (searchQuery.trim()) {
+      params.set("q", searchQuery.trim());
+    } else {
+      params.delete("q");
+    }
+
+    if (city) {
+      params.set("city", city);
+    }
+
     params.set("role", role);
 
     router.push(`/find-orders?${params.toString()}`);
@@ -65,6 +76,14 @@ export const useHeroFinder = ({
     console.log("Открыть выбор города");
   }, []);
 
+  const clearSearch = useCallback(() => {
+    setSearchQuery("");
+    const params = new URLSearchParams();
+    if (city) params.set("city", city);
+    params.set("role", role);
+    router.push(`/find-orders?${params.toString()}`);
+  }, [city, role, router]);
+
   return {
     city,
     searchQuery,
@@ -73,6 +92,7 @@ export const useHeroFinder = ({
     handleSearch,
     handlePopularRequest,
     handleChangeCity,
+    clearSearch,
   };
 };
 

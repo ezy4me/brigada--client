@@ -89,3 +89,65 @@ export const actions = style({
 export const applyButton = style({
   width: "100%",
 });
+
+// В orderFilters.css.ts добавляем:
+export const keywordInputContainer = style({
+  display: "flex",
+  gap: vars.spacing["8"],
+  marginBottom: vars.spacing["8"],
+});
+
+export const addKeywordButton = style({
+  background: "none",
+  border: "none",
+  cursor: "pointer",
+  color: vars.color.brand.primary,
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  padding: 0,
+  transition: "color 0.2s ease",
+  ":hover": {
+    color: vars.color.brand.secondary,
+  },
+  ":disabled": {
+    color: vars.color.text.inverted,
+    cursor: "not-allowed",
+  },
+});
+
+export const keywordsList = style({
+  display: "flex",
+  flexWrap: "wrap",
+  gap: vars.spacing["8"],
+});
+
+export const keywordTag = style({
+  display: "flex",
+  alignItems: "center",
+  gap: vars.spacing["4"],
+  padding: `${vars.spacing["4"]} ${vars.spacing["8"]}`,
+  backgroundColor: vars.color.background.tertiary,
+  borderRadius: vars.radius.md,
+  border: `1px solid ${vars.color.border.default}`,
+});
+
+export const keywordText = style({
+  fontSize: vars.font.size.caption,
+  color: vars.color.text.primary,
+});
+
+export const removeKeywordButton = style({
+  background: "none",
+  border: "none",
+  cursor: "pointer",
+  color: vars.color.text.secondary,
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  padding: 0,
+  transition: "color 0.2s ease",
+  ":hover": {
+    color: vars.color.status.error,
+  },
+});

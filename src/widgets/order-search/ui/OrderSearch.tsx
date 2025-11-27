@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo, useEffect } from "react";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import { OrderFilters } from "@/features/search/ui/order-filters/OrderFilters";
 import { OrderList } from "@/features/search/ui/order-list/OrderList";
 import { getMockOrders } from "@/shared/lib/mocks/orders";
@@ -15,6 +15,7 @@ interface OrderSearchProps {
 
 export const OrderSearch = ({ role }: OrderSearchProps) => {
   const searchParams = useSearchParams();
+  const router = useRouter();
   const queryFromUrl = searchParams.get("q") || "";
   const cityFromUrl = searchParams.get("city") || "";
 
@@ -22,25 +23,26 @@ export const OrderSearch = ({ role }: OrderSearchProps) => {
     minPrice: "",
     maxPrice: "",
     region: cityFromUrl,
-    keywords: queryFromUrl,
+    keywords: [], 
     executorType: undefined,
     highRatingOnly: false,
     contentType: role === "company" ? "jobs" : undefined,
   });
 
   useEffect(() => {
-    if (queryFromUrl || cityFromUrl) {
-      setFilters((prev) => ({
-        ...prev,
-        region: cityFromUrl || prev.region,
-        keywords: queryFromUrl || prev.keywords,
-      }));
-    }
-  }, [queryFromUrl, cityFromUrl]);
+    setFilters((prev) => ({
+      ...prev,
+      region: cityFromUrl,
+    }));
+  }, [cityFromUrl]);
 
   const allOrders = useMemo(() => getMockOrders(role), [role]);
 
   const filteredOrders = useMemo(() => {
+    if (!queryFromUrl && filters.keywords.length === 0 && !filters.region && !filters.minPrice && !filters.maxPrice) {
+      return allOrders;
+    }
+
     return allOrders.filter((order) => {
       if (filters.minPrice && order.price < parseInt(filters.minPrice))
         return false;
@@ -54,13 +56,19 @@ export const OrderSearch = ({ role }: OrderSearchProps) => {
         return false;
       }
 
-      if (filters.keywords) {
-        const keywords = filters.keywords.toLowerCase().split(" ");
-        const searchableText =
-          `${order.title} ${order.description} ${order.keywords.join(" ")}`.toLowerCase();
-        if (
-          !keywords.every((keyword) => searchableText.includes(keyword))
-        ) {
+      if (queryFromUrl) {
+        const searchableText = `${order.title} ${order.description} ${order.keywords.join(" ")}`.toLowerCase();
+        if (!searchableText.includes(queryFromUrl.toLowerCase())) {
+          return false;
+        }
+      }
+
+      if (filters.keywords.length > 0) {
+        const searchableText = `${order.title} ${order.description} ${order.keywords.join(" ")}`.toLowerCase();
+        const hasAllKeywords = filters.keywords.every(keyword => 
+          searchableText.includes(keyword.toLowerCase())
+        );
+        if (!hasAllKeywords) {
           return false;
         }
       }
@@ -86,22 +94,45 @@ export const OrderSearch = ({ role }: OrderSearchProps) => {
 
       return true;
     });
-  }, [allOrders, filters]);
+  }, [allOrders, filters, queryFromUrl]);
 
   const handleFiltersChange = (newFilters: FilterValues) => {
     setFilters(newFilters);
+    
+    const params = new URLSearchParams(searchParams.toString());
+    
+    if (queryFromUrl) {
+      params.set('q', queryFromUrl);
+    }
+    
+    if (newFilters.region) {
+      params.set('city', newFilters.region);
+    } else {
+      params.delete('city');
+    }
+    
+    params.set('role', role);
+    
+    router.replace(`/find-orders?${params.toString()}`, { scroll: false });
   };
 
   const handleResetFilters = () => {
-    setFilters({
+    const resetFilters: FilterValues = {
       minPrice: "",
       maxPrice: "",
-      region: cityFromUrl,
-      keywords: queryFromUrl,
+      region: "",
+      keywords: [],
       executorType: undefined,
       highRatingOnly: false,
       contentType: role === "company" ? "jobs" : undefined,
-    });
+    };
+    
+    setFilters(resetFilters);
+    
+    const params = new URLSearchParams();
+    if (queryFromUrl) params.set('q', queryFromUrl);
+    params.set('role', role);
+    router.replace(`/find-orders?${params.toString()}`, { scroll: false });
   };
 
   return (

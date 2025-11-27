@@ -5,8 +5,10 @@ import { Button } from "@/shared/ui/button/Button";
 import { Text } from "@/shared/ui/text/Text";
 import { Heading } from "@/shared/ui/heading/Heading";
 import { Switch } from "@/shared/ui/switch/Switch";
+import { X, Plus } from "lucide-react";
 import type { UserRole, FilterValues } from "@/shared/lib/types/order.types";
 import * as styles from "./orderFilters.css";
+import { useState } from "react";
 
 export interface OrderFiltersProps {
   role: UserRole;
@@ -21,6 +23,8 @@ export const OrderFilters = ({
   onFiltersChange,
   onResetFilters,
 }: OrderFiltersProps) => {
+  const [keywordInput, setKeywordInput] = useState("");
+
   const handleChange = (name: keyof FilterValues, value: any) => {
     onFiltersChange({
       ...filters,
@@ -30,11 +34,31 @@ export const OrderFilters = ({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Фильтры применяются автоматически через state
   };
 
   const handleReset = () => {
     onResetFilters();
+  };
+
+  const handleAddKeyword = () => {
+    if (keywordInput.trim() && !filters.keywords.includes(keywordInput.trim())) {
+      handleChange("keywords", [...filters.keywords, keywordInput.trim()]);
+      setKeywordInput("");
+    }
+  };
+
+  const handleRemoveKeyword = (keywordToRemove: string) => {
+    handleChange(
+      "keywords",
+      filters.keywords.filter((keyword) => keyword !== keywordToRemove)
+    );
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      handleAddKeyword();
+    }
   };
 
   return (
@@ -87,12 +111,42 @@ export const OrderFilters = ({
 
       <div className={styles.section}>
         <Heading as="h4" className={styles.sectionTitle}>Ключевые слова</Heading>
-        <Input
-          placeholder="Введите ключевые слова"
-          value={filters.keywords}
-          onChange={(e) => handleChange("keywords", e.target.value)}
-          className={styles.input}
-        />
+        <div className={styles.keywordInputContainer}>
+          <Input
+            placeholder="Добавьте слово"
+            value={keywordInput}
+            onChange={(e) => setKeywordInput(e.target.value)}
+            onKeyPress={handleKeyPress}
+            className={styles.input}
+            rightIcon={
+              <button
+                type="button"
+                onClick={handleAddKeyword}
+                className={styles.addKeywordButton}
+                disabled={!keywordInput.trim()}
+              >
+                <Plus size={16} />
+              </button>
+            }
+          />
+        </div>
+        
+        {filters.keywords.length > 0 && (
+          <div className={styles.keywordsList}>
+            {filters.keywords.map((keyword, index) => (
+              <div key={index} className={styles.keywordTag}>
+                <Text className={styles.keywordText}>{keyword}</Text>
+                <button
+                  type="button"
+                  onClick={() => handleRemoveKeyword(keyword)}
+                  className={styles.removeKeywordButton}
+                >
+                  <X size={14} />
+                </button>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
 
       {role === "customer" && (

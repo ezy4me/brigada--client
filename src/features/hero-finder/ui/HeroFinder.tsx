@@ -1,6 +1,13 @@
 "use client";
 
-import { Search, MapPin, CheckCircle, Users, Loader2 } from "lucide-react";
+import {
+  Search,
+  MapPin,
+  CheckCircle,
+  Users,
+  Loader2,
+  X,
+} from "lucide-react";
 import { Button } from "@/shared/ui/button/Button";
 import { Input } from "@/shared/ui/input/Input";
 import { Text } from "@/shared/ui/text/Text";
@@ -30,6 +37,7 @@ export const HeroFinder = ({
     handleSearch,
     handlePopularRequest,
     handleChangeCity,
+    clearSearch,
   } = useHeroFinder({ role, defaultCity });
 
   const config = getHeroFinderConfig(role);
@@ -39,6 +47,16 @@ export const HeroFinder = ({
       handleSearch();
     }
   };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const handleClearSearch = () => {
+    clearSearch();
+  };
+
+  const showClearButton = searchQuery.length > 0;
 
   return (
     <Section className={`${styles.section} ${className || ""}`}>
@@ -89,10 +107,22 @@ export const HeroFinder = ({
             <Input
               placeholder={config.placeholder}
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={handleInputChange}
               onKeyPress={handleKeyPress}
               size="lg"
-              rightIcon={<Search />}
+              rightIcon={
+                showClearButton ? (
+                  <button
+                    type="button"
+                    onClick={handleClearSearch}
+                    className={styles.clearButton}
+                  >
+                    <X size={16} />
+                  </button>
+                ) : (
+                  <Search />
+                )
+              }
               aria-label={config.placeholder}
             />
             <Button
@@ -100,7 +130,6 @@ export const HeroFinder = ({
               size="lg"
               onClick={handleSearch}
               className={styles.button}
-              disabled={!searchQuery.trim()}
             >
               {config.searchLabel}
             </Button>

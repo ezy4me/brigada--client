@@ -20,6 +20,7 @@ export default function FindOrdersPage() {
 
   return (
     <div className={styles.page}>
+    
       <HeroFinder role={effectiveRole} defaultCity={city} />
       <Section>
         <OrderSearch role={effectiveRole} />
