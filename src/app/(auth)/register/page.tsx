@@ -1,24 +1,17 @@
 "use client";
 
-import { useState } from "react";
 import { Card, CardContent } from "@/shared/ui/card/Card";
 import { Logo } from "@/shared/ui/logo/Logo";
 import { RegisterForm } from "@/features/auth/ui/register-form/RegisterForm";
 import Link from "next/link";
 import * as styles from "./page.css";
-import { Role } from "@/features/role-selector/ui/RoleSelector";
 import { AnimatedBackground } from "@/shared/ui/animated-background/AnimatedBackground";
+import { RegisterFormFields } from "@/features/auth/lib/use-register-form";
+import { Role } from "@/features/role-selector/ui/RoleSelector";
 
 export default function RegisterPage() {
-  const [selectedRole, setSelectedRole] = useState<Role | null>(null);
-
-  const handleRegister = async (data: {
-    email: string;
-    password: string;
-    confirmPassword: string;
-    fullName: string;
-  }) => {
-    console.log("Registration attempt:", { ...data, role: selectedRole });
+  const handleRegister = async (data: RegisterFormFields, role: Role) => {
+    console.log("Registration attempt:", { ...data, role });
   };
 
   return (
@@ -37,11 +30,7 @@ export default function RegisterPage() {
               Выберите роль и заполните данные
             </p>
 
-            <RegisterForm
-              onSubmit={handleRegister}
-              selectedRole={selectedRole}
-              onRoleChange={setSelectedRole}
-            />
+            <RegisterForm onSubmit={handleRegister} />
 
             <div className={styles.footer}>
               <p className={styles.footerText}>

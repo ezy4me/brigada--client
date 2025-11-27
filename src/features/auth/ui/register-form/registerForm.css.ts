@@ -4,7 +4,6 @@ import { vars } from "@/shared/styles/theme.css";
 export const form = style({
   display: "flex",
   flexDirection: "column",
-  justifyContent: "center",
   gap: vars.spacing["16"],
   width: "100%",
 });
@@ -20,6 +19,18 @@ export const inputWrapper = style({
   flexDirection: "column",
   gap: vars.spacing["8"],
 });
+  
+export const selectLabel = style({
+  fontSize: vars.font.size.body2,
+  fontWeight: vars.font.weight.medium,
+  color: vars.color.text.primary,
+  marginBottom: vars.spacing["8"],
+});
+
+export const tariffDropdown = style({
+  width: "100%",
+  justifyContent: "flex-start",
+});
 
 export const button = style({
   marginTop: vars.spacing["16"],
@@ -28,7 +39,6 @@ export const button = style({
 export const errorText = style({
   fontSize: vars.font.size.caption,
   color: vars.color.status.error,
-  textAlign: "left",
   marginTop: vars.spacing["4"],
 });
 
@@ -55,7 +65,4 @@ export const passwordToggle = style({
   justifyContent: "center",
   padding: 0,
   transition: "color 0.2s ease",
-  ":hover": {
-    color: vars.color.brand.primary,
-  },
 });

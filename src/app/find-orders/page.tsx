@@ -6,7 +6,7 @@ import { Footer } from "@/widgets/footer/ui/Footer";
 import * as styles from "./findOrders.css";
 
 export default function FindOrdersPage() {
-  const userRole: "customer" | "executor" | "company" = "company";
+  const userRole: "customer" | "executor" | "company" = "executor";
 
   return (
     <div className={styles.page}>
