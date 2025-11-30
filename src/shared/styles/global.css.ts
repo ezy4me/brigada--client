@@ -2,8 +2,12 @@ import { globalStyle } from "@vanilla-extract/css";
 
 import { vars } from "./theme.css";
 
-globalStyle("*, *::before, *::after", {
-  boxSizing: "border-box",
+globalStyle(":root", {
+  colorScheme: "light dark",
+});
+
+globalStyle("html", {
+  transition: "background-color 0.3s ease, color 0.3s ease",
 });
 
 globalStyle("body", {
@@ -14,6 +18,11 @@ globalStyle("body", {
   color: vars.color.text.primary,
   lineHeight: vars.font.lineHeight.normal,
   position: "relative",
+  transition: "background-color 0.3s ease, color 0.3s ease",
+});
+
+globalStyle("*, *::before, *::after", {
+  boxSizing: "border-box",
 });
 
 globalStyle("h1", {
@@ -70,4 +79,9 @@ globalStyle("main", {
 globalStyle(":focus-visible", {
   outline: `2px solid ${vars.color.brand.primary}`,
   outlineOffset: "2px",
+});
+
+// Плавные переходы для всех элементов
+globalStyle("*", {
+  transition: "background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease",
 });

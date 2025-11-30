@@ -18,7 +18,6 @@ import {
   dropdownItem,
 } from "./roleSelector.css";
 
-
 export type Role = "executors" | "customers" | "companies";
 
 export interface RoleSelectorProps {

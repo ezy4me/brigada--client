@@ -30,8 +30,8 @@ export const colorPalette = {
   blue700: "#1565C0",
 } as const;
 
-export const semanticColors = {
-  background: {
+export const lightSemanticColors = {
+   background: {
     primary: colorPalette.light,
     secondary: colorPalette.gray50,
     tertiary: colorPalette.gray100,
@@ -55,3 +55,31 @@ export const semanticColors = {
     error: colorPalette.red500,
   },
 } as const;
+
+export const darkSemanticColors = {
+  background: {
+    primary: colorPalette.gray900,
+    secondary: colorPalette.gray800,
+    tertiary: colorPalette.gray700,
+  },
+  text: {
+    primary: colorPalette.white,
+    secondary: colorPalette.gray300,
+    inverted: colorPalette.black,
+  },
+  border: {
+    default: colorPalette.gray700,
+    strong: colorPalette.gray600,
+  },
+  brand: {
+    primary: colorPalette.red500,
+    secondary: colorPalette.blue500,
+  },
+  status: {
+    success: colorPalette.blue500,
+    warning: "#FFA726",
+    error: colorPalette.red500,
+  },
+} as const;
+
+export const semanticColors = lightSemanticColors;

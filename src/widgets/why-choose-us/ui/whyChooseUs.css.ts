@@ -47,7 +47,7 @@ export const benefitItem = style({
   textAlign: "center",
   flexDirection: "column",
   padding: vars.spacing["24"],
-  borderRadius: vars.radius.md,
+  borderRadius: vars.radius.lg,
   border: `1px solid ${vars.color.border.default}`,
   backgroundImage: `linear-gradient(135deg, ${vars.color.background.secondary} 0%, ${vars.color.gray["100"]} 100%)`,
   position: "relative",

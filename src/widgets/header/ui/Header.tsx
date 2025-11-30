@@ -3,11 +3,12 @@
 import { FC } from "react";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 import { DoorOpenIcon } from "lucide-react";
 
 import { RoleSelector, type Role } from "@/features/role-selector/ui/RoleSelector";
+import { ThemeToggle } from "@/features/theme/ui/ThemeToggle";
 import { cn } from "@/shared/lib/utils";
 import { Button } from "@/shared/ui/button/Button";
 import { Logo } from "@/shared/ui/logo/Logo";
@@ -20,6 +21,7 @@ export interface HeaderProps {
 
 export const Header: FC<HeaderProps> = ({ className }) => {
   const pathname = usePathname();
+  const router = useRouter();
 
   const getActiveRole = (): Role | undefined => {
     if (pathname?.startsWith("/executor")) return "executors";
@@ -43,7 +45,7 @@ export const Header: FC<HeaderProps> = ({ className }) => {
         path = "/company";
         break;
     }
-    window.location.href = path;
+    router.push(path);
   };
 
   return (
@@ -53,6 +55,7 @@ export const Header: FC<HeaderProps> = ({ className }) => {
           <Logo href="/" />
 
           <div className={styles.actions}>
+            <ThemeToggle />
             <RoleSelector activeRole={activeRole} onRoleChange={handleRoleChange} />
             <Link href="/login">
               <Button variant="white" size="md" rightIcon={<DoorOpenIcon size={24} />}>

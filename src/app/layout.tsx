@@ -1,11 +1,13 @@
-import type { Metadata } from "next";
-
 import { Roboto } from "next/font/google";
 
 import { Providers } from "@/app/providers/StoreProvider";
-import { themeClass } from "@/shared/styles/theme.css";
-import "@/shared/styles/global.css";
 import { SupportChat } from "@/features/support-chat/ui/SupportChat";
+import { ThemeProvider } from "@/features/theme/lib/ThemeContext";
+import { themeClass } from "@/shared/styles";
+
+import type { Metadata } from "next";
+
+import "@/shared/styles/global.css";
 
 const robotoSans = Roboto({
   variable: "--font-roboto-sans",
@@ -24,10 +26,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ru">
+    <html lang="ru" data-theme="light" suppressHydrationWarning>
       <body className={`${robotoSans.variable} ${themeClass}`}>
-        <Providers>{children}</Providers>
-        <SupportChat />
+        <ThemeProvider>
+          <Providers>{children}</Providers>
+          <SupportChat />
+        </ThemeProvider>
       </body>
     </html>
   );
