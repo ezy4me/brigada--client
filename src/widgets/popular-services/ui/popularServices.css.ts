@@ -1,4 +1,5 @@
 import { style, keyframes } from "@vanilla-extract/css";
+
 import { vars } from "@/shared/styles/theme.css";
 
 const shine = keyframes({
@@ -11,7 +12,7 @@ export const section = style({
 });
 
 export const container = style({
-//   padding: `0 ${vars.spacing["16"]}`,
+  //   padding: `0 ${vars.spacing["16"]}`,
 });
 
 export const header = style({

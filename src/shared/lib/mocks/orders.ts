@@ -18,8 +18,7 @@ export const mockOrders: Order[] = [
   {
     id: "2",
     title: "Требуется электрик для замены проводки",
-    description:
-      "Нужен опытный электрик для замены старой проводки в 2-к квартире.",
+    description: "Нужен опытный электрик для замены старой проводки в 2-к квартире.",
     rating: 4.9,
     author: { name: "Анна С.", type: "customer" },
     region: "Москва",
@@ -43,8 +42,7 @@ export const mockOrders: Order[] = [
   {
     id: "4",
     title: "Укладка плитки в ванной",
-    description:
-      "Ищу исполнителя для укладки керамической плитки в ванной комнате 8м².",
+    description: "Ищу исполнителя для укладки керамической плитки в ванной комнате 8м².",
     rating: 4.6,
     author: { name: "Мария К.", type: "customer" },
     region: "Казань",
@@ -68,8 +66,7 @@ export const mockOrders: Order[] = [
   {
     id: "6",
     title: "Установка натяжных потолков",
-    description:
-      "Профессиональная установка натяжных потолков в квартире.",
+    description: "Профессиональная установка натяжных потолков в квартире.",
     rating: 4.9,
     author: { name: "Петр В.", type: "executor" },
     region: "Санкт-Петербург",
@@ -84,15 +81,13 @@ export const getMockOrders = (role: UserRole): Order[] => {
   switch (role) {
     case "executor":
       return mockOrders.filter(
-        (order) =>
-          order.author.type === "customer" && order.orderType === "job"
+        (order) => order.author.type === "customer" && order.orderType === "job"
       );
 
     case "customer":
       return mockOrders.filter(
         (order) =>
-          (order.author.type === "executor" ||
-            order.author.type === "company") &&
+          (order.author.type === "executor" || order.author.type === "company") &&
           order.orderType === "service"
       );
 
@@ -100,8 +95,7 @@ export const getMockOrders = (role: UserRole): Order[] => {
       return mockOrders.filter(
         (order) =>
           order.author.type === "customer" ||
-          (order.author.type === "executor" &&
-            order.orderType === "service")
+          (order.author.type === "executor" && order.orderType === "service")
       );
 
     case "guest":

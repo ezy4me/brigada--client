@@ -1,12 +1,15 @@
 // src/features/search/ui/order-card/OrderCard.tsx
 "use client";
 
-import { Card } from "@/shared/ui/card/Card";
-import { Text } from "@/shared/ui/text/Text";
-import { Heading } from "@/shared/ui/heading/Heading";
-import { Button } from "@/shared/ui/button/Button";
 import { Star, MapPin, Calendar, User } from "lucide-react";
+
 import type { Order, UserRole } from "@/shared/lib/types/order.types";
+import { Button } from "@/shared/ui/button/Button";
+import { Card } from "@/shared/ui/card/Card";
+import { Heading } from "@/shared/ui/heading/Heading";
+import { Text } from "@/shared/ui/text/Text";
+
+
 import * as styles from "./orderCard.css";
 
 interface OrderCardProps {
@@ -19,10 +22,10 @@ export const OrderCard = ({ order, role }: OrderCardProps) => {
     switch (role) {
       case "executor":
         return order.author.type === "customer" ? "Откликнуться" : "Смотреть";
-      
+
       case "customer":
         return order.author.type !== "customer" ? "Заказать" : "Смотреть";
-      
+
       case "company":
         if (order.author.type === "customer") {
           return "Взять в работу";
@@ -31,7 +34,7 @@ export const OrderCard = ({ order, role }: OrderCardProps) => {
         } else {
           return "Смотреть";
         }
-      
+
       default:
         return "Подробнее";
     }
@@ -39,10 +42,14 @@ export const OrderCard = ({ order, role }: OrderCardProps) => {
 
   const getAuthorTypeText = (type: string) => {
     switch (type) {
-      case "customer": return "Заказчик";
-      case "executor": return "Исполнитель";
-      case "company": return "Компания";
-      default: return type;
+      case "customer":
+        return "Заказчик";
+      case "executor":
+        return "Исполнитель";
+      case "company":
+        return "Компания";
+      default:
+        return type;
     }
   };
 
@@ -51,7 +58,7 @@ export const OrderCard = ({ order, role }: OrderCardProps) => {
   };
 
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('ru-RU');
+    return new Date(dateString).toLocaleDateString("ru-RU");
   };
 
   return (
@@ -101,12 +108,7 @@ export const OrderCard = ({ order, role }: OrderCardProps) => {
       </div>
 
       <div className={styles.footer}>
-        <Button
-          variant="primary"
-          size="sm"
-          onClick={handleAction}
-          className={styles.actionButton}
-        >
+        <Button variant="primary" size="sm" onClick={handleAction} className={styles.actionButton}>
           {getActionButtonText()}
         </Button>
       </div>

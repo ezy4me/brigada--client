@@ -1,8 +1,10 @@
-import { ComponentPropsWithoutRef, forwardRef } from 'react';
-import * as styles from './section.css';
-import { cn } from '@/shared/lib/utils';
+import { ComponentPropsWithoutRef, forwardRef } from "react";
 
-export interface SectionProps extends ComponentPropsWithoutRef<'section'> {}
+import { cn } from "@/shared/lib/utils";
+
+import * as styles from "./section.css";
+
+export interface SectionProps extends ComponentPropsWithoutRef<"section"> {}
 
 export const Section = forwardRef<HTMLElement, SectionProps>(
   ({ className, children, ...props }, ref) => {
@@ -14,4 +16,4 @@ export const Section = forwardRef<HTMLElement, SectionProps>(
   }
 );
 
-Section.displayName = 'Section';
+Section.displayName = "Section";

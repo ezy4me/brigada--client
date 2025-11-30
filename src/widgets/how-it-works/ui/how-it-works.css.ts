@@ -1,4 +1,5 @@
 import { keyframes, style } from "@vanilla-extract/css";
+
 import { vars } from "@/shared/styles/theme.css";
 
 const shine = keyframes({
@@ -105,7 +106,6 @@ export const stepNumber = style({
   fontWeight: vars.font.weight.bold,
   fontSize: vars.font.size.body1,
   marginBottom: vars.spacing["20"],
-
 });
 
 export const stepIcon = style({

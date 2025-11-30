@@ -5,8 +5,8 @@ export const USER_QUERY_KEYS = {
   userProfile: (userId: string) => ["userProfile", userId] as const,
 };
 
-export const fetchUserRole = async (): Promise<'executor' | 'customer' | 'company'> => {
-  const token = localStorage.getItem("token"); 
+export const fetchUserRole = async (): Promise<"executor" | "customer" | "company"> => {
+  const token = localStorage.getItem("token");
   if (!token) throw new Error("Unauthorized");
 
   const res = await fetch("/api/user/role", {
@@ -25,7 +25,7 @@ export const useUserRole = () => {
   return useQuery({
     queryKey: USER_QUERY_KEYS.userRole(),
     queryFn: fetchUserRole,
-    staleTime: 1000 * 60 * 5, 
+    staleTime: 1000 * 60 * 5,
     retry: 1,
   });
 };

@@ -1,5 +1,6 @@
-import { recipe } from '@vanilla-extract/recipes';
-import { vars } from '@/shared/styles/theme.css';
+import { recipe } from "@vanilla-extract/recipes";
+
+import { vars } from "@/shared/styles/theme.css";
 
 export const heading = recipe({
   base: {
@@ -23,7 +24,7 @@ export const heading = recipe({
     },
   },
   defaultVariants: {
-    size: 'h2',
-    weight: 'medium',
+    size: "h2",
+    weight: "medium",
   },
 });

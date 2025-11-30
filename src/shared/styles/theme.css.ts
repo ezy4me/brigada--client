@@ -1,9 +1,10 @@
 import { createTheme } from "@vanilla-extract/css";
+
 import { colorPalette, semanticColors } from "@/shared/config/colors";
 import { radius } from "@/shared/config/radius";
+import { shadow } from "@/shared/config/shadow";
 import { spacing } from "@/shared/config/spacing";
 import { typography } from "@/shared/config/typography";
-import { shadow } from "@shared/config/shadow";
 
 export const [themeClass, vars] = createTheme({
   color: {

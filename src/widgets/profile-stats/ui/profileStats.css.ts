@@ -1,50 +1,51 @@
-import { style, keyframes } from '@vanilla-extract/css';
-import { vars } from '@/shared/styles/theme.css';
+import { style, keyframes } from "@vanilla-extract/css";
+
+import { vars } from "@/shared/styles/theme.css";
 
 const shine = keyframes({
-  '0%': { transform: 'translateX(-100%)' },
-  '100%': { transform: 'translateX(100%)' },
+  "0%": { transform: "translateX(-100%)" },
+  "100%": { transform: "translateX(100%)" },
 });
 
 export const statsGrid = style({
-  display: 'grid',
-  gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-  gap: vars.spacing['24'],
-  marginBottom: vars.spacing['32'],
+  display: "grid",
+  gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+  gap: vars.spacing["24"],
+  marginBottom: vars.spacing["32"],
 });
 
 export const statCard = style({
-  display: 'flex',
-  alignItems: 'center',
-  gap: vars.spacing['16'],
-  padding: vars.spacing['24'],
+  display: "flex",
+  alignItems: "center",
+  gap: vars.spacing["16"],
+  padding: vars.spacing["24"],
   borderRadius: vars.radius.lg,
   border: `1px solid ${vars.color.border.default}`,
   backgroundColor: vars.color.background.secondary,
-  position: 'relative',
-  overflow: 'hidden',
-  transition: 'transform 0.2s ease',
-  ':hover': {
-    transform: 'scale(1.02)',
+  position: "relative",
+  overflow: "hidden",
+  transition: "transform 0.2s ease",
+  ":hover": {
+    transform: "scale(1.02)",
   },
 });
 
 export const shineElement = style({
-  position: 'absolute',
+  position: "absolute",
   top: 0,
   left: 0,
-  width: '100%',
-  height: '100%',
+  width: "100%",
+  height: "100%",
   background: `linear-gradient(120deg,
     rgba(255, 255, 255, 0) 30%,
     rgba(255, 255, 255, 0.8) 50%,
     rgba(255, 255, 255, 0) 70%
   )`,
-  transform: 'translateX(-100%)',
+  transform: "translateX(-100%)",
   zIndex: 1,
-  pointerEvents: 'none',
+  pointerEvents: "none",
   opacity: 0,
-  transition: 'opacity 0.2s ease',
+  transition: "opacity 0.2s ease",
 
   selectors: {
     [`${statCard}:hover &`]: {
@@ -59,9 +60,9 @@ export const statIcon = style({
 });
 
 export const statContent = style({
-  display: 'flex',
-  flexDirection: 'column',
-  gap: vars.spacing['4'],
+  display: "flex",
+  flexDirection: "column",
+  gap: vars.spacing["4"],
 });
 
 export const statLabel = style({

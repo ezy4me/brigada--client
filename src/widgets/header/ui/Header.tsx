@@ -1,17 +1,18 @@
 "use client";
 
 import { FC } from "react";
+
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Button } from "@/shared/ui/button/Button";
+
 import { DoorOpenIcon } from "lucide-react";
+
+import { RoleSelector, type Role } from "@/features/role-selector/ui/RoleSelector";
 import { cn } from "@/shared/lib/utils";
-import * as styles from "./header.css";
-import {
-  RoleSelector,
-  type Role,
-} from "@/features/role-selector/ui/RoleSelector";
+import { Button } from "@/shared/ui/button/Button";
 import { Logo } from "@/shared/ui/logo/Logo";
+
+import * as styles from "./header.css";
 
 export interface HeaderProps {
   className?: string;
@@ -29,9 +30,7 @@ export const Header: FC<HeaderProps> = ({ className }) => {
 
   const activeRole = getActiveRole();
 
-  const handleRoleChange = (
-    role: "executors" | "customers" | "companies"
-  ) => {
+  const handleRoleChange = (role: "executors" | "customers" | "companies") => {
     let path = "/";
     switch (role) {
       case "executors":
@@ -54,16 +53,9 @@ export const Header: FC<HeaderProps> = ({ className }) => {
           <Logo href="/" />
 
           <div className={styles.actions}>
-            <RoleSelector
-              activeRole={activeRole}
-              onRoleChange={handleRoleChange}
-            />
+            <RoleSelector activeRole={activeRole} onRoleChange={handleRoleChange} />
             <Link href="/login">
-              <Button
-                variant="white"
-                size="md"
-                rightIcon={<DoorOpenIcon size={24} />}
-              >
+              <Button variant="white" size="md" rightIcon={<DoorOpenIcon size={24} />}>
                 Войти
               </Button>
             </Link>

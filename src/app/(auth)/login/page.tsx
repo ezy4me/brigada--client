@@ -1,13 +1,17 @@
 "use client";
 
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+
+import { LoginData } from "@/features/auth/lib/validation-schemas";
+import { LoginForm } from "@/features/auth/ui/login-form/LoginForm";
+import { AnimatedBackground } from "@/shared/ui/background/animated-background/AnimatedBackground";
 import { Card, CardContent } from "@/shared/ui/card/Card";
 import { Logo } from "@/shared/ui/logo/Logo";
-import { LoginForm } from "@/features/auth/ui/login-form/LoginForm";
-import Link from "next/link";
+
 import * as styles from "./page.css";
-import { useRouter } from "next/navigation";
-import { AnimatedBackground } from "@/shared/ui/animated-background/AnimatedBackground";
-import { LoginData } from "@/features/auth/lib/validation-schemas";
+
+
 
 export default function LoginPage() {
   const router = useRouter();
@@ -33,14 +37,9 @@ export default function LoginPage() {
             </div>
 
             <h2 className={styles.title}>Вход в аккаунт</h2>
-            <p className={styles.description}>
-              Пожалуйста, введите свои данные
-            </p>
+            <p className={styles.description}>Пожалуйста, введите свои данные</p>
 
-            <LoginForm 
-              onSubmit={handleLogin} 
-              onForgotPassword={handleForgotPassword}
-            />
+            <LoginForm onSubmit={handleLogin} onForgotPassword={handleForgotPassword} />
 
             <div className={styles.footer}>
               <p className={styles.footerText}>

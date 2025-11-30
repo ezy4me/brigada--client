@@ -1,5 +1,6 @@
-import { UserRole } from '@/shared/lib/types/user.types';
-import { HeroFinderConfig } from './types';
+import { UserRole } from "@/shared/lib/types/user.types";
+
+import { HeroFinderConfig } from "./types";
 
 export const getHeroFinderConfig = (role: UserRole): HeroFinderConfig => {
   const baseConfig = {
@@ -9,25 +10,25 @@ export const getHeroFinderConfig = (role: UserRole): HeroFinderConfig => {
       searchLabel: "Найти заказы",
       popularRequests: [
         "ремонт кухни",
-        "замена электрики", 
+        "замена электрики",
         "натяжные потолки",
         "укладка плитки",
-        "монтаж водопровода"
+        "монтаж водопровода",
       ],
-      stats: ["Более 1000 заказов", "Без комиссии"]
+      stats: ["Более 1000 заказов", "Без комиссии"],
     },
     customer: {
       title: "Найти исполнителя",
       placeholder: "Кого ищете?",
-      searchLabel: "Найти исполнителей", 
+      searchLabel: "Найти исполнителей",
       popularRequests: [
         "найти плотника",
         "найти электрика",
         "найти сантехника",
-        "найти отделочника", 
-        "найти строителя"
+        "найти отделочника",
+        "найти строителя",
       ],
-      stats: ["Более 500 исполнителей", "Без комиссии"]
+      stats: ["Более 500 исполнителей", "Без комиссии"],
     },
     company: {
       title: "Найти проекты",
@@ -35,26 +36,20 @@ export const getHeroFinderConfig = (role: UserRole): HeroFinderConfig => {
       searchLabel: "Найти проекты",
       popularRequests: [
         "строительство коттеджа",
-        "отделка офиса", 
+        "отделка офиса",
         "ремонт магазина",
         "проектирование",
-        "технический надзор"
+        "технический надзор",
       ],
-      stats: ["Крупные проекты", "Прямые заказчики"]
+      stats: ["Крупные проекты", "Прямые заказчики"],
     },
     guest: {
       title: "Найти услуги",
       placeholder: "Что вас интересует?",
       searchLabel: "Найти",
-      popularRequests: [
-        "ремонт",
-        "отделка",
-        "строительство",
-        "электрика",
-        "сантехника"
-      ],
-      stats: ["Тысячи исполнителей", "Все виды работ"]
-    }
+      popularRequests: ["ремонт", "отделка", "строительство", "электрика", "сантехника"],
+      stats: ["Тысячи исполнителей", "Все виды работ"],
+    },
   };
 
   return baseConfig[role];

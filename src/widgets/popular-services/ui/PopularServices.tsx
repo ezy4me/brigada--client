@@ -1,8 +1,10 @@
+import Image from "next/image";
+
 import { Card } from "@/shared/ui/card/Card";
-import { Text } from "@/shared/ui/text/Text";
 import { Heading } from "@/shared/ui/heading/Heading";
 import { Section } from "@/shared/ui/section/Section";
-import Image from "next/image";
+import { Text } from "@/shared/ui/text/Text";
+
 import * as styles from "./popularServices.css";
 
 const services = [
@@ -40,9 +42,7 @@ export const PopularServices = () => {
           <Heading as="h2" className={styles.title}>
             Популярные услуги
           </Heading>
-          <Text className={styles.subtitle}>
-            Выберите подходящую услугу и найдите исполнителя
-          </Text>
+          <Text className={styles.subtitle}>Выберите подходящую услугу и найдите исполнителя</Text>
         </div>
 
         <div className={styles.servicesGrid}>
@@ -63,9 +63,7 @@ export const PopularServices = () => {
                 {service.title}
               </Heading>
 
-              <Text className={styles.serviceDescription}>
-                {service.description}
-              </Text>
+              <Text className={styles.serviceDescription}>{service.description}</Text>
             </Card>
           ))}
         </div>

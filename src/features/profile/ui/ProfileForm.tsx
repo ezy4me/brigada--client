@@ -1,13 +1,18 @@
 "use client";
 
 import { useState } from "react";
+
+import { Camera, CheckCircle } from "lucide-react";
+
+import { cn } from "@/shared/lib/utils";
+import { Button } from "@/shared/ui/button/Button";
 import { Card } from "@/shared/ui/card/Card";
 import { Input } from "@/shared/ui/input/Input";
-import { Button } from "@/shared/ui/button/Button";
 import { Text } from "@/shared/ui/text/Text";
-import { Camera, CheckCircle } from "lucide-react";
+
+
 import * as styles from "./profileForm.css";
-import { cn } from "@/shared/lib/utils";
+
 
 interface FormData {
   firstName: string;
@@ -22,10 +27,7 @@ export interface ProfileFormProps {
   className?: string;
 }
 
-export const ProfileForm = ({
-  initialData = {},
-  className,
-}: ProfileFormProps) => {
+export const ProfileForm = ({ initialData = {}, className }: ProfileFormProps) => {
   const [formData, setFormData] = useState<FormData>({
     firstName: initialData.firstName || "",
     lastName: initialData.lastName || "",
@@ -41,36 +43,31 @@ export const ProfileForm = ({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     console.log("Saved:", formData);
-    
+
     try {
-      const response = await fetch('/api/profile', {
-        method: 'PUT',
+      const response = await fetch("/api/profile", {
+        method: "PUT",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
-      
+
       if (response.ok) {
-        console.log('Profile updated successfully');
+        console.log("Profile updated successfully");
       }
     } catch (error) {
-      console.error('Error updating profile:', error);
+      console.error("Error updating profile:", error);
     }
   };
-
 
   return (
     <Card className={cn(styles.formCard, className)}>
       <div className={styles.profileHeader}>
         <div className={styles.avatarWrapper}>
-          <img
-            src="/user-avatar.jpg"
-            alt="Аватар пользователя"
-            className={styles.avatar}
-          />
+          <img src="/user-avatar.jpg" alt="Аватар пользователя" className={styles.avatar} />
           <button className={styles.uploadButton}>
             <Camera size={16} />
           </button>

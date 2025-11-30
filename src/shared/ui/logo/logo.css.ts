@@ -1,6 +1,7 @@
 import { style } from "@vanilla-extract/css";
-import { vars } from "@/shared/styles/theme.css";
 import { recipe } from "@vanilla-extract/recipes";
+
+import { vars } from "@/shared/styles/theme.css";
 
 const baseWrapper = style({
   display: "flex",
@@ -34,11 +35,11 @@ export const logoImage = style({
 export const logoText = style({
   fontSize: vars.font.size.h3,
   fontWeight: vars.font.weight.bold,
-  color: vars.color.brand.secondary, 
+  color: vars.color.brand.secondary,
   letterSpacing: "0.02em",
-  fontFamily: "'Montserrat', sans-serif", 
+  fontFamily: "'Montserrat', sans-serif",
 });
 
 export const logoTextSecondary = style({
-  color: vars.color.brand.primary, 
+  color: vars.color.brand.primary,
 });

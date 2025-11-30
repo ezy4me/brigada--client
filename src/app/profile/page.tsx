@@ -1,8 +1,9 @@
-import { ProfileExecutor } from "@/widgets/profile-executor/ui/ProfileExecutor";
-import { ProfileCustomer } from "@/widgets/profile-customer/ui/ProfileCustomer";
-import { ProfileCompany } from "@/widgets/profile-company/ui/ProfileCompany";
-import { Text } from "@/shared/ui/text/Text";
 import { Section } from "@/shared/ui/section/Section";
+import { Text } from "@/shared/ui/text/Text";
+import { ProfileCompany } from "@/widgets/profile-company/ui/ProfileCompany";
+import { ProfileCustomer } from "@/widgets/profile-customer/ui/ProfileCustomer";
+import { ProfileExecutor } from "@/widgets/profile-executor/ui/ProfileExecutor";
+
 import * as styles from "./profile.css";
 
 const useMockUserRole = () => {

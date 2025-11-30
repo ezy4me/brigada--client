@@ -1,13 +1,18 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+
 import { useRouter } from "next/navigation";
-import { Card, CardContent } from "@/shared/ui/card/Card";
+
+import { ArrowRight } from "lucide-react";
+
 import { Button } from "@/shared/ui/button/Button";
-import { Text } from "@/shared/ui/text/Text";
+import { Card, CardContent } from "@/shared/ui/card/Card";
 import { Heading } from "@/shared/ui/heading/Heading";
 import { Section } from "@/shared/ui/section/Section";
-import { ArrowRight } from "lucide-react";
+import { Text } from "@/shared/ui/text/Text";
+
+
 import * as styles from "./verify.css";
 
 export default function VerifyPage() {
@@ -15,10 +20,7 @@ export default function VerifyPage() {
   const [code, setCode] = useState<string[]>(Array(6).fill(""));
   const inputsRef = useRef<(HTMLInputElement | null)[]>([]);
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    index: number
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
     const value = e.target.value.replace(/\D/g, "").slice(0, 1);
     const newCode = [...code];
     newCode[index] = value;
@@ -29,10 +31,7 @@ export default function VerifyPage() {
     }
   };
 
-  const handleKeyDown = (
-    e: React.KeyboardEvent<HTMLInputElement>,
-    index: number
-  ) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>, index: number) => {
     if (e.key === "Backspace" && !code[index] && index > 0) {
       inputsRef.current[index - 1]?.focus();
     }
@@ -60,9 +59,7 @@ export default function VerifyPage() {
               <Heading as="h1" className={styles.title}>
                 Подтверждение аккаунта
               </Heading>
-              <Text className={styles.description}>
-                Мы отправили 6-значный код на вашу почту.
-              </Text>
+              <Text className={styles.description}>Мы отправили 6-значный код на вашу почту.</Text>
 
               <form onSubmit={handleSubmit} className={styles.form}>
                 <div className={styles.codeInputs}>
@@ -85,11 +82,7 @@ export default function VerifyPage() {
                   ))}
                 </div>
 
-                <Button
-                  type="submit"
-                  size="lg"
-                  rightIcon={<ArrowRight size={20} />}
-                >
+                <Button type="submit" size="lg" rightIcon={<ArrowRight size={20} />}>
                   Подтвердить
                 </Button>
               </form>

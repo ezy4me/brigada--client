@@ -1,7 +1,9 @@
-import { Input } from "@/shared/ui/input/Input";
 import { Mail, Lock, Eye, EyeOff } from "lucide-react";
 import { UseFormRegister } from "react-hook-form";
+
 import { RegisterFormFields } from "@/features/auth/lib/use-register-form";
+import { Input } from "@/shared/ui/input/Input";
+
 import * as styles from "../registerForm.css";
 
 interface BaseFieldsProps {
@@ -44,11 +46,7 @@ export const BaseFields = ({
           disabled={isLoading}
           leftIcon={<Lock size={16} />}
           rightIcon={
-            <button
-              type="button"
-              onClick={onTogglePassword}
-              className={styles.passwordToggle}
-            >
+            <button type="button" onClick={onTogglePassword} className={styles.passwordToggle}>
               {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
             </button>
           }
@@ -70,11 +68,7 @@ export const BaseFields = ({
               onClick={onToggleConfirmPassword}
               className={styles.passwordToggle}
             >
-              {showConfirmPassword ? (
-                <EyeOff size={16} />
-              ) : (
-                <Eye size={16} />
-              )}
+              {showConfirmPassword ? <EyeOff size={16} /> : <Eye size={16} />}
             </button>
           }
           error={!!errors.confirmPassword}

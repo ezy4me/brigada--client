@@ -1,8 +1,10 @@
+import Image from "next/image";
+
 import { Card, CardContent } from "@/shared/ui/card/Card";
-import { Text } from "@/shared/ui/text/Text";
 import { Heading } from "@/shared/ui/heading/Heading";
 import { Section } from "@/shared/ui/section/Section";
-import Image from "next/image";
+import { Text } from "@/shared/ui/text/Text";
+
 import * as styles from "./howToUse.css";
 
 const steps = [
@@ -38,8 +40,8 @@ export const HowToUse = () => {
             Как пользоваться
           </Heading>
           <Text className={styles.subtitle}>
-            Бригада.ру — это сервис для быстрого подбора подрядчиков, с
-            защитой сделки и прозрачными условиями
+            Бригада.ру — это сервис для быстрого подбора подрядчиков, с защитой сделки и прозрачными
+            условиями
           </Text>
         </div>
 
@@ -60,9 +62,7 @@ export const HowToUse = () => {
                 <Heading as="h3" className={styles.stepTitle}>
                   {step.title}
                 </Heading>
-                <Text className={styles.stepDescription}>
-                  {step.description}
-                </Text>
+                <Text className={styles.stepDescription}>{step.description}</Text>
               </CardContent>
             </Card>
           ))}

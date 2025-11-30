@@ -1,11 +1,15 @@
 "use client";
 
 import { useState } from "react";
+
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, Minus } from "lucide-react";
-import { faqItems } from "../model/faqData";
-import { Section } from "@/shared/ui/section/Section";
+
 import { Heading } from "@/shared/ui/heading/Heading";
+import { Section } from "@/shared/ui/section/Section";
+
+import { faqItems } from "../model/faqData";
+
 import * as styles from "./faq.css";
 
 export const FAQSection = () => {
@@ -26,15 +30,8 @@ export const FAQSection = () => {
           const isOpen = openIndex === idx;
 
           return (
-            <div
-              key={idx}
-              className={styles.accordionItem}
-              data-state={isOpen ? "open" : "closed"}
-            >
-              <button
-                onClick={() => toggle(idx)}
-                className={styles.accordionTrigger}
-              >
+            <div key={idx} className={styles.accordionItem} data-state={isOpen ? "open" : "closed"}>
+              <button onClick={() => toggle(idx)} className={styles.accordionTrigger}>
                 <span>{item.question}</span>
                 <motion.span
                   animate={{ rotate: isOpen ? 180 : 0 }}
@@ -58,9 +55,7 @@ export const FAQSection = () => {
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.3, ease: "easeInOut" }}
                   >
-                    <div className={styles.accordionContentInner}>
-                      {item.answer}
-                    </div>
+                    <div className={styles.accordionContentInner}>{item.answer}</div>
                   </motion.div>
                 )}
               </AnimatePresence>

@@ -1,8 +1,12 @@
-import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
-import { Button, ButtonProps } from "../button/Button";
-import { cn } from "@/shared/lib/utils";
-import { content, item as itemStyle } from "./dropdown.css";
 import { ReactNode } from "react";
+
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
+
+import { cn } from "@/shared/lib/utils";
+
+import { Button, ButtonProps } from "../button/Button";
+
+import { content, item as itemStyle } from "./dropdown.css";
 
 export interface DropdownItem {
   label: string;
@@ -20,7 +24,7 @@ export interface DropdownProps {
   trigger?: ReactNode;
   items: DropdownItem[];
   className?: string;
-  align?: 'start' | 'center' | 'end';
+  align?: "start" | "center" | "end";
   sideOffset?: number;
 }
 
@@ -33,7 +37,7 @@ export const Dropdown = ({
   trigger,
   items,
   className,
-  align = 'end',
+  align = "end",
   sideOffset = 8,
 }: DropdownProps) => {
   return (
@@ -56,7 +60,7 @@ export const Dropdown = ({
       </DropdownMenu.Trigger>
 
       <DropdownMenu.Portal>
-        <DropdownMenu.Content 
+        <DropdownMenu.Content
           className={cn(content, className)}
           align={align}
           sideOffset={sideOffset}
@@ -67,9 +71,7 @@ export const Dropdown = ({
               className={cn(itemStyle, className)}
               onSelect={item.onSelect}
             >
-              {item.icon && (
-                <span style={{ marginRight: "8px" }}>{item.icon}</span>
-              )}
+              {item.icon && <span style={{ marginRight: "8px" }}>{item.icon}</span>}
               {item.label}
             </DropdownMenu.Item>
           ))}

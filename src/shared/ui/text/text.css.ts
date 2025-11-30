@@ -1,5 +1,6 @@
-import { recipe } from '@vanilla-extract/recipes';
-import { vars } from '@/shared/styles/theme.css';
+import { recipe } from "@vanilla-extract/recipes";
+
+import { vars } from "@/shared/styles/theme.css";
 
 export const text = recipe({
   base: {
@@ -27,8 +28,8 @@ export const text = recipe({
     },
   },
   defaultVariants: {
-    size: 'body1',
-    color: 'primary',
-    weight: 'regular',
+    size: "body1",
+    color: "primary",
+    weight: "regular",
   },
 });

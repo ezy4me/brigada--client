@@ -1,4 +1,7 @@
 import { InputHTMLAttributes, forwardRef, ReactNode } from "react";
+
+import { cn } from "@/shared/lib/utils";
+
 import {
   field,
   label,
@@ -14,10 +17,8 @@ import {
   helperTextError,
   helperTextSuccess,
 } from "./input.css";
-import { cn } from "@/shared/lib/utils";
 
-export interface InputProps
-  extends Omit<InputHTMLAttributes<HTMLInputElement>, "size"> {
+export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "size"> {
   label?: string;
   helperText?: string;
   error?: boolean;
@@ -44,13 +45,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
   ) => {
     const showHelper = !!helperTextProp;
     const helper = showHelper && (
-      <div
-        className={cn(
-          helperText,
-          error && helperTextError,
-          success && helperTextSuccess
-        )}
-      >
+      <div className={cn(helperText, error && helperTextError, success && helperTextSuccess)}>
         {helperTextProp}
       </div>
     );
@@ -67,19 +62,11 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
               success && inputContainerSuccess
             )}
           >
-            {leftIcon && (
-              <div className={cn(icon, leftIconStyle)}>{leftIcon}</div>
-            )}
+            {leftIcon && <div className={cn(icon, leftIconStyle)}>{leftIcon}</div>}
 
-            <input
-              ref={ref}
-              className={cn(input({ size }), className)}
-              {...props}
-            />
+            <input ref={ref} className={cn(input({ size }), className)} {...props} />
 
-            {rightIcon && (
-              <div className={cn(icon, rightIconStyle)}>{rightIcon}</div>
-            )}
+            {rightIcon && <div className={cn(icon, rightIconStyle)}>{rightIcon}</div>}
           </div>
         </div>
 

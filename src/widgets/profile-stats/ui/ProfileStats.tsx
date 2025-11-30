@@ -1,8 +1,10 @@
-import { Card } from '@/shared/ui/card/Card';
-import { Text } from '@/shared/ui/text/Text';
-import { Heading } from '@/shared/ui/heading/Heading';
-import { LucideIcon } from 'lucide-react';
-import * as styles from './profileStats.css';
+import { LucideIcon } from "lucide-react";
+
+import { Card } from "@/shared/ui/card/Card";
+import { Heading } from "@/shared/ui/heading/Heading";
+import { Text } from "@/shared/ui/text/Text";
+
+import * as styles from "./profileStats.css";
 
 export interface StatItem {
   icon: LucideIcon;
@@ -31,9 +33,7 @@ export const ProfileStats = ({ stats, className }: ProfileStatsProps) => {
                 {stat.value}
               </Heading>
               {stat.description && (
-                <Text className={styles.statDescription}>
-                  {stat.description}
-                </Text>
+                <Text className={styles.statDescription}>{stat.description}</Text>
               )}
             </div>
           </Card>

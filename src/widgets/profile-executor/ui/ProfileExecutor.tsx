@@ -1,9 +1,12 @@
-import { Card } from "@/shared/ui/card/Card";
-import { Text } from "@/shared/ui/text/Text";
-import { Heading } from "@/shared/ui/heading/Heading";
 import { User, Briefcase, Star, Calendar } from "lucide-react";
-import * as styles from "./profileExecutor.css";
+
 import { Button } from "@/shared/ui/button/Button";
+import { Card } from "@/shared/ui/card/Card";
+import { Heading } from "@/shared/ui/heading/Heading";
+import { Text } from "@/shared/ui/text/Text";
+
+import * as styles from "./profileExecutor.css";
+
 
 const stats = [
   { icon: User, label: "Профиль", value: "Активен" },
@@ -18,9 +21,7 @@ export const ProfileExecutor = () => {
       <Heading as="h1" className={styles.title}>
         Личный кабинет исполнителя
       </Heading>
-      <Text className={styles.description}>
-        Управляйте своими заказами, профилем и статистикой
-      </Text>
+      <Text className={styles.description}>Управляйте своими заказами, профилем и статистикой</Text>
 
       <div className={styles.statsGrid}>
         {stats.map((stat, index) => (

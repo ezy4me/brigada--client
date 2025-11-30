@@ -1,5 +1,6 @@
-import { recipe } from "@vanilla-extract/recipes";
 import { keyframes, style } from "@vanilla-extract/css";
+import { recipe } from "@vanilla-extract/recipes";
+
 import { vars } from "@/shared/styles/theme.css";
 
 const iconAppear = keyframes({
@@ -49,8 +50,7 @@ const baseButton = style({
   fontWeight: vars.font.weight.medium,
   textDecoration: "none",
   cursor: "pointer",
-  transition:
-    "background-color 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s",
+  transition: "background-color 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s",
   outline: "none",
   position: "relative",
   overflow: "hidden",

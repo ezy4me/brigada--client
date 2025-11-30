@@ -1,8 +1,9 @@
+import { AccountSwitcherCard } from "@/features/account-switcher/ui/AccountSwitcherCard";
 import { ProfileForm } from "@/features/profile/ui/ProfileForm";
 import { Heading } from "@/shared/ui/heading/Heading";
 import { Text } from "@/shared/ui/text/Text";
+
 import * as styles from "./account.css";
-import { AccountSwitcherCard } from "@/features/account-switcher/ui/AccountSwitcherCard";
 
 const accounts = [
   {
@@ -27,13 +28,9 @@ export default async function AccountPage() {
       <Heading as="h1" className={styles.title}>
         Личный кабинет
       </Heading>
-      <Text className={styles.description}>
-        Управляйте своими данными и настройками
-      </Text>
+      <Text className={styles.description}>Управляйте своими данными и настройками</Text>
 
-      <ProfileForm
-        initialData={{ firstName: "Иван", lastName: "Петров" }}
-      />
+      <ProfileForm initialData={{ firstName: "Иван", lastName: "Петров" }} />
 
       <AccountSwitcherCard accounts={accounts} />
     </div>

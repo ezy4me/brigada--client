@@ -1,14 +1,20 @@
 "use client";
 
-import { Input } from "@/shared/ui/input/Input";
-import { Button } from "@/shared/ui/button/Button";
-import { Text } from "@/shared/ui/text/Text";
-import { Heading } from "@/shared/ui/heading/Heading";
-import { Switch } from "@/shared/ui/switch/Switch";
-import { X, Plus } from "lucide-react";
-import type { UserRole, FilterValues } from "@/shared/lib/types/order.types";
-import * as styles from "./orderFilters.css";
 import { useState } from "react";
+
+import { X, Plus } from "lucide-react";
+
+import type { UserRole, FilterValues } from "@/shared/lib/types/order.types";
+import { Button } from "@/shared/ui/button/Button";
+import { Heading } from "@/shared/ui/heading/Heading";
+import { Input } from "@/shared/ui/input/Input";
+import { Switch } from "@/shared/ui/switch/Switch";
+import { Text } from "@/shared/ui/text/Text";
+
+
+
+import * as styles from "./orderFilters.css";
+
 
 export interface OrderFiltersProps {
   role: UserRole;
@@ -64,7 +70,9 @@ export const OrderFilters = ({
   return (
     <form onSubmit={handleSubmit} className={styles.container}>
       <div className={styles.header}>
-        <Heading as="h3" className={styles.title}>Фильтры</Heading>
+        <Heading as="h3" className={styles.title}>
+          Фильтры
+        </Heading>
         <Button
           type="button"
           variant="ghost"
@@ -77,7 +85,9 @@ export const OrderFilters = ({
       </div>
 
       <div className={styles.section}>
-        <Heading as="h4" className={styles.sectionTitle}>Цена</Heading>
+        <Heading as="h4" className={styles.sectionTitle}>
+          Цена
+        </Heading>
         <div className={styles.rangeInputs}>
           <Input
             size="sm"
@@ -100,7 +110,9 @@ export const OrderFilters = ({
       </div>
 
       <div className={styles.section}>
-        <Heading as="h4" className={styles.sectionTitle}>Регион</Heading>
+        <Heading as="h4" className={styles.sectionTitle}>
+          Регион
+        </Heading>
         <Input
           placeholder="Например: Москва"
           value={filters.region}
@@ -110,7 +122,9 @@ export const OrderFilters = ({
       </div>
 
       <div className={styles.section}>
-        <Heading as="h4" className={styles.sectionTitle}>Ключевые слова</Heading>
+        <Heading as="h4" className={styles.sectionTitle}>
+          Ключевые слова
+        </Heading>
         <div className={styles.keywordInputContainer}>
           <Input
             placeholder="Добавьте слово"
@@ -130,7 +144,7 @@ export const OrderFilters = ({
             }
           />
         </div>
-        
+
         {filters.keywords.length > 0 && (
           <div className={styles.keywordsList}>
             {filters.keywords.map((keyword, index) => (
@@ -152,7 +166,9 @@ export const OrderFilters = ({
       {role === "customer" && (
         <>
           <div className={styles.section}>
-            <Heading as="h4" className={styles.sectionTitle}>Тип исполнителя</Heading>
+            <Heading as="h4" className={styles.sectionTitle}>
+              Тип исполнителя
+            </Heading>
             <div className={styles.radioGroup}>
               <label className={styles.radioLabel}>
                 <input
@@ -176,13 +192,13 @@ export const OrderFilters = ({
           </div>
 
           <div className={styles.section}>
-            <Heading as="h4" className={styles.sectionTitle}>Рейтинг</Heading>
+            <Heading as="h4" className={styles.sectionTitle}>
+              Рейтинг
+            </Heading>
             <label className={styles.switchLabel}>
               <Switch
                 checked={filters.highRatingOnly}
-                onCheckedChange={(checked) =>
-                  handleChange("highRatingOnly", checked)
-                }
+                onCheckedChange={(checked) => handleChange("highRatingOnly", checked)}
               />
               <Text>Только с рейтингом выше 4.5</Text>
             </label>
@@ -192,7 +208,9 @@ export const OrderFilters = ({
 
       {role === "company" && (
         <div className={styles.section}>
-          <Heading as="h4" className={styles.sectionTitle}>Тип контента</Heading>
+          <Heading as="h4" className={styles.sectionTitle}>
+            Тип контента
+          </Heading>
           <div className={styles.radioGroup}>
             <label className={styles.radioLabel}>
               <input

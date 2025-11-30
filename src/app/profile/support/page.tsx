@@ -1,10 +1,11 @@
-import { Card } from "@/shared/ui/card/Card";
 import { Button } from "@/shared/ui/button/Button";
-import { Input } from "@/shared/ui/input/Input";
-import { Textarea } from "@/shared/ui/textarea/Textarea";
+import { Card } from "@/shared/ui/card/Card";
 import { Heading } from "@/shared/ui/heading/Heading";
-import { Text } from "@/shared/ui/text/Text";
+import { Input } from "@/shared/ui/input/Input";
 import { Switch } from "@/shared/ui/switch/Switch";
+import { Text } from "@/shared/ui/text/Text";
+import { Textarea } from "@/shared/ui/textarea/Textarea";
+
 import * as styles from "./support.css";
 
 export default function SupportPage() {
@@ -19,23 +20,15 @@ export default function SupportPage() {
 
       <Card className={styles.supportCard}>
         <div className={styles.formGroup}>
-          <Input
-            label="Тема обращения"
-            placeholder="Кратко опишите проблему"
-          />
+          <Input label="Тема обращения" placeholder="Кратко опишите проблему" />
         </div>
 
         <div className={styles.formGroup}>
-          <Textarea
-            label="Сообщение"
-            placeholder="Подробно опишите вашу проблему..."
-          />
+          <Textarea label="Сообщение" placeholder="Подробно опишите вашу проблему..." />
         </div>
 
         <div className={styles.formGroup}>
-          <div
-            style={{ display: "flex", alignItems: "center", gap: "12px" }}
-          >
+          <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
             <Switch id="urgent" />
             <label htmlFor="urgent">
               <Text>Срочное обращение</Text>

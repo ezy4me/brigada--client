@@ -1,12 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import { Card } from "@/shared/ui/card/Card";
-import { Input } from "@/shared/ui/input/Input";
-import { Button } from "@/shared/ui/button/Button";
-import { Text } from "@/shared/ui/text/Text";
-import { Heading } from "@/shared/ui/heading/Heading";
+
 import { Search, SearchCheck, X } from "lucide-react";
+
+import { Button } from "@/shared/ui/button/Button";
+import { Card } from "@/shared/ui/card/Card";
+import { Heading } from "@/shared/ui/heading/Heading";
+import { Input } from "@/shared/ui/input/Input";
+import { Text } from "@/shared/ui/text/Text";
+
+
 import * as styles from "./coverage.css";
 
 const regions = [
@@ -51,9 +55,7 @@ export default function CoveragePage() {
       <Heading as="h1" className={styles.title}>
         Зоны охвата
       </Heading>
-      <Text className={styles.description}>
-        Укажите регионы, где вы готовы работать
-      </Text>
+      <Text className={styles.description}>Укажите регионы, где вы готовы работать</Text>
 
       <Card className={styles.coverageCard}>
         <div className={styles.selectedRegions}>

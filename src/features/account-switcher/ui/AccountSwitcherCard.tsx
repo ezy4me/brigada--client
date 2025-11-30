@@ -1,11 +1,14 @@
 "use client";
 
+import { User, Building, Briefcase } from "lucide-react";
+
+import { Avatar } from "@/shared/ui/avatar/Avatar";
+import { Button } from "@/shared/ui/button/Button";
 import { Card } from "@/shared/ui/card/Card";
 import { Heading } from "@/shared/ui/heading/Heading";
 import { Text } from "@/shared/ui/text/Text";
-import { Button } from "@/shared/ui/button/Button";
-import { Avatar } from "@/shared/ui/avatar/Avatar";
-import { User, Building, Briefcase } from "lucide-react";
+
+
 import * as styles from "./accountSwitcherCard.css";
 
 interface Account {
@@ -19,9 +22,7 @@ interface AccountSwitcherCardProps {
   accounts: Account[];
 }
 
-export const AccountSwitcherCard = ({
-  accounts,
-}: AccountSwitcherCardProps) => {
+export const AccountSwitcherCard = ({ accounts }: AccountSwitcherCardProps) => {
   const handleSwitchAccount = (accountId: number) => {
     console.log(`Switching to account ID: ${accountId}`);
   };
@@ -32,9 +33,7 @@ export const AccountSwitcherCard = ({
         <Heading as="h2" className={styles.cardTitle}>
           Ваши аккаунты
         </Heading>
-        <Text className={styles.cardDescription}>
-          Переключайтесь между аккаунтами разных ролей
-        </Text>
+        <Text className={styles.cardDescription}>Переключайтесь между аккаунтами разных ролей</Text>
       </div>
       <div className={styles.cardContent}>
         <div className={styles.accountsList}>
@@ -42,8 +41,7 @@ export const AccountSwitcherCard = ({
             let IconComponent;
             if (account.role === "executor") IconComponent = User;
             else if (account.role === "company") IconComponent = Building;
-            else if (account.role === "customer")
-              IconComponent = Briefcase;
+            else if (account.role === "customer") IconComponent = Briefcase;
             else IconComponent = User;
 
             return (
@@ -55,19 +53,11 @@ export const AccountSwitcherCard = ({
                     className={styles.accountAvatar}
                   />
                   <div>
-                    <Text className={styles.accountName}>
-                      {account.name}
-                    </Text>
-                    <Text className={styles.accountRole}>
-                      {account.role}
-                    </Text>
+                    <Text className={styles.accountName}>{account.name}</Text>
+                    <Text className={styles.accountRole}>{account.role}</Text>
                   </div>
                 </div>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => handleSwitchAccount(account.id)}
-                >
+                <Button variant="outline" size="sm" onClick={() => handleSwitchAccount(account.id)}>
                   Сменить
                 </Button>
               </div>

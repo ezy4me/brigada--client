@@ -1,21 +1,18 @@
 "use client";
 
-import {
-  Search,
-  MapPin,
-  CheckCircle,
-  Users,
-  Loader2,
-  X,
-} from "lucide-react";
+import { Search, MapPin, CheckCircle, Users, Loader2, X } from "lucide-react";
+
 import { Button } from "@/shared/ui/button/Button";
-import { Input } from "@/shared/ui/input/Input";
-import { Text } from "@/shared/ui/text/Text";
 import { Heading } from "@/shared/ui/heading/Heading";
+import { Input } from "@/shared/ui/input/Input";
 import { Section } from "@/shared/ui/section/Section";
-import { useHeroFinder } from "../lib/use-hero-finder";
+import { Text } from "@/shared/ui/text/Text";
+
 import { getHeroFinderConfig } from "../lib/config";
 import { UserRole } from "../lib/types";
+import { useHeroFinder } from "../lib/use-hero-finder";
+
+
 import * as styles from "./heroFinder.css";
 
 export interface HeroFinderProps {
@@ -24,11 +21,7 @@ export interface HeroFinderProps {
   className?: string;
 }
 
-export const HeroFinder = ({
-  role,
-  defaultCity,
-  className,
-}: HeroFinderProps) => {
+export const HeroFinder = ({ role, defaultCity, className }: HeroFinderProps) => {
   const {
     city,
     searchQuery,
@@ -78,9 +71,7 @@ export const HeroFinder = ({
             ) : (
               <MapPin className={styles.cityIcon} aria-hidden="true" />
             )}
-            <Text className={styles.city}>
-              {isDetectingCity ? "Определение..." : city}
-            </Text>
+            <Text className={styles.city}>{isDetectingCity ? "Определение..." : city}</Text>
           </div>
         </div>
 
@@ -112,11 +103,7 @@ export const HeroFinder = ({
               size="lg"
               rightIcon={
                 showClearButton ? (
-                  <button
-                    type="button"
-                    onClick={handleClearSearch}
-                    className={styles.clearButton}
-                  >
+                  <button type="button" onClick={handleClearSearch} className={styles.clearButton}>
                     <X size={16} />
                   </button>
                 ) : (
@@ -125,12 +112,7 @@ export const HeroFinder = ({
               }
               aria-label={config.placeholder}
             />
-            <Button
-              variant="secondary"
-              size="lg"
-              onClick={handleSearch}
-              className={styles.button}
-            >
+            <Button variant="secondary" size="lg" onClick={handleSearch} className={styles.button}>
               {config.searchLabel}
             </Button>
           </div>
@@ -139,11 +121,7 @@ export const HeroFinder = ({
         <div className={styles.stats}>
           {config.stats.map((stat, index) => (
             <div key={index} className={styles.statItem}>
-              <CheckCircle
-                className={styles.statIcon}
-                size={20}
-                aria-hidden="true"
-              />
+              <CheckCircle className={styles.statIcon} size={20} aria-hidden="true" />
               <Text>
                 {stat} {index === 0 && `в ${city}`}
               </Text>

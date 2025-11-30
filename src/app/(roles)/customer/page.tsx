@@ -1,15 +1,13 @@
-import * as styles from "../role.css";
-import { HowItWorks } from "@/widgets/how-it-works/ui/HowItWorks";
+import { HeroFinder } from "@/features/hero-finder/ui/HeroFinder";
 import { CallToAction } from "@/widgets/call-to-action/ui/CallToAction";
 import { FAQSection } from "@/widgets/faq/ui/FaqSection";
-import { PartnerCarousel } from "@/widgets/partner-carousel/ui/PartnerCarousel";
-import {
-  businessPartners,
-  generalPartners,
-} from "@/widgets/partner-carousel/model";
-import { HeroFinder } from "@/features/hero-finder/ui/HeroFinder";
-import { PopularServices } from "@/widgets/popular-services/ui/PopularServices";
+import { HowItWorks } from "@/widgets/how-it-works/ui/HowItWorks";
 import { HowToUse } from "@/widgets/how-to-use/ui/HowToUse";
+import { businessPartners, generalPartners } from "@/widgets/partner-carousel/model";
+import { PartnerCarousel } from "@/widgets/partner-carousel/ui/PartnerCarousel";
+import { PopularServices } from "@/widgets/popular-services/ui/PopularServices";
+
+import * as styles from "../role.css";
 
 export default function CustomerPage() {
   return (

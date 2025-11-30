@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+
 import { motion } from "framer-motion";
 import {
   Wrench,
@@ -13,8 +14,10 @@ import {
   PaintBucket,
   Cog,
 } from "lucide-react";
-import * as styles from "./animatedBackground.css";
+
 import { vars } from "@/shared/styles/theme.css";
+
+import * as styles from "./animatedBackground.css";
 
 const icons = [
   { Icon: Wrench, size: 24 },
@@ -28,7 +31,7 @@ const icons = [
   { Icon: Cog, size: 23 },
 ];
 
-interface AnimatedBackgroundProps {
+export interface AnimatedBackgroundProps {
   intensity?: "low" | "medium" | "high";
   className?: string;
 }
@@ -56,10 +59,7 @@ export const AnimatedBackground = ({
     }
   };
 
-  const themeColors = [
-    vars.color.brand.primary,
-    vars.color.brand.secondary,
-  ];
+  const themeColors = [vars.color.brand.primary, vars.color.brand.secondary];
 
   const getRandomThemeColor = () => {
     const randomIndex = Math.floor(Math.random() * themeColors.length);

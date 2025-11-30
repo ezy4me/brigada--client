@@ -1,7 +1,10 @@
 import { useState } from "react";
-import { Input } from "@/shared/ui/input/Input";
-import { Button } from "@/shared/ui/button/Button";
+
 import { Mail } from "lucide-react";
+
+import { Button } from "@/shared/ui/button/Button";
+import { Input } from "@/shared/ui/input/Input";
+
 import * as styles from "./forgotPasswordForm.css";
 
 interface FormData {
@@ -14,7 +17,7 @@ interface FormErrors {
 }
 
 export interface ForgotPasswordFormProps {
-  onSubmit: (data: FormData) => Promise<void>; 
+  onSubmit: (data: FormData) => Promise<void>;
   loading?: boolean;
   error?: string;
 }
@@ -27,7 +30,7 @@ export const ForgotPasswordForm = ({
   const [formData, setFormData] = useState<FormData>({ email: "" });
   const [errors, setErrors] = useState<FormErrors>({});
 
-  const validate = (data: FormData): FormErrors => { 
+  const validate = (data: FormData): FormErrors => {
     const newErrors: FormErrors = {};
 
     if (!data.email) {
@@ -58,7 +61,7 @@ export const ForgotPasswordForm = ({
 
     setErrors({});
     try {
-      await onSubmit(formData); 
+      await onSubmit(formData);
     } catch (err) {
       console.error("Reset request failed", err);
     }

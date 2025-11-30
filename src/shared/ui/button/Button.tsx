@@ -1,20 +1,16 @@
 "use client";
 
-import { Slot } from "@radix-ui/react-slot";
 import { ButtonHTMLAttributes, forwardRef, ReactNode } from "react";
-import { button, iconStyles } from "./button.css";
+
+import { Slot } from "@radix-ui/react-slot";
+
 import { cn } from "@/shared/lib/utils";
 
-export interface ButtonProps
-  extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?:
-    | "primary"
-    | "secondary"
-    | "outline"
-    | "ghost"
-    | "destructive"
-    | "white"
-    | "black";
+import { button, iconStyles } from "./button.css";
+
+
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: "primary" | "secondary" | "outline" | "ghost" | "destructive" | "white" | "black";
   size?: "sm" | "md" | "lg";
   leftIcon?: ReactNode;
   rightIcon?: ReactNode;
@@ -23,23 +19,8 @@ export interface ButtonProps
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  (
-    {
-      className,
-      variant,
-      size,
-      leftIcon,
-      icon,
-      rightIcon,
-      children,
-      asChild,
-      ...props
-    },
-    ref
-  ) => {
-    const isIconOnly = Boolean(
-      icon && !children && !leftIcon && !rightIcon
-    );
+  ({ className, variant, size, leftIcon, icon, rightIcon, children, asChild, ...props }, ref) => {
+    const isIconOnly = Boolean(icon && !children && !leftIcon && !rightIcon);
 
     const baseClassName = button({
       variant: variant ?? "primary",
@@ -49,11 +30,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
     const content = (
       <>
-        {leftIcon && (
-          <span className={cn(iconStyles.base, iconStyles.left)}>
-            {leftIcon}
-          </span>
-        )}
+        {leftIcon && <span className={cn(iconStyles.base, iconStyles.left)}>{leftIcon}</span>}
         {icon && isIconOnly ? (
           <span className={iconStyles.base}>{icon}</span>
         ) : (
@@ -62,30 +39,16 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             {children}
           </>
         )}
-        {rightIcon && (
-          <span className={cn(iconStyles.base, iconStyles.right)}>
-            {rightIcon}
-          </span>
-        )}
+        {rightIcon && <span className={cn(iconStyles.base, iconStyles.right)}>{rightIcon}</span>}
       </>
     );
 
     if (asChild) {
-      return (
-        <Slot
-          ref={ref}
-          className={cn(baseClassName, className)}
-          {...props}
-        />
-      );
+      return <Slot ref={ref} className={cn(baseClassName, className)} {...props} />;
     }
 
     return (
-      <button
-        ref={ref}
-        className={cn(baseClassName, className)}
-        {...props}
-      >
+      <button ref={ref} className={cn(baseClassName, className)} {...props}>
         {content}
       </button>
     );

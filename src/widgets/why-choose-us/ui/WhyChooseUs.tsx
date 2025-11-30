@@ -1,9 +1,11 @@
 import { Card } from "@/shared/ui/card/Card";
-import { Section } from "@/shared/ui/section/Section";
 import { Heading } from "@/shared/ui/heading/Heading";
+import { Section } from "@/shared/ui/section/Section";
 import { Text } from "@/shared/ui/text/Text";
-import * as styles from "./whyChooseUs.css";
+
 import { data } from "../model/data";
+
+import * as styles from "./whyChooseUs.css";
 
 export const WhyChooseUs = () => {
   return (
@@ -13,8 +15,8 @@ export const WhyChooseUs = () => {
           Гарантия заказов
         </Heading>
         <Text className={styles.subtitle}>
-          Платформа Бригада.ру устроена так, чтобы заявки приходили именно вам: с
-          учётом специализации, локации и загруженности
+          Платформа Бригада.ру устроена так, чтобы заявки приходили именно вам: с учётом
+          специализации, локации и загруженности
         </Text>
       </div>
 

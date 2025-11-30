@@ -1,9 +1,13 @@
-import { Section } from "@/shared/ui/section/Section";
-import { Heading } from "@/shared/ui/heading/Heading";
-import { Text } from "@/shared/ui/text/Text";
 import { Check } from "lucide-react";
-import * as styles from "./tariffs.css";
+
 import { Button } from "@/shared/ui/button/Button";
+import { Heading } from "@/shared/ui/heading/Heading";
+import { Section } from "@/shared/ui/section/Section";
+import { Text } from "@/shared/ui/text/Text";
+
+
+import * as styles from "./tariffs.css";
+
 
 interface Tariff {
   id: string;
@@ -66,9 +70,7 @@ export const Tariffs = () => {
           <Heading as="h2" className={styles.title}>
             Тарифы
           </Heading>
-          <Text className={styles.subtitle}>
-            Простые тарифы — платите только за результат
-          </Text>
+          <Text className={styles.subtitle}>Простые тарифы — платите только за результат</Text>
         </div>
 
         <div className={styles.tariffsGrid}>
@@ -78,9 +80,7 @@ export const Tariffs = () => {
                 <Heading as="h3" size="h3" className={styles.tariffTitle}>
                   {tariff.title}
                 </Heading>
-                <Text className={styles.tariffSubtitle}>
-                  {tariff.subtitle}
-                </Text>
+                <Text className={styles.tariffSubtitle}>{tariff.subtitle}</Text>
               </div>
 
               <div className={styles.divider} />

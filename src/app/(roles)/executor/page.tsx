@@ -1,19 +1,16 @@
-import * as styles from "../role.css";
-import { HowItWorks } from "@/widgets/how-it-works/ui/HowItWorks";
+import { HeroFinder } from "@/features/hero-finder/ui/HeroFinder";
 import { CallToAction } from "@/widgets/call-to-action/ui/CallToAction";
 import { FAQSection } from "@/widgets/faq/ui/FaqSection";
-import { WhyChooseUs } from "@/widgets/why-choose-us/ui/WhyChooseUs";
+import { HowItWorks } from "@/widgets/how-it-works/ui/HowItWorks";
+import { businessPartners, generalPartners } from "@/widgets/partner-carousel/model";
 import { PartnerCarousel } from "@/widgets/partner-carousel/ui/PartnerCarousel";
-import {
-  businessPartners,
-  generalPartners,
-} from "@/widgets/partner-carousel/model";
-import { HeroFinder } from "@/features/hero-finder/ui/HeroFinder";
+import { WhyChooseUs } from "@/widgets/why-choose-us/ui/WhyChooseUs";
+
+import * as styles from "../role.css";
 
 export default function ExecutorPage() {
   return (
     <div className={styles.page}>
-      <HeroFinder role="executor" />
       <HowItWorks />
       <CallToAction
         text="Работайте с клиентами — мы берём остальное на себя"

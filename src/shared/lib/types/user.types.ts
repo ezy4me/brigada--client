@@ -96,7 +96,4 @@ export interface RolePermissions {
   guest: Permission[];
 }
 
-export type {
-  UserRole as OrderUserRole,
-  UserRole as HeroFinderUserRole,
-} from "./user.types";
+export type { UserRole as OrderUserRole, UserRole as HeroFinderUserRole } from "./user.types";

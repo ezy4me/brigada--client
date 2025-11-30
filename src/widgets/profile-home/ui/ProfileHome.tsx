@@ -1,7 +1,9 @@
-import { Card } from "@/shared/ui/card/Card";
-import { Text } from "@/shared/ui/text/Text";
-import { Heading } from "@/shared/ui/heading/Heading";
 import { User, Briefcase, Star, Calendar } from "lucide-react";
+
+import { Card } from "@/shared/ui/card/Card";
+import { Heading } from "@/shared/ui/heading/Heading";
+import { Text } from "@/shared/ui/text/Text";
+
 import * as styles from "./dashboardHome.css";
 
 const stats = [

@@ -1,21 +1,20 @@
-import { HeroExecutor } from "@/widgets/hero-executor/ui/HeroExecutor";
-import * as styles from "../role.css";
-import { HowItWorks } from "@/widgets/how-it-works/ui/HowItWorks";
+import { HeroFinder } from "@/features/hero-finder/ui/HeroFinder";
 import { CallToAction } from "@/widgets/call-to-action/ui/CallToAction";
 import { FAQSection } from "@/widgets/faq/ui/FaqSection";
-import { WhyChooseUs } from "@/widgets/why-choose-us/ui/WhyChooseUs";
-import { PartnerCarousel } from "@/widgets/partner-carousel/ui/PartnerCarousel";
-import {
-  businessPartners,
-  generalPartners,
-} from "@/widgets/partner-carousel/model";
-import { Tariffs } from "@/widgets/tariffs/ui/Tariffs";
 import { GetStarted } from "@/widgets/get-started/ui/GetStarted";
+import { HowItWorks } from "@/widgets/how-it-works/ui/HowItWorks";
+import { businessPartners, generalPartners } from "@/widgets/partner-carousel/model";
+import { PartnerCarousel } from "@/widgets/partner-carousel/ui/PartnerCarousel";
+import { Tariffs } from "@/widgets/tariffs/ui/Tariffs";
+import { WhyChooseUs } from "@/widgets/why-choose-us/ui/WhyChooseUs";
+
+import * as styles from "../role.css";
 
 export default function CompanyPage() {
   return (
     <div className={styles.page}>
-      <HeroExecutor />
+      <HeroFinder role="company" />
+
       <HowItWorks />
       <CallToAction
         text="Работайте с клиентами — мы берём остальное на себя"

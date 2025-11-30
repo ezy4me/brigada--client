@@ -1,11 +1,14 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { Button } from "@/shared/ui/button/Button";
-import { Text } from "@/shared/ui/text/Text";
-import { Input } from "@/shared/ui/input/Input";
-import { Card } from "@/shared/ui/card/Card";
+
 import { Send, X, MessageCircle, SendHorizonal } from "lucide-react";
+
+import { Button } from "@/shared/ui/button/Button";
+import { Card } from "@/shared/ui/card/Card";
+import { Input } from "@/shared/ui/input/Input";
+import { Text } from "@/shared/ui/text/Text";
+
 import * as styles from "./supportChat.css";
 
 interface Message {
@@ -74,10 +77,7 @@ export const SupportChat = () => {
         <div className={styles.chatWidget}>
           <div className={styles.chatHeader}>
             <Text className={styles.chatTitle}>Поддержка</Text>
-            <button
-              onClick={() => setIsOpen(false)}
-              className={styles.closeButton}
-            >
+            <button onClick={() => setIsOpen(false)} className={styles.closeButton}>
               <X size={16} className={styles.closeButtonIcon} />
             </button>
           </div>
@@ -87,21 +87,15 @@ export const SupportChat = () => {
               <div
                 key={message.id}
                 className={
-                  message.isUser
-                    ? styles.messageWrapper.isUser
-                    : styles.messageWrapper.isBot
+                  message.isUser ? styles.messageWrapper.isUser : styles.messageWrapper.isBot
                 }
               >
                 <div
                   className={
-                    message.isUser
-                      ? styles.messageBubble.isUser
-                      : styles.messageBubble.isBot
+                    message.isUser ? styles.messageBubble.isUser : styles.messageBubble.isBot
                   }
                 >
-                  <Text className={styles.messageText}>
-                    {message.text}
-                  </Text>
+                  <Text className={styles.messageText}>{message.text}</Text>
                   <Text className={styles.messageTime}>
                     {message.timestamp.toLocaleTimeString([], {
                       hour: "2-digit",
@@ -122,21 +116,14 @@ export const SupportChat = () => {
               placeholder="Введите ваше сообщение..."
               className={styles.messageInput}
             />
-            <button
-              type="submit"
-              disabled={!inputValue.trim()}
-              className={styles.sendButton}
-            >
+            <button type="submit" disabled={!inputValue.trim()} className={styles.sendButton}>
               <SendHorizonal size={16} />
             </button>
           </form>
         </div>
       )}
 
-      <button
-        onClick={() => setIsOpen(true)}
-        className={styles.chatButton}
-      >
+      <button onClick={() => setIsOpen(true)} className={styles.chatButton}>
         <MessageCircle size={20} className={styles.chatButtonIcon} />
       </button>
     </>

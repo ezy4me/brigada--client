@@ -1,4 +1,5 @@
 import { globalStyle } from "@vanilla-extract/css";
+
 import { vars } from "./theme.css";
 
 globalStyle("*, *::before, *::after", {
@@ -23,6 +24,7 @@ globalStyle("h1", {
 
 globalStyle("a", {
   textDecoration: "none",
+  color: "inherit",
 });
 
 globalStyle("html, body", {
@@ -38,6 +40,8 @@ globalStyle("button, input, textarea, select", {
 
 globalStyle("ul, ol", {
   listStyle: "none",
+  margin: 0,
+  padding: 0,
 });
 
 globalStyle("img", {
@@ -53,4 +57,17 @@ globalStyle("p", {
 globalStyle("h2, h3, h4, h5, h6", {
   margin: 0,
   fontWeight: vars.font.weight.medium,
+});
+
+globalStyle("#__next", {
+  height: "100%",
+});
+
+globalStyle("main", {
+  flex: 1,
+});
+
+globalStyle(":focus-visible", {
+  outline: `2px solid ${vars.color.brand.primary}`,
+  outlineOffset: "2px",
 });

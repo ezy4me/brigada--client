@@ -1,6 +1,7 @@
 import { style } from "@vanilla-extract/css";
-import { vars } from "@/shared/styles/theme.css";
 import { recipe } from "@vanilla-extract/recipes";
+
+import { vars } from "@/shared/styles/theme.css";
 
 export const roleGroup = style({
   display: "inline-flex",
@@ -10,7 +11,7 @@ export const roleGroup = style({
   position: "relative",
   overflow: "hidden",
   alignItems: "center",
-  gap: vars.spacing["6"], 
+  gap: vars.spacing["6"],
 
   "@media": {
     "screen and (max-width: 767px)": {
@@ -23,7 +24,7 @@ export const separator = style({
   width: "1px",
   height: "20px",
   backgroundColor: vars.color.gray["100"],
-  alignSelf: "center", 
+  alignSelf: "center",
 });
 
 export const roleButton = recipe({

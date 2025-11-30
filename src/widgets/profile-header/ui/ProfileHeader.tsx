@@ -1,12 +1,15 @@
 "use client";
 
 import { useState } from "react";
+
 import { User, LogOut, Settings, Briefcase, Users } from "lucide-react";
+
 import { Avatar } from "@/shared/ui/avatar/Avatar";
 import { Dropdown } from "@/shared/ui/dropdown/Dropdown";
-import { Text } from "@/shared/ui/text/Text";
-import * as styles from "./profileHeader.css";
 import { Logo } from "@/shared/ui/logo/Logo";
+import { Text } from "@/shared/ui/text/Text";
+
+import * as styles from "./profileHeader.css";
 
 const userMenuItems = [
   { label: "Профиль", value: "profile", icon: User },
@@ -22,9 +25,7 @@ const userData = {
 };
 
 export const ProfileHeader = () => {
-  const [userRole, setUserRole] = useState<
-    "executor" | "customer" | "company"
-  >("executor");
+  const [userRole, setUserRole] = useState<"executor" | "customer" | "company">("executor");
 
   const handleMenuItemSelect = (value: string) => {
     if (value === "logout") {
@@ -50,11 +51,7 @@ export const ProfileHeader = () => {
             <Dropdown
               trigger={
                 <button className={styles.avatarTrigger}>
-                  <Avatar
-                    src="/user-avatar.jpg"
-                    alt="Аватар"
-                    className={styles.avatar}
-                  />
+                  <Avatar src="/user-avatar.jpg" alt="Аватар" className={styles.avatar} />
                 </button>
               }
               items={userMenuItems.map((item) => ({

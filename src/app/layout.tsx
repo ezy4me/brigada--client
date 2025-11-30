@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+
 import { Roboto } from "next/font/google";
+
 import { Providers } from "@/app/providers/StoreProvider";
 import { themeClass } from "@/shared/styles/theme.css";
 import "@/shared/styles/global.css";

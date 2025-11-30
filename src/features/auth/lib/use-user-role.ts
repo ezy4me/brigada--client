@@ -6,10 +6,7 @@ export const useUserRole = (): UserRole => {
 
   if (typeof window !== "undefined") {
     const savedRole = localStorage.getItem("user-role");
-    if (
-      savedRole &&
-      ["customer", "executor", "company"].includes(savedRole)
-    ) {
+    if (savedRole && ["customer", "executor", "company"].includes(savedRole)) {
       return savedRole as UserRole;
     }
   }
@@ -17,9 +14,7 @@ export const useUserRole = (): UserRole => {
   return "guest";
 };
 
-export const useUserRoleWithFallback = (
-  fallbackRole: UserRole = "guest"
-): UserRole => {
+export const useUserRoleWithFallback = (fallbackRole: UserRole = "guest"): UserRole => {
   const userRole = useUserRole();
   return userRole !== "guest" ? userRole : fallbackRole;
 };

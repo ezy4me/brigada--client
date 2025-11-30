@@ -2,9 +2,10 @@
 
 import { OrderCard } from "@/features/search/ui/order-card/OrderCard";
 import type { Order } from "@/shared/lib/types/order.types";
-import { Text } from "@/shared/ui/text/Text";
-import * as styles from "./orderList.css";
 import { UserRole } from "@/shared/lib/types/user.types";
+import { Text } from "@/shared/ui/text/Text";
+
+import * as styles from "./orderList.css";
 
 interface OrderListProps {
   orders: Order[];
@@ -43,11 +44,7 @@ export const OrderList = ({ orders, role }: OrderListProps) => {
 
 const getResultsText = (count: number) => {
   if (count % 10 === 1 && count % 100 !== 11) return "объявление";
-  if (
-    count % 10 >= 2 &&
-    count % 10 <= 4 &&
-    (count % 100 < 10 || count % 100 >= 20)
-  )
+  if (count % 10 >= 2 && count % 10 <= 4 && (count % 100 < 10 || count % 100 >= 20))
     return "объявления";
   return "объявлений";
 };

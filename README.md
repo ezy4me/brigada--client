@@ -1,4 +1,3 @@
-
 # Brigada Client
 
 Фронтенд часть проекта Brigada на Next.js с использованием архитектуры FSD.

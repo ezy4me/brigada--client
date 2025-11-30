@@ -6,11 +6,9 @@ export interface BaseFormData {
   confirmPassword: string;
 }
 
-export interface CustomerFormData extends BaseFormData {
-}
+export interface CustomerFormData extends BaseFormData {}
 
-export interface ExecutorFormData extends BaseFormData {
-}
+export interface ExecutorFormData extends BaseFormData {}
 
 export interface CompanyFormData extends BaseFormData {
   companyName: string;

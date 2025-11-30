@@ -1,20 +1,21 @@
-import * as styles from "./targetAudience.css";
+import Link from "next/link";
+
 import { Card } from "@/shared/ui/card/Card";
 import { Section } from "@/shared/ui/section/Section";
-import Link from "next/link";
+
 import { data } from "../model/data";
+
+import * as styles from "./targetAudience.css";
 
 export const TargetAudience = () => {
   return (
     <Section className={styles.section}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <h2 className={styles.title}>
-            Для кого предназначена наша система?
-          </h2>
+          <h2 className={styles.title}>Для кого предназначена наша система?</h2>
           <p className={styles.subtitle}>
-            Платформа Бригада.ру устроена так, чтобы заявки приходили
-            именно вам: с учётом специализации, локации и загруженности
+            Платформа Бригада.ру устроена так, чтобы заявки приходили именно вам: с учётом
+            специализации, локации и загруженности
           </p>
         </div>
 

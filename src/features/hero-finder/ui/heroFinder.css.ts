@@ -1,5 +1,6 @@
 // widgets/hero-finder/ui/heroFinder.css.ts
 import { style } from "@vanilla-extract/css";
+
 import { vars } from "@/shared/styles/theme.css";
 
 export const section = style({
@@ -142,12 +143,12 @@ export const clearButton = style({
   padding: vars.spacing["4"],
   borderRadius: vars.radius.sm,
   transition: "color 0.2s ease",
-  
+
   ":hover": {
     color: vars.color.gray["700"],
     backgroundColor: vars.color.gray["100"],
   },
-  
+
   ":focus": {
     outline: "none",
     boxShadow: `0 0 0 2px ${vars.color.brand.primary}`,

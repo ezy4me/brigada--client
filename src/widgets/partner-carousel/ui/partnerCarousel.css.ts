@@ -1,4 +1,5 @@
 import { style } from "@vanilla-extract/css";
+
 import { vars } from "@/shared/styles/theme.css";
 
 export const section = style({
@@ -51,8 +52,7 @@ export const overlay = style({
   left: 0,
   width: "100%",
   height: "100%",
-  background:
-    "linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2))",
+  background: "linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2))",
   zIndex: 1,
 });
 
@@ -105,6 +105,6 @@ export const partnerName = style({
 
 export const navButtons = style({
   display: "flex",
-  width: '100%',
-  justifyContent: 'space-between'
+  width: "100%",
+  justifyContent: "space-between",
 });

@@ -1,8 +1,10 @@
-import { Input } from "@/shared/ui/input/Input";
-import { Dropdown } from "@/shared/ui/dropdown/Dropdown";
 import { Building, FileText, CreditCard, Check } from "lucide-react";
 import { UseFormRegister } from "react-hook-form";
+
 import { RegisterFormFields } from "@/features/auth/lib/use-register-form";
+import { Dropdown } from "@/shared/ui/dropdown/Dropdown";
+import { Input } from "@/shared/ui/input/Input";
+
 import * as styles from "../registerForm.css";
 
 interface CompanyFieldsProps {
@@ -27,11 +29,11 @@ export const CompanyFields = ({
   onTariffSelect,
 }: CompanyFieldsProps) => {
   const getSelectedTariffLabel = () => {
-    const selected = tariffs.find(t => t.value === selectedTariff);
+    const selected = tariffs.find((t) => t.value === selectedTariff);
     return selected ? selected.label : "Выберите тариф";
   };
 
-  const dropdownItems = tariffs.map(tariff => ({
+  const dropdownItems = tariffs.map((tariff) => ({
     label: tariff.label,
     value: tariff.value,
     onSelect: () => onTariffSelect(tariff.value),
@@ -48,7 +50,7 @@ export const CompanyFields = ({
           leftIcon={<Building size={16} />}
           error={!!errors.companyName}
           helperText={errors.companyName?.message}
-          {...register('companyName')}
+          {...register("companyName")}
         />
       </div>
 
@@ -61,7 +63,7 @@ export const CompanyFields = ({
           maxLength={10}
           error={!!errors.inn}
           helperText={errors.inn?.message}
-          {...register('inn')}
+          {...register("inn")}
         />
       </div>
 
@@ -76,9 +78,7 @@ export const CompanyFields = ({
           align="start"
           className={styles.tariffDropdown}
         />
-        {errors.tariff && (
-          <span className={styles.errorText}>{errors.tariff.message}</span>
-        )}
+        {errors.tariff && <span className={styles.errorText}>{errors.tariff.message}</span>}
       </div>
     </>
   );

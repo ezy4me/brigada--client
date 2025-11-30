@@ -1,4 +1,5 @@
 import { style } from "@vanilla-extract/css";
+
 import { vars } from "@/shared/styles/theme.css";
 
 export const section = style({
@@ -58,17 +59,17 @@ export const accordionTrigger = style({
 });
 
 export const triggerIconWrapper = style({
-  display: "flex", 
+  display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  width: vars.spacing["40"], 
-  height: vars.spacing["40"], 
+  width: vars.spacing["40"],
+  height: vars.spacing["40"],
   borderRadius: vars.radius.full,
   border: `1px solid ${vars.color.text.secondary}`,
   transition: "all 0.2s ease",
   backgroundColor: vars.color.black,
   color: vars.color.text.inverted,
-  flexShrink: 0, 
+  flexShrink: 0,
   selectors: {
     [`${accordionItem}[data-state="open"] &`]: {
       backgroundColor: vars.color.brand.secondary,

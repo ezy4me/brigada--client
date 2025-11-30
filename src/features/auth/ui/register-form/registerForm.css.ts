@@ -1,4 +1,5 @@
 import { style } from "@vanilla-extract/css";
+
 import { vars } from "@/shared/styles/theme.css";
 
 export const form = style({
@@ -19,7 +20,7 @@ export const inputWrapper = style({
   flexDirection: "column",
   gap: vars.spacing["8"],
 });
-  
+
 export const selectLabel = style({
   fontSize: vars.font.size.body2,
   fontWeight: vars.font.weight.medium,

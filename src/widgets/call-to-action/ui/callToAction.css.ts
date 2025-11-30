@@ -1,4 +1,5 @@
 import { style } from "@vanilla-extract/css";
+
 import { vars } from "@/shared/styles/theme.css";
 
 export const section = style({
@@ -27,7 +28,6 @@ export const container = style({
     },
   },
 });
-
 
 export const text = style({
   fontSize: vars.font.size.h4,

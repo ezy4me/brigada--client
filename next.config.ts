@@ -1,5 +1,5 @@
 // next.config.js
-const { createVanillaExtractPlugin } = require('@vanilla-extract/next-plugin');
+const { createVanillaExtractPlugin } = require("@vanilla-extract/next-plugin");
 
 const withVanillaExtract = createVanillaExtractPlugin();
 

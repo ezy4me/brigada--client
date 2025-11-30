@@ -1,10 +1,13 @@
-import { Card } from "@/shared/ui/card/Card";
-import { Text } from "@/shared/ui/text/Text";
-import { Heading } from "@/shared/ui/heading/Heading";
 import { User, Briefcase, Building, Calendar } from "lucide-react";
-import * as styles from "./profileCompany.css";
+
 import { Button } from "@/shared/ui/button/Button";
+import { Card } from "@/shared/ui/card/Card";
+import { Heading } from "@/shared/ui/heading/Heading";
 import { Section } from "@/shared/ui/section/Section";
+import { Text } from "@/shared/ui/text/Text";
+
+import * as styles from "./profileCompany.css";
+
 
 const stats = [
   { icon: User, label: "Профиль", value: "Активен" },
@@ -15,39 +18,37 @@ const stats = [
 
 export const ProfileCompany = () => {
   return (
-      <div className={styles.container}>
-        <div className={styles.header}>
-          <Heading as="h1" className={styles.title}>
-            Личный кабинет компании
-          </Heading>
-          <Text className={styles.description}>
-            Управляйте командой, проектами и заказами
-          </Text>
-        </div>
-
-        <div className={styles.statsGrid}>
-          {stats.map((stat, index) => (
-            <Card key={index} className={styles.statCard}>
-              <div className={styles.shineElement} />
-              <stat.icon className={styles.statIcon} size={32} />
-              <div>
-                <Text className={styles.statLabel}>{stat.label}</Text>
-                <Heading as="h4" className={styles.statValue}>
-                  {stat.value}
-                </Heading>
-              </div>
-            </Card>
-          ))}
-        </div>
-
-        <div className={styles.footer}>
-          <Button variant="outline" size="md">
-            Управление командой
-          </Button>
-          <Button variant="primary" size="md">
-            Найти проекты
-          </Button>
-        </div>
+    <div className={styles.container}>
+      <div className={styles.header}>
+        <Heading as="h1" className={styles.title}>
+          Личный кабинет компании
+        </Heading>
+        <Text className={styles.description}>Управляйте командой, проектами и заказами</Text>
       </div>
+
+      <div className={styles.statsGrid}>
+        {stats.map((stat, index) => (
+          <Card key={index} className={styles.statCard}>
+            <div className={styles.shineElement} />
+            <stat.icon className={styles.statIcon} size={32} />
+            <div>
+              <Text className={styles.statLabel}>{stat.label}</Text>
+              <Heading as="h4" className={styles.statValue}>
+                {stat.value}
+              </Heading>
+            </div>
+          </Card>
+        ))}
+      </div>
+
+      <div className={styles.footer}>
+        <Button variant="outline" size="md">
+          Управление командой
+        </Button>
+        <Button variant="primary" size="md">
+          Найти проекты
+        </Button>
+      </div>
+    </div>
   );
 };

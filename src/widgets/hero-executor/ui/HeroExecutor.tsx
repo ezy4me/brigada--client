@@ -1,12 +1,15 @@
 "use client";
 
 import { useState, useEffect } from "react";
+
 import { Search, MapPin, CheckCircle, Users } from "lucide-react";
+
 import { Button } from "@/shared/ui/button/Button";
-import { Input } from "@/shared/ui/input/Input";
-import { Text } from "@/shared/ui/text/Text";
 import { Heading } from "@/shared/ui/heading/Heading";
+import { Input } from "@/shared/ui/input/Input";
 import { Section } from "@/shared/ui/section/Section";
+import { Text } from "@/shared/ui/text/Text";
+
 import * as styles from "./hero-executor.css";
 
 const popularRequests = [
@@ -92,19 +95,11 @@ export const HeroExecutor = () => {
 
         <div className={styles.stats}>
           <div className={styles.statItem}>
-            <CheckCircle
-              className={styles.statIcon}
-              size={20}
-              aria-hidden="true"
-            />
+            <CheckCircle className={styles.statIcon} size={20} aria-hidden="true" />
             <Text>Более 1000 заказов в {city}</Text>
           </div>
           <div className={styles.statItem}>
-            <Users
-              className={styles.statIcon}
-              size={20}
-              aria-hidden="true"
-            />
+            <Users className={styles.statIcon} size={20} aria-hidden="true" />
             <Text>Без комиссии</Text>
           </div>
         </div>

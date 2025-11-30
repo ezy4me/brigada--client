@@ -2,14 +2,12 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { 
-  Home, 
-  User, 
-  MapPin, 
-  Settings 
-} from "lucide-react";
-import { Text } from "@/shared/ui/text/Text";
+
+import { Home, User, MapPin, Settings } from "lucide-react";
+
 import { cn } from "@/shared/lib/utils";
+import { Text } from "@/shared/ui/text/Text";
+
 import * as styles from "./mobileProfileNav.css";
 
 const navItems = [
@@ -30,24 +28,10 @@ export const MobileProfileNav = () => {
           <Link
             key={item.href}
             href={item.href}
-            className={cn(
-              styles.navItem,
-              isActive && styles.activeNavItem
-            )}
+            className={cn(styles.navItem, isActive && styles.activeNavItem)}
           >
-            <item.icon 
-              className={cn(
-                styles.navIcon,
-                isActive && styles.activeNavIcon
-              )} 
-              size={20} 
-            />
-            <p className={cn(
-              styles.navText,
-              isActive && styles.activeNavText
-            )}>
-              {item.label}
-            </p>
+            <item.icon className={cn(styles.navIcon, isActive && styles.activeNavIcon)} size={20} />
+            <p className={cn(styles.navText, isActive && styles.activeNavText)}>{item.label}</p>
           </Link>
         );
       })}

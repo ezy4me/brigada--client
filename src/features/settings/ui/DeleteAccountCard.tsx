@@ -1,9 +1,10 @@
 "use client";
 
+import { Button } from "@/shared/ui/button/Button";
 import { Card } from "@/shared/ui/card/Card";
 import { Heading } from "@/shared/ui/heading/Heading";
 import { Text } from "@/shared/ui/text/Text";
-import { Button } from "@/shared/ui/button/Button";
+
 import * as styles from "./deleteAccountCard.css";
 
 interface DeleteAccountCardProps {

@@ -1,8 +1,10 @@
-import { Card } from "@/shared/ui/card/Card";
 import { User, FileText, MessageCircle, FileSignature } from "lucide-react";
-import { Section } from "@/shared/ui/section/Section";
+
+import { Card } from "@/shared/ui/card/Card";
 import { Heading } from "@/shared/ui/heading/Heading";
+import { Section } from "@/shared/ui/section/Section";
 import { Text } from "@/shared/ui/text/Text";
+
 import * as styles from "./how-it-works.css";
 
 const steps = [
@@ -39,9 +41,7 @@ export const HowItWorks = () => {
         <Heading as="h2" className={styles.title}>
           Как это работает
         </Heading>
-        <Text className={styles.subtitle}>
-          Работайте спокойно — всё автоматизировано
-        </Text>
+        <Text className={styles.subtitle}>Работайте спокойно — всё автоматизировано</Text>
       </div>
 
       <div className={styles.stepsGrid}>
@@ -50,18 +50,16 @@ export const HowItWorks = () => {
           return (
             <Card key={index} className={styles.stepCard}>
               <div className={styles.shineElement} />
-              
+
               <div className={styles.stepNumber}>{step.number}</div>
-              
+
               {/* <IconComponent className={styles.stepIcon} size={40} /> */}
-              
+
               <Heading as="h3" className={styles.stepTitle}>
                 {step.title}
               </Heading>
-              
-              <Text className={styles.stepDescription}>
-                {step.description}
-              </Text>
+
+              <Text className={styles.stepDescription}>{step.description}</Text>
             </Card>
           );
         })}

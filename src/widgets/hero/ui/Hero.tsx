@@ -1,13 +1,17 @@
 "use client";
 
-import { Section } from "@/shared/ui/section/Section";
-import { Heading } from "@/shared/ui/heading/Heading";
-import { Text } from "@/shared/ui/text/Text";
-import { cn } from "@/shared/lib/utils";
-import * as styles from "./hero.css";
-import BackgroundLines from "@/shared/ui/background-lines/BackgroundLines";
-import { Button } from "@/shared/ui/button/Button";
 import Link from "next/link";
+
+import { cn } from "@/shared/lib/utils";
+import BackgroundLines from "@/shared/ui/background/background-lines/BackgroundLines";
+import { Button } from "@/shared/ui/button/Button";
+import { Heading } from "@/shared/ui/heading/Heading";
+import { Section } from "@/shared/ui/section/Section";
+import { Text } from "@/shared/ui/text/Text";
+
+import * as styles from "./hero.css";
+
+
 
 interface HeroProps {
   className?: string;
@@ -24,9 +28,7 @@ export const Hero = ({ className }: HeroProps) => {
       <div className={styles.content}>
         <Heading as="h1" className={styles.heading}>
           Получайте строительные заказы{" "}
-          <span className={styles.headingAccent}>
-            без рекламы и звонков
-          </span>
+          <span className={styles.headingAccent}>без рекламы и звонков</span>
         </Heading>
 
         <Text className={styles.description}>
@@ -35,9 +37,7 @@ export const Hero = ({ className }: HeroProps) => {
           от реальных клиентов уже сегодня.
         </Text>
 
-        <Text className={styles.subDescription}>
-          Всё официально: чат, договор, документы
-        </Text>
+        <Text className={styles.subDescription}>Всё официально: чат, договор, документы</Text>
 
         <div className={styles.buttonWrapper}>
           <Link href="/register">

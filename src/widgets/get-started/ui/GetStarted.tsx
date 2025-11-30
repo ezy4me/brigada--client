@@ -1,13 +1,17 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+
+import { ArrowRight } from "lucide-react";
+
+import { cn } from "@/shared/lib/utils";
 import { Button } from "@/shared/ui/button/Button";
-import { Text } from "@/shared/ui/text/Text";
 import { Heading } from "@/shared/ui/heading/Heading";
 import { Section } from "@/shared/ui/section/Section";
-import { ArrowRight } from "lucide-react";
+import { Text } from "@/shared/ui/text/Text";
+
 import * as styles from "./getStarted.css";
-import { cn } from "@/shared/lib/utils";
+
 
 export interface GetStartedProps {
   title?: string;
@@ -51,10 +55,7 @@ export const GetStarted = ({
         </div>
 
         <div className={styles.imagePlaceholder}>
-          <div 
-            className={styles.backgroundImage}
-            style={{ backgroundImage: `url(${imageUrl})` }}
-          />
+          <div className={styles.backgroundImage} style={{ backgroundImage: `url(${imageUrl})` }} />
         </div>
       </div>
     </Section>

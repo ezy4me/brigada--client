@@ -1,26 +1,22 @@
-import { ComponentPropsWithoutRef, ElementType, forwardRef } from 'react';
-import { heading } from './heading.css';
-import { cn } from '@/shared/lib/utils';
+import { ComponentPropsWithoutRef, forwardRef } from "react";
 
-type HeadingLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-type HeadingSize = 'h1' | 'h1Sm' | 'h2' | 'h2Sm' | 'h3' | 'h4';
+import { cn } from "@/shared/lib/utils";
 
-interface HeadingProps extends ComponentPropsWithoutRef<HeadingLevel> {
+import { heading } from "./heading.css";
+
+type HeadingLevel = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+type HeadingSize = "h1" | "h1Sm" | "h2" | "h2Sm" | "h3" | "h4";
+
+export interface HeadingProps extends ComponentPropsWithoutRef<HeadingLevel> {
   as?: HeadingLevel;
   size?: HeadingSize;
-  weight?: 'regular' | 'medium' | 'bold';
+  weight?: "regular" | "medium" | "bold";
 }
 
 export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
-  ({ as: Tag = 'h2', size, weight, className, ...props }, ref) => {
-    return (
-      <Tag
-        ref={ref}
-        className={cn(heading({ size, weight }), className)}
-        {...props}
-      />
-    );
+  ({ as: Tag = "h2", size, weight, className, ...props }, ref) => {
+    return <Tag ref={ref} className={cn(heading({ size, weight }), className)} {...props} />;
   }
 );
 
-Heading.displayName = 'Heading';
+Heading.displayName = "Heading";

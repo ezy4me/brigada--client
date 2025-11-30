@@ -1,11 +1,13 @@
 "use client";
 
 import { useState } from "react";
+
+import { Button } from "@/shared/ui/button/Button";
 import { Card } from "@/shared/ui/card/Card";
 import { Heading } from "@/shared/ui/heading/Heading";
-import { Text } from "@/shared/ui/text/Text";
-import { Button } from "@/shared/ui/button/Button";
 import { Switch } from "@/shared/ui/switch/Switch";
+import { Text } from "@/shared/ui/text/Text";
+
 import * as styles from "./notificationSettings.css";
 
 const initialNotifications = [
@@ -21,9 +23,7 @@ export const NotificationSettings = () => {
   const handleToggle = (id: string) => {
     setNotifications((prev) =>
       prev.map((notification) =>
-        notification.id === id
-          ? { ...notification, enabled: !notification.enabled }
-          : notification
+        notification.id === id ? { ...notification, enabled: !notification.enabled } : notification
       )
     );
   };
@@ -43,10 +43,7 @@ export const NotificationSettings = () => {
           <div key={item.id} className={styles.notificationItem}>
             <Text className={styles.notificationText}>{item.label}</Text>
             <div className={styles.notificationActions}>
-              <Switch
-                checked={item.enabled}
-                onCheckedChange={() => handleToggle(item.id)}
-              />
+              <Switch checked={item.enabled} onCheckedChange={() => handleToggle(item.id)} />
             </div>
           </div>
         ))}

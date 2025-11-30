@@ -1,7 +1,9 @@
-import { Input } from "@/shared/ui/input/Input";
 import { Mail, Lock, Eye, EyeOff } from "lucide-react";
 import { UseFormRegister } from "react-hook-form";
+
 import { LoginData } from "@/features/auth/lib/validation-schemas";
+import { Input } from "@/shared/ui/input/Input";
+
 import * as styles from "../loginForm.css";
 
 interface LoginFieldsProps {
@@ -42,11 +44,7 @@ export const LoginFields = ({
           disabled={isLoading}
           leftIcon={<Lock size={16} />}
           rightIcon={
-            <button
-              type="button"
-              onClick={onTogglePassword}
-              className={styles.passwordToggle}
-            >
+            <button type="button" onClick={onTogglePassword} className={styles.passwordToggle}>
               {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
             </button>
           }
@@ -57,11 +55,7 @@ export const LoginFields = ({
       </div>
 
       <div className={styles.forgotPassword}>
-        <button
-          type="button"
-          onClick={onForgotPassword}
-          className={styles.forgotPasswordLink}
-        >
+        <button type="button" onClick={onForgotPassword} className={styles.forgotPasswordLink}>
           Забыли пароль?
         </button>
       </div>

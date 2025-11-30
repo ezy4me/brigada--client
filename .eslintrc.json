@@ -1,16 +1,9 @@
 {
-  "extends": [
-    "next/core-web-vitals",
-    "plugin:tailwindcss/recommended",
-    "prettier"
-  ],
+  "extends": ["next/core-web-vitals", "plugin:tailwindcss/recommended", "prettier"],
   "plugins": ["tailwindcss"],
   "rules": {
     "tailwindcss/no-custom-classname": "off",
     "tailwindcss/classnames-order": "warn",
-    "import/order": [
-      "error",
-      { "alphabetize": { "order": "asc" } }
-    ]
+    "import/order": ["error", { "alphabetize": { "order": "asc" } }]
   }
 }

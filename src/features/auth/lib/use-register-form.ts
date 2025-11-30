@@ -1,7 +1,10 @@
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+
 import { Role } from "@/features/role-selector/ui/RoleSelector";
+
 import {
   baseUserSchema,
   companySchema,
@@ -66,11 +69,7 @@ export const useRegisterForm = (
     try {
       await onSubmit(data, selectedRole);
     } catch (error) {
-      setServerError(
-        error instanceof Error
-          ? error.message
-          : "Произошла ошибка при регистрации"
-      );
+      setServerError(error instanceof Error ? error.message : "Произошла ошибка при регистрации");
     } finally {
       setIsLoading(false);
     }

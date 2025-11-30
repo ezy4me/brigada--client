@@ -1,10 +1,13 @@
 "use client";
 
 import { useState } from "react";
+
 import { Button } from "@/shared/ui/button/Button";
+
 import { useLoginForm } from "../../lib/use-login-form";
-import { LoginFields } from "./login-fields/LoginFields";
 import { LoginData } from "../../lib/validation-schemas";
+
+import { LoginFields } from "./login-fields/LoginFields";
 import * as styles from "./loginForm.css";
 
 export interface LoginFormProps {
@@ -15,13 +18,7 @@ export interface LoginFormProps {
 export const LoginForm = ({ onSubmit, onForgotPassword }: LoginFormProps) => {
   const [showPassword, setShowPassword] = useState(false);
 
-  const {
-    isLoading,
-    serverError,
-    errors,
-    register,
-    handleSubmit,
-  } = useLoginForm(onSubmit);
+  const { isLoading, serverError, errors, register, handleSubmit } = useLoginForm(onSubmit);
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);

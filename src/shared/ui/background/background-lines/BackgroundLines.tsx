@@ -1,8 +1,11 @@
 "use client";
 
 import { useState, useEffect } from "react";
+
 import { motion } from "framer-motion";
+
 import { cn } from "@/shared/lib/utils";
+
 import * as styles from "./backgroundLines.css";
 
 const BackgroundLines = () => {
@@ -24,10 +27,7 @@ const BackgroundLines = () => {
   const lines = new Array(lineCount).fill(null);
 
   return (
-    <motion.div
-      className={cn(styles.wrapper)}
-      style={{ height: "100vh", width: "100vw" }}
-    >
+    <motion.div className={cn(styles.wrapper)} style={{ height: "100vh", width: "100vw" }}>
       {lines.map((_, index) => (
         <motion.div
           key={index}

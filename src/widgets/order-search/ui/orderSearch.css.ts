@@ -1,5 +1,6 @@
 // src/widgets/order-search/ui/orderSearch.css.ts
 import { style } from "@vanilla-extract/css";
+
 import { vars } from "@/shared/styles/theme.css";
 
 export const container = style({

@@ -1,15 +1,11 @@
 "use client";
 
 import { FC } from "react";
+
+import { ArrowUp, Mail, Phone, Globe, Send, Users } from "lucide-react";
+
 import { cn } from "@/shared/lib/utils";
-import {
-  ArrowUp,
-  Mail,
-  Phone,
-  Globe,
-  Send,
-  Users,
-} from "lucide-react";
+
 import * as styles from "./footer.css";
 
 export interface FooterProps {
@@ -106,10 +102,7 @@ export const Footer: FC<FooterProps> = ({ className }) => {
             </div>
 
             <div className={styles.contactInfo}>
-              <a
-                href="mailto:brigada.ru_official@mail.ru"
-                className={styles.link}
-              >
+              <a href="mailto:brigada.ru_official@mail.ru" className={styles.link}>
                 <Mail size={16} /> brigada.ru_official@mail.ru
               </a>
               <a href="tel:+71234567890" className={styles.link}>

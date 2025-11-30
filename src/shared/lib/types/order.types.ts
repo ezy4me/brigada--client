@@ -26,7 +26,7 @@ export interface FilterValues {
   minPrice: string;
   maxPrice: string;
   region: string;
-  keywords: string[]; 
+  keywords: string[];
   executorType?: "company" | "executor";
   highRatingOnly: boolean;
   contentType?: "jobs" | "services";

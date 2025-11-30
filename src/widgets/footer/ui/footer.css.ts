@@ -1,4 +1,5 @@
 import { style } from "@vanilla-extract/css";
+
 import { vars } from "@/shared/styles/theme.css";
 
 export const footer = style({
@@ -45,7 +46,7 @@ export const sectionTitle = style({
 });
 
 export const sectionDivider = style({
-  width: "100%", 
+  width: "100%",
   height: "1px",
   backgroundColor: vars.color.gray["600"],
   borderRadius: "2px",

@@ -1,12 +1,16 @@
 "use client";
 
 import { useState } from "react";
+
+import Link from "next/link";
+
+import { ForgotPasswordForm } from "@/features/auth/ui/forgot-password-form/ForgotPasswordForm";
+import { AnimatedBackground } from "@/shared/ui/background/animated-background/AnimatedBackground";
 import { Card, CardContent } from "@/shared/ui/card/Card";
 import { Logo } from "@/shared/ui/logo/Logo";
-import { ForgotPasswordForm } from "@/features/auth/ui/forgot-password-form/ForgotPasswordForm";
-import Link from "next/link";
+
 import * as styles from "./page.css";
-import { AnimatedBackground } from "@/shared/ui/animated-background/AnimatedBackground";
+
 
 export default function ForgotPasswordPage() {
   const [isSubmitted, setIsSubmitted] = useState(false);

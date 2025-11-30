@@ -46,7 +46,7 @@ export const semanticColors = {
     strong: colorPalette.gray300,
   },
   brand: {
-    primary: colorPalette.red500,  
+    primary: colorPalette.red500,
     secondary: colorPalette.blue500,
   },
   status: {

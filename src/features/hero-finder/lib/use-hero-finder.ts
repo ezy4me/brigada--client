@@ -1,10 +1,9 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import {
-  useRouter,
-  useSearchParams as useNextSearchParams,
-} from "next/navigation";
+
+import { useRouter, useSearchParams as useNextSearchParams } from "next/navigation";
+
 import { SearchParams, UserRole } from "./types";
 
 interface UseHeroFinderProps {
@@ -12,19 +11,12 @@ interface UseHeroFinderProps {
   defaultCity?: string;
 }
 
-export const useHeroFinder = ({
-  role,
-  defaultCity = "Москва",
-}: UseHeroFinderProps) => {
+export const useHeroFinder = ({ role, defaultCity = "Москва" }: UseHeroFinderProps) => {
   const router = useRouter();
   const searchParams = useNextSearchParams();
 
-  const [city, setCity] = useState(
-    searchParams.get("city") || defaultCity
-  );
-  const [searchQuery, setSearchQuery] = useState(
-    searchParams.get("q") || ""
-  );
+  const [city, setCity] = useState(searchParams?.get("city") || defaultCity);
+  const [searchQuery, setSearchQuery] = useState(searchParams?.get("q") || "");
   const [isDetectingCity, setIsDetectingCity] = useState(!defaultCity);
 
   useEffect(() => {

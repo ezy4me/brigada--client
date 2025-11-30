@@ -1,12 +1,14 @@
 "use client";
 
 import { useState } from "react";
+
+import { RoleSelector , Role } from "@/features/role-selector/ui/RoleSelector";
 import { Button } from "@/shared/ui/button/Button";
-import { RoleSelector } from "@/features/role-selector/ui/RoleSelector";
+
 import { useRegisterForm, RegisterFormFields } from "../../lib/use-register-form";
+
 import { BaseFields } from "./register-fields/BaseFields";
 import { CompanyFields } from "./register-fields/CompanyFields";
-import { Role } from "@/features/role-selector/ui/RoleSelector";
 import * as styles from "./registerForm.css";
 
 export interface RegisterFormProps {
@@ -30,10 +32,10 @@ export const RegisterForm = ({ onSubmit }: RegisterFormProps) => {
     watch,
   } = useRegisterForm(onSubmit);
 
-  const selectedTariff = watch('tariff');
+  const selectedTariff = watch("tariff");
 
   const handleTariffSelect = (value: string) => {
-    setFormValue('tariff', value);
+    setFormValue("tariff", value);
   };
 
   const togglePasswordVisibility = () => {
@@ -47,10 +49,7 @@ export const RegisterForm = ({ onSubmit }: RegisterFormProps) => {
   return (
     <form onSubmit={handleSubmit} className={styles.form} noValidate>
       <div className={styles.roleSelectorWrapper}>
-        <RoleSelector
-          initialRole={selectedRole || undefined}
-          onRoleChange={handleRoleChange}
-        />
+        <RoleSelector initialRole={selectedRole || undefined} onRoleChange={handleRoleChange} />
       </div>
 
       {selectedRole && (
@@ -70,7 +69,7 @@ export const RegisterForm = ({ onSubmit }: RegisterFormProps) => {
               register={register}
               errors={errors}
               isLoading={isLoading}
-              selectedTariff={selectedTariff || ''}
+              selectedTariff={selectedTariff || ""}
               onTariffSelect={handleTariffSelect}
             />
           )}
@@ -88,13 +87,9 @@ export const RegisterForm = ({ onSubmit }: RegisterFormProps) => {
             </label>
           </div>
 
-          {serverError && (
-            <div className={styles.errorText}>{serverError}</div>
-          )}
+          {serverError && <div className={styles.errorText}>{serverError}</div>}
 
-          {!selectedRole && (
-            <div className={styles.errorText}>Пожалуйста, выберите роль</div>
-          )}
+          {!selectedRole && <div className={styles.errorText}>Пожалуйста, выберите роль</div>}
 
           <Button
             type="submit"

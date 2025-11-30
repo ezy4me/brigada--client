@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+
 import { loginSchema, LoginData } from "./validation-schemas";
 
-export const useLoginForm = (
-  onSubmit: (data: LoginData) => Promise<void>
-) => {
+export const useLoginForm = (onSubmit: (data: LoginData) => Promise<void>) => {
   const [isLoading, setIsLoading] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
 
@@ -26,10 +26,7 @@ export const useLoginForm = (
     try {
       await onSubmit(data);
     } catch (error) {
-      const errorMessage =
-        error instanceof Error
-          ? error.message
-          : "Произошла ошибка при входе";
+      const errorMessage = error instanceof Error ? error.message : "Произошла ошибка при входе";
       setServerError(errorMessage);
 
       if (errorMessage.includes("email")) {

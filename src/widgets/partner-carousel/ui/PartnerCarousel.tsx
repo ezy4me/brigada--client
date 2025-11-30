@@ -1,13 +1,19 @@
 "use client";
 
-import { Button } from "@/shared/ui/button/Button";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { Section } from "@/shared/ui/section/Section";
-import { Heading } from "@/shared/ui/heading/Heading";
-import { Text } from "@/shared/ui/text/Text";
-import * as styles from "./partnerCarousel.css";
 import { useState } from "react";
+
 import Image from "next/image";
+
+import { ChevronLeft, ChevronRight } from "lucide-react";
+
+import { Button } from "@/shared/ui/button/Button";
+import { Heading } from "@/shared/ui/heading/Heading";
+import { Section } from "@/shared/ui/section/Section";
+import { Text } from "@/shared/ui/text/Text";
+
+import * as styles from "./partnerCarousel.css";
+
+
 
 export interface Partner {
   name: string;
@@ -32,15 +38,11 @@ export const PartnerCarousel = ({
   const [currentPartnerIndex, setCurrentPartnerIndex] = useState(0);
 
   const goToPrevious = () => {
-    setCurrentPartnerIndex((prev) =>
-      prev === 0 ? partners.length - 1 : prev - 1
-    );
+    setCurrentPartnerIndex((prev) => (prev === 0 ? partners.length - 1 : prev - 1));
   };
 
   const goToNext = () => {
-    setCurrentPartnerIndex((prev) =>
-      prev === partners.length - 1 ? 0 : prev + 1
-    );
+    setCurrentPartnerIndex((prev) => (prev === partners.length - 1 ? 0 : prev + 1));
   };
 
   const current = partners[currentPartnerIndex];

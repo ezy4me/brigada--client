@@ -1,20 +1,23 @@
-import { useState } from 'react';
-import Image from 'next/image';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import * as styles from './heroCarousel.css';
+import { useState } from "react";
+
+import Image from "next/image";
+
+import { ChevronLeft, ChevronRight } from "lucide-react";
+
+import * as styles from "./heroCarousel.css";
 
 const slides = [
   {
-    image: '/hero-bg-1.jpg',
-    badges: ['Новостройки', 'Ремонт'],
+    image: "/hero-bg-1.jpg",
+    badges: ["Новостройки", "Ремонт"],
   },
   {
-    image: '/hero-bg-2.jpg',
-    badges: ['Капитальный ремонт', 'Отделка'],
+    image: "/hero-bg-2.jpg",
+    badges: ["Капитальный ремонт", "Отделка"],
   },
   {
-    image: '/hero-bg-3.jpg',
-    badges: ['Дизайн-проекты', 'Комплекс'],
+    image: "/hero-bg-3.jpg",
+    badges: ["Дизайн-проекты", "Комплекс"],
   },
 ];
 
@@ -41,7 +44,7 @@ export const HeroCarousel = () => {
         priority
       />
       <div className={styles.overlay} />
-      
+
       <div className={styles.container}>
         <div className={styles.badges}>
           {current.badges.map((badge, index) => (

@@ -1,4 +1,7 @@
-import { TextareaHTMLAttributes, forwardRef, ReactNode } from 'react';
+import { TextareaHTMLAttributes, forwardRef, ReactNode } from "react";
+
+import { cn } from "@/shared/lib/utils";
+
 import {
   field,
   label,
@@ -13,18 +16,16 @@ import {
   helperText,
   helperTextError,
   helperTextSuccess,
-} from './textarea.css';
-import { cn } from '@/shared/lib/utils';
+} from "./textarea.css";
 
-export interface TextareaProps
-  extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'size'> {
+export interface TextareaProps extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, "size"> {
   label?: string;
   helperText?: string;
   error?: boolean;
   success?: boolean;
   leftIcon?: ReactNode;
   rightIcon?: ReactNode;
-  size?: 'sm' | 'md' | 'lg';
+  size?: "sm" | "md" | "lg";
 }
 
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
@@ -36,7 +37,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       success,
       leftIcon,
       rightIcon,
-      size = 'md',
+      size = "md",
       className,
       ...props
     },
@@ -44,13 +45,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   ) => {
     const showHelper = !!helperTextProp;
     const helper = showHelper && (
-      <div
-        className={cn(
-          helperText,
-          error && helperTextError,
-          success && helperTextSuccess
-        )}
-      >
+      <div className={cn(helperText, error && helperTextError, success && helperTextSuccess)}>
         {helperTextProp}
       </div>
     );
@@ -68,13 +63,9 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             )}
           >
             {leftIcon && <div className={cn(icon, leftIconStyle)}>{leftIcon}</div>}
-            
-            <textarea
-              ref={ref}
-              className={textarea({ size })}
-              {...props}
-            />
-            
+
+            <textarea ref={ref} className={textarea({ size })} {...props} />
+
             {rightIcon && <div className={cn(icon, rightIconStyle)}>{rightIcon}</div>}
           </div>
         </div>
@@ -85,4 +76,4 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
   }
 );
 
-Textarea.displayName = 'Textarea';
+Textarea.displayName = "Textarea";

@@ -1,4 +1,5 @@
 import { Text } from "@/shared/ui/text/Text";
+
 import * as styles from "./dashboardFooter.css";
 
 export const DashboardFooter = () => {
