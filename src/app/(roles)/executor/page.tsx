@@ -11,6 +11,7 @@ import * as styles from "../role.css";
 export default function ExecutorPage() {
   return (
     <div className={styles.page}>
+      <HeroFinder role="executor" />
       <HowItWorks />
       <CallToAction
         text="Работайте с клиентами — мы берём остальное на себя"
