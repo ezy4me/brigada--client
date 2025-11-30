@@ -130,3 +130,26 @@ export const statIcon = style({
   color: vars.color.brand.primary,
   flexShrink: 0,
 });
+
+export const clearButton = style({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  background: "none",
+  border: "none",
+  cursor: "pointer",
+  color: vars.color.gray["500"],
+  padding: vars.spacing["4"],
+  borderRadius: vars.radius.sm,
+  transition: "color 0.2s ease",
+  
+  ":hover": {
+    color: vars.color.gray["700"],
+    backgroundColor: vars.color.gray["100"],
+  },
+  
+  ":focus": {
+    outline: "none",
+    boxShadow: `0 0 0 2px ${vars.color.brand.primary}`,
+  },
+});

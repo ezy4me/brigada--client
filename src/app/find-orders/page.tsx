@@ -5,8 +5,9 @@ import { OrderSearch } from "@/widgets/order-search/ui/OrderSearch";
 import { Section } from "@/shared/ui/section/Section";
 import { useUserRoleWithFallback } from "@/features/auth/lib/use-user-role";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
 import * as styles from "./findOrders.css";
+import { Header } from "@/widgets/header/ui/Header";
+import { Footer } from "@/widgets/footer/ui/Footer";
 
 export default function FindOrdersPage() {
   const searchParams = useSearchParams();
@@ -20,11 +21,12 @@ export default function FindOrdersPage() {
 
   return (
     <div className={styles.page}>
-    
+      <Header />
       <HeroFinder role={effectiveRole} defaultCity={city} />
       <Section>
         <OrderSearch role={effectiveRole} />
       </Section>
+      <Footer />
     </div>
   );
 }
