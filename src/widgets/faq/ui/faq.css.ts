@@ -44,7 +44,7 @@ export const accordionTrigger = style({
   fontSize: vars.font.size.body1,
   fontWeight: vars.font.weight.medium,
   color: vars.color.text.primary,
-  background: vars.color.background.primary,
+  background: vars.color.background.secondary,
   border: "none",
   cursor: "pointer",
   transition: "background-color 0.2s ease",
@@ -65,10 +65,10 @@ export const triggerIconWrapper = style({
   width: vars.spacing["40"],
   height: vars.spacing["40"],
   borderRadius: vars.radius.full,
-  border: `1px solid ${vars.color.text.secondary}`,
+  border: `1px solid ${vars.color.text.primary}`,
   transition: "all 0.2s ease",
   backgroundColor: vars.color.black,
-  color: vars.color.text.inverted,
+  color: vars.color.white,
   flexShrink: 0,
   selectors: {
     [`${accordionItem}[data-state="open"] &`]: {

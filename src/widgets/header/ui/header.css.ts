@@ -9,7 +9,7 @@ export const header = style({
   backgroundColor: vars.color.background.tertiary,
   // backdropFilter: "saturate(180%) blur(20px)",
   // margin: `0 ${vars.spacing["16"]}`,
-  borderBottom: `1px solid ${vars.color.gray[200]}`,
+  // borderBottom: `1px solid ${vars.color.gray[200]}`,
 
   "@media": {
     "screen and (max-width: 767px)": {

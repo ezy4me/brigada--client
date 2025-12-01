@@ -2,6 +2,8 @@
 
 import { FC } from "react";
 
+import Link from "next/link";
+
 import { ArrowUp, Mail, Phone, Globe, Send, Users } from "lucide-react";
 
 import { cn } from "@/shared/lib/utils";
@@ -24,15 +26,15 @@ export const Footer: FC<FooterProps> = ({ className }) => {
           <div className={styles.section}>
             <h3 className={styles.sectionTitle}>Заказчикам</h3>
             <div className={styles.sectionDivider} />
-            <a href="/customer" className={styles.link}>
+            <Link href="/customer" className={styles.link}>
               Сайт для заказчика
-            </a>
-            <a href="/login" className={styles.link}>
+            </Link>
+            <Link href="/login" className={styles.link}>
               Вход для заказчика
-            </a>
-            <a href="/" className={styles.link}>
+            </Link>
+            <Link href="/" className={styles.link}>
               Все исполнители
-            </a>
+            </Link>
             <a href="/support" className={styles.link}>
               Поддержка
             </a>
@@ -41,49 +43,49 @@ export const Footer: FC<FooterProps> = ({ className }) => {
           <div className={styles.section}>
             <h3 className={styles.sectionTitle}>Компаниям</h3>
             <div className={styles.sectionDivider} />
-            <a href="/company" className={styles.link}>
+            <Link href="/company" className={styles.link}>
               Сайт для компании
-            </a>
-            <a href="/login" className={styles.link}>
+            </Link>
+            <Link href="/login" className={styles.link}>
               Вход для компании
-            </a>
-            <a href="/" className={styles.link}>
+            </Link>
+            <Link href="/" className={styles.link}>
               Заказы
-            </a>
-            <a href="/support" className={styles.link}>
+            </Link>
+            <Link href="/support" className={styles.link}>
               Поддержка
-            </a>
+            </Link>
           </div>
 
           <div className={styles.section}>
             <h3 className={styles.sectionTitle}>Исполнителям</h3>
             <div className={styles.sectionDivider} />
-            <a href="/executors" className={styles.link}>
+            <Link href="/executors" className={styles.link}>
               Сайт для исполнителей
-            </a>
-            <a href="/login/executor" className={styles.link}>
+            </Link>
+            <Link href="/login/executor" className={styles.link}>
               Вход для исполнителей
-            </a>
-            <a href="/orders" className={styles.link}>
+            </Link>
+            <Link href="/orders" className={styles.link}>
               Заказы
-            </a>
-            <a href="/support" className={styles.link}>
+            </Link>
+            <Link href="/support" className={styles.link}>
               Поддержка
-            </a>
+            </Link>
           </div>
 
           <div className={styles.section}>
             <h3 className={styles.sectionTitle}>Бригада.ру</h3>
             <div className={styles.sectionDivider} />
-            <a href="/" className={styles.link}>
+            <Link href="/" className={styles.link}>
               О нас
-            </a>
-            <a href="/" className={styles.link}>
+            </Link>
+            <Link href="/" className={styles.link}>
               Реклама на платформе
-            </a>
-            <a href="/" className={styles.link}>
+            </Link>
+            <Link href="/" className={styles.link}>
               Правовые документы
-            </a>
+            </Link>
           </div>
 
           <div className={styles.socialSection}>

@@ -3,15 +3,12 @@
 import Link from "next/link";
 
 import { cn } from "@/shared/lib/utils";
-import BackgroundLines from "@/shared/ui/background/background-lines/BackgroundLines";
 import { Button } from "@/shared/ui/button/Button";
 import { Heading } from "@/shared/ui/heading/Heading";
 import { Section } from "@/shared/ui/section/Section";
 import { Text } from "@/shared/ui/text/Text";
 
 import * as styles from "./hero.css";
-
-
 
 interface HeroProps {
   className?: string;
@@ -24,7 +21,6 @@ export const Hero = ({ className }: HeroProps) => {
 
   return (
     <Section className={cn(styles.hero, className)}>
-      {/* <BackgroundLines /> */}
       <div className={styles.content}>
         <Heading as="h1" className={styles.heading}>
           Получайте строительные заказы{" "}

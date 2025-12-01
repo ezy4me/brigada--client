@@ -45,7 +45,7 @@ export const roleButton = recipe({
   variants: {
     active: {
       true: {
-        color: vars.color.text.inverted,
+        color: vars.color.white,
       },
     },
   },

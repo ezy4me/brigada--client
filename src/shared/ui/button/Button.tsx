@@ -8,7 +8,6 @@ import { cn } from "@/shared/lib/utils";
 
 import { button, iconStyles } from "./button.css";
 
-
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "secondary" | "outline" | "ghost" | "destructive" | "white" | "black";
   size?: "sm" | "md" | "lg";

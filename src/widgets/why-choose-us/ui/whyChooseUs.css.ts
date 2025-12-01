@@ -93,7 +93,7 @@ export const benefitIcon = style({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  color: vars.color.text.inverted,
+  color: vars.color.white,
   fontSize: vars.font.size.caption,
   fontWeight: vars.font.weight.bold,
   marginBottom: vars.spacing["24"],

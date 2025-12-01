@@ -54,6 +54,7 @@ const baseButton = style({
   outline: "none",
   position: "relative",
   overflow: "hidden",
+  color: vars.color.text.primary,
 
   ":hover": {
     transform: "scale(1.02)",
@@ -79,7 +80,7 @@ export const button = recipe({
     variant: {
       primary: {
         backgroundColor: vars.color.brand.primary,
-        color: vars.color.text.inverted,
+        // color: vars.color.text.inverted,
         ":hover": {
           backgroundColor: vars.color.brand.primary,
           opacity: 0.9,
@@ -92,7 +93,7 @@ export const button = recipe({
       },
       secondary: {
         backgroundColor: vars.color.brand.secondary,
-        color: vars.color.text.inverted,
+        color: vars.color.white,
         ":hover": {
           backgroundColor: vars.color.brand.secondary,
           opacity: 0.9,
@@ -127,7 +128,7 @@ export const button = recipe({
       },
       destructive: {
         backgroundColor: vars.color.status.error,
-        color: vars.color.text.inverted,
+        // color: vars.color.text.inverted,
         boxShadow: "0 2px 6px rgba(216, 41, 47, 0.2)",
         ":hover": {
           backgroundColor: vars.color.status.error,

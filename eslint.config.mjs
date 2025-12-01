@@ -3,7 +3,6 @@ import nextVitals from "eslint-config-next/core-web-vitals";
 import nextTs from "eslint-config-next/typescript";
 
 export default defineConfig([
-  // Базовые игноры
   {
     ignores: [
       ".next/**",
@@ -16,7 +15,6 @@ export default defineConfig([
     ],
   },
 
-  // Основные правила
   {
     extends: [...nextVitals, ...nextTs],
     rules: {
@@ -25,14 +23,14 @@ export default defineConfig([
         "error",
         {
           groups: [
-            "builtin", // Node.js built-in modules
-            "external", // External packages (react, next, etc)
-            "internal", // Internal aliases (@/, @app/, etc)
-            "parent", // Relative parent imports
-            "sibling", // Relative sibling imports
-            "index", // Index imports
-            "object", // Object imports
-            "type", // Type imports
+            "builtin", 
+            "external",
+            "internal", 
+            "parent", 
+            "sibling", 
+            "index", 
+            "object", 
+            "type", 
           ],
           pathGroups: [
             {

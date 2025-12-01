@@ -84,7 +84,7 @@ export const badge = style({
   alignItems: "center",
   gap: vars.spacing["8"],
   fontSize: vars.font.size.body2,
-  color: vars.color.text.inverted,
+  color: vars.color.white,
   backgroundColor: "rgba(255, 255, 255, 0.2)",
   borderRadius: vars.radius.sm,
   paddingLeft: vars.spacing["8"],
@@ -100,7 +100,7 @@ export const badge = style({
 export const partnerName = style({
   fontSize: vars.font.size.h3,
   fontWeight: vars.font.weight.bold,
-  color: vars.color.text.inverted,
+  color: vars.color.white,
 });
 
 export const navButtons = style({

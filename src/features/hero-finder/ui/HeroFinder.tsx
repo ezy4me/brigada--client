@@ -1,6 +1,6 @@
 "use client";
 
-import { Search, MapPin, CheckCircle, Users, Loader2, X } from "lucide-react";
+import { Search, MapPin, CheckCircle, Loader2, X } from "lucide-react";
 
 import { Button } from "@/shared/ui/button/Button";
 import { Heading } from "@/shared/ui/heading/Heading";

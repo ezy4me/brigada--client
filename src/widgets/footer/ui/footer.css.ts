@@ -3,8 +3,9 @@ import { style } from "@vanilla-extract/css";
 import { vars } from "@/shared/styles/theme.css";
 
 export const footer = style({
-  backgroundColor: vars.color.gray["900"],
-  color: vars.color.text.inverted,
+  backgroundColor: vars.color.black,
+
+  color: vars.color.white,
   paddingTop: vars.spacing["32"],
   paddingBottom: vars.spacing["16"],
   fontFamily: vars.font.family,
@@ -41,7 +42,7 @@ export const section = style({
 export const sectionTitle = style({
   fontSize: vars.font.size.body1,
   fontWeight: vars.font.weight.medium,
-  color: vars.color.text.inverted,
+  // color: vars.color.text.inverted,
   // marginBottom: vars.spacing["8"],
 });
 
@@ -53,7 +54,7 @@ export const sectionDivider = style({
 });
 
 export const link = style({
-  color: vars.color.text.inverted,
+  // color: vars.color.text.inverted,
   textDecoration: "none",
   fontSize: vars.font.size.body2,
   ":hover": {
@@ -74,7 +75,7 @@ export const socialLinks = style({
 });
 
 export const socialLink = style({
-  color: vars.color.text.inverted,
+  // color: vars.color.text.inverted,
   ":hover": {
     color: vars.color.brand.primary,
   },
