@@ -10,6 +10,8 @@ export const [themeClass, vars] = createTheme({
   color: {
     white: colorPalette.white,
     black: colorPalette.black,
+    light: colorPalette.light,
+    dark: colorPalette.dark,
     background: {
       primary: lightSemanticColors.background.primary,
       secondary: lightSemanticColors.background.secondary,
@@ -98,6 +100,8 @@ export const darkThemeClass = createTheme(vars, {
   color: {
     white: colorPalette.white,
     black: colorPalette.black,
+    light: colorPalette.light,
+    dark: colorPalette.dark,
     background: {
       primary: darkSemanticColors.background.primary,
       secondary: darkSemanticColors.background.secondary,

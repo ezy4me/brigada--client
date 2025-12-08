@@ -25,11 +25,11 @@ export const header = style({
 
 export const title = style({
   fontWeight: vars.font.weight.bold,
-  color: vars.color.text.inverted,
+  color: vars.color.white,
 });
 
 export const subtitle = style({
-  color: vars.color.text.inverted,
+  color: vars.color.white,
 });
 
 export const tariffsGrid = style({

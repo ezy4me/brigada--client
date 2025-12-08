@@ -12,7 +12,6 @@ import { getHeroFinderConfig } from "../lib/config";
 import { UserRole } from "../lib/types";
 import { useHeroFinder } from "../lib/use-hero-finder";
 
-
 import * as styles from "./heroFinder.css";
 
 export interface HeroFinderProps {
@@ -113,7 +112,7 @@ export const HeroFinder = ({ role, defaultCity, className }: HeroFinderProps) =>
               aria-label={config.placeholder}
             />
             <Button variant="secondary" size="lg" onClick={handleSearch} className={styles.button}>
-              {config.searchLabel}
+              Найти
             </Button>
           </div>
         </div>

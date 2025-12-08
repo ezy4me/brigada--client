@@ -65,16 +65,16 @@ export const triggerIconWrapper = style({
   width: vars.spacing["40"],
   height: vars.spacing["40"],
   borderRadius: vars.radius.full,
-  border: `1px solid ${vars.color.text.primary}`,
+  // border: `1px solid ${vars.color.text.primary}`,
   transition: "all 0.2s ease",
-  backgroundColor: vars.color.black,
+  backgroundColor: vars.color.brand.primary,
   color: vars.color.white,
   flexShrink: 0,
   selectors: {
     [`${accordionItem}[data-state="open"] &`]: {
       backgroundColor: vars.color.brand.secondary,
       borderColor: vars.color.brand.secondary,
-      color: vars.color.text.inverted,
+      // color: vars.color.text.inverted,
     },
     [`${accordionTrigger}:hover &`]: {
       borderColor: vars.color.brand.secondary,

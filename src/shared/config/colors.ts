@@ -1,6 +1,7 @@
 export const colorPalette = {
   white: "#FFFFFF",
   light: "#fafafa",
+  dark: "#505050",
   black: "#000000",
   gray50: "#F5F5F5",
   gray100: "#EDEDED",

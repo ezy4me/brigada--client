@@ -27,8 +27,8 @@ export const logoWrapper = recipe({
 });
 
 export const logoImage = style({
-  width: vars.spacing["40"],
-  height: vars.spacing["40"],
+  width: vars.spacing["32"],
+  height: vars.spacing["32"],
   objectFit: "contain",
 });
 

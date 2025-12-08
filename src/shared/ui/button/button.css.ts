@@ -80,7 +80,7 @@ export const button = recipe({
     variant: {
       primary: {
         backgroundColor: vars.color.brand.primary,
-        // color: vars.color.text.inverted,
+        color: vars.color.white,
         ":hover": {
           backgroundColor: vars.color.brand.primary,
           opacity: 0.9,

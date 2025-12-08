@@ -14,7 +14,7 @@ globalStyle("body", {
   margin: 0,
   padding: 0,
   fontFamily: vars.font.family,
-  backgroundColor: vars.color.background.primary,
+  backgroundColor: vars.color.dark,
   color: vars.color.text.primary,
   lineHeight: vars.font.lineHeight.normal,
   position: "relative",

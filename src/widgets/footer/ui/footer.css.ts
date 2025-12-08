@@ -3,7 +3,7 @@ import { style } from "@vanilla-extract/css";
 import { vars } from "@/shared/styles/theme.css";
 
 export const footer = style({
-  backgroundColor: vars.color.black,
+  backgroundColor: '#121212',
 
   color: vars.color.white,
   paddingTop: vars.spacing["32"],
