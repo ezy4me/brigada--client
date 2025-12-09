@@ -11,10 +11,7 @@ import { Input } from "@/shared/ui/input/Input";
 import { Switch } from "@/shared/ui/switch/Switch";
 import { Text } from "@/shared/ui/text/Text";
 
-
-
 import * as styles from "./orderFilters.css";
-
 
 export interface OrderFiltersProps {
   role: UserRole;

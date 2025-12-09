@@ -4,11 +4,15 @@ import { useState, useMemo } from "react";
 
 import { useSearchParams, useRouter } from "next/navigation";
 
+import { Filter } from "lucide-react";
+
 import { OrderFilters } from "@/features/search/ui/order-filters/OrderFilters";
 import { OrderList } from "@/features/search/ui/order-list/OrderList";
 import { getMockOrders } from "@/shared/lib/mocks/orders";
 import { FilterValues } from "@/shared/lib/types/order.types";
 import { UserRole } from "@/shared/lib/types/user.types";
+import { Button } from "@/shared/ui/button/Button";
+import { Drawer } from "@/shared/ui/drawer/Drawer";
 
 import * as styles from "./orderSearch.css";
 
@@ -21,6 +25,8 @@ export const OrderSearch = ({ role }: OrderSearchProps) => {
   const router = useRouter();
   const queryFromUrl = searchParams?.get("q") || "";
   const cityFromUrl = searchParams?.get("city") || "";
+  
+  const [showMobileFilters, setShowMobileFilters] = useState(false);
 
   const [filters, setFilters] = useState<FilterValues>({
     minPrice: "",
@@ -128,8 +134,37 @@ export const OrderSearch = ({ role }: OrderSearchProps) => {
     router.replace(`/find-orders?${params.toString()}`, { scroll: false });
   };
 
+  const getActiveFiltersCount = () => {
+    let count = 0;
+    if (filters.minPrice) count++;
+    if (filters.maxPrice) count++;
+    if (filters.region || cityFromUrl) count++;
+    if (filters.keywords.length > 0) count++;
+    if (filters.executorType) count++;
+    if (filters.highRatingOnly) count++;
+    if (filters.contentType) count++;
+    return count;
+  };
+
+  const activeFiltersCount = getActiveFiltersCount();
+
   return (
     <div className={styles.container}>
+      <div className={styles.mobileFilterButtonContainer}>
+        <Button
+          variant="outline"
+          size="lg"
+          leftIcon={<Filter size={20} />}
+          onClick={() => setShowMobileFilters(true)}
+          className={styles.mobileFilterButton}
+        >
+          Фильтры
+          {activeFiltersCount > 0 && (
+            <span className={styles.filterBadge}>{activeFiltersCount}</span>
+          )}
+        </Button>
+      </div>
+
       <aside className={styles.sidebar}>
         <OrderFilters
           role={role}
@@ -142,6 +177,29 @@ export const OrderSearch = ({ role }: OrderSearchProps) => {
       <main className={styles.content}>
         <OrderList orders={filteredOrders} role={role} />
       </main>
+
+      <Drawer
+        isOpen={showMobileFilters}
+        onClose={() => setShowMobileFilters(false)}
+        title="Фильтры"
+        size="full"
+        position="right"
+      >
+        <div className={styles.drawerContent}>
+          <OrderFilters
+            role={role}
+            filters={{ ...filters, region: cityFromUrl || filters.region }}
+            onFiltersChange={(newFilters) => {
+              handleFiltersChange(newFilters);
+              setShowMobileFilters(false);
+            }}
+            onResetFilters={() => {
+              handleResetFilters();
+              setShowMobileFilters(false);
+            }}
+          />
+        </div>
+      </Drawer>
     </div>
   );
 };

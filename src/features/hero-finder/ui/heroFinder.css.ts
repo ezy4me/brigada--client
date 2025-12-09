@@ -11,9 +11,9 @@ export const section = style({
   backgroundRepeat: "no-repeat",
   backgroundPosition: "center center",
   backgroundSize: "cover",
-  
+
   padding: `${vars.spacing["20"]} ${vars.spacing["16"]}`,
-  
+
   "@media": {
     "screen and (min-width: 768px)": {
       padding: `${vars.spacing["32"]} ${vars.spacing["24"]}`,
@@ -32,7 +32,7 @@ export const content = style({
   width: "100%",
   maxWidth: "1200px",
   margin: "0 auto",
-  
+
   "@media": {
     "screen and (min-width: 768px)": {
       gap: vars.spacing["24"],
@@ -46,7 +46,7 @@ export const top = style({
   alignItems: "flex-start",
   gap: vars.spacing["12"],
   width: "100%",
-  
+
   "@media": {
     "screen and (min-width: 400px)": {
       flexDirection: "row",
@@ -63,7 +63,7 @@ export const title = style({
   lineHeight: 1.2,
   // textAlign: "left",
   margin: 0,
-  
+
   "@media": {
     "screen and (min-width: 768px)": {
       fontSize: "48px",
@@ -90,11 +90,11 @@ export const locationBlock = style({
   overflow: "hidden",
   textOverflow: "ellipsis",
   maxWidth: "100%",
-  
+
   ":hover": {
     backgroundColor: "rgba(255, 255, 255, 0.15)",
   },
-  
+
   "@media": {
     "screen and (min-width: 768px)": {
       fontSize: vars.font.size.body1,
@@ -123,10 +123,10 @@ export const popularRequests = style({
   gap: vars.spacing["8"],
   justifyContent: "flex-start",
   width: "100%",
-  
+
   "@media": {
-    "screen and (min-width: 768px)": {
-      gap: vars.spacing["12"],
+    "screen and (max-width: 768px)": {
+      display: "none",
     },
   },
 });
@@ -141,13 +141,13 @@ export const requestTag = style({
   border: `1px solid ${vars.color.border.default}`,
   transition: "all 0.2s ease",
   whiteSpace: "nowrap",
-  
+
   ":hover": {
     backgroundColor: vars.color.background.tertiary,
     transform: "translateY(-1px)",
     boxShadow: vars.shadow.sm,
   },
-  
+
   "@media": {
     "screen and (max-width: 480px)": {
       padding: `${vars.spacing["6"]} ${vars.spacing["12"]}`,
@@ -161,7 +161,7 @@ export const searchContainer = style({
   display: "flex",
   flexDirection: "column",
   gap: vars.spacing["12"],
-  
+
   "@media": {
     "screen and (min-width: 768px)": {
       flexDirection: "row",
@@ -176,7 +176,7 @@ export const inputRow = style({
   flexDirection: "column",
   gap: vars.spacing["12"],
   width: "100%",
-  
+
   "@media": {
     "screen and (min-width: 768px)": {
       flexDirection: "row",
@@ -190,7 +190,7 @@ export const inputWrapper = style({
   position: "relative",
   flex: 1,
   width: "100%",
-  
+
   "@media": {
     "screen and (min-width: 768px)": {
       width: "auto",
@@ -200,7 +200,7 @@ export const inputWrapper = style({
 
 export const searchButton = style({
   width: "100%",
-  
+
   "@media": {
     "screen and (min-width: 768px)": {
       width: "auto",
@@ -217,7 +217,7 @@ export const stats = style({
   flexDirection: "column",
   gap: vars.spacing["12"],
   width: "100%",
-  
+
   "@media": {
     "screen and (min-width: 480px)": {
       flexDirection: "row",
@@ -235,7 +235,7 @@ export const statItem = style({
   alignItems: "center",
   gap: vars.spacing["8"],
   fontSize: vars.font.size.body2,
-  
+
   "@media": {
     "screen and (max-width: 479px)": {
       justifyContent: "center",
@@ -260,12 +260,12 @@ export const clearButton = style({
   padding: vars.spacing["4"],
   borderRadius: vars.radius.sm,
   transition: "all 0.2s ease",
-  
+
   ":hover": {
     color: vars.color.gray["700"],
     backgroundColor: vars.color.gray["100"],
   },
-  
+
   ":focus": {
     outline: "none",
     boxShadow: `0 0 0 2px ${vars.color.brand.primary}`,

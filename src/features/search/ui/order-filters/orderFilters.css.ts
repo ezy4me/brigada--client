@@ -11,7 +11,20 @@ export const container = style({
   flexDirection: "column",
   gap: vars.spacing["24"],
   position: "sticky",
-  top: vars.spacing["96"],
+  top: vars.spacing["80"],
+  height: "fit-content",
+  maxHeight: "calc(100vh - 120px)",
+  overflowY: "auto",
+
+  "@media": {
+    "screen and (max-width: 1024px)": {
+      position: "relative",
+      top: 0,
+      maxHeight: "none",
+      overflowY: "visible",
+      padding: vars.spacing["16"],
+    },
+  },
 });
 
 export const header = style({
@@ -91,7 +104,6 @@ export const applyButton = style({
   width: "100%",
 });
 
-// В orderFilters.css.ts добавляем:
 export const keywordInputContainer = style({
   display: "flex",
   gap: vars.spacing["8"],
