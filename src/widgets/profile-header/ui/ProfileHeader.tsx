@@ -64,7 +64,7 @@ export const ProfileHeader = () => {
               trigger={
                 <button className={styles.avatarTrigger}>
                   <Avatar
-                    src={user?.avatar || "/default-avatar.png"}
+                    src={user?.avatar || "/user-avatar.jpg"}
                     alt="Аватар"
                     className={styles.avatar}
                   />

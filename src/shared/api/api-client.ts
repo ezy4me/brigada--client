@@ -1,7 +1,6 @@
-// src/shared/api/api-client.ts
-import axios, { AxiosError, AxiosInstance, AxiosResponse } from 'axios';
+import axios, { AxiosError, AxiosInstance, AxiosResponse } from "axios";
 
-import { API_BASE_URL } from '@/shared/config/env';
+import { API_BASE_URL } from "@/shared/config/env";
 
 export interface ApiError {
   message: string;
@@ -17,8 +16,8 @@ class ApiClient {
     this.client = axios.create({
       baseURL: API_BASE_URL,
       headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
+        "Content-Type": "application/json",
+        Accept: "application/json",
       },
       timeout: 30000,
     });
@@ -27,7 +26,6 @@ class ApiClient {
   }
 
   private setupInterceptors() {
-    // Request interceptor для добавления токена
     this.client.interceptors.request.use(
       (config) => {
         if (this.token && config.headers) {
@@ -38,12 +36,11 @@ class ApiClient {
       (error) => Promise.reject(error)
     );
 
-    // Response interceptor для обработки ошибок
     this.client.interceptors.response.use(
       (response) => response,
       (error: AxiosError) => {
         const apiError: ApiError = {
-          message: 'Произошла ошибка',
+          message: "Произошла ошибка",
           status: error.response?.status,
         };
 
@@ -57,13 +54,8 @@ class ApiClient {
           }
         }
 
-        // Обработка ошибок авторизации
         if (error.response?.status === 401) {
           this.clearToken();
-          // Можно добавить редирект на страницу логина только на клиенте
-          if (typeof window !== 'undefined') {
-            window.location.href = '/login';
-          }
         }
 
         return Promise.reject(apiError);
@@ -73,31 +65,28 @@ class ApiClient {
 
   setToken(token: string) {
     this.token = token;
-    // Сохраняем токен в localStorage для persistence
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('auth_token', token);
+    if (typeof window !== "undefined") {
+      localStorage.setItem("auth_token", token);
     }
   }
 
   clearToken() {
     this.token = null;
-    if (typeof window !== 'undefined') {
-      localStorage.removeItem('auth_token');
-      localStorage.removeItem('user');
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("auth_token");
+      localStorage.removeItem("user");
     }
   }
 
-  // Загружаем токен из localStorage при инициализации
   loadTokenFromStorage() {
-    if (typeof window !== 'undefined') {
-      const token = localStorage.getItem('auth_token');
+    if (typeof window !== "undefined") {
+      const token = localStorage.getItem("auth_token");
       if (token) {
         this.token = token;
       }
     }
   }
 
-  // Базовые методы
   async get<T>(url: string, params?: object): Promise<T> {
     const response: AxiosResponse<T> = await this.client.get(url, { params });
     return response.data;
@@ -123,11 +112,10 @@ class ApiClient {
     return response.data;
   }
 
-  // Для загрузки файлов
   async upload<T>(url: string, formData: FormData): Promise<T> {
     const response: AxiosResponse<T> = await this.client.post(url, formData, {
       headers: {
-        'Content-Type': 'multipart/form-data',
+        "Content-Type": "multipart/form-data",
       },
     });
     return response.data;

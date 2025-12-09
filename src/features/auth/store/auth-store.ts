@@ -1,9 +1,9 @@
-import { create } from 'zustand';
-import { persist, createJSONStorage } from 'zustand/middleware';
+import { create } from "zustand";
+import { persist, createJSONStorage } from "zustand/middleware";
 
-import { LoginRequest, RegisterRequest, User, LoginResponse } from '@/shared/lib/types/auth.types';
+import { LoginRequest, RegisterRequest, User, LoginResponse } from "@/shared/lib/types/auth.types";
 
-import { authApi } from '../api/auth-api';
+import { authApi } from "../api/auth-api";
 
 interface AuthState {
   user: User | null;
@@ -11,7 +11,7 @@ interface AuthState {
   isAuthenticated: boolean;
   isLoading: boolean;
   error: string | null;
-  
+
   login: (credentials: LoginRequest) => Promise<void>;
   register: (data: RegisterRequest) => Promise<void>;
   logout: () => Promise<void>;
@@ -33,15 +33,15 @@ export const useAuthStore = create<AuthState>()(
 
       login: async (credentials: LoginRequest) => {
         set({ isLoading: true, error: null });
-        
+
         try {
           const response: LoginResponse = await authApi.login(credentials);
-          
+
           const userWithDefaults = {
             ...response.user,
-            name: response.user.name || response.user.email.split('@')[0], 
+            name: response.user.name || response.user.email.split("@")[0],
           };
-          
+
           set({
             user: userWithDefaults,
             token: response.accessToken,
@@ -49,10 +49,10 @@ export const useAuthStore = create<AuthState>()(
             isLoading: false,
           });
         } catch (error: any) {
-          const errorMessage = error.errors 
-            ? Object.values(error.errors).flat().join(', ')
-            : error.message || 'Неверный email или пароль';
-            
+          const errorMessage = error.errors
+            ? Object.values(error.errors).flat().join(", ")
+            : error.message || "Неверный email или пароль";
+
           set({
             error: errorMessage,
             isLoading: false,
@@ -63,26 +63,27 @@ export const useAuthStore = create<AuthState>()(
 
       register: async (data: RegisterRequest) => {
         set({ isLoading: true, error: null });
-        
+
         try {
           const response = await authApi.register(data);
-          
+
           let updatedUser = response.user;
           const token = response.accessToken || null;
           const isAuthenticated = !!response.accessToken;
-          
+
           if (!isAuthenticated) {
             set({
-              error: 'Регистрация успешна! Пожалуйста, проверьте вашу почту для подтверждения email.',
+              error:
+                "Регистрация успешна! Пожалуйста, проверьте вашу почту для подтверждения email.",
               isLoading: false,
             });
             return;
           }
-          
+
           if (!updatedUser.name && data.name) {
             updatedUser = { ...updatedUser, name: data.name };
           }
-          
+
           set({
             user: updatedUser,
             token,
@@ -90,10 +91,10 @@ export const useAuthStore = create<AuthState>()(
             isLoading: false,
           });
         } catch (error: any) {
-          const errorMessage = error.errors 
-            ? Object.values(error.errors).flat().join(', ')
-            : error.message || 'Ошибка регистрации';
-            
+          const errorMessage = error.errors
+            ? Object.values(error.errors).flat().join(", ")
+            : error.message || "Ошибка регистрации";
+
           set({
             error: errorMessage,
             isLoading: false,
@@ -104,7 +105,7 @@ export const useAuthStore = create<AuthState>()(
 
       logout: async () => {
         set({ isLoading: true });
-        
+
         try {
           await authApi.logout();
         } finally {
@@ -131,27 +132,27 @@ export const useAuthStore = create<AuthState>()(
       },
 
       loadAuthFromStorage: () => {
-        if (typeof window !== 'undefined') {
-          const token = localStorage.getItem('auth_token');
-          const userStr = localStorage.getItem('user');
-          
+        if (typeof window !== "undefined") {
+          const token = localStorage.getItem("auth_token");
+          const userStr = localStorage.getItem("user");
+
           if (token && userStr) {
             try {
               const user = JSON.parse(userStr) as User;
               const userWithDefaults = {
                 ...user,
-                name: user.name || user.email.split('@')[0],
+                name: user.name || user.email.split("@")[0],
               };
-              
+
               set({
                 user: userWithDefaults,
                 token,
                 isAuthenticated: true,
               });
             } catch (error) {
-              console.error('Error parsing user from localStorage:', error);
-              localStorage.removeItem('user');
-              localStorage.removeItem('auth_token');
+              console.error("Error parsing user from localStorage:", error);
+              localStorage.removeItem("user");
+              localStorage.removeItem("auth_token");
             }
           }
         }
@@ -159,16 +160,16 @@ export const useAuthStore = create<AuthState>()(
 
       refreshAuth: async () => {
         const { token } = get();
-        
+
         if (token) {
           set({ isLoading: true });
           try {
             const user = await authApi.getCurrentUser();
             const userWithDefaults = {
               ...user,
-              name: user.name || user.email.split('@')[0],
+              name: user.name || user.email.split("@")[0],
             };
-            
+
             set({
               user: userWithDefaults,
               isAuthenticated: true,
@@ -190,7 +191,7 @@ export const useAuthStore = create<AuthState>()(
       },
     }),
     {
-      name: 'auth-storage',
+      name: "auth-storage",
       storage: createJSONStorage(() => localStorage),
       partialize: (state) => ({
         user: state.user,

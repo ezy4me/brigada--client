@@ -30,7 +30,8 @@ export default function LoginPage() {
       const user = await login(data);
       router.push("/profile");
     } catch (err: any) {
-      setError(err.message || 'Ошибка при входе');
+      console.error("Login error:", err);
+      setError(err.message || "Ошибка при входе");
     } finally {
       setIsLoading(false);
     }
@@ -54,16 +55,12 @@ export default function LoginPage() {
               <h2 className={styles.title}>Вход в аккаунт</h2>
               <p className={styles.description}>Пожалуйста, введите свои данные</p>
 
-              {error && (
-                <div className={styles.errorMessage}>
-                  {error}
-                </div>
-              )}
+              {error && <div className={styles.errorMessage}>{error}</div>}
 
-              <LoginForm 
+              <LoginForm
                 onSubmit={handleSubmit}
                 isLoading={isLoading}
-                onForgotPassword={handleForgotPassword} 
+                onForgotPassword={handleForgotPassword}
               />
 
               <div className={styles.footer}>
