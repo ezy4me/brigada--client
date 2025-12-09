@@ -5,7 +5,7 @@ import { FC } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { ArrowUp, Mail, Phone, Globe, Send, Users } from "lucide-react";
+import { ArrowUp, Mail, Phone } from "lucide-react";
 
 import { cn } from "@/shared/lib/utils";
 
@@ -142,7 +142,7 @@ export const Footer: FC<FooterProps> = ({ className }) => {
 
             <div className={styles.contactInfo}>
               <a href="mailto:brima@mybrigada.ru" className={styles.link}>
-                <Mail size={16} /> brigada.ru_official@mail.ru
+                <Mail size={16} /> brima@mybrigada.ru
               </a>
               <a href="tel:+71234567890" className={styles.link}>
                 <Phone size={16} /> +7 987 416 61 32

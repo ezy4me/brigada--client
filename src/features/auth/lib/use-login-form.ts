@@ -1,38 +1,41 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from 'react-hook-form';
 
-import { loginSchema, LoginData } from "./validation-schemas";
+import { LoginData } from './validation-schemas';
 
-export const useLoginForm = (onSubmit: (data: LoginData) => Promise<void>) => {
+export const useLoginForm = (onSubmit: SubmitHandler<LoginData>) => {
   const [isLoading, setIsLoading] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
-
+  
   const {
     register,
     handleSubmit,
     formState: { errors },
     setError,
-  } = useForm<LoginData>({
-    resolver: zodResolver(loginSchema),
-    mode: "onChange",
-  });
+    clearErrors,
+  } = useForm<LoginData>();
 
-  const onFormSubmit = async (data: LoginData) => {
+  const handleFormSubmit: SubmitHandler<LoginData> = async (data) => {
     setIsLoading(true);
     setServerError(null);
+    clearErrors();
 
     try {
       await onSubmit(data);
-    } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : "Произошла ошибка при входе";
-      setServerError(errorMessage);
-
-      if (errorMessage.includes("email")) {
-        setError("email", { message: errorMessage });
-      } else if (errorMessage.includes("парол")) {
-        setError("password", { message: errorMessage });
+    } catch (error: any) {
+      if (error.message.includes('email') || error.message.includes('Email')) {
+        setError('email', {
+          type: 'manual',
+          message: error.message,
+        });
+      } else if (error.message.includes('password') || error.message.includes('пароль')) {
+        setError('password', {
+          type: 'manual',
+          message: error.message,
+        });
+      } else {
+        setServerError(error.message || 'Ошибка при входе');
       }
     } finally {
       setIsLoading(false);
@@ -44,6 +47,6 @@ export const useLoginForm = (onSubmit: (data: LoginData) => Promise<void>) => {
     serverError,
     errors,
     register,
-    handleSubmit: handleSubmit(onFormSubmit),
+    handleSubmit: handleSubmit(handleFormSubmit),
   };
 };

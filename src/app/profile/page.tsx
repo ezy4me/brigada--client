@@ -1,50 +1,42 @@
+// src/app/profile/page.tsx
+"use client";
+
+import { useAuth } from "@/features/auth/lib/use-auth";
+import { ProtectedRoute } from "@/features/auth/ui/protected-route/ProtectedRoute";
+import { Loader } from "@/shared/ui/loader/Loader";
 import { Section } from "@/shared/ui/section/Section";
 import { Text } from "@/shared/ui/text/Text";
-import { ProfileCompany } from "@/widgets/profile-company/ui/ProfileCompany";
-import { ProfileCustomer } from "@/widgets/profile-customer/ui/ProfileCustomer";
-import { ProfileExecutor } from "@/widgets/profile-executor/ui/ProfileExecutor";
+import { ProfileHome } from "@/widgets/profile-home/ui/ProfileHome";
 
 import * as styles from "./profile.css";
 
-const useMockUserRole = () => {
-  return {
-    userRole: "executor",
-    isLoading: false,
-    isError: false,
-    isSuccess: true,
-  };
-};
-
 export default function ProfilePage() {
-  const { userRole, isLoading, isError } = useMockUserRole();
+  const { user, isLoading } = useAuth();
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div className={styles.loadingContainer}>
+        <Loader size="lg" />
+      </div>
+    );
   }
 
-  if (isError || !userRole) {
-    return <Text>Ошибка загрузки профиля</Text>;
-  }
-
-  let profileContent;
-
-  switch (userRole) {
-    case "executor":
-      profileContent = <ProfileExecutor />;
-      break;
-    case "customer":
-      profileContent = <ProfileCustomer />;
-      break;
-    case "company":
-      profileContent = <ProfileCompany />;
-      break;
-    default:
-      profileContent = <div>Доступ запрещён</div>;
+  if (!user) {
+    return (
+      <div className={styles.errorContainer}>
+        <Text>Ошибка загрузки профиля</Text>
+        <Text>Пожалуйста, войдите в систему</Text>
+      </div>
+    );
   }
 
   return (
-    <div className={styles.section}>
-      <div className={styles.container}>{profileContent}</div>
-    </div>
+    <ProtectedRoute>
+      <div className={styles.section}>
+        <div className={styles.container}>
+          <ProfileHome />
+        </div>
+      </div>
+    </ProtectedRoute>
   );
 }

@@ -12,13 +12,26 @@ import * as styles from "./loginForm.css";
 
 export interface LoginFormProps {
   onSubmit: (data: LoginData) => Promise<void>;
+  isLoading?: boolean;
   onForgotPassword?: () => void;
 }
 
-export const LoginForm = ({ onSubmit, onForgotPassword }: LoginFormProps) => {
+export const LoginForm = ({ 
+  onSubmit, 
+  isLoading: externalLoading = false, 
+  onForgotPassword 
+}: LoginFormProps) => {
   const [showPassword, setShowPassword] = useState(false);
 
-  const { isLoading, serverError, errors, register, handleSubmit } = useLoginForm(onSubmit);
+  const { 
+    isLoading: formLoading, 
+    serverError, 
+    errors, 
+    register, 
+    handleSubmit 
+  } = useLoginForm(onSubmit);
+
+  const isLoading = externalLoading || formLoading;
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);

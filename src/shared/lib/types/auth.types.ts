@@ -1,19 +1,44 @@
-export type Role = "customer" | "executor" | "company";
+export interface User {
+  id: string; 
+  email: string;
+  name?: string; 
+  role: 'executor' | 'customer' | 'company';
+  avatar?: string;
+  phone?: string;
+  created_at?: string;
+  updated_at?: string;
+}
 
-export interface BaseFormData {
+export interface LoginRequest {
   email: string;
   password: string;
-  confirmPassword: string;
 }
 
-export interface CustomerFormData extends BaseFormData {}
-
-export interface ExecutorFormData extends BaseFormData {}
-
-export interface CompanyFormData extends BaseFormData {
-  companyName: string;
-  inn: string;
-  tariff: string;
+export interface LoginResponse {
+  user: User;
+  accessToken: string; 
+  expiresIn: number;
 }
 
-export type FormData = CustomerFormData | ExecutorFormData | CompanyFormData;
+export interface RegisterRequest {
+  email: string;
+  password: string;
+  password_confirmation: string;
+  name: string;
+  role: 'executor' | 'customer' | 'company';
+  phone?: string;
+  agree_to_terms: boolean;
+}
+
+export interface RegisterResponse {
+  message: string;
+  user: User;
+  accessToken?: string;
+  expiresIn?: number;
+}
+
+export interface ApiError {
+  message: string;
+  errors?: Record<string, string[]>;
+  status?: number;
+}

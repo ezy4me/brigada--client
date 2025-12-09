@@ -1,41 +1,97 @@
-import { User, Briefcase, Star, Calendar } from "lucide-react";
+// src/widgets/profile-home/ui/ProfileHome.tsx
+"use client";
 
-import { Card } from "@/shared/ui/card/Card";
+import { Briefcase, CheckCircle, Star } from "lucide-react";
+
+import { useAuth } from "@/features/auth/lib/use-auth";
 import { Heading } from "@/shared/ui/heading/Heading";
 import { Text } from "@/shared/ui/text/Text";
 
-import * as styles from "./dashboardHome.css";
+import * as styles from "./profileHome.css";
 
-const stats = [
-  { icon: User, label: "Ваши профили", value: "1" },
-  { icon: Briefcase, label: "Активные заказы", value: "5" },
-  { icon: Star, label: "Рейтинг", value: "4.8" },
-  { icon: Calendar, label: "Запланировано", value: "3" },
-];
+export const ProfileHome = () => {
+  const { user } = useAuth();
 
-export const DashboardHome = () => {
+  const getRoleDisplayName = (role: string) => {
+    switch (role) {
+      case 'executor':
+        return 'Исполнитель';
+      case 'customer':
+        return 'Заказчик';
+      case 'company':
+        return 'Компания';
+      default:
+        return role;
+    }
+  };
+
+  const getStatsData = (role: string) => {
+    switch (role) {
+      case 'executor':
+        return [
+          { icon: <Briefcase />, value: "0", label: "Активных заказов" },
+          { icon: <CheckCircle />, value: "0", label: "Выполнено" },
+          { icon: <Star />, value: "0", label: "Рейтинг" },
+        ];
+      case 'customer':
+        return [
+          { icon: <Briefcase />, value: "0", label: "Текущих проектов" },
+          { icon: <CheckCircle />, value: "0", label: "Завершено" },
+          { icon: <Star />, value: "0", label: "Избранных" },
+        ];
+      case 'company':
+        return [
+          { icon: <Briefcase />, value: "0", label: "Активных заказов" },
+          { icon: <CheckCircle />, value: "0", label: "Выполнено" },
+          { icon: <Star />, value: "0", label: "Рейтинг компании" },
+        ];
+      default:
+        return [
+          { icon: <Briefcase />, value: "0", label: "Активных" },
+          { icon: <CheckCircle />, value: "0", label: "Завершено" },
+          { icon: <Star />, value: "0", label: "Рейтинг" },
+        ];
+    }
+  };
+
+  if (!user) return null;
+
+  const statsData = getStatsData(user.role);
+
   return (
     <div className={styles.container}>
-      <div className={styles.header}>
-        <Heading as="h1" className={styles.title}>
-          Добро пожаловать!
-        </Heading>
-        <Text className={styles.description}>
-          Выберите действие в меню слева или перейдите на главную
+      <Heading as="h1" size="h2">
+        Личный кабинет
+      </Heading>
+      
+      <div className={styles.userInfo}>
+        <Text size="body1" weight="bold">
+          Добро пожаловать, {user.name || user.email.split('@')[0]}!
+        </Text>
+        <Text color="secondary" size="body2" style={{ marginTop: '4px' }}>
+          Email: {user.email}
+        </Text>
+        <Text color="secondary" size="body2" style={{ marginTop: '4px' }}>
+          Роль: {getRoleDisplayName(user.role)}
         </Text>
       </div>
 
-      <div className={styles.statsGrid}>
-        {stats.map((stat, index) => (
-          <Card key={index} className={styles.statCard}>
-            <stat.icon className={styles.statIcon} size={32} />
-            <div>
-              <Text className={styles.statLabel}>{stat.label}</Text>
-              <Heading as="h3" className={styles.statValue}>
-                {stat.value}
-              </Heading>
+      <div className={styles.stats}>
+        {statsData.map((stat, index) => (
+          <div key={index} className={styles.statCard}>
+            <div style={{ 
+              color: 'var(--color-brand-primary)',
+              marginBottom: '12px'
+            }}>
+              {stat.icon}
             </div>
-          </Card>
+            <Heading size="h3" weight="bold" style={{ marginBottom: '4px' }}>
+              {stat.value}
+            </Heading>
+            <Text color="secondary" size="body2">
+              {stat.label}
+            </Text>
+          </div>
         ))}
       </div>
     </div>

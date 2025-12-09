@@ -1,3 +1,4 @@
+// src/widgets/mobile-profile-nav/ui/MobileProfileNav.tsx
 "use client";
 
 import Link from "next/link";
@@ -5,8 +6,8 @@ import { usePathname } from "next/navigation";
 
 import { Home, User, MapPin, Settings } from "lucide-react";
 
+import { useAuth } from "@/features/auth/lib/use-auth";
 import { cn } from "@/shared/lib/utils";
-import { Text } from "@/shared/ui/text/Text";
 
 import * as styles from "./mobileProfileNav.css";
 
@@ -19,6 +20,9 @@ const navItems = [
 
 export const MobileProfileNav = () => {
   const pathname = usePathname();
+  const { isAuthenticated } = useAuth();
+
+  if (!isAuthenticated) return null;
 
   return (
     <nav className={styles.mobileNav}>

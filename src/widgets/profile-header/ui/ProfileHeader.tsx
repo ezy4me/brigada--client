@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 import { User, LogOut, Settings, Briefcase, Users } from "lucide-react";
 
+import { useAuth } from "@/features/auth/lib/use-auth";
 import { Avatar } from "@/shared/ui/avatar/Avatar";
 import { Dropdown } from "@/shared/ui/dropdown/Dropdown";
 import { Logo } from "@/shared/ui/logo/Logo";
@@ -11,29 +12,38 @@ import { Text } from "@/shared/ui/text/Text";
 
 import * as styles from "./profileHeader.css";
 
-const userMenuItems = [
-  { label: "Профиль", value: "profile", icon: User },
-  { label: "Мои заказы", value: "orders", icon: Briefcase },
-  { label: "Команда", value: "team", icon: Users },
-  { label: "Настройки", value: "settings", icon: Settings },
-  { label: "Выйти", value: "logout", icon: LogOut },
-];
-
-const userData = {
-  name: "Иван Петров",
-  email: "ivan@example.com",
-};
-
 export const ProfileHeader = () => {
-  const [userRole, setUserRole] = useState<"executor" | "customer" | "company">("executor");
+  const router = useRouter();
+  const { user, logout } = useAuth();
 
   const handleMenuItemSelect = (value: string) => {
     if (value === "logout") {
-      console.log("Logout clicked");
+      handleLogout();
     } else if (value === "profile") {
-      console.log("Go to profile");
+      router.push("/profile");
+    } else if (value === "orders") {
+      router.push("/profile/orders");
+    } else if (value === "settings") {
+      router.push("/profile/settings");
     }
   };
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      router.push("/");
+    } catch (error) {
+      console.error("Logout error:", error);
+    }
+  };
+
+  const userMenuItems = [
+    { label: "Профиль", value: "profile", icon: User },
+    { label: "Мои заказы", value: "orders", icon: Briefcase },
+    ...(user?.role === "company" ? [{ label: "Команда", value: "team", icon: Users }] : []),
+    { label: "Настройки", value: "settings", icon: Settings },
+    { label: "Выйти", value: "logout", icon: LogOut, variant: "danger" as const },
+  ];
 
   return (
     <header className={styles.header}>
@@ -44,14 +54,20 @@ export const ProfileHeader = () => {
           </div>
 
           <div className={styles.userSection}>
-            <div className={styles.userInfo}>
-              {/* <Text className={styles.userName}>{userData.name}</Text> */}
-              <Text className={styles.userEmail}>{userData.email}</Text>
-            </div>
+            {user && (
+              <div className={styles.userInfo}>
+                <Text className={styles.userName}>{user.name || user.email.split("@")[0]}</Text>
+                <Text className={styles.userEmail}>{user.email}</Text>
+              </div>
+            )}
             <Dropdown
               trigger={
                 <button className={styles.avatarTrigger}>
-                  <Avatar src="/user-avatar.jpg" alt="Аватар" className={styles.avatar} />
+                  <Avatar
+                    src={user?.avatar || "/default-avatar.png"}
+                    alt="Аватар"
+                    className={styles.avatar}
+                  />
                 </button>
               }
               items={userMenuItems.map((item) => ({

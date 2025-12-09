@@ -16,7 +16,7 @@ export default function ProfileLayout({ children }: { children: React.ReactNode 
           <MobileProfileNav />
         </main>
       </div>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }

@@ -1,11 +1,15 @@
-import { style, keyframes } from "@vanilla-extract/css";
+import { style } from "@vanilla-extract/css";
 
 import { vars } from "@/shared/styles/theme.css";
 
-const backgroundShift = keyframes({
-  "0%": { backgroundPosition: "0% 50%" },
-  "50%": { backgroundPosition: "100% 50%" },
-  "100%": { backgroundPosition: "0% 50%" },
+export const errorMessage = style({
+  padding: vars.spacing["12"],
+  backgroundColor: vars.color.status.error + "20",
+  color: vars.color.status.error,
+  borderRadius: vars.radius.md,
+  marginBottom: vars.spacing["16"],
+  textAlign: "center",
+  fontSize: vars.font.size.caption,
 });
 
 export const page = style({
@@ -14,9 +18,6 @@ export const page = style({
   justifyContent: "center",
   minHeight: "100vh",
   padding: vars.spacing["16"],
-  // background: `linear-gradient(135deg, ${vars.color.gray["800"]} 0%, ${vars.color.gray["700"]} 100%)`,
-  // backgroundSize: "200% 200%",
-  // animation: `${backgroundShift} 10s ease infinite`,
   position: "relative",
   overflow: "hidden",
 });

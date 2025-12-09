@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 
 import { Home, User, MapPin, Settings } from "lucide-react";
 
+import { useAuth } from "@/features/auth/lib/use-auth";
 import { cn } from "@/shared/lib/utils";
 import { Text } from "@/shared/ui/text/Text";
 
@@ -19,6 +20,9 @@ const navItems = [
 
 export const ProfileSidebar = () => {
   const pathname = usePathname();
+  const { isAuthenticated } = useAuth();
+
+  if (!isAuthenticated) return null;
 
   return (
     <aside className={styles.sidebar}>
