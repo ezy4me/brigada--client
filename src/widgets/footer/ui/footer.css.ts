@@ -53,7 +53,7 @@ export const sectionDivider = style({
 export const link = style({
   textDecoration: "none",
   fontSize: vars.font.size.body2,
-  color: vars.color.text.inverted,
+  color: vars.color.white,
   ":hover": {
     color: vars.color.brand.primary,
   },
@@ -136,7 +136,7 @@ export const bottomLinks = style({
 });
 
 export const bottomLink = style({
-  color: vars.color.text.inverted,
+  color: vars.color.white,
   textDecoration: "none",
   fontSize: vars.font.size.caption,
   ":hover": {
