@@ -1,4 +1,3 @@
-// heroFinder.css.ts
 import { style } from "@vanilla-extract/css";
 
 import { vars } from "@/shared/styles/theme.css";
@@ -13,7 +12,6 @@ export const section = style({
   backgroundPosition: "center center",
   backgroundSize: "cover",
   
-  // Адаптивный padding
   padding: `${vars.spacing["20"]} ${vars.spacing["16"]}`,
   
   "@media": {
@@ -50,11 +48,10 @@ export const top = style({
   width: "100%",
   
   "@media": {
-    "screen and (min-width: 375px)": {
+    "screen and (min-width: 400px)": {
       flexDirection: "row",
       alignItems: "center",
       justifyContent: "space-between",
-      gap: vars.spacing["24"],
     },
   },
 });
@@ -64,7 +61,7 @@ export const title = style({
   fontWeight: vars.font.weight.bold,
   color: vars.color.text.primary,
   lineHeight: 1.2,
-  textAlign: "left",
+  // textAlign: "left",
   margin: 0,
   
   "@media": {
@@ -86,7 +83,7 @@ export const locationBlock = style({
   fontSize: vars.font.size.body2,
   cursor: "pointer",
   padding: `${vars.spacing["8"]} ${vars.spacing["12"]}`,
-  backgroundColor: "rgba(255, 255, 255, 0.1)",
+  // backgroundColor: "rgba(255, 255, 255, 0.1)",
   borderRadius: vars.radius.lg,
   transition: "all 0.2s ease",
   whiteSpace: "nowrap",
