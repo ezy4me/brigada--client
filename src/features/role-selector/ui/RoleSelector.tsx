@@ -105,7 +105,7 @@ export const RoleSelector = ({
 
       <div className={mobileDropdownWrapper}>
         <button className={mobileTrigger()} onClick={() => setIsOpen(!isOpen)}>
-          <span>{localActiveRole ? roleLabels[localActiveRole] : "Выберите роль"}</span>
+          <span>{localActiveRole ? roleLabels[localActiveRole] : "Ваша роль"}</span>
           <ChevronDown size={16} />
         </button>
 

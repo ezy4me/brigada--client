@@ -52,11 +52,13 @@ export const Header: FC<HeaderProps> = ({ className }) => {
     <header className={cn(styles.header, className)}>
       <div className={styles.container}>
         <div className={styles.content}>
-          <Logo href="/" />
+          <div className={styles.top}>
+            <Logo href="/" />
+            <ThemeToggle />
+          </div>
 
           <div className={styles.actions}>
-            <ThemeToggle />
-            <RoleSelector activeRole={activeRole} onRoleChange={handleRoleChange} />
+            <RoleSelector activeRole={activeRole} onRoleChange={handleRoleChange} className={styles.roleSelector} />
             <Link href="/login">
               <Button variant="white" size="md" rightIcon={<DoorOpenIcon size={24} />}>
                 Войти

@@ -2,6 +2,7 @@
 
 import { FC } from "react";
 
+import Image from "next/image";
 import Link from "next/link";
 
 import { ArrowUp, Mail, Phone, Globe, Send, Users } from "lucide-react";
@@ -92,19 +93,55 @@ export const Footer: FC<FooterProps> = ({ className }) => {
             <h3 className={styles.sectionTitle}>Социальные сети</h3>
             <div className={styles.sectionDivider} />
             <div className={styles.socialLinks}>
-              <a href="#" className={styles.socialLink}>
-                <Globe size={20} />
+              <a 
+                href="https://vk.com/brigadaru_official" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className={styles.socialLink}
+                aria-label="ВКонтакте"
+              >
+                <Image 
+                  src="/social/vk.svg" 
+                  alt="ВКонтакте" 
+                  width={24} 
+                  height={24}
+                  className={styles.socialIcon}
+                />
               </a>
-              <a href="#" className={styles.socialLink}>
-                <Send size={20} />
+              <a 
+                href="https://t.me/brigadaru_official" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className={styles.socialLink}
+                aria-label="Telegram"
+              >
+                <Image 
+                  src="/social/tg.svg" 
+                  alt="Telegram" 
+                  width={24} 
+                  height={24}
+                  className={styles.socialIcon}
+                />
               </a>
-              <a href="#" className={styles.socialLink}>
-                <Users size={20} />
+              <a 
+                href="https://dzen.ru/id/68a3844988f25a24853a3ef5" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className={styles.socialLink}
+                aria-label="Дзен"
+              >
+                <Image 
+                  src="/social/dzen.svg" 
+                  alt="Дзен" 
+                  width={24} 
+                  height={24}
+                  className={styles.socialIcon}
+                />
               </a>
             </div>
 
             <div className={styles.contactInfo}>
-              <a href="mailto:brigada.ru_official@mail.ru" className={styles.link}>
+              <a href="mailto:brima@mybrigada.ru" className={styles.link}>
                 <Mail size={16} /> brigada.ru_official@mail.ru
               </a>
               <a href="tel:+71234567890" className={styles.link}>
@@ -128,7 +165,11 @@ export const Footer: FC<FooterProps> = ({ className }) => {
             </a>
           </div>
 
-          <button onClick={scrollToTop} className={styles.backToTopButton}>
+          <button 
+            onClick={scrollToTop} 
+            className={styles.backToTopButton}
+            aria-label="Наверх"
+          >
             <ArrowUp size={16} />
           </button>
         </div>

@@ -4,7 +4,6 @@ import { vars } from "@/shared/styles/theme.css";
 
 export const footer = style({
   backgroundColor: '#121212',
-
   color: vars.color.white,
   paddingTop: vars.spacing["32"],
   paddingBottom: vars.spacing["16"],
@@ -42,8 +41,6 @@ export const section = style({
 export const sectionTitle = style({
   fontSize: vars.font.size.body1,
   fontWeight: vars.font.weight.medium,
-  // color: vars.color.text.inverted,
-  // marginBottom: vars.spacing["8"],
 });
 
 export const sectionDivider = style({
@@ -54,9 +51,9 @@ export const sectionDivider = style({
 });
 
 export const link = style({
-  // color: vars.color.text.inverted,
   textDecoration: "none",
   fontSize: vars.font.size.body2,
+  color: vars.color.text.inverted,
   ":hover": {
     color: vars.color.brand.primary,
   },
@@ -70,22 +67,40 @@ export const socialSection = style({
 
 export const socialLinks = style({
   display: "flex",
-  gap: vars.spacing["12"],
+  gap: vars.spacing["16"],
   marginTop: vars.spacing["8"],
 });
 
 export const socialLink = style({
-  // color: vars.color.text.inverted,
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  width: "44px",
+  height: "44px",
+  borderRadius: vars.radius.md,
+  backgroundColor: "rgba(255, 255, 255, 0.1)",
+  transition: "all 0.2s ease",
   ":hover": {
-    color: vars.color.brand.primary,
+    backgroundColor: vars.color.brand.primary,
+    transform: "translateY(-2px)",
+  },
+});
+
+export const socialIcon = style({
+  filter: "brightness(0) invert(1)",
+  transition: "filter 0.2s ease",
+  selectors: {
+    [`${socialLink}:hover &`]: {
+      filter: "brightness(0) invert(1)",
+    },
   },
 });
 
 export const contactInfo = style({
   display: "flex",
   flexDirection: "column",
-  gap: vars.spacing["4"],
-  marginTop: vars.spacing["8"],
+  gap: vars.spacing["8"],
+  marginTop: vars.spacing["16"],
 });
 
 export const bottomSection = style({
@@ -134,12 +149,13 @@ export const backToTopButton = style({
   color: vars.color.text.inverted,
   border: "none",
   borderRadius: vars.radius.full,
-  width: vars.spacing["32"],
-  height: vars.spacing["32"],
+  width: vars.spacing["40"],
+  height: vars.spacing["40"],
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
   cursor: "pointer",
+  transition: "opacity 0.2s ease",
   ":hover": {
     opacity: 0.9,
   },

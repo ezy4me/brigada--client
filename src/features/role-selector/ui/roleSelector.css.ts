@@ -4,7 +4,7 @@ import { recipe } from "@vanilla-extract/recipes";
 import { vars } from "@/shared/styles/theme.css";
 
 export const roleGroup = style({
-  display: "inline-flex",
+  display: "flex",
   backgroundColor: vars.color.gray["800"],
   borderRadius: vars.radius.lg,
   padding: vars.spacing["4"],
@@ -14,7 +14,7 @@ export const roleGroup = style({
   gap: vars.spacing["6"],
 
   "@media": {
-    "screen and (max-width: 767px)": {
+    "screen and (max-width: 550px)": {
       display: "none",
     },
   },
@@ -63,8 +63,9 @@ export const indicator = style({
 export const mobileDropdownWrapper = style({
   display: "none",
   position: "relative",
+  zIndex: 100,
   "@media": {
-    "screen and (max-width: 767px)": {
+    "screen and (max-width: 550px)": {
       display: "block",
     },
   },
@@ -94,7 +95,7 @@ export const dropdownList = style({
   top: "100%",
   left: 0,
   right: 0,
-  zIndex: 10,
+  zIndex: 100,
   marginTop: vars.spacing["8"],
   backgroundColor: vars.color.gray["900"],
   borderRadius: vars.radius.md,
@@ -123,7 +124,7 @@ export const dropdownItem = recipe({
     active: {
       true: {
         backgroundColor: vars.color.brand.primary,
-        color: vars.color.text.inverted,
+        color: vars.color.black,
       },
     },
   },

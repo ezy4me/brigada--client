@@ -3,8 +3,8 @@ export const typography = {
     sans: "var(--font-roboto-sans), system-ui, sans-serif",
   },
   fontSize: {
-    h1: "56px",
-    h1Sm: "48px",
+    h1: "48px",
+    h1Sm: "40px",
     h2: "36px",
     h2Sm: "30px",
     h3: "24px",

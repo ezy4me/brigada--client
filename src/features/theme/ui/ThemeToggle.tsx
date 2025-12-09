@@ -10,6 +10,8 @@ import { Dropdown } from "@/shared/ui/dropdown/Dropdown";
 import { Theme } from "../lib/ThemeContext";
 import { useTheme } from "../lib/use-theme";
 
+import * as styles from "./themeToggle.css";
+
 const ThemeToggleContent = dynamic(() => Promise.resolve(() => {
   const { theme, setTheme, resolvedTheme } = useTheme();
 
@@ -38,6 +40,8 @@ const ThemeToggleContent = dynamic(() => Promise.resolve(() => {
           variant="ghost"
           size="sm"
           icon={resolvedTheme === "dark" ? <Moon size={16} /> : <Sun size={16} />}
+          className={styles.themeButton}
+          aria-label={`Текущая тема: ${resolvedTheme === "dark" ? "Темная" : "Светлая"}. Изменить тему`}
         />
       }
       items={themeOptions.map((option) => ({

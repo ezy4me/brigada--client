@@ -38,7 +38,7 @@ export const backgroundPattern = style({
 export const container = style({
   maxWidth: "1200px",
   margin: "0 auto",
-  padding: `${vars.spacing["16"]}`,
+  padding: `${vars.spacing["8"]}`,
   position: "relative",
 });
 
@@ -46,21 +46,35 @@ export const content = style({
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
+  gap: `${vars.spacing["8"]}`,
   "@media": {
     "screen and (max-width: 767px)": {
-      gap: vars.spacing["16"],
+      gap: vars.spacing["8"],
       flexDirection: "column",
     },
   },
 });
 
-export const actions = style({
+export const top = style({
+  width: "100%",
   display: "flex",
   alignItems: "center",
-  gap: vars.spacing["12"],
+  justifyContent: "space-between",
+});
+
+export const roleSelector = style({
+  // width: '100%'
+});
+
+export const actions = style({
+  display: "flex",
+  // width: "100%",
+  justifyContent: "flex-end",
+  alignItems: "center",
+  gap: vars.spacing["8"],
   "@media": {
     "screen and (min-width: 640px)": {
-      gap: vars.spacing["16"],
+      gap: vars.spacing["8"],
     },
   },
 });

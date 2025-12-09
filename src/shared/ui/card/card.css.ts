@@ -8,7 +8,7 @@ export const card = style({
   backgroundColor: vars.color.background.primary,
   color: vars.color.text.primary,
   boxShadow: "0 1px 3px rgba(0, 0, 0, 0.1)",
-  overflow: "hidden",
+  // overflow: "hidden",
   width: "100%",
 });
 

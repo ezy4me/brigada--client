@@ -58,20 +58,21 @@ export const HeroFinder = ({ role, defaultCity, className }: HeroFinderProps) =>
             {config.title}
           </Heading>
 
-          <div
+          <button
             className={styles.locationBlock}
             onClick={handleChangeCity}
-            role="button"
-            tabIndex={0}
-            onKeyPress={(e) => e.key === "Enter" && handleChangeCity()}
+            type="button"
+            aria-label={isDetectingCity ? "Определение местоположения" : `Сменить город: ${city}`}
           >
             {isDetectingCity ? (
               <Loader2 className={styles.cityIcon} size={16} />
             ) : (
               <MapPin className={styles.cityIcon} aria-hidden="true" />
             )}
-            <Text className={styles.city}>{isDetectingCity ? "Определение..." : city}</Text>
-          </div>
+            <span className={styles.city}>
+              {isDetectingCity ? "Определение..." : city}
+            </span>
+          </button>
         </div>
 
         <div className={styles.popularRequests}>
@@ -94,24 +95,36 @@ export const HeroFinder = ({ role, defaultCity, className }: HeroFinderProps) =>
 
         <div className={styles.searchContainer}>
           <div className={styles.inputRow}>
-            <Input
-              placeholder={config.placeholder}
-              value={searchQuery}
-              onChange={handleInputChange}
-              onKeyPress={handleKeyPress}
-              size="lg"
-              rightIcon={
-                showClearButton ? (
-                  <button type="button" onClick={handleClearSearch} className={styles.clearButton}>
-                    <X size={16} />
-                  </button>
-                ) : (
-                  <Search />
-                )
-              }
-              aria-label={config.placeholder}
-            />
-            <Button variant="secondary" size="lg" onClick={handleSearch} className={styles.button}>
+            <div className={styles.inputWrapper}>
+              <Input
+                placeholder={config.placeholder}
+                value={searchQuery}
+                onChange={handleInputChange}
+                onKeyPress={handleKeyPress}
+                size="lg"
+                rightIcon={
+                  showClearButton ? (
+                    <button 
+                      type="button" 
+                      onClick={handleClearSearch} 
+                      className={styles.clearButton}
+                      aria-label="Очистить поиск"
+                    >
+                      <X size={16} />
+                    </button>
+                  ) : (
+                    <Search size={20} />
+                  )
+                }
+                aria-label={config.placeholder}
+              />
+            </div>
+            <Button 
+              variant="secondary" 
+              size="lg" 
+              onClick={handleSearch} 
+              className={styles.searchButton}
+            >
               Найти
             </Button>
           </div>
@@ -121,7 +134,7 @@ export const HeroFinder = ({ role, defaultCity, className }: HeroFinderProps) =>
           {config.stats.map((stat, index) => (
             <div key={index} className={styles.statItem}>
               <CheckCircle className={styles.statIcon} size={20} aria-hidden="true" />
-              <Text>
+              <Text size="body2">
                 {stat} {index === 0 && `в ${city}`}
               </Text>
             </div>

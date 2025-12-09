@@ -7,6 +7,8 @@ export const form = style({
   flexDirection: "column",
   gap: vars.spacing["16"],
   width: "100%",
+  overflow: 'visible'
+  // minHeight: "200px",
 });
 
 export const roleSelectorWrapper = style({
