@@ -61,13 +61,14 @@ export const useAuthStore = create<AuthState>()(
         }
       },
 
+      // В auth-store.ts исправляем метод register
       register: async (data: RegisterRequest) => {
         set({ isLoading: true, error: null });
 
         try {
           const response = await authApi.register(data);
 
-          let updatedUser = response.user;
+          // Проверяем наличие user и token
           const token = response.accessToken || null;
           const isAuthenticated = !!response.accessToken;
 
@@ -80,9 +81,16 @@ export const useAuthStore = create<AuthState>()(
             return;
           }
 
-          if (!updatedUser.name && data.name) {
-            updatedUser = { ...updatedUser, name: data.name };
+          // Проверяем что user существует
+          if (!response.user) {
+            throw new Error("Ошибка регистрации: данные пользователя не получены");
           }
+
+          // Обновляем user
+          const updatedUser: User = {
+            ...response.user,
+            name: response.user.name || response.user.email.split("@")[0],
+          };
 
           set({
             user: updatedUser,
@@ -91,15 +99,23 @@ export const useAuthStore = create<AuthState>()(
             isLoading: false,
           });
         } catch (error: any) {
-          const errorMessage = error.errors
-            ? Object.values(error.errors).flat().join(", ")
-            : error.message || "Ошибка регистрации";
+          let errorMessage = "Ошибка регистрации";
+
+          if (error.message) {
+            errorMessage = error.message;
+          }
+
+          if (error.errors) {
+            const errorList = Object.values(error.errors).flat();
+            errorMessage = errorList.join(", ");
+          }
 
           set({
             error: errorMessage,
             isLoading: false,
           });
-          throw error;
+
+          throw new Error(errorMessage);
         }
       },
 

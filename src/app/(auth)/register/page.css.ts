@@ -71,3 +71,24 @@ export const footerLink = style({
     textDecoration: "underline",
   },
 });
+
+export const successMessage = style({
+  padding: vars.spacing["12"],
+  backgroundColor: vars.color.status.success + "20",
+  color: vars.color.status.success,
+  borderRadius: vars.radius.md,
+  marginBottom: vars.spacing["16"],
+  textAlign: "center",
+  fontSize: vars.font.size.caption,
+  border: `1px solid ${vars.color.status.success}`,
+});
+
+export const errorMessage = style({
+  padding: vars.spacing["12"],
+  backgroundColor: vars.color.status.error + "20",
+  color: vars.color.status.error,
+  borderRadius: vars.radius.md,
+  marginBottom: vars.spacing["16"],
+  textAlign: "center",
+  fontSize: vars.font.size.caption,
+});

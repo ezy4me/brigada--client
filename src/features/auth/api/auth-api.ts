@@ -38,18 +38,37 @@ export const authApi = {
 
   async register(data: RegisterRequest): Promise<RegisterResponse> {
     try {
-      const response = await apiClient.post<RegisterResponse>("/auth/register", data);
+      const requestData: any = {
+        email: data.email,
+        password: data.password,
+        role: data.role,
+      };
+
+      if (data.role === "company") {
+        if (data.companyName) {
+          requestData.companyName = data.companyName;
+        }
+        if (data.inn) {
+          requestData.inn = data.inn;
+        }
+      }
+
+      console.log("Register request data:", requestData);
+
+      const response = await apiClient.post<RegisterResponse>("/auth/register", requestData);
 
       if (response.accessToken) {
         apiClient.setToken(response.accessToken);
 
-        if (typeof window !== "undefined") {
+        if (typeof window !== "undefined" && response.user) {
           localStorage.setItem("user", JSON.stringify(response.user));
         }
       }
 
       return response;
     } catch (error: any) {
+      console.error("Auth API register error:", error);
+
       const apiError: ApiError = {
         message: error.message || "Ошибка регистрации",
         errors: error.errors,

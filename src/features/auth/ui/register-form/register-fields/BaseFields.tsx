@@ -1,3 +1,6 @@
+// src/features/auth/ui/register-form/register-fields/BaseFields.tsx
+"use client";
+
 import { Mail, Lock, Eye, EyeOff } from "lucide-react";
 import { UseFormRegister } from "react-hook-form";
 
@@ -11,9 +14,7 @@ interface BaseFieldsProps {
   errors: any;
   isLoading: boolean;
   showPassword: boolean;
-  showConfirmPassword: boolean;
   onTogglePassword: () => void;
-  onToggleConfirmPassword: () => void;
 }
 
 export const BaseFields = ({
@@ -21,9 +22,7 @@ export const BaseFields = ({
   errors,
   isLoading,
   showPassword,
-  showConfirmPassword,
   onTogglePassword,
-  onToggleConfirmPassword,
 }: BaseFieldsProps) => {
   return (
     <>
@@ -31,11 +30,18 @@ export const BaseFields = ({
         <Input
           label="Email"
           type="email"
+          placeholder="example@email.com"
           disabled={isLoading}
           leftIcon={<Mail size={16} />}
           error={!!errors.email}
           helperText={errors.email?.message}
-          {...register("email")}
+          {...register("email", {
+            required: "Email обязателен",
+            pattern: {
+              value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+              message: "Неверный формат email",
+            },
+          })}
         />
       </div>
 
@@ -43,6 +49,7 @@ export const BaseFields = ({
         <Input
           label="Пароль"
           type={showPassword ? "text" : "password"}
+          placeholder="Не менее 6 символов, буквы и цифры"
           disabled={isLoading}
           leftIcon={<Lock size={16} />}
           rightIcon={
@@ -52,28 +59,17 @@ export const BaseFields = ({
           }
           error={!!errors.password}
           helperText={errors.password?.message}
-          {...register("password")}
-        />
-      </div>
-
-      <div className={styles.inputWrapper}>
-        <Input
-          label="Подтвердите пароль"
-          type={showConfirmPassword ? "text" : "password"}
-          disabled={isLoading}
-          leftIcon={<Lock size={16} />}
-          rightIcon={
-            <button
-              type="button"
-              onClick={onToggleConfirmPassword}
-              className={styles.passwordToggle}
-            >
-              {showConfirmPassword ? <EyeOff size={16} /> : <Eye size={16} />}
-            </button>
-          }
-          error={!!errors.confirmPassword}
-          helperText={errors.confirmPassword?.message}
-          {...register("confirmPassword")}
+          {...register("password", {
+            required: "Пароль обязателен",
+            minLength: {
+              value: 6,
+              message: "Пароль должен быть не менее 6 символов",
+            },
+            pattern: {
+              value: /^(?=.*[a-zA-Z])(?=.*\d)/,
+              message: "Пароль должен содержать буквы и цифры",
+            },
+          })}
         />
       </div>
     </>

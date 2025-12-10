@@ -1,8 +1,9 @@
+// src/features/auth/ui/register-form/RegisterForm.tsx
 "use client";
 
 import { useState } from "react";
 
-import { RoleSelector , Role } from "@/features/role-selector/ui/RoleSelector";
+import { RoleSelector, Role } from "@/features/role-selector/ui/RoleSelector";
 import { Button } from "@/shared/ui/button/Button";
 
 import { useRegisterForm, RegisterFormFields } from "../../lib/use-register-form";
@@ -12,12 +13,11 @@ import { CompanyFields } from "./register-fields/CompanyFields";
 import * as styles from "./registerForm.css";
 
 export interface RegisterFormProps {
-  onSubmit: (data: RegisterFormFields, role: Role) => Promise<void>;
+  onSubmit: (data: RegisterFormFields, role: string) => Promise<void>;
 }
 
 export const RegisterForm = ({ onSubmit }: RegisterFormProps) => {
   const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [agreedToTerms, setAgreedToTerms] = useState(false);
 
   const {
@@ -42,12 +42,18 @@ export const RegisterForm = ({ onSubmit }: RegisterFormProps) => {
     setShowPassword(!showPassword);
   };
 
-  const toggleConfirmPasswordVisibility = () => {
-    setShowConfirmPassword(!showConfirmPassword);
+  const handleFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!agreedToTerms) {
+      return;
+    }
+
+    handleSubmit();
   };
 
   return (
-    <form onSubmit={handleSubmit} className={styles.form} noValidate>
+    <form onSubmit={handleFormSubmit} className={styles.form} noValidate>
       <div className={styles.roleSelectorWrapper}>
         <RoleSelector initialRole={selectedRole || undefined} onRoleChange={handleRoleChange} />
       </div>
@@ -59,9 +65,7 @@ export const RegisterForm = ({ onSubmit }: RegisterFormProps) => {
             errors={errors}
             isLoading={isLoading}
             showPassword={showPassword}
-            showConfirmPassword={showConfirmPassword}
             onTogglePassword={togglePasswordVisibility}
-            onToggleConfirmPassword={toggleConfirmPasswordVisibility}
           />
 
           {selectedRole === "companies" && (
@@ -81,6 +85,7 @@ export const RegisterForm = ({ onSubmit }: RegisterFormProps) => {
               checked={agreedToTerms}
               onChange={(e) => setAgreedToTerms(e.target.checked)}
               disabled={isLoading}
+              required
             />
             <label htmlFor="terms" className={styles.termsLabel}>
               Я согласен с условиями пользовательского соглашения и политикой конфиденциальности
@@ -88,8 +93,6 @@ export const RegisterForm = ({ onSubmit }: RegisterFormProps) => {
           </div>
 
           {serverError && <div className={styles.errorText}>{serverError}</div>}
-
-          {!selectedRole && <div className={styles.errorText}>Пожалуйста, выберите роль</div>}
 
           <Button
             type="submit"

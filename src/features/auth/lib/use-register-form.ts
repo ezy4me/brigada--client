@@ -1,82 +1,90 @@
+// src/features/auth/lib/use-register-form.ts
+"use client";
+
 import { useState } from "react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 
 import { Role } from "@/features/role-selector/ui/RoleSelector";
 
-import {
-  baseUserSchema,
-  companySchema,
-  customerSchema,
-  executorSchema,
-} from "./validation-schemas";
+import { BaseUserData, CompanyData, getRoleSchema } from "./validation-schemas";
 
-export type RegisterFormFields = {
-  email: string;
-  password: string;
-  confirmPassword: string;
-  companyName?: string;
-  inn?: string;
-  tariff?: string;
-};
+// Объединяем типы
+export type RegisterFormFields = BaseUserData & Partial<CompanyData>;
 
 export const useRegisterForm = (
-  onSubmit: (data: RegisterFormFields, role: Role) => Promise<void>
+  onSubmit: (data: RegisterFormFields, role: string) => Promise<void>
 ) => {
   const [selectedRole, setSelectedRole] = useState<Role | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
 
-  const getValidationSchema = () => {
-    switch (selectedRole) {
-      case "companies":
-        return companySchema;
-      case "customers":
-        return customerSchema;
-      case "executors":
-        return executorSchema;
-      default:
-        return baseUserSchema;
-    }
-  };
+  // Конвертируем Role в строку для API (performer вместо executor)
+  const roleString =
+    selectedRole === "companies"
+      ? "company"
+      : selectedRole === "customers"
+        ? "customer"
+        : selectedRole === "executors"
+          ? "performer"
+          : null;
+
+  const schema = roleString ? getRoleSchema(roleString) : null;
 
   const {
     register,
-    handleSubmit,
+    handleSubmit: rhfHandleSubmit,
+    formState: { errors },
     setValue,
     watch,
-    formState: { errors },
     reset,
-    trigger,
   } = useForm<RegisterFormFields>({
-    resolver: zodResolver(getValidationSchema()),
+    resolver: schema ? zodResolver(schema) : undefined,
     mode: "onChange",
+    defaultValues: {
+      email: "",
+      password: "",
+      companyName: "",
+      inn: "",
+      tariff: "",
+    },
   });
 
   const handleRoleChange = (role: Role) => {
     setSelectedRole(role);
     setServerError(null);
-    reset();
+
+    // Сбрасываем специфичные для роли поля
+    const currentValues = watch();
+    reset({
+      ...currentValues,
+      companyName: "",
+      inn: "",
+      tariff: "",
+    });
   };
 
-  const onFormSubmit = async (data: RegisterFormFields) => {
-    if (!selectedRole) return;
+  const setFormValue = (name: keyof RegisterFormFields, value: any) => {
+    setValue(name, value, { shouldValidate: true });
+  };
+
+  const handleFormSubmit: SubmitHandler<RegisterFormFields> = async (data) => {
+    if (!selectedRole || !roleString) {
+      setServerError("Пожалуйста, выберите роль");
+      return;
+    }
 
     setIsLoading(true);
     setServerError(null);
 
     try {
-      await onSubmit(data, selectedRole);
-    } catch (error) {
-      setServerError(error instanceof Error ? error.message : "Произошла ошибка при регистрации");
+      await onSubmit(data, roleString);
+    } catch (error: any) {
+      setServerError(error.message || "Ошибка регистрации");
     } finally {
       setIsLoading(false);
     }
-  };
-
-  const setFormValue = (name: keyof RegisterFormFields, value: any) => {
-    setValue(name, value, { shouldValidate: true });
   };
 
   return {
@@ -85,10 +93,9 @@ export const useRegisterForm = (
     serverError,
     errors,
     register,
-    handleSubmit: handleSubmit(onFormSubmit),
+    handleSubmit: rhfHandleSubmit(handleFormSubmit),
     handleRoleChange,
     setFormValue,
     watch,
-    trigger,
   };
 };

@@ -1,8 +1,8 @@
 export interface User {
-  id: string; 
+  id: string;
   email: string;
-  name?: string; 
-  role: 'executor' | 'customer' | 'company';
+  name?: string;
+  role: "customer" | "performer" | "company";
   avatar?: string;
   phone?: string;
   created_at?: string;
@@ -16,23 +16,21 @@ export interface LoginRequest {
 
 export interface LoginResponse {
   user: User;
-  accessToken: string; 
+  accessToken: string;
   expiresIn: number;
 }
 
 export interface RegisterRequest {
   email: string;
   password: string;
-  password_confirmation: string;
-  name: string;
-  role: 'executor' | 'customer' | 'company';
-  phone?: string;
-  agree_to_terms: boolean;
+  role: "customer" | "performer" | "company";
+  companyName?: string;
+  inn?: string;
 }
 
 export interface RegisterResponse {
   message: string;
-  user: User;
+  user?: User;
   accessToken?: string;
   expiresIn?: number;
 }
