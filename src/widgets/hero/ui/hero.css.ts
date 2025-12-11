@@ -27,12 +27,15 @@ export const content = style({
 });
 
 export const heading = style({
-  fontSize: vars.font.size.h1,
+  fontSize: "32px",
   fontWeight: vars.font.weight.bold,
   color: vars.color.text.primary,
   lineHeight: vars.font.lineHeight.tight,
   marginTop: vars.spacing["40"],
   "@media": {
+    "screen and (min-width: 640px)": {
+      fontSize: vars.font.size.h1,
+    },
     "screen and (min-width: 768px)": {
       fontSize: "48px",
     },
