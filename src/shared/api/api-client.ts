@@ -1,5 +1,7 @@
+// shared/api/api-client.ts
 import axios, { AxiosError, AxiosInstance, AxiosResponse } from "axios";
 
+import { useAuthStore } from "@/features/auth/store/auth-store";
 import { API_BASE_URL } from "@/shared/config/env";
 
 export interface ApiError {
@@ -10,7 +12,6 @@ export interface ApiError {
 
 class ApiClient {
   private client: AxiosInstance;
-  private token: string | null = null;
 
   constructor() {
     this.client = axios.create({
@@ -28,8 +29,10 @@ class ApiClient {
   private setupInterceptors() {
     this.client.interceptors.request.use(
       (config) => {
-        if (this.token && config.headers) {
-          config.headers.Authorization = `Bearer ${this.token}`;
+        // Берем токен из Zustand store
+        const token = useAuthStore.getState().token;
+        if (token && config.headers) {
+          config.headers.Authorization = `Bearer ${token}`;
         }
         return config;
       },
@@ -54,8 +57,9 @@ class ApiClient {
           }
         }
 
+        // При 401 ошибке вызываем logout из store
         if (error.response?.status === 401) {
-          this.clearToken();
+          useAuthStore.getState().logout();
         }
 
         return Promise.reject(apiError);
@@ -63,29 +67,7 @@ class ApiClient {
     );
   }
 
-  setToken(token: string) {
-    this.token = token;
-    if (typeof window !== "undefined") {
-      localStorage.setItem("auth_token", token);
-    }
-  }
-
-  clearToken() {
-    this.token = null;
-    if (typeof window !== "undefined") {
-      localStorage.removeItem("auth_token");
-      localStorage.removeItem("user");
-    }
-  }
-
-  loadTokenFromStorage() {
-    if (typeof window !== "undefined") {
-      const token = localStorage.getItem("auth_token");
-      if (token) {
-        this.token = token;
-      }
-    }
-  }
+  // Удаляем все методы работы с localStorage
 
   async get<T>(url: string, params?: object): Promise<T> {
     const response: AxiosResponse<T> = await this.client.get(url, { params });

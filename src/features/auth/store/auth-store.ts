@@ -1,3 +1,4 @@
+// features/auth/store/auth-store.ts
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 
@@ -18,7 +19,7 @@ interface AuthState {
   setUser: (user: User | null) => void;
   setToken: (token: string | null) => void;
   clearError: () => void;
-  loadAuthFromStorage: () => void;
+  // УДАЛИТЬ: loadAuthFromStorage: () => void;
   refreshAuth: () => Promise<void>;
 }
 
@@ -61,14 +62,13 @@ export const useAuthStore = create<AuthState>()(
         }
       },
 
-      // В auth-store.ts исправляем метод register
       register: async (data: RegisterRequest) => {
         set({ isLoading: true, error: null });
 
         try {
           const response = await authApi.register(data);
 
-          // Проверяем наличие user и token
+          const updatedUser = response.user;
           const token = response.accessToken || null;
           const isAuthenticated = !!response.accessToken;
 
@@ -81,16 +81,9 @@ export const useAuthStore = create<AuthState>()(
             return;
           }
 
-          // Проверяем что user существует
-          if (!response.user) {
-            throw new Error("Ошибка регистрации: данные пользователя не получены");
-          }
-
-          // Обновляем user
-          const updatedUser: User = {
-            ...response.user,
-            name: response.user.name || response.user.email.split("@")[0],
-          };
+        //   if (!updatedUser.name && data.name) {
+        //     updatedUser = { ...updatedUser, name: data.name };
+        //   }
 
           set({
             user: updatedUser,
@@ -99,23 +92,15 @@ export const useAuthStore = create<AuthState>()(
             isLoading: false,
           });
         } catch (error: any) {
-          let errorMessage = "Ошибка регистрации";
-
-          if (error.message) {
-            errorMessage = error.message;
-          }
-
-          if (error.errors) {
-            const errorList = Object.values(error.errors).flat();
-            errorMessage = errorList.join(", ");
-          }
+          const errorMessage = error.errors
+            ? Object.values(error.errors).flat().join(", ")
+            : error.message || "Ошибка регистрации";
 
           set({
             error: errorMessage,
             isLoading: false,
           });
-
-          throw new Error(errorMessage);
+          throw error;
         }
       },
 
@@ -125,6 +110,7 @@ export const useAuthStore = create<AuthState>()(
         try {
           await authApi.logout();
         } finally {
+          // Всегда очищаем локальное состояние
           set({
             user: null,
             token: null,
@@ -147,32 +133,7 @@ export const useAuthStore = create<AuthState>()(
         set({ error: null });
       },
 
-      loadAuthFromStorage: () => {
-        if (typeof window !== "undefined") {
-          const token = localStorage.getItem("auth_token");
-          const userStr = localStorage.getItem("user");
-
-          if (token && userStr) {
-            try {
-              const user = JSON.parse(userStr) as User;
-              const userWithDefaults = {
-                ...user,
-                name: user.name || user.email.split("@")[0],
-              };
-
-              set({
-                user: userWithDefaults,
-                token,
-                isAuthenticated: true,
-              });
-            } catch (error) {
-              console.error("Error parsing user from localStorage:", error);
-              localStorage.removeItem("user");
-              localStorage.removeItem("auth_token");
-            }
-          }
-        }
-      },
+      // УДАЛИТЬ ВЕСЬ МЕТОД loadAuthFromStorage
 
       refreshAuth: async () => {
         const { token } = get();
@@ -193,12 +154,8 @@ export const useAuthStore = create<AuthState>()(
             });
           } catch (error: any) {
             if (error.status === 401) {
-              set({
-                user: null,
-                token: null,
-                isAuthenticated: false,
-                isLoading: false,
-              });
+              // При 401 - разлогиниваем
+              get().logout();
             } else {
               set({ isLoading: false });
             }
@@ -214,6 +171,15 @@ export const useAuthStore = create<AuthState>()(
         token: state.token,
         isAuthenticated: state.isAuthenticated,
       }),
+      // Добавляем миграцию для очистки старых ключей
+      migrate: (persistedState, version) => {
+        // Очищаем старые ключи localStorage
+        if (typeof window !== "undefined") {
+          localStorage.removeItem("auth_token");
+          localStorage.removeItem("user");
+        }
+        return persistedState;
+      },
     }
   )
 );

@@ -23,7 +23,7 @@ export const useAuth = () => {
     register,
     clearError,
     refreshAuth,
-    isExecutor: user?.role === 'executor',
+    isExecutor: user?.role === 'performer',
     isCustomer: user?.role === 'customer',
     isCompany: user?.role === 'company',
     hasName: !!user?.name,

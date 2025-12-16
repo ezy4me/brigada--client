@@ -10,7 +10,7 @@ import { useAuth } from "../../lib/use-auth";
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
-  allowedRoles?: Array<'executor' | 'customer' | 'company'>;
+  allowedRoles?: Array<'performer' | 'customer' | 'company'>;
   redirectTo?: string;
 }
 

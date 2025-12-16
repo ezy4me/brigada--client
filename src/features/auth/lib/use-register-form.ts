@@ -1,4 +1,3 @@
-// src/features/auth/lib/use-register-form.ts
 "use client";
 
 import { useState } from "react";
@@ -10,7 +9,6 @@ import { Role } from "@/features/role-selector/ui/RoleSelector";
 
 import { BaseUserData, CompanyData, getRoleSchema } from "./validation-schemas";
 
-// Объединяем типы
 export type RegisterFormFields = BaseUserData & Partial<CompanyData>;
 
 export const useRegisterForm = (
@@ -20,7 +18,6 @@ export const useRegisterForm = (
   const [isLoading, setIsLoading] = useState(false);
   const [serverError, setServerError] = useState<string | null>(null);
 
-  // Конвертируем Role в строку для API (performer вместо executor)
   const roleString =
     selectedRole === "companies"
       ? "company"
@@ -55,7 +52,6 @@ export const useRegisterForm = (
     setSelectedRole(role);
     setServerError(null);
 
-    // Сбрасываем специфичные для роли поля
     const currentValues = watch();
     reset({
       ...currentValues,

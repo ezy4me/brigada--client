@@ -1,25 +1,30 @@
+// providers/auth-provider.tsx
 "use client";
 
 import { useEffect, ReactNode } from "react";
 
 import { useAuthStore } from "@/features/auth/store/auth-store";
-import { apiClient } from "@/shared/api/api-client";
 
 interface AuthProviderProps {
   children: ReactNode;
 }
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
-  const loadAuthFromStorage = useAuthStore((state) => state.loadAuthFromStorage);
   const refreshAuth = useAuthStore((state) => state.refreshAuth);
 
   useEffect(() => {
-    apiClient.loadTokenFromStorage();
+    // Только refreshAuth, без loadAuthFromStorage
+    // Zustand persist автоматически восстановит состояние из localStorage
     
-    loadAuthFromStorage();
-    
-    refreshAuth();
-  }, [loadAuthFromStorage, refreshAuth]);
+    // Проверяем токен при загрузке
+    const { token } = useAuthStore.getState();
+    if (token) {
+      refreshAuth().catch((error) => {
+        console.log('Auto refresh auth failed:', error);
+        // При ошибке - ничего не делаем, пользователь будет разлогинен
+      });
+    }
+  }, [refreshAuth]);
 
   return <>{children}</>;
 };

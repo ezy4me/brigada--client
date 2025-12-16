@@ -4,17 +4,17 @@ import { Providers } from "@/app/providers/StoreProvider";
 import { SupportChat } from "@/features/support-chat/ui/SupportChat";
 import { ThemeProvider } from "@/features/theme/lib/ThemeContext";
 import { AuthProvider } from "@/providers/auth-provider";
+import QueryProvider from "@/providers/query-provider";
 import { themeClass } from "@/shared/styles";
 
 import type { Metadata } from "next";
 
 import "@/shared/styles/global.css";
-import QueryProvider from "@/providers/query-provider";
 
 const robotoSans = Roboto({
   variable: "--font-roboto-sans",
   subsets: ["latin"],
-  weight: ["400", "500", "700"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {

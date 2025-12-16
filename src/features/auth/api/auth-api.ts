@@ -1,3 +1,4 @@
+// features/auth/api/auth-api.ts
 import { apiClient } from "@/shared/api/api-client";
 import {
   LoginRequest,
@@ -15,13 +16,7 @@ export const authApi = {
 
       console.log("Auth API: Login successful", response);
 
-      if (response.accessToken) {
-        apiClient.setToken(response.accessToken);
-
-        if (typeof window !== "undefined") {
-          localStorage.setItem("user", JSON.stringify(response.user));
-        }
-      }
+      // Не сохраняем в localStorage - Zustand persist сделает это автоматически
 
       return response;
     } catch (error: any) {
@@ -38,37 +33,12 @@ export const authApi = {
 
   async register(data: RegisterRequest): Promise<RegisterResponse> {
     try {
-      const requestData: any = {
-        email: data.email,
-        password: data.password,
-        role: data.role,
-      };
+      const response = await apiClient.post<RegisterResponse>("/auth/register", data);
 
-      if (data.role === "company") {
-        if (data.companyName) {
-          requestData.companyName = data.companyName;
-        }
-        if (data.inn) {
-          requestData.inn = data.inn;
-        }
-      }
-
-      console.log("Register request data:", requestData);
-
-      const response = await apiClient.post<RegisterResponse>("/auth/register", requestData);
-
-      if (response.accessToken) {
-        apiClient.setToken(response.accessToken);
-
-        if (typeof window !== "undefined" && response.user) {
-          localStorage.setItem("user", JSON.stringify(response.user));
-        }
-      }
+      // Не сохраняем в localStorage - Zustand persist сделает это автоматически
 
       return response;
     } catch (error: any) {
-      console.error("Auth API register error:", error);
-
       const apiError: ApiError = {
         message: error.message || "Ошибка регистрации",
         errors: error.errors,
@@ -83,18 +53,15 @@ export const authApi = {
       await apiClient.post("/auth/logout");
     } catch (error) {
       console.error("Logout error:", error);
-    } finally {
-      apiClient.clearToken();
     }
+    // Не вызываем clearToken() - logout в store сделает это
   },
 
   async getCurrentUser(): Promise<User> {
     try {
       const user = await apiClient.get<User>("/auth/me");
 
-      if (typeof window !== "undefined") {
-        localStorage.setItem("user", JSON.stringify(user));
-      }
+      // Не сохраняем в localStorage - Zustand persist сделает это автоматически
 
       return user;
     } catch (error: any) {
@@ -112,9 +79,9 @@ export const authApi = {
       const response = await apiClient.post<{ accessToken: string; expiresIn: number }>(
         "/auth/refresh"
       );
-      if (response.accessToken) {
-        apiClient.setToken(response.accessToken);
-      }
+      
+      // Не сохраняем токен здесь - store сделает это
+      
       return response;
     } catch (error: any) {
       const apiError: ApiError = {
