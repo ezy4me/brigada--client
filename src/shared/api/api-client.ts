@@ -1,4 +1,3 @@
-// shared/api/api-client.ts
 import axios, { AxiosError, AxiosInstance, AxiosResponse } from "axios";
 
 import { useAuthStore } from "@/features/auth/store/auth-store";
@@ -29,7 +28,6 @@ class ApiClient {
   private setupInterceptors() {
     this.client.interceptors.request.use(
       (config) => {
-        // Берем токен из Zustand store
         const token = useAuthStore.getState().token;
         if (token && config.headers) {
           config.headers.Authorization = `Bearer ${token}`;
@@ -57,7 +55,6 @@ class ApiClient {
           }
         }
 
-        // При 401 ошибке вызываем logout из store
         if (error.response?.status === 401) {
           useAuthStore.getState().logout();
         }
@@ -66,8 +63,6 @@ class ApiClient {
       }
     );
   }
-
-  // Удаляем все методы работы с localStorage
 
   async get<T>(url: string, params?: object): Promise<T> {
     const response: AxiosResponse<T> = await this.client.get(url, { params });

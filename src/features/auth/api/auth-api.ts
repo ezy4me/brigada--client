@@ -1,4 +1,3 @@
-// features/auth/api/auth-api.ts
 import { apiClient } from "@/shared/api/api-client";
 import {
   LoginRequest,
@@ -15,8 +14,6 @@ export const authApi = {
       const response = await apiClient.post<LoginResponse>("/auth/login", data);
 
       console.log("Auth API: Login successful", response);
-
-      // Не сохраняем в localStorage - Zustand persist сделает это автоматически
 
       return response;
     } catch (error: any) {
@@ -35,8 +32,6 @@ export const authApi = {
     try {
       const response = await apiClient.post<RegisterResponse>("/auth/register", data);
 
-      // Не сохраняем в localStorage - Zustand persist сделает это автоматически
-
       return response;
     } catch (error: any) {
       const apiError: ApiError = {
@@ -54,14 +49,11 @@ export const authApi = {
     } catch (error) {
       console.error("Logout error:", error);
     }
-    // Не вызываем clearToken() - logout в store сделает это
   },
 
   async getCurrentUser(): Promise<User> {
     try {
       const user = await apiClient.get<User>("/auth/me");
-
-      // Не сохраняем в localStorage - Zustand persist сделает это автоматически
 
       return user;
     } catch (error: any) {
@@ -79,9 +71,7 @@ export const authApi = {
       const response = await apiClient.post<{ accessToken: string; expiresIn: number }>(
         "/auth/refresh"
       );
-      
-      // Не сохраняем токен здесь - store сделает это
-      
+
       return response;
     } catch (error: any) {
       const apiError: ApiError = {

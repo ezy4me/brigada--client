@@ -13,6 +13,7 @@ import {
   customerPerformerProfileSchema,
   safePreferedContact,
 } from "@/features/profile/lib/validation-schemas";
+import { formatPhoneForDisplay, formatPhoneForValidation } from "@/shared/lib/phone-utils";
 import { CustomerProfile, PerformerProfile } from "@/shared/lib/types/profile.types";
 import { cn } from "@/shared/lib/utils";
 import { Button } from "@/shared/ui/button/Button";
@@ -36,8 +37,11 @@ export const ProfileForm = ({ className }: ProfileFormProps) => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid },
+    formState: { errors, isValid, isDirty },
     reset,
+    control,
+    setValue,
+    watch,
   } = useForm<CustomerPerformerProfileFormData>({
     resolver: zodResolver(customerPerformerProfileSchema),
     mode: "onChange",
@@ -50,6 +54,8 @@ export const ProfileForm = ({ className }: ProfileFormProps) => {
       specializationId: "",
     },
   });
+
+  const phoneValue = watch("phone");
 
   useEffect(() => {
     const loadProfile = async () => {
@@ -68,11 +74,13 @@ export const ProfileForm = ({ className }: ProfileFormProps) => {
 
         setProfile(profileData);
 
+        const formattedPhone = profileData.phone ? formatPhoneForDisplay(profileData.phone) : "+7";
+
         reset({
           surname: profileData.surname || "",
           name: profileData.name || "",
           patronymic: profileData.patronymic || "",
-          phone: profileData.phone || "",
+          phone: formattedPhone,
           preferedContact: safePreferedContact(profileData.preferedContact),
           specializationId: profileData.specializationId || "",
         });
@@ -94,10 +102,12 @@ export const ProfileForm = ({ className }: ProfileFormProps) => {
     setFormError(null);
 
     try {
+      const formattedPhone = formatPhoneForValidation(data.phone);
+
       const submitData = {
         surname: data.surname.trim(),
         name: data.name.trim(),
-        phone: data.phone.trim(),
+        phone: formattedPhone.trim(),
         preferedContact: data.preferedContact,
         patronymic: data.patronymic,
         specializationId: data.specializationId,
@@ -126,6 +136,11 @@ export const ProfileForm = ({ className }: ProfileFormProps) => {
     } finally {
       setIsSaving(false);
     }
+  };
+
+  const handlePhoneChange = (rawValue: string) => {
+    const formattedValue = formatPhoneForValidation(rawValue);
+    setValue("phone", formattedValue, { shouldValidate: true });
   };
 
   const getRoleDisplayName = (role: string) => {
@@ -194,6 +209,9 @@ export const ProfileForm = ({ className }: ProfileFormProps) => {
           userRole={user.role}
           userEmail={user.email}
           isLoading={isLoading}
+          phoneValue={phoneValue}
+          onPhoneChange={handlePhoneChange}
+          control={control}
         />
 
         {formError && <div className={styles.errorText}>{formError}</div>}
@@ -202,7 +220,12 @@ export const ProfileForm = ({ className }: ProfileFormProps) => {
           <Button type="button" variant="ghost" size="md">
             Сменить пароль
           </Button>
-          <Button type="submit" variant="primary" size="md" disabled={isSaving || !isValid}>
+          <Button
+            type="submit"
+            variant="primary"
+            size="md"
+            disabled={isSaving || !isValid || !isDirty}
+          >
             {isSaving ? "Сохранение..." : "Сохранить"}
           </Button>
         </div>

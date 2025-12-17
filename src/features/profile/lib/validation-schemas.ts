@@ -25,7 +25,6 @@ export const customerPerformerProfileSchema = z.object({
 
   specializationId: z
     .string()
-    .uuid("ID специализации должен быть в формате UUID")
     .optional()
     .or(z.literal("")),
 });

@@ -1,4 +1,3 @@
-// src/features/auth/ui/register-form/register-fields/BaseFields.tsx
 "use client";
 
 import { Mail, Lock, Eye, EyeOff } from "lucide-react";

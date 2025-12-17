@@ -26,15 +26,12 @@ export default function RegisterPage() {
     setSuccessMessage(null);
 
     try {
-      // Подготавливаем данные в точности как ожидает сервер
       const registerData = {
         email: data.email.trim(),
         password: data.password,
         role: role as "customer" | "performer" | "company",
-        // НЕ включаем: password_confirmation, agree_to_terms
       };
 
-      // Добавляем специфичные поля для компании
       if (role === "company") {
         Object.assign(registerData, {
           companyName: data.companyName?.trim(),
@@ -46,11 +43,9 @@ export default function RegisterPage() {
 
       await register(registerData);
 
-      // Проверяем авторизован ли пользователь
       if (useAuthStore.getState().isAuthenticated) {
         router.push("/profile");
       } else {
-        // Если нужно подтвердить email
         setSuccessMessage(
           "Регистрация успешна! Пожалуйста, проверьте вашу почту для подтверждения email."
         );

@@ -1,9 +1,9 @@
 "use client";
 
-import { useAuth } from "@/features/auth/lib/use-auth";
 import { AccountSwitcherCard } from "@/features/account-switcher/ui/AccountSwitcherCard";
-import { ProfileForm } from "@/features/profile/ui/ProfileForm";
+import { useAuth } from "@/features/auth/lib/use-auth";
 import { CompanyProfileForm } from "@/features/profile/ui/CompanyProfileForm";
+import { ProfileForm } from "@/features/profile/ui/ProfileForm";
 import { Heading } from "@/shared/ui/heading/Heading";
 import { Text } from "@/shared/ui/text/Text";
 

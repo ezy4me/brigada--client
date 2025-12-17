@@ -1,4 +1,3 @@
-// features/auth/store/auth-store.ts
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 
@@ -19,7 +18,6 @@ interface AuthState {
   setUser: (user: User | null) => void;
   setToken: (token: string | null) => void;
   clearError: () => void;
-  // УДАЛИТЬ: loadAuthFromStorage: () => void;
   refreshAuth: () => Promise<void>;
 }
 
@@ -81,10 +79,6 @@ export const useAuthStore = create<AuthState>()(
             return;
           }
 
-        //   if (!updatedUser.name && data.name) {
-        //     updatedUser = { ...updatedUser, name: data.name };
-        //   }
-
           set({
             user: updatedUser,
             token,
@@ -110,7 +104,6 @@ export const useAuthStore = create<AuthState>()(
         try {
           await authApi.logout();
         } finally {
-          // Всегда очищаем локальное состояние
           set({
             user: null,
             token: null,
@@ -133,8 +126,6 @@ export const useAuthStore = create<AuthState>()(
         set({ error: null });
       },
 
-      // УДАЛИТЬ ВЕСЬ МЕТОД loadAuthFromStorage
-
       refreshAuth: async () => {
         const { token } = get();
 
@@ -154,7 +145,6 @@ export const useAuthStore = create<AuthState>()(
             });
           } catch (error: any) {
             if (error.status === 401) {
-              // При 401 - разлогиниваем
               get().logout();
             } else {
               set({ isLoading: false });
@@ -171,9 +161,7 @@ export const useAuthStore = create<AuthState>()(
         token: state.token,
         isAuthenticated: state.isAuthenticated,
       }),
-      // Добавляем миграцию для очистки старых ключей
       migrate: (persistedState, version) => {
-        // Очищаем старые ключи localStorage
         if (typeof window !== "undefined") {
           localStorage.removeItem("auth_token");
           localStorage.removeItem("user");

@@ -1,6 +1,11 @@
-import { UseFormRegister, FieldErrors } from "react-hook-form";
+"use client";
+
+import { useState, useCallback, useMemo } from "react";
+
+import { UseFormRegister, FieldErrors, Control } from "react-hook-form";
 
 import { CustomerPerformerProfileFormData } from "@/features/profile/lib/validation-schemas";
+import { formatPhoneForDisplay, handlePhoneInput } from "@/shared/lib/phone-utils";
 import { Input } from "@/shared/ui/input/Input";
 import { Text } from "@/shared/ui/text/Text";
 
@@ -12,6 +17,9 @@ interface ProfileFieldsProps {
   userRole: string;
   userEmail: string;
   isLoading: boolean;
+  phoneValue: string;
+  onPhoneChange: (value: string) => void;
+  control: Control<CustomerPerformerProfileFormData>;
 }
 
 export const ProfileFields = ({
@@ -20,7 +28,68 @@ export const ProfileFields = ({
   userRole,
   userEmail,
   isLoading,
+  phoneValue,
+  onPhoneChange,
+  control,
 }: ProfileFieldsProps) => {
+  const initialDisplayPhone = useMemo(
+    () => (phoneValue ? formatPhoneForDisplay(phoneValue) : "+7"),
+    [phoneValue]
+  );
+
+  const [displayPhone, setDisplayPhone] = useState(initialDisplayPhone);
+
+  const [prevPhoneValue, setPrevPhoneValue] = useState(phoneValue);
+
+  if (phoneValue !== prevPhoneValue) {
+    setDisplayPhone(formatPhoneForDisplay(phoneValue));
+    setPrevPhoneValue(phoneValue);
+  }
+
+  const handlePhoneInputChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const result = handlePhoneInput(e.target.value, displayPhone);
+      setDisplayPhone(result.displayValue);
+      onPhoneChange(result.rawValue);
+    },
+    [displayPhone, onPhoneChange]
+  );
+
+  const handlePhoneKeyDown = useCallback(
+    (e: React.KeyboardEvent<HTMLInputElement>) => {
+      const allowedKeys = [
+        "Backspace",
+        "Delete",
+        "Tab",
+        "Escape",
+        "Enter",
+        "ArrowLeft",
+        "ArrowRight",
+        "ArrowUp",
+        "ArrowDown",
+        "Home",
+        "End",
+      ];
+
+      const cleaned = displayPhone.replace(/\D/g, "");
+      if (cleaned.length >= 11 && /^\d$/.test(e.key) && !allowedKeys.includes(e.key)) {
+        e.preventDefault();
+      }
+    },
+    [displayPhone]
+  );
+
+  const handlePhoneFocus = useCallback(
+    (e: React.FocusEvent<HTMLInputElement>) => {
+      if (displayPhone === "+7") {
+        setTimeout(() => {
+          e.target.setSelectionRange(2, 2);
+        }, 0);
+      }
+    },
+    [displayPhone]
+  );
+
   return (
     <div className={styles.fields}>
       <div className={styles.fieldGroup}>
@@ -69,12 +138,16 @@ export const ProfileFields = ({
         <Input
           label="Телефон"
           type="tel"
-          {...register("phone")}
+          value={displayPhone}
+          onChange={handlePhoneInputChange}
+          onKeyDown={handlePhoneKeyDown}
+          onFocus={handlePhoneFocus}
           error={!!errors.phone}
           helperText={errors.phone?.message}
           placeholder="+7 (999) 123-45-67"
           disabled={isLoading}
           required
+          maxLength={18}
         />
       </div>
 
@@ -98,11 +171,7 @@ export const ProfileFields = ({
       <div className={styles.singleField}>
         <label className={styles.selectLabel}>
           <span>Предпочтительный способ связи</span>
-          <select
-            {...register("preferedContact")}
-            className={styles.select}
-            disabled={isLoading}
-          >
+          <select {...register("preferedContact")} className={styles.select} disabled={isLoading}>
             <option value="email">Email</option>
             <option value="phone">Телефон</option>
             <option value="t.me">Telegram</option>

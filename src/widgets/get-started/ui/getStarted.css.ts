@@ -79,7 +79,6 @@ export const backgroundImage = style({
   flex: 1,
   "@media": {
     "screen and (max-width: 1023px)": {
-      // hei,
     },
   },
 });
