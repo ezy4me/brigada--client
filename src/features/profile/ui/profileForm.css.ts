@@ -1,3 +1,4 @@
+// features/profile/ui/profileForm.css.ts (дополним)
 import { style } from "@vanilla-extract/css";
 
 import { vars } from "@/shared/styles/theme.css";
@@ -23,11 +24,25 @@ export const avatarWrapper = style({
 });
 
 export const avatar = style({
-  width: ["128"],
-  height: ["128"],
+  width: "80px",
+  height: "80px",
   borderRadius: vars.radius.full,
-  objectFit: "cover",
+  background: `linear-gradient(135deg, ${vars.color.brand.primary} 0%, ${vars.color.brand.secondary} 100%)`,
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  fontSize: vars.font.size.h2,
+  fontWeight: vars.font.weight.bold,
+  color: vars.color.white,
   border: `2px solid ${vars.color.border.default}`,
+});
+
+export const loadingAvatar = style({
+  width: "80px",
+  height: "80px",
+  borderRadius: vars.radius.full,
+  backgroundColor: vars.color.gray[200],
+  animation: "pulse 1.5s ease-in-out infinite",
 });
 
 export const uploadButton = style({
@@ -46,6 +61,10 @@ export const uploadButton = style({
   justifyContent: "center",
   ":hover": {
     opacity: 0.9,
+  },
+  ":disabled": {
+    opacity: 0.5,
+    cursor: "not-allowed",
   },
 });
 
@@ -74,21 +93,10 @@ export const userRole = style({
   color: vars.color.text.secondary,
 });
 
-export const fieldGroup = style({
-  display: "grid",
-  gridTemplateColumns: "1fr 1fr",
+export const form = style({
+  display: "flex",
+  flexDirection: "column",
   gap: vars.spacing["16"],
-  marginBottom: vars.spacing["16"],
-
-  "@media": {
-    "screen and (max-width: 767px)": {
-      gridTemplateColumns: "1fr",
-    },
-  },
-});
-
-export const singleField = style({
-  marginBottom: vars.spacing["16"],
 });
 
 export const buttonGroup = style({
@@ -96,10 +104,16 @@ export const buttonGroup = style({
   gap: vars.spacing["12"],
   justifyContent: "flex-end",
   marginTop: vars.spacing["24"],
-
   "@media": {
     "screen and (max-width: 767px)": {
       flexDirection: "column",
     },
   },
+});
+
+export const errorText = style({
+  color: vars.color.status.error,
+  fontSize: vars.font.size.body2,
+  textAlign: "center",
+  marginTop: vars.spacing["8"],
 });

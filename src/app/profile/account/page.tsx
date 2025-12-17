@@ -1,27 +1,37 @@
+// app/profile/account/page.tsx
+"use client";
+
+import { useAuth } from "@/features/auth/lib/use-auth";
 import { AccountSwitcherCard } from "@/features/account-switcher/ui/AccountSwitcherCard";
 import { ProfileForm } from "@/features/profile/ui/ProfileForm";
+import { CompanyProfileForm } from "@/features/profile/ui/CompanyProfileForm";
 import { Heading } from "@/shared/ui/heading/Heading";
 import { Text } from "@/shared/ui/text/Text";
 
 import * as styles from "./account.css";
 
-const accounts = [
-  {
-    id: 1,
-    name: "Иван Петров",
-    role: "Исполнитель",
-    avatar: "/user-avatar.jpg",
-  },
-  {
-    id: 2,
-    name: "Иван Петров",
-    role: "Заказчик",
-    avatar: "/user-avatar.jpg",
-  },
-];
+export default function AccountPage() {
+  const { user } = useAuth();
 
-export default async function AccountPage() {
-  const role = "executor";
+  if (!user) {
+    return (
+      <div className={styles.container}>
+        <Text>Пожалуйста, войдите в систему</Text>
+      </div>
+    );
+  }
+
+  const getFormComponent = () => {
+    switch (user.role) {
+      case "customer":
+      case "performer":
+        return <ProfileForm />;
+      case "company":
+        return <CompanyProfileForm />;
+      default:
+        return <Text>Роль не поддерживается</Text>;
+    }
+  };
 
   return (
     <div className={styles.container}>
@@ -30,9 +40,11 @@ export default async function AccountPage() {
       </Heading>
       <Text className={styles.description}>Управляйте своими данными и настройками</Text>
 
-      <ProfileForm initialData={{ firstName: "Иван", lastName: "Петров" }} />
+      {getFormComponent()}
 
-      <AccountSwitcherCard accounts={accounts} />
+      {(user.role === "performer" || user.role === "customer") && (
+        <AccountSwitcherCard accounts={[]} />
+      )}
     </div>
   );
 }

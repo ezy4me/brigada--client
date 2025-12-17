@@ -23,14 +23,14 @@ export default defineConfig([
         "error",
         {
           groups: [
-            "builtin", 
+            "builtin",
             "external",
-            "internal", 
-            "parent", 
-            "sibling", 
-            "index", 
-            "object", 
-            "type", 
+            "internal",
+            "parent",
+            "sibling",
+            "index",
+            "object",
+            "type",
           ],
           pathGroups: [
             {
@@ -87,7 +87,8 @@ export default defineConfig([
       "import/newline-after-import": ["error", { count: 1 }],
       "no-duplicate-imports": "error",
       "import/no-duplicates": "error",
-      "@typescript-eslint/no-explicit-any": 'off'
+      "@typescript-eslint/no-explicit-any": 'off',
+      "typescript-eslint/no-empty-object-type": 'off'
     },
   },
 ]);

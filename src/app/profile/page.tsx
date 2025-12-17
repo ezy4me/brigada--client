@@ -31,12 +31,12 @@ export default function ProfilePage() {
   }
 
   return (
-    <ProtectedRoute>
+    // <ProtectedRoute>
       <div className={styles.section}>
         <div className={styles.container}>
           <ProfileHome />
         </div>
       </div>
-    </ProtectedRoute>
+    // </ProtectedRoute>
   );
 }

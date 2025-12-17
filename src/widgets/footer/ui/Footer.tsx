@@ -36,9 +36,9 @@ export const Footer: FC<FooterProps> = ({ className }) => {
             <Link href="/" className={styles.link}>
               Все исполнители
             </Link>
-            <a href="/support" className={styles.link}>
+            <Link href="/" className={styles.link}>
               Поддержка
-            </a>
+            </Link>
           </div>
 
           <div className={styles.section}>
@@ -53,7 +53,7 @@ export const Footer: FC<FooterProps> = ({ className }) => {
             <Link href="/" className={styles.link}>
               Заказы
             </Link>
-            <Link href="/support" className={styles.link}>
+            <Link href="/" className={styles.link}>
               Поддержка
             </Link>
           </div>
@@ -61,16 +61,16 @@ export const Footer: FC<FooterProps> = ({ className }) => {
           <div className={styles.section}>
             <h3 className={styles.sectionTitle}>Исполнителям</h3>
             <div className={styles.sectionDivider} />
-            <Link href="/executors" className={styles.link}>
+            <Link href="/executor" className={styles.link}>
               Сайт для исполнителей
             </Link>
-            <Link href="/login/executor" className={styles.link}>
+            <Link href="/login" className={styles.link}>
               Вход для исполнителей
             </Link>
-            <Link href="/orders" className={styles.link}>
+            <Link href="/find-orders" className={styles.link}>
               Заказы
             </Link>
-            <Link href="/support" className={styles.link}>
+            <Link href="/" className={styles.link}>
               Поддержка
             </Link>
           </div>
@@ -93,47 +93,47 @@ export const Footer: FC<FooterProps> = ({ className }) => {
             <h3 className={styles.sectionTitle}>Социальные сети</h3>
             <div className={styles.sectionDivider} />
             <div className={styles.socialLinks}>
-              <a 
-                href="https://vk.com/brigadaru_official" 
-                target="_blank" 
+              <a
+                href="https://vk.com/brigadaru_official"
+                target="_blank"
                 rel="noopener noreferrer"
                 className={styles.socialLink}
                 aria-label="ВКонтакте"
               >
-                <Image 
-                  src="/social/vk.svg" 
-                  alt="ВКонтакте" 
-                  width={24} 
+                <Image
+                  src="/social/vk.svg"
+                  alt="ВКонтакте"
+                  width={24}
                   height={24}
                   className={styles.socialIcon}
                 />
               </a>
-              <a 
-                href="https://t.me/brigadaru_official" 
-                target="_blank" 
+              <a
+                href="https://t.me/brigadaru_official"
+                target="_blank"
                 rel="noopener noreferrer"
                 className={styles.socialLink}
                 aria-label="Telegram"
               >
-                <Image 
-                  src="/social/tg.svg" 
-                  alt="Telegram" 
-                  width={24} 
+                <Image
+                  src="/social/tg.svg"
+                  alt="Telegram"
+                  width={24}
                   height={24}
                   className={styles.socialIcon}
                 />
               </a>
-              <a 
-                href="https://dzen.ru/id/68a3844988f25a24853a3ef5" 
-                target="_blank" 
+              <a
+                href="https://dzen.ru/id/68a3844988f25a24853a3ef5"
+                target="_blank"
                 rel="noopener noreferrer"
                 className={styles.socialLink}
                 aria-label="Дзен"
               >
-                <Image 
-                  src="/social/dzen.svg" 
-                  alt="Дзен" 
-                  width={24} 
+                <Image
+                  src="/social/dzen.svg"
+                  alt="Дзен"
+                  width={24}
                   height={24}
                   className={styles.socialIcon}
                 />
@@ -165,11 +165,7 @@ export const Footer: FC<FooterProps> = ({ className }) => {
             </a>
           </div>
 
-          <button 
-            onClick={scrollToTop} 
-            className={styles.backToTopButton}
-            aria-label="Наверх"
-          >
+          <button onClick={scrollToTop} className={styles.backToTopButton} aria-label="Наверх">
             <ArrowUp size={16} />
           </button>
         </div>
