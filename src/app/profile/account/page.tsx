@@ -1,4 +1,3 @@
-// app/profile/account/page.tsx
 "use client";
 
 import { useAuth } from "@/features/auth/lib/use-auth";

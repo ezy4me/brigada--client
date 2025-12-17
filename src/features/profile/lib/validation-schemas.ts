@@ -1,7 +1,5 @@
-// features/profile/lib/validation-schemas.ts
 import { z } from "zod";
 
-// Функция для безопасного получения preferedContact
 export const safePreferedContact = (value: unknown): "email" | "phone" | "t.me" | "whatsapp" => {
   const allowed = ["email", "phone", "t.me", "whatsapp"] as const;
   if (typeof value === "string" && allowed.includes(value as any)) {
@@ -10,7 +8,6 @@ export const safePreferedContact = (value: unknown): "email" | "phone" | "t.me" 
   return "email";
 };
 
-// Схема для customer/performer профилей
 export const customerPerformerProfileSchema = z.object({
   surname: z.string().min(1, "Фамилия обязательна").max(100, "Фамилия слишком длинная").trim(),
 
@@ -35,7 +32,6 @@ export const customerPerformerProfileSchema = z.object({
 
 export type CustomerPerformerProfileFormData = z.infer<typeof customerPerformerProfileSchema>;
 
-// Схема для company профиля
 export const companyProfileSchema = z.object({
   name: z
     .string()

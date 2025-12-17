@@ -1,4 +1,3 @@
-// features/profile/ui/profile-fields/ProfileFields.tsx
 import { UseFormRegister, FieldErrors } from "react-hook-form";
 
 import { CustomerPerformerProfileFormData } from "@/features/profile/lib/validation-schemas";

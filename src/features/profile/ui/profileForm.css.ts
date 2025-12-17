@@ -1,4 +1,3 @@
-// features/profile/ui/profileForm.css.ts (дополним)
 import { style } from "@vanilla-extract/css";
 
 import { vars } from "@/shared/styles/theme.css";

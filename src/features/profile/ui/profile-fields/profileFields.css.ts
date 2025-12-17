@@ -1,4 +1,3 @@
-// features/profile/ui/profile-fields/profileFields.css.ts
 import { style } from "@vanilla-extract/css";
 
 import { vars } from "@/shared/styles/theme.css";

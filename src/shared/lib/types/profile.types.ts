@@ -1,4 +1,3 @@
-// shared/lib/types/profile.types.ts
 export interface BaseProfile {
   id: string;
   surname: string;
@@ -35,7 +34,6 @@ export interface CompanyProfile {
   phone: string;
 }
 
-// DTO для обновления профилей
 export interface UpdateCustomerProfileDto {
   surname: string;
   name: string;

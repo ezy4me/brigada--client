@@ -1,10 +1,8 @@
-// src/app/profile/page.tsx
 "use client";
 
 import { useAuth } from "@/features/auth/lib/use-auth";
 import { ProtectedRoute } from "@/features/auth/ui/protected-route/ProtectedRoute";
 import { Loader } from "@/shared/ui/loader/Loader";
-import { Section } from "@/shared/ui/section/Section";
 import { Text } from "@/shared/ui/text/Text";
 import { ProfileHome } from "@/widgets/profile-home/ui/ProfileHome";
 
@@ -31,12 +29,12 @@ export default function ProfilePage() {
   }
 
   return (
-    // <ProtectedRoute>
+    <ProtectedRoute>
       <div className={styles.section}>
         <div className={styles.container}>
           <ProfileHome />
         </div>
       </div>
-    // </ProtectedRoute>
+    </ProtectedRoute>
   );
 }
