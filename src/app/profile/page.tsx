@@ -31,9 +31,7 @@ export default function ProfilePage() {
   return (
     <ProtectedRoute>
       <div className={styles.section}>
-        <div className={styles.container}>
-          <ProfileHome />
-        </div>
+        <ProfileHome />
       </div>
     </ProtectedRoute>
   );

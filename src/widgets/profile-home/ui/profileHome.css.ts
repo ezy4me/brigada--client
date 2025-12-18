@@ -3,7 +3,7 @@ import { style } from "@vanilla-extract/css";
 import { vars } from "@/shared/styles/theme.css";
 
 export const container = style({
-  padding: vars.spacing["24"],
+  // padding: vars.spacing["24"],
 });
 
 export const userInfo = style({

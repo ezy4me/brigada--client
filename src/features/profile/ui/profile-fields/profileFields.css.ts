@@ -56,3 +56,29 @@ export const hint = style({
 export const errorText = style({
   marginTop: vars.spacing["4"],
 });
+
+export const retryButton = style({
+  display: "inline-block",
+  marginTop: vars.spacing["8"],
+  padding: `${vars.spacing["4"]} ${vars.spacing["8"]}`,
+  background: vars.color.brand.primary,
+  color: vars.color.text.primary,
+  border: "none",
+  borderRadius: vars.radius.sm,
+  fontSize: vars.font.size.caption,
+  cursor: "pointer",
+  ":hover": {
+    opacity: 0.9,
+  },
+});
+
+export const selectContainer = style({
+  marginBottom: vars.spacing["8"],
+});
+
+export const errorContainer = style({
+  display: "flex",
+  alignItems: "center",
+  gap: vars.spacing["8"],
+  marginTop: vars.spacing["8"],
+});

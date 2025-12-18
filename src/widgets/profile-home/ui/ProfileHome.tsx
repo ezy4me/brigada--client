@@ -14,7 +14,7 @@ export const ProfileHome = () => {
 
   const getRoleDisplayName = (role: string) => {
     switch (role) {
-      case 'executor':
+      case 'performer':
         return 'Исполнитель';
       case 'customer':
         return 'Заказчик';
@@ -27,7 +27,7 @@ export const ProfileHome = () => {
 
   const getStatsData = (role: string) => {
     switch (role) {
-      case 'executor':
+      case 'performer':
         return [
           { icon: <Briefcase />, value: "0", label: "Активных заказов" },
           { icon: <CheckCircle />, value: "0", label: "Выполнено" },

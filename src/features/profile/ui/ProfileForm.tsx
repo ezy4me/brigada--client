@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Camera, CheckCircle } from "lucide-react";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -39,7 +38,6 @@ export const ProfileForm = ({ className }: ProfileFormProps) => {
     handleSubmit,
     formState: { errors, isValid, isDirty },
     reset,
-    control,
     setValue,
     watch,
   } = useForm<CustomerPerformerProfileFormData>({
@@ -55,7 +53,10 @@ export const ProfileForm = ({ className }: ProfileFormProps) => {
     },
   });
 
+  // Следим за значениями
   const phoneValue = watch("phone");
+  const specializationIdValue = watch("specializationId");
+  const preferedContactValue = watch("preferedContact");
 
   useEffect(() => {
     const loadProfile = async () => {
@@ -104,21 +105,22 @@ export const ProfileForm = ({ className }: ProfileFormProps) => {
     try {
       const formattedPhone = formatPhoneForValidation(data.phone);
 
-      const submitData = {
+      const submitData: any = {
         surname: data.surname.trim(),
         name: data.name.trim(),
         phone: formattedPhone.trim(),
         preferedContact: data.preferedContact,
-        patronymic: data.patronymic,
-        specializationId: data.specializationId,
       };
 
       if (data.patronymic?.trim()) {
         submitData.patronymic = data.patronymic.trim();
       }
+
       if (data.specializationId?.trim()) {
         submitData.specializationId = data.specializationId.trim();
       }
+
+      console.log("Отправляемые данные:", submitData);
 
       if (user.role === "customer") {
         await profileApi.updateCustomerProfile(submitData);
@@ -141,6 +143,14 @@ export const ProfileForm = ({ className }: ProfileFormProps) => {
   const handlePhoneChange = (rawValue: string) => {
     const formattedValue = formatPhoneForValidation(rawValue);
     setValue("phone", formattedValue, { shouldValidate: true });
+  };
+
+  const handleSpecializationChange = (value: string) => {
+    setValue("specializationId", value, { shouldValidate: true });
+  };
+
+  const handleContactMethodChange = (value: "email" | "phone" | "t.me" | "whatsapp") => {
+    setValue("preferedContact", value, { shouldValidate: true });
   };
 
   const getRoleDisplayName = (role: string) => {
@@ -179,7 +189,7 @@ export const ProfileForm = ({ className }: ProfileFormProps) => {
     );
   }
 
-  const fullName = `${profile.surname} ${profile.name} ${profile.patronymic}`.trim();
+  const fullName = `${profile.surname} ${profile.name} ${profile.patronymic || ""}`.trim();
 
   return (
     <Card className={cn(styles.formCard, className)}>
@@ -211,7 +221,8 @@ export const ProfileForm = ({ className }: ProfileFormProps) => {
           isLoading={isLoading}
           phoneValue={phoneValue}
           onPhoneChange={handlePhoneChange}
-          control={control}
+          onSpecializationChange={handleSpecializationChange}
+          onContactMethodChange={handleContactMethodChange}
         />
 
         {formError && <div className={styles.errorText}>{formError}</div>}

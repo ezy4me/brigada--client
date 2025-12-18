@@ -3,13 +3,13 @@ import { style } from "@vanilla-extract/css";
 import { vars } from "@/shared/styles/theme.css";
 
 export const section = style({
-  padding: `${vars.spacing["32"]} 0`,
+  // padding: `${vars.spacing["32"]} 0`,
 });
 
 export const container = style({
   maxWidth: "1200px",
   margin: "0 auto",
-  padding: `0 ${vars.spacing["16"]}`,
+  // padding: `0 ${vars.spacing["16"]}`,
 });
 
 export const loadingContainer = style({
