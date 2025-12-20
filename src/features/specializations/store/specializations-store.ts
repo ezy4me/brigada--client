@@ -1,78 +1,60 @@
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
 
-import { Specialization } from "@/features/specializations/api/specializations-api";
+import { Specialization } from "../api/specializations-api";
 
 interface SpecializationsStore {
   specializations: Specialization[];
   isLoading: boolean;
   error: string | null;
-  lastRequestTime: number | null;
 
-  // Actions
   loadSpecializations: () => Promise<void>;
   setSpecializations: (specializations: Specialization[]) => void;
   setLoading: (loading: boolean) => void;
   setError: (error: string | null) => void;
 }
 
-// Минимальный интервал между запросами (5 секунд)
-const MIN_REQUEST_INTERVAL = 5000;
-
 export const useSpecializationsStore = create<SpecializationsStore>()(
   devtools(
-    (set, get) => ({
-      specializations: [],
+    (set) => ({
+      specializations: [], // Гарантируем, что это массив
       isLoading: false,
       error: null,
-      lastRequestTime: null,
 
       loadSpecializations: async () => {
-        const { setLoading, setError, setSpecializations, lastRequestTime } = get();
-
-        // Проверяем время последнего запроса
-        const now = Date.now();
-        if (lastRequestTime && now - lastRequestTime < MIN_REQUEST_INTERVAL) {
-          console.log("Слишком частые запросы, пропускаем...");
-          return;
-        }
-
-        setLoading(true);
-        setError(null);
+        set({ isLoading: true, error: null });
 
         try {
-          const { specializationsApi } = await import(
-            "@/features/specializations/api/specializations-api"
-          );
+          const { specializationsApi } = await import("../api/specializations-api");
           const data = await specializationsApi.getSpecializations();
 
-          // Проверяем, что это массив
-          if (Array.isArray(data)) {
-            setSpecializations(data);
-            set({ lastRequestTime: Date.now() }); // Обновляем время последнего запроса
-          } else {
-            console.error("Invalid data format received:", data);
-            setError("Неверный формат данных от сервера");
-            setSpecializations([]);
-          }
+          // Гарантируем, что data - массив
+          const specializationsArray = Array.isArray(data) ? data : [];
+
+          set({
+            specializations: specializationsArray,
+            isLoading: false,
+          });
         } catch (error: any) {
           console.error("Error loading specializations:", error);
 
-          // Проверяем, если это 429 ошибка
           if (error?.response?.status === 429) {
-            setError("Слишком много запросов. Попробуйте позже.");
+            set({
+              error: "Слишком много запросов. Попробуйте позже.",
+              isLoading: false,
+            });
           } else {
-            setError("Ошибка загрузки специализаций");
+            set({
+              error: "Ошибка загрузки специализаций",
+              isLoading: false,
+            });
           }
-
-          setSpecializations([]);
-        } finally {
-          setLoading(false);
         }
       },
 
       setSpecializations: (specializations) => {
-        set({ specializations });
+        const specializationsArray = Array.isArray(specializations) ? specializations : [];
+        set({ specializations: specializationsArray });
       },
 
       setLoading: (loading) => {
@@ -85,7 +67,6 @@ export const useSpecializationsStore = create<SpecializationsStore>()(
     }),
     {
       name: "specializations-store",
-      enabled: process.env.NODE_ENV !== "production",
     }
   )
 );

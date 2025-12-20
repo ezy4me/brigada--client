@@ -7,6 +7,8 @@ export interface Specialization {
 
 export const specializationsApi = {
   async getSpecializations(): Promise<Specialization[]> {
-    return await apiClient.get<Specialization[]>("/specializations");
+    const response = await apiClient.get<Specialization[]>("/specializations");
+    console.log(response);
+    return response;
   },
 };

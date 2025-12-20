@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Camera, CheckCircle } from "lucide-react";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -53,8 +54,8 @@ export const ProfileForm = ({ className }: ProfileFormProps) => {
     },
   });
 
-  // Следим за значениями
   const phoneValue = watch("phone");
+
   const specializationIdValue = watch("specializationId");
   const preferedContactValue = watch("preferedContact");
 
@@ -220,6 +221,8 @@ export const ProfileForm = ({ className }: ProfileFormProps) => {
           userEmail={user.email}
           isLoading={isLoading}
           phoneValue={phoneValue}
+          specializationIdValue={specializationIdValue}
+          preferedContactValue={preferedContactValue}
           onPhoneChange={handlePhoneChange}
           onSpecializationChange={handleSpecializationChange}
           onContactMethodChange={handleContactMethodChange}

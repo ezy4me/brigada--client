@@ -144,7 +144,7 @@ export const Footer: FC<FooterProps> = ({ className }) => {
               <a href="mailto:brima@mybrigada.ru" className={styles.link}>
                 <Mail size={16} /> brima@mybrigada.ru
               </a>
-              <a href="tel:+71234567890" className={styles.link}>
+              <a href="tel:+79874166132" className={styles.link}>
                 <Phone size={16} /> +7 987 416 61 32
               </a>
             </div>

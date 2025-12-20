@@ -1,16 +1,16 @@
 "use client";
 
 import { useState, useCallback, useEffect } from "react";
+
 import { UseFormRegister, FieldErrors } from "react-hook-form";
 
 import { CustomerPerformerProfileFormData } from "@/features/profile/lib/validation-schemas";
 import { useSpecializations } from "@/features/specializations/lib/use-specializations";
 import { formatPhoneForDisplay, handlePhoneInput } from "@/shared/lib/phone-utils";
+import { ContactMethodSelect } from "@/shared/ui/contact-method/ContactMethodSelect";
 import { Input } from "@/shared/ui/input/Input";
 import { Select } from "@/shared/ui/select/Select";
-import { ContactMethodSelect } from "@/shared/ui/contact-method/ContactMethodSelect";
 import { Text } from "@/shared/ui/text/Text";
-import { Button } from "@/shared/ui/button/Button";
 
 import * as styles from "./profileFields.css";
 
@@ -41,29 +41,12 @@ export const ProfileFields = ({
   onSpecializationChange,
   onContactMethodChange,
 }: ProfileFieldsProps) => {
-  // Используем хук для работы со специализациями с ОТКЛЮЧЕННОЙ автозагрузкой
-  const {
-    specializationOptions,
-    isLoading: isLoadingSpecializations,
-    error: specializationsError,
-    loadSpecializations,
-    isReady,
-  } = useSpecializations({
-    enabled: userRole === "performer",
-    autoLoad: false, // ОТКЛЮЧАЕМ автоматическую загрузку
-  });
+  // Используем хук только для исполнителей
+  const { specializationOptions, isLoading: isLoadingSpecializations } = useSpecializations(
+    userRole === "performer"
+  );
 
   const [displayPhone, setDisplayPhone] = useState("+7");
-  const [hasAttemptedLoad, setHasAttemptedLoad] = useState(false);
-
-  // Загружаем специализации только при первом монтировании для исполнителей
-  useEffect(() => {
-    if (userRole === "performer" && !hasAttemptedLoad && !isReady) {
-      console.log("Загружаем специализации для исполнителя...");
-      loadSpecializations();
-      setHasAttemptedLoad(true);
-    }
-  }, [userRole, hasAttemptedLoad, isReady, loadSpecializations]);
 
   // Инициализируем телефон
   useEffect(() => {
@@ -182,51 +165,31 @@ export const ProfileFields = ({
 
       {userRole === "performer" && (
         <div className={styles.singleField}>
-          <div className={styles.selectContainer}>
-            <Select
-              label="Специализация"
-              options={specializationOptions}
-              value={specializationIdValue}
-              onChange={(value) => {
-                if (onSpecializationChange) {
-                  onSpecializationChange(value);
-                } else {
-                  const event = {
-                    target: {
-                      name: "specializationId",
-                      value: value || "",
-                    },
-                  };
-                  register("specializationId").onChange(event as any);
-                }
-              }}
-              placeholder={
-                isLoadingSpecializations ? "Загрузка специализаций..." : "Выберите специализацию"
+          <Select
+            label="Специализация"
+            options={specializationOptions}
+            value={specializationIdValue}
+            onChange={(value) => {
+              if (onSpecializationChange) {
+                onSpecializationChange(value);
+              } else {
+                const event = {
+                  target: {
+                    name: "specializationId",
+                    value: value || "",
+                  },
+                };
+                register("specializationId").onChange(event as any);
               }
-              searchable={true}
-              error={!!errors.specializationId || !!specializationsError}
-              helperText={specializationsError || errors.specializationId?.message}
-              disabled={isLoading || isLoadingSpecializations}
-            />
-
-            {specializationsError && (
-              <div className={styles.errorContainer}>
-                <Text size="caption" color="error">
-                  {specializationsError}
-                </Text>
-                <Button
-                  type="button"
-                  onClick={loadSpecializations}
-                  variant="secondary"
-                  size="sm"
-                  className={styles.retryButton}
-                >
-                  Повторить
-                </Button>
-              </div>
-            )}
-          </div>
-
+            }}
+            placeholder={
+              isLoadingSpecializations ? "Загрузка специализаций..." : "Выберите специализацию"
+            }
+            searchable={true}
+            error={!!errors.specializationId}
+            helperText={errors.specializationId?.message}
+            disabled={isLoading || isLoadingSpecializations}
+          />
           <Text size="caption" color="secondary" className={styles.hint}>
             Выберите специализацию из списка или оставьте пустым
           </Text>
