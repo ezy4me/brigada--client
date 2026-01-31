@@ -14,15 +14,15 @@ export const generalPartners: Partner[] = [
     ],
   },
   {
-    name: "СтройКорпус",
-    image: "/partners/noimage.webp",
-    badges: ["Строительство", "Инженерия", "Новостройки"],
-    benefits: [
-      "качественная отделка",
-      "надёжные материалы",
-      "опытные специалисты",
-      "сжатые сроки",
-      "гарантия качества",
-    ],
+    name: "",
+    image: "/partners/join-us.png",
+    badges: [],
+    benefits: [],
+  },
+   {
+    name: "",
+    image: "/partners/CTA.png",
+    badges: [],
+    benefits: [],
   },
 ];

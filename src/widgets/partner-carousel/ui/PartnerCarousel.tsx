@@ -13,8 +13,6 @@ import { Text } from "@/shared/ui/text/Text";
 
 import * as styles from "./partnerCarousel.css";
 
-
-
 export interface Partner {
   name: string;
   image: string;
