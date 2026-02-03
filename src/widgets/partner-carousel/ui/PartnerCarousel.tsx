@@ -49,7 +49,7 @@ export const PartnerCarousel = ({
   const current = isCTA
     ? {
         name: "Станьте нашим партнером!",
-        image: "/partners/CTA.png",
+        image: "/partners/CTA2.png",
         badges: [],
         benefits: [],
       }
