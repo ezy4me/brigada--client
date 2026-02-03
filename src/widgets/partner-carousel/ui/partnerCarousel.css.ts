@@ -71,6 +71,7 @@ export const textBlock = style({
   flexDirection: "column",
   gap: vars.spacing["12"],
   alignSelf: "flex-start",
+  maxWidth: "600px",
 });
 
 export const badges = style({
@@ -103,8 +104,51 @@ export const partnerName = style({
   color: vars.color.white,
 });
 
+export const ctaTitle = style({
+  height: '100%',
+  // fontSize: vars.font.size.h2,
+  fontWeight: vars.font.weight.bold,
+  color: vars.color.white,
+  lineHeight: 1.2,
+  marginTop: "50%",
+  // marginLeft: vars.spacing["20"],
+  // transform: "translateY(-50%)",
+});
+
+
+export const highlightedText = style({
+  color: vars.color.brand.secondary,
+});
+
+export const ctaSubtitle = style({
+  fontSize: vars.font.size.body1,
+  color: vars.color.white,
+  opacity: 0.9,
+  marginBottom: vars.spacing["24"],
+  maxWidth: "500px",
+});
+
+export const ctaButton = style({
+  alignSelf: "flex-start",
+  minWidth: "200px",
+});
+
+export const logoContainer = style({
+  position: "absolute",
+  top: vars.spacing["24"],
+  right: vars.spacing["24"],
+  zIndex: 3,
+});
+
 export const navButtons = style({
   display: "flex",
   width: "100%",
   justifyContent: "space-between",
+  alignItems: "center",
+});
+
+export const counter = style({
+  fontSize: vars.font.size.body2,
+  color: vars.color.white,
+  fontWeight: vars.font.weight.medium,
 });

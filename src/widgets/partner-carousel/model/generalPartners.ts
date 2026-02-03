@@ -13,16 +13,16 @@ export const generalPartners: Partner[] = [
       "формирование кадрового резерва",
     ],
   },
-  {
-    name: "",
-    image: "/partners/join-us.png",
-    badges: [],
-    benefits: [],
-  },
-   {
-    name: "",
-    image: "/partners/CTA.png",
-    badges: [],
-    benefits: [],
-  },
+  // {
+  //   name: "",
+  //   image: "/partners/join-us.png",
+  //   badges: [],
+  //   benefits: [],
+  // },
+  //  {
+  //   name: "",
+  //   image: "/partners/CTA.png",
+  //   badges: [],
+  //   benefits: [],
+  // },
 ];
